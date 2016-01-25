@@ -80,10 +80,6 @@ module.exports = {
     publicPath: '/'
   },
 
-  resolve: {
-    extensions: ['', '.js', '.scss']
-  },
-
   plugins: PLUGINS.concat(DEV ? DEV_PLUGINS : PROD_PLUGINS),
 
   cache: DEV,

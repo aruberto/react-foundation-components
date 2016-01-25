@@ -1,37 +1,67 @@
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 
-import style from './style';
+import style from './style.scss';
+import {classNamesMapper} from '../util';
 
 export default class Button extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     disabled: PropTypes.bool,
+    dropdown: PropTypes.bool,
     expanded: PropTypes.bool,
     fSize: PropTypes.oneOf(['tiny', 'small', 'large']),
-    fStyle: PropTypes.oneOf(['secondary', 'success', 'alert', 'warning']),
-    hollow: PropTypes.bool
+    fType: PropTypes.oneOf(['secondary', 'success', 'alert', 'warning']),
+    hollow: PropTypes.bool,
+    href: React.PropTypes.string,
+    target: React.PropTypes.string,
+    type: React.PropTypes.oneOf(['button', 'reset', 'submit'])
+  };
+
+  static defaultProps = {
+    type: 'button'
   };
 
   render() {
-    const {className, children, disabled, expanded, fSize, fStyle, hollow} = this.props;
-    const classes = {
-      [style.button || 'button']: true,
-      [style.disabled || 'disabled']: disabled,
-      [style.expanded || 'expanded']: expanded,
-      [style.tiny || 'tiny']: fSize === 'tiny',
-      [style.small || 'small']: fSize === 'small',
-      [style.large || 'large']: fSize === 'large',
-      [style.secondary || 'secondary']: fStyle === 'secondary',
-      [style.success || 'success']: fStyle === 'success',
-      [style.alert || 'alert']: fStyle === 'alert',
-      [style.warning || 'warning']: fStyle === 'warning',
-      [style.hollow || 'hollow']: hollow
-    };
+    const {
+      className,
+      children,
+      disabled,
+      dropdown,
+      expanded,
+      fSize,
+      fType,
+      hollow,
+      href,
+      target
+    } = this.props;
+    const buttonClassNames = classNamesMapper(style, {
+      button: true,
+      disabled,
+      dropdown,
+      expanded,
+      tiny: fSize === 'tiny',
+      small: fSize === 'small',
+      large: fSize === 'large',
+      secondary: fType === 'secondary',
+      success: fType === 'success',
+      alert: fType === 'alert',
+      warning: fType === 'warning',
+      hollow
+    });
+    const combinedClassNames = classNames(className, buttonClassNames);
+
+    if (href || target) {
+      return (
+        <a {...this.props} className={combinedClassNames} href={href || '#'} role='button'>
+          {children}
+        </a>
+      );
+    }
 
     return (
-      <button className={classNames(className, classes)}>
+      <button {...this.props} className={combinedClassNames}>
         {children}
       </button>
     );
