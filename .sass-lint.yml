@@ -2,8 +2,6 @@ options:
   formatter: stylish
 files:
   include: 'src/**/*.s+(a|c)ss'
-  ignore:
-    - 'src/node_modules/redihive/react/components/react-widgets/theme/**/*.*'
 rules:
   # Extends
   extends-before-mixins: 1
