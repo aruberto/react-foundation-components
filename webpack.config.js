@@ -25,8 +25,8 @@ const PLUGINS = [
   new webpack.DefinePlugin(GLOBALS),
   new HtmlWebpackPlugin({
     title: 'React Foundation Components',
-    template: path.join(__dirname, 'index.html'),
-    favicon: path.join(__dirname, 'favicon.ico'),
+    template: path.join(__dirname, 'demo', 'index.html'),
+    favicon: path.join(__dirname, 'demo', 'favicon.ico'),
     inject: 'body'
   })
 ];
@@ -75,7 +75,7 @@ module.exports = {
   entry: ENTRY_MIDDLEWARE.concat(path.join(__dirname, 'demo')),
 
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'lib'),
     filename: '[name]-[hash].js',
     publicPath: '/'
   },

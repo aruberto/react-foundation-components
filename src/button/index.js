@@ -17,17 +17,17 @@ export default class Button extends Component {
   render() {
     const {className, children, disabled, expanded, fSize, fStyle, hollow} = this.props;
     const classes = {
-      [style.button]: true,
-      [style.disabled]: disabled,
-      [style.expanded]: expanded,
-      [style.tiny]: fSize === 'tiny',
-      [style.small]: fSize === 'small',
-      [style.large]: fSize === 'large',
-      [style.secondary]: fStyle === 'secondary',
-      [style.success]: fStyle === 'success',
-      [style.alert]: fStyle === 'alert',
-      [style.warning]: fStyle === 'warning',
-      [style.hollow]: hollow
+      [style.button || 'button']: true,
+      [style.disabled || 'disabled']: disabled,
+      [style.expanded || 'expanded']: expanded,
+      [style.tiny || 'tiny']: fSize === 'tiny',
+      [style.small || 'small']: fSize === 'small',
+      [style.large || 'large']: fSize === 'large',
+      [style.secondary || 'secondary']: fStyle === 'secondary',
+      [style.success || 'success']: fStyle === 'success',
+      [style.alert || 'alert']: fStyle === 'alert',
+      [style.warning || 'warning']: fStyle === 'warning',
+      [style.hollow || 'hollow']: hollow
     };
 
     return (

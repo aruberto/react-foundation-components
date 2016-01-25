@@ -1,0 +1,7 @@
+.*rc
+.*config
+.*.yml
+demo
+src
+server.js
+webpack.*.js
