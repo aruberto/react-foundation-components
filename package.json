@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "babel src --out-dir lib && cpy \"src/**/*.scss\" lib",
+    "build": "npm run clean && babel src --out-dir lib && cpy \"src/**/*.scss\" lib",
     "start": "node server.js --dev"
   },
   "repository": {
