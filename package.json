@@ -6,7 +6,10 @@
   "scripts": {
     "clean": "rimraf lib",
     "build": "npm run clean && babel src --out-dir lib && cpy \"src/**/*.scss\" lib",
-    "start": "node server.js --dev"
+    "start": "node server.js --dev",
+    "release-major": "npm run build && npm-release major",
+    "release-minor": "npm run build && npm-release minor",
+    "release-patch": "npm run build && npm-release patch"
   },
   "repository": {
     "type": "git",
@@ -59,6 +62,7 @@
     "img-loader": "^1.2.2",
     "minimist": "^1.2.0",
     "node-sass": "^3.4.2",
+    "npm-release": "^1.0.0",
     "postcss-loader": "^0.8.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
