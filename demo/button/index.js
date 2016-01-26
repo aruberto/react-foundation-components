@@ -10,49 +10,49 @@ export default class ButtonPage extends Component {
         &nbsp;
         <Button href='#features'>View All Features</Button>
         &nbsp;
-        <Button fType='success'>Save</Button>
+        <Button color='success'>Save</Button>
         &nbsp;
-        <Button fType='alert'>Delete</Button>
+        <Button color='alert'>Delete</Button>
         <br/>
-        <Button fSize='tiny'>So Tiny</Button>
+        <Button size='tiny'>So Tiny</Button>
         &nbsp;
-        <Button fSize='small'>So Small</Button>
+        <Button size='small'>So Small</Button>
         &nbsp;
         <Button>So Basic</Button>
         &nbsp;
-        <Button fSize='large'>So Large</Button>
+        <Button size='large'>So Large</Button>
         <br/>
         <Button expanded>Such Expand</Button>
         <br/>
-        <Button expanded fSize='tiny'>Wow, Small Expand</Button>
+        <Button expanded size='tiny'>Wow, Small Expand</Button>
         <br/>
-        <Button fType='secondary'>Secondary Color</Button>
+        <Button color='secondary'>Secondary Color</Button>
         &nbsp;
-        <Button fType='success'>Success Color</Button>
+        <Button color='success'>Success Color</Button>
         &nbsp;
-        <Button fType='alert'>Alert Color</Button>
+        <Button color='alert'>Alert Color</Button>
         &nbsp;
-        <Button fType='warning'>Warning Color</Button>
+        <Button color='warning'>Warning Color</Button>
         &nbsp;
         <Button disabled>Disabled Button</Button>
         <br/>
         <Button hollow>Primary Color</Button>
         &nbsp;
-        <Button fType='secondary' hollow>Secondary Color</Button>
+        <Button color='secondary' hollow>Secondary Color</Button>
         &nbsp;
-        <Button fType='success' hollow>Success Color</Button>
+        <Button color='success' hollow>Success Color</Button>
         &nbsp;
-        <Button fType='alert' hollow>Alert Color</Button>
+        <Button color='alert' hollow>Alert Color</Button>
         &nbsp;
-        <Button fType='warning' hollow>Warning Color</Button>
+        <Button color='warning' hollow>Warning Color</Button>
         <br/>
-        <Button dropdown fSize='tiny'>Dropdown Button</Button>
+        <Button dropdown size='tiny'>Dropdown Button</Button>
         &nbsp;
-        <Button dropdown fSize='small'>Dropdown Button</Button>
+        <Button dropdown size='small'>Dropdown Button</Button>
         &nbsp;
         <Button dropdown>Dropdown Button</Button>
         &nbsp;
-        <Button dropdown fSize='large'>Dropdown Button</Button>
+        <Button dropdown size='large'>Dropdown Button</Button>
         <br/>
         <Button dropdown expanded>Dropdown Button</Button>
         <br/>
@@ -61,7 +61,7 @@ export default class ButtonPage extends Component {
             Close
           </Visibility>
           <Visibility hideForScreenReaderOnly>
-            X
+            &times;
           </Visibility>
         </Button>
       </div>
