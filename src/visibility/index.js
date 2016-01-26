@@ -1,4 +1,4 @@
-import React, {Component, PropTypes, Children, isValidElement} from 'react';
+import React, {Component, PropTypes, isValidElement} from 'react';
 import classNames from 'classnames';
 
 import style from './style.scss';
@@ -8,6 +8,10 @@ export default class Visibility extends Component {
   static propTypes = {
     children: PropTypes.node,
     hide: PropTypes.bool,
+    hideForExtraExtraLarge: PropTypes.bool,
+    hideForExtraExtraLargeOnly: PropTypes.bool,
+    hideForExtraLarge: PropTypes.bool,
+    hideForExtraLargeOnly: PropTypes.bool,
     hideForLandscape: PropTypes.bool,
     hideForLarge: PropTypes.bool,
     hideForLargeOnly: PropTypes.bool,
@@ -17,6 +21,10 @@ export default class Visibility extends Component {
     hideForScreenReaderOnly: PropTypes.bool,
     hideForSmallOnly: PropTypes.bool,
     invisible: PropTypes.bool,
+    showForExtraExtraLarge: PropTypes.bool,
+    showForExtraExtraLargeOnly: PropTypes.bool,
+    showForExtraLarge: PropTypes.bool,
+    showForExtraLargeOnly: PropTypes.bool,
     showForLandscape: PropTypes.bool,
     showForLarge: PropTypes.bool,
     showForLargeOnly: PropTypes.bool,
@@ -33,6 +41,10 @@ export default class Visibility extends Component {
       children,
       hide,
       hideForLandscape,
+      hideForExtraExtraLarge,
+      hideForExtraExtraLargeOnly,
+      hideForExtraLarge,
+      hideForExtraLargeOnly,
       hideForLarge,
       hideForLargeOnly,
       hideForMedium,
@@ -42,6 +54,10 @@ export default class Visibility extends Component {
       hideForSmallOnly,
       invisible,
       showForLandscape,
+      showForExtraExtraLarge,
+      showForExtraExtraLargeOnly,
+      showForExtraLarge,
+      showForExtraLargeOnly,
       showForLarge,
       showForLargeOnly,
       showForMedium,
@@ -54,6 +70,10 @@ export default class Visibility extends Component {
     const visibilityClassNames = classNamesMapper(style, {
       hide,
       'hide-for-landscape': hideForLandscape,
+      'hide-for-xxlarge': hideForExtraExtraLarge,
+      'hide-for-xxlarge-only': hideForExtraExtraLargeOnly,
+      'hide-for-xlarge': hideForExtraLarge,
+      'hide-for-xlarge-only': hideForExtraLargeOnly,
       'hide-for-large': hideForLarge,
       'hide-for-large-only': hideForLargeOnly,
       'hide-for-medium': hideForMedium,
@@ -62,6 +82,10 @@ export default class Visibility extends Component {
       'hide-for-small-only': hideForSmallOnly,
       invisible,
       'show-for-landscape': showForLandscape,
+      'show-for-xxlarge': showForExtraExtraLarge,
+      'show-for-xxlarge-only': showForExtraExtraLargeOnly,
+      'show-for-xlarge': showForExtraLarge,
+      'show-for-xlarge-only': showForExtraLargeOnly,
       'show-for-large': showForLarge,
       'show-for-large-only': showForLargeOnly,
       'show-for-medium': showForMedium,
@@ -79,14 +103,10 @@ export default class Visibility extends Component {
       props['aria-hidden'] = true;
     }
 
-    if (Children.count(children) === 1) {
-      const child = Children.only(children);
+    if (isValidElement(children)) {
+      const className = classNames(children.props.className, props.className);
 
-      if (isValidElement(child)) {
-        props.className = classNames(child.props.className, props.className);
-
-        return React.cloneElement(child, {...props});
-      }
+      return React.cloneElement(children, {...props, className});
     }
 
     return <span {...props}>{children}</span>;

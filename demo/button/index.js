@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Button} from '../../src';
+import {Button, Visibility} from '../../src';
 
 export default class ButtonPage extends Component {
   render() {
@@ -55,6 +55,15 @@ export default class ButtonPage extends Component {
         <Button dropdown fSize='large'>Dropdown Button</Button>
         <br/>
         <Button dropdown expanded>Dropdown Button</Button>
+        <br/>
+        <Button>
+          <Visibility showForScreenReaderOnly>
+            Close
+          </Visibility>
+          <Visibility hideForScreenReaderOnly>
+            X
+          </Visibility>
+        </Button>
       </div>
     );
   }

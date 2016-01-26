@@ -13,6 +13,12 @@ export default class VisibilityPage extends Component {
         <Visibility showForLarge>
           <p>You are on a large screen or larger.</p>
         </Visibility>
+        <Visibility showForExtraLarge>
+          <p>You are on an extra large screen or larger.</p>
+        </Visibility>
+        <Visibility showForExtraExtraLarge>
+          <p>You are on an extra extra large screen or larger.</p>
+        </Visibility>
         <Visibility showForSmallOnly>
           <p>You are <em>definitely</em> on a small screen.</p>
         </Visibility>
@@ -22,11 +28,23 @@ export default class VisibilityPage extends Component {
         <Visibility showForLargeOnly>
           <p>You are <em>definitely</em> on a large screen.</p>
         </Visibility>
+        <Visibility showForExtraLargeOnly>
+          <p>You are <em>definitely</em> on an extra large screen.</p>
+        </Visibility>
+        <Visibility showForExtraExtraLargeOnly>
+          <p>You are <em>definitely</em> on an extra extra large screen.</p>
+        </Visibility>
         <Visibility hideForMedium>
           <p>You are <em>not</em> on a medium screen or larger.</p>
         </Visibility>
         <Visibility hideForLarge>
           <p>You are <em>not</em> on a large screen or larger.</p>
+        </Visibility>
+        <Visibility hideForExtraLarge>
+          <p>You are <em>not</em> on an extra large screen or larger.</p>
+        </Visibility>
+        <Visibility hideForExtraExtraLarge>
+          <p>You are <em>not</em> on an extra extra large screen or larger.</p>
         </Visibility>
         <Visibility hideForSmallOnly>
           <p>You are <em>definitely not</em> on a small screen.</p>
@@ -36,6 +54,12 @@ export default class VisibilityPage extends Component {
         </Visibility>
         <Visibility hideForLargeOnly>
           <p>You are <em>definitely not</em> on a large screen.</p>
+        </Visibility>
+        <Visibility hideForExtraLargeOnly>
+          <p>You are <em>definitely not</em> on an extra large screen.</p>
+        </Visibility>
+        <Visibility hideForExtraExtraLargeOnly>
+          <p>You are <em>definitely not</em> on an extra extra large screen.</p>
         </Visibility>
         <Visibility hide>
           <p>Can't touch this.</p>
