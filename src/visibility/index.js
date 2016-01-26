@@ -1,5 +1,6 @@
 import React, {Component, PropTypes, isValidElement} from 'react';
 import classNames from 'classnames';
+import elementType from 'react-prop-types/lib/elementType';
 
 import style from './style.scss';
 import {classNamesMapper} from '../util';
@@ -7,6 +8,7 @@ import {classNamesMapper} from '../util';
 export default class Visibility extends Component {
   static propTypes = {
     children: PropTypes.node,
+    componentClass: elementType,
     hide: PropTypes.bool,
     hideForExtraExtraLarge: PropTypes.bool,
     hideForExtraExtraLargeOnly: PropTypes.bool,
@@ -39,6 +41,7 @@ export default class Visibility extends Component {
   render() {
     const {
       children,
+      componentClass: maybeComponentClass,
       hide,
       hideForLandscape,
       hideForExtraExtraLarge,
@@ -67,7 +70,8 @@ export default class Visibility extends Component {
       showForSmallOnly,
       showOnFocus
     } = this.props;
-    const visibilityClassNames = classNamesMapper(style, {
+    const ComponentClass = maybeComponentClass || 'span';
+    const componentClassNames = classNamesMapper(style, {
       hide,
       'hide-for-landscape': hideForLandscape,
       'hide-for-xxlarge': hideForExtraExtraLarge,
@@ -95,20 +99,23 @@ export default class Visibility extends Component {
       'show-for-small-only': showForSmallOnly,
       'show-on-focus': showOnFocus
     });
-    const props = {
-      className: classNames(visibilityClassNames)
-    };
+    const props = {};
 
     if (hideForScreenReaderOnly) {
       props['aria-hidden'] = true;
     }
 
-    if (isValidElement(children)) {
-      const className = classNames(children.props.className, props.className);
-
-      return React.cloneElement(children, {...props, className});
+    if (!maybeComponentClass && isValidElement(children)) {
+      return React.cloneElement(children, {
+        ...props,
+        className: classNames(children.props.className, componentClassNames)
+      });
     }
 
-    return <span {...props}>{children}</span>;
+    return (
+      <ComponentClass {...props} className={classNames(componentClassNames)}>
+        {children}
+      </ComponentClass>
+    );
   }
 }

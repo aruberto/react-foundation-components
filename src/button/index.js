@@ -36,7 +36,7 @@ export default class Button extends Component {
       href,
       target
     } = this.props;
-    const buttonClassNames = classNamesMapper(style, {
+    const componentClassNames = classNamesMapper(style, {
       button: true,
       disabled,
       dropdown,
@@ -50,18 +50,22 @@ export default class Button extends Component {
       warning: fType === 'warning',
       hollow
     });
-    const combinedClassNames = classNames(className, buttonClassNames);
 
     if (href || target) {
       return (
-        <a {...this.props} className={combinedClassNames} href={href || '#'} role='button'>
+        <a
+          {...this.props}
+          className={classNames(className, componentClassNames)}
+          href={href || '#'}
+          role='button'
+        >
           {children}
         </a>
       );
     }
 
     return (
-      <button {...this.props} className={combinedClassNames}>
+      <button {...this.props} className={classNames(className, componentClassNames)}>
         {children}
       </button>
     );
