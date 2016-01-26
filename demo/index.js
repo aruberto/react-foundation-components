@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import {Router, Route, Link} from 'react-router';
 import {createHistory} from 'history';
 
+import {App} from '../src';
+import AppPage from './app';
+import VisibilityPage from './visibility';
 import ButtonPage from './button';
 
 const history = createHistory();
@@ -15,6 +18,10 @@ class HomePage extends Component {
   render() {
     return (
       <div>
+        <Link to='/app'>App</Link>
+        &nbsp;
+        <Link to='/visibility'>Visibility</Link>
+        &nbsp;
         <Link to='/button'>Button</Link>
         <br/>
         {this.props.children}
@@ -26,11 +33,15 @@ class HomePage extends Component {
 class Demo extends Component {
   render() {
     return (
-      <Router history={history}>
-        <Route component={HomePage} path='/'>
-          <Route component={ButtonPage} path='/button'/>
-        </Route>
-      </Router>
+      <App>
+        <Router history={history}>
+          <Route component={HomePage} path='/'>
+            <Route component={AppPage} path='/app'/>
+            <Route component={VisibilityPage} path='/visibility'/>
+            <Route component={ButtonPage} path='/button'/>
+          </Route>
+        </Router>
+      </App>
     );
   }
 }

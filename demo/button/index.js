@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Button from '../../src/button';
+import {Button} from '../../src';
 
 export default class ButtonPage extends Component {
   render() {
