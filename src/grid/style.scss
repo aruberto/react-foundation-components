@@ -1,3 +1,10 @@
+$grid-column-responsive-gutter: (
+  small: 20px,
+  medium: 30px,
+  large: 40px,
+  xlarge: 50px,
+);
+
 @import '../common';
 @import '~foundation-sites/scss/grid/grid';
 
