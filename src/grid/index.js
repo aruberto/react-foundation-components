@@ -1,6 +1,4 @@
-import React, {Component, PropTypes} from 'react';
-import cx from 'classnames';
-import elementType from 'react-prop-types/lib/elementType';
+import {PropTypes} from 'react';
 
 import style from './style.scss';
 import {SIZES, classNamesMapper, createWrapperComponent} from '../util';
@@ -25,21 +23,23 @@ const columnClassNameToPropMapping = {
     isNumber: true
   }
 };
+const rowPropTypes = {};
+const columnPropTypes = {};
 
-export class Row extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    componentClass: elementType,
-    fluid: PropTypes.bool
-  };
+SIZES.forEach((size) => {
+  Object.values(rowClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
+    rowPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
+  );
 
-  static defaultProps = {
-    componentClass: 'div'
-  };
+  Object.values(columnClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
+    columnPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
+  );
+});
 
-  getClassNames = () => {
-    const {fluid} = this.props;
+export const Row = createWrapperComponent({
+  displayName: 'Row',
+  propTypes: rowPropTypes,
+  mapPropsToClassNames: ({fluid, ...props}) => {
     const classNames = {
       row: true,
       expanded: fluid
@@ -49,7 +49,7 @@ export class Row extends Component {
       SIZES.forEach((size) => {
         const {basePropName, isNumber} = rowClassNameToPropMapping[baseClassName];
         const propName = `${size}${basePropName}`;
-        const propValue = this.props[propName];
+        const propValue = props[propName];
         const className = size + (baseClassName ? `-${baseClassName}` : '');
 
         if (isNumber) {
@@ -63,27 +63,14 @@ export class Row extends Component {
     );
 
     return classNamesMapper(style, classNames);
-  };
+  },
+  defaultComponentClass: 'div'
+});
 
-  render() {
-    const {children, className, componentClass: ComponentClass} = this.props;
-
-    return (
-      <ComponentClass className={cx(className, this.getClassNames())}>
-        {children}
-      </ComponentClass>
-    );
-  }
-}
-
-Object.values(rowClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
-  SIZES.forEach((size) =>
-    Row.propTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
-  )
-);
-
-export const Column = createWrapperComponent(
-  (props) => {
+export const Column = createWrapperComponent({
+  displayName: 'Column',
+  propTypes: columnPropTypes,
+  mapPropsToClassNames: (props) => {
     const classNames = {
       column: true
     };
@@ -106,17 +93,6 @@ export const Column = createWrapperComponent(
     );
 
     return classNamesMapper(style, classNames);
-  }
-)()();
-
-Column.propTypes = {
-  ...Column.propTypes
-};
-
-Column.displayName = 'Column';
-
-Object.values(columnClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
-  SIZES.forEach((size) =>
-    Column.propTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
-  )
-);
+  },
+  defaultComponentClass: 'div'
+});

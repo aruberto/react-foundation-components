@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Button, Visibility} from '../../src';
+import {Button, ShowOnlyForScreenReader, HideOnlyForScreenReader} from '../../src';
 
 export default class ButtonPage extends Component {
   render() {
@@ -57,12 +57,12 @@ export default class ButtonPage extends Component {
         <Button dropdown expanded>Dropdown Button</Button>
         <br/>
         <Button>
-          <Visibility showForScreenReaderOnly>
+          <ShowOnlyForScreenReader>
             Close
-          </Visibility>
-          <Visibility hideForScreenReaderOnly>
+          </ShowOnlyForScreenReader>
+          <HideOnlyForScreenReader>
             &times;
-          </Visibility>
+          </HideOnlyForScreenReader>
         </Button>
       </div>
     );

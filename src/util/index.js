@@ -22,37 +22,42 @@ export function classNamesMapper(lookup, classNames) {
   return classNames;
 }
 
-export function createWrapperComponent(mapPropsToClassNames = () => ({})) {
-  return function (mapPropsToProps = () => ({})) {
-    return function (defaultComponentClass = 'span') {
-      class Wrapper extends Component {
-        static propTypes = {
-          children: PropTypes.node,
-          componentClass: elementType
-        };
+export function createWrapperComponent({
+  displayName = 'Wrapper',
+  propTypes = {},
+  mapPropsToClassNames = () => ({}),
+  mapPropsToProps = () => ({}),
+  defaultComponentClass = 'span'
+} = {}) {
+  class Wrapper extends Component {
+    static displayName = displayName;
 
-        render() {
-          const {children, componentClass: maybeComponentClass, ...restProps} = this.props;
-          const ComponentClass = maybeComponentClass || defaultComponentClass;
-          const classNames = mapPropsToClassNames(restProps);
-          const props = mapPropsToProps(restProps);
+    static propTypes = {
+      children: PropTypes.node,
+      componentClass: elementType,
+      ...propTypes
+    };
 
-          if (!maybeComponentClass && isValidElement(children)) {
-            return React.cloneElement(children, {
-              ...props,
-              className: cx(children.props.className, classNames)
-            });
-          }
+    render() {
+      const {children, componentClass: maybeComponentClass, ...restProps} = this.props;
+      const ComponentClass = maybeComponentClass || defaultComponentClass;
+      const classNames = mapPropsToClassNames(restProps);
+      const props = mapPropsToProps(restProps);
 
-          return (
-            <ComponentClass {...props} className={cx(classNames)}>
-              {children}
-            </ComponentClass>
-          );
-        }
+      if (!maybeComponentClass && isValidElement(children)) {
+        return React.cloneElement(children, {
+          ...props,
+          className: cx(children.props.className, classNames)
+        });
       }
 
-      return Wrapper;
-    };
-  };
+      return (
+        <ComponentClass {...props} className={cx(classNames)}>
+          {children}
+        </ComponentClass>
+      );
+    }
+  }
+
+  return Wrapper;
 }

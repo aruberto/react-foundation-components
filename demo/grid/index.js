@@ -7,7 +7,7 @@ export default class GridPage extends Component {
     return (
       <div>
         <Row>
-          <Column large='6' small={12}>
+          <Column large={6} small={12}>
             Test
           </Column>
           <Column large={6} small={12}>
