@@ -26,8 +26,9 @@ export function createWrapperComponent({
   displayName = 'Wrapper',
   propTypes = {},
   mapPropsToClassNames = () => ({}),
-  mapPropsToProps = () => ({}),
-  defaultComponentClass = 'span'
+  mapPropsToProps = (props) => props,
+  defaultComponentClass = 'span',
+  collapseOnlyChild = true
 } = {}) {
   class Wrapper extends Component {
     static displayName = displayName;
@@ -44,7 +45,7 @@ export function createWrapperComponent({
       const classNames = mapPropsToClassNames(restProps);
       const props = mapPropsToProps(restProps);
 
-      if (!maybeComponentClass && isValidElement(children)) {
+      if (collapseOnlyChild && !maybeComponentClass && isValidElement(children)) {
         return React.cloneElement(children, {
           ...props,
           className: cx(children.props.className, classNames)

@@ -80,7 +80,7 @@ export const ShowOnlyForScreenReader = createWrapperComponent({
 
 export const HideOnlyForScreenReader = createWrapperComponent({
   displayName: 'HideOnlyForScreenReader',
-  mapPropsToProps: () => ({'aria-hidden': true})
+  mapPropsToProps: (props) => ({'aria-hidden': true, ...props})
 });
 
 export const ShowOnlyOnFocus = createWrapperComponent({

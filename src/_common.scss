@@ -1,4 +1,10 @@
 $breakpoint-classes: (small medium large xlarge xxlarge);
+$grid-column-responsive-gutter: (
+  small: 20px,
+  medium: 30px,
+  large: 40px,
+  xlarge: 50px,
+);
 
-@import '~foundation-sites/scss/global';
 @import '~foundation-sites/scss/util/util';
+@import '~foundation-sites/scss/global';

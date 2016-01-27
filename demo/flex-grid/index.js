@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 
-import {Row, Column, ShowForScreenSize, ShowOnlyForScreenSize} from '../../src';
+import {
+  FlexRow as Row,
+  FlexColumn as Column,
+  ShowForScreenSize,
+  ShowOnlyForScreenSize
+} from '../../src';
 
 const style = {borderStyle: 'solid'};
 
-export default class GridPage extends Component {
+export default class FlexGridPage extends Component {
   render() {
     return (
       <div>
