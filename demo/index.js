@@ -5,6 +5,7 @@ import {createHistory} from 'history';
 
 import {App} from '../src';
 import AppPage from './app';
+import GridPage from './grid';
 import VisibilityPage from './visibility';
 import ButtonPage from './button';
 
@@ -19,6 +20,8 @@ class HomePage extends Component {
     return (
       <div>
         <Link to='/app'>App</Link>
+        &nbsp;
+        <Link to='/grid'>Grid</Link>
         &nbsp;
         <Link to='/visibility'>Visibility</Link>
         &nbsp;
@@ -37,6 +40,7 @@ class Demo extends Component {
         <Router history={history}>
           <Route component={HomePage} path='/'>
             <Route component={AppPage} path='/app'/>
+            <Route component={GridPage} path='/grid'/>
             <Route component={VisibilityPage} path='/visibility'/>
             <Route component={ButtonPage} path='/button'/>
           </Route>

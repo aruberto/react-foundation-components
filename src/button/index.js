@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 
 import style from './style.scss';
 import {classNamesMapper} from '../util';
@@ -26,20 +26,10 @@ export default class Button extends Component {
     type: 'button'
   };
 
-  render() {
-    const {
-      className,
-      children,
-      color,
-      disabled,
-      dropdown,
-      expanded,
-      hollow,
-      href,
-      size,
-      target
-    } = this.props;
-    const componentClassNames = classNamesMapper(style, {
+  getClassNames = () => {
+    const {color, disabled, dropdown, expanded, hollow, size} = this.props;
+
+    return classNamesMapper(style, {
       button: true,
       [color]: COLORS.includes(color),
       disabled,
@@ -48,12 +38,16 @@ export default class Button extends Component {
       hollow,
       [size]: SIZES.includes(size)
     });
+  };
+
+  render() {
+    const {className, children, href, target} = this.props;
 
     if (href || target) {
       return (
         <a
           {...this.props}
-          className={classNames(className, componentClassNames)}
+          className={cx(className, this.getClassNames())}
           href={href || '#'}
           role='button'
         >
@@ -63,7 +57,7 @@ export default class Button extends Component {
     }
 
     return (
-      <button {...this.props} className={classNames(className, componentClassNames)}>
+      <button {...this.props} className={cx(className, this.getClassNames())}>
         {children}
       </button>
     );

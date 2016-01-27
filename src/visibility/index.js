@@ -1,121 +1,81 @@
-import React, {Component, PropTypes, isValidElement} from 'react';
-import classNames from 'classnames';
-import elementType from 'react-prop-types/lib/elementType';
+import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {classNamesMapper} from '../util';
+import {
+  NON_SMALL_SIZES,
+  SIZES,
+  ORIENTATIONS,
+  classNamesMapper,
+  createWrapperComponent
+} from '../util';
 
-export default class Visibility extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    componentClass: elementType,
-    hide: PropTypes.bool,
-    hideForExtraExtraLarge: PropTypes.bool,
-    hideForExtraExtraLargeOnly: PropTypes.bool,
-    hideForExtraLarge: PropTypes.bool,
-    hideForExtraLargeOnly: PropTypes.bool,
-    hideForLandscape: PropTypes.bool,
-    hideForLarge: PropTypes.bool,
-    hideForLargeOnly: PropTypes.bool,
-    hideForMedium: PropTypes.bool,
-    hideForMediumOnly: PropTypes.bool,
-    hideForPortrait: PropTypes.bool,
-    hideForScreenReaderOnly: PropTypes.bool,
-    hideForSmallOnly: PropTypes.bool,
-    invisible: PropTypes.bool,
-    showForExtraExtraLarge: PropTypes.bool,
-    showForExtraExtraLargeOnly: PropTypes.bool,
-    showForExtraLarge: PropTypes.bool,
-    showForExtraLargeOnly: PropTypes.bool,
-    showForLandscape: PropTypes.bool,
-    showForLarge: PropTypes.bool,
-    showForLargeOnly: PropTypes.bool,
-    showForMedium: PropTypes.bool,
-    showForMediumOnly: PropTypes.bool,
-    showForPortrait: PropTypes.bool,
-    showForScreenReaderOnly: PropTypes.bool,
-    showForSmallOnly: PropTypes.bool,
-    showOnFocus: PropTypes.bool
-  };
+export const ShowForScreenSize = createWrapperComponent(
+  ({size}) => classNamesMapper(style, {[`show-for-${size}`]: NON_SMALL_SIZES.includes(size)})
+)()();
 
-  render() {
-    const {
-      children,
-      componentClass: maybeComponentClass,
-      hide,
-      hideForLandscape,
-      hideForExtraExtraLarge,
-      hideForExtraExtraLargeOnly,
-      hideForExtraLarge,
-      hideForExtraLargeOnly,
-      hideForLarge,
-      hideForLargeOnly,
-      hideForMedium,
-      hideForMediumOnly,
-      hideForPortrait,
-      hideForScreenReaderOnly,
-      hideForSmallOnly,
-      invisible,
-      showForLandscape,
-      showForExtraExtraLarge,
-      showForExtraExtraLargeOnly,
-      showForExtraLarge,
-      showForExtraLargeOnly,
-      showForLarge,
-      showForLargeOnly,
-      showForMedium,
-      showForMediumOnly,
-      showForPortrait,
-      showForScreenReaderOnly,
-      showForSmallOnly,
-      showOnFocus
-    } = this.props;
-    const ComponentClass = maybeComponentClass || 'span';
-    const componentClassNames = classNamesMapper(style, {
-      hide,
-      'hide-for-landscape': hideForLandscape,
-      'hide-for-xxlarge': hideForExtraExtraLarge,
-      'hide-for-xxlarge-only': hideForExtraExtraLargeOnly,
-      'hide-for-xlarge': hideForExtraLarge,
-      'hide-for-xlarge-only': hideForExtraLargeOnly,
-      'hide-for-large': hideForLarge,
-      'hide-for-large-only': hideForLargeOnly,
-      'hide-for-medium': hideForMedium,
-      'hide-for-medium-only': hideForMediumOnly,
-      'hide-for-portrait': hideForPortrait,
-      'hide-for-small-only': hideForSmallOnly,
-      invisible,
-      'show-for-landscape': showForLandscape,
-      'show-for-xxlarge': showForExtraExtraLarge,
-      'show-for-xxlarge-only': showForExtraExtraLargeOnly,
-      'show-for-xlarge': showForExtraLarge,
-      'show-for-xlarge-only': showForExtraLargeOnly,
-      'show-for-large': showForLarge,
-      'show-for-large-only': showForLargeOnly,
-      'show-for-medium': showForMedium,
-      'show-for-medium-only': showForMediumOnly,
-      'show-for-portrait': showForPortrait,
-      'show-for-sr': showForScreenReaderOnly,
-      'show-for-small-only': showForSmallOnly,
-      'show-on-focus': showOnFocus
-    });
-    const props = {};
+ShowForScreenSize.propTypes = {
+  ...ShowForScreenSize.propTypes,
+  size: PropTypes.oneOf(NON_SMALL_SIZES).isRequired
+};
 
-    if (hideForScreenReaderOnly) {
-      props['aria-hidden'] = true;
-    }
+export const ShowOnlyForScreenSize = createWrapperComponent(
+  ({size}) => classNamesMapper(style, {[`show-for-${size}-only`]: SIZES.includes(size)})
+)()();
 
-    if (!maybeComponentClass && isValidElement(children)) {
-      return React.cloneElement(children, {
-        ...props,
-        className: classNames(children.props.className, componentClassNames)
-      });
-    }
+ShowOnlyForScreenSize.propTypes = {
+  ...ShowOnlyForScreenSize.propTypes,
+  size: PropTypes.oneOf(SIZES).isRequired
+};
 
-    return (
-      <ComponentClass {...props} className={classNames(componentClassNames)}>
-        {children}
-      </ComponentClass>
-    );
-  }
-}
+export const HideForScreenSize = createWrapperComponent(
+  ({size}) => classNamesMapper(style, {[`hide-for-${size}`]: NON_SMALL_SIZES.includes(size)})
+)()();
+
+HideForScreenSize.propTypes = {
+  ...HideForScreenSize.propTypes,
+  size: PropTypes.oneOf(NON_SMALL_SIZES).isRequired
+};
+
+export const HideOnlyForScreenSize = createWrapperComponent(
+  ({size}) => classNamesMapper(style, {[`hide-for-${size}-only`]: SIZES.includes(size)})
+)()();
+
+HideOnlyForScreenSize.propTypes = {
+  ...HideOnlyForScreenSize.propTypes,
+  size: PropTypes.oneOf(SIZES).isRequired
+};
+
+export const Hide = createWrapperComponent(() => classNamesMapper(style, {hide: true}))()();
+
+export const Invisible =
+  createWrapperComponent(() => classNamesMapper(style, {invisible: true}))()();
+
+export const ShowForScreenOrientation = createWrapperComponent(
+  ({orientation}) =>
+    classNamesMapper(style, {[`show-for-${orientation}`]: ORIENTATIONS.includes(orientation)})
+)()();
+
+ShowForScreenOrientation.propTypes = {
+  ...ShowForScreenOrientation.propTypes,
+  orientation: PropTypes.oneOf(ORIENTATIONS).isRequired
+};
+
+export const HideForScreenOrientation = createWrapperComponent(
+  ({orientation}) =>
+    classNamesMapper(style, {[`hide-for-${orientation}`]: ORIENTATIONS.includes(orientation)})
+)()();
+
+HideForScreenOrientation.propTypes = {
+  ...HideForScreenOrientation.propTypes,
+  orientation: PropTypes.oneOf(ORIENTATIONS).isRequired
+};
+
+export const ShowOnlyForScreenReader = createWrapperComponent(
+  () => classNamesMapper(style, {'show-for-sr': true})
+)()();
+
+export const HideOnlyForScreenReader = createWrapperComponent()(() => ({'aria-hidden': true}))();
+
+export const ShowOnlyOnFocus = createWrapperComponent(
+  () => classNamesMapper(style, {'show-on-focus': true})
+)()();

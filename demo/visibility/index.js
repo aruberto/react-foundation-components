@@ -1,95 +1,107 @@
 import React, {Component} from 'react';
 
-import {Visibility} from '../../src';
+import {
+  ShowForScreenSize,
+  ShowOnlyForScreenSize,
+  HideForScreenSize,
+  HideOnlyForScreenSize,
+  Hide,
+  Invisible,
+  ShowForScreenOrientation,
+  HideForScreenOrientation,
+  ShowOnlyForScreenReader,
+  HideOnlyForScreenReader,
+  ShowOnlyOnFocus
+} from '../../src';
 
 export default class VisibilityPage extends Component {
   render() {
     return (
       <div>
         <p>You are on a small screen or larger.</p>
-        <Visibility showForMedium>
+        <ShowForScreenSize size='medium'>
           <p>You are on a medium screen or larger.</p>
-        </Visibility>
-        <Visibility showForLarge>
+        </ShowForScreenSize>
+        <ShowForScreenSize size='large'>
           <p>You are on a large screen or larger.</p>
-        </Visibility>
-        <Visibility showForExtraLarge>
+        </ShowForScreenSize>
+        <ShowForScreenSize size='xlarge'>
           <p>You are on an extra large screen or larger.</p>
-        </Visibility>
-        <Visibility showForExtraExtraLarge>
+        </ShowForScreenSize>
+        <ShowForScreenSize size='xxlarge'>
           <p>You are on an extra extra large screen or larger.</p>
-        </Visibility>
-        <Visibility showForSmallOnly>
+        </ShowForScreenSize>
+        <ShowOnlyForScreenSize size='small'>
           <p>You are <em>definitely</em> on a small screen.</p>
-        </Visibility>
-        <Visibility showForMediumOnly>
+        </ShowOnlyForScreenSize>
+        <ShowOnlyForScreenSize size='medium'>
           <p>You are <em>definitely</em> on a medium screen.</p>
-        </Visibility>
-        <Visibility showForLargeOnly>
+        </ShowOnlyForScreenSize>
+        <ShowOnlyForScreenSize size='large'>
           <p>You are <em>definitely</em> on a large screen.</p>
-        </Visibility>
-        <Visibility showForExtraLargeOnly>
+        </ShowOnlyForScreenSize>
+        <ShowOnlyForScreenSize size='xlarge'>
           <p>You are <em>definitely</em> on an extra large screen.</p>
-        </Visibility>
-        <Visibility showForExtraExtraLargeOnly>
+        </ShowOnlyForScreenSize>
+        <ShowOnlyForScreenSize size='xxlarge'>
           <p>You are <em>definitely</em> on an extra extra large screen.</p>
-        </Visibility>
-        <Visibility hideForMedium>
+        </ShowOnlyForScreenSize>
+        <HideForScreenSize size='medium'>
           <p>You are <em>not</em> on a medium screen or larger.</p>
-        </Visibility>
-        <Visibility hideForLarge>
+        </HideForScreenSize>
+        <HideForScreenSize size='large'>
           <p>You are <em>not</em> on a large screen or larger.</p>
-        </Visibility>
-        <Visibility hideForExtraLarge>
+        </HideForScreenSize>
+        <HideForScreenSize size='xlarge'>
           <p>You are <em>not</em> on an extra large screen or larger.</p>
-        </Visibility>
-        <Visibility hideForExtraExtraLarge>
+        </HideForScreenSize>
+        <HideForScreenSize size='xxlarge'>
           <p>You are <em>not</em> on an extra extra large screen or larger.</p>
-        </Visibility>
-        <Visibility hideForSmallOnly>
+        </HideForScreenSize>
+        <HideOnlyForScreenSize size='small'>
           <p>You are <em>definitely not</em> on a small screen.</p>
-        </Visibility>
-        <Visibility hideForMediumOnly>
+        </HideOnlyForScreenSize>
+        <HideOnlyForScreenSize size='medium'>
           <p>You are <em>definitely not</em> on a medium screen.</p>
-        </Visibility>
-        <Visibility hideForLargeOnly>
+        </HideOnlyForScreenSize>
+        <HideOnlyForScreenSize size='large'>
           <p>You are <em>definitely not</em> on a large screen.</p>
-        </Visibility>
-        <Visibility hideForExtraLargeOnly>
+        </HideOnlyForScreenSize>
+        <HideOnlyForScreenSize size='xlarge'>
           <p>You are <em>definitely not</em> on an extra large screen.</p>
-        </Visibility>
-        <Visibility hideForExtraExtraLargeOnly>
+        </HideOnlyForScreenSize>
+        <HideOnlyForScreenSize size='xxlarge'>
           <p>You are <em>definitely not</em> on an extra extra large screen.</p>
-        </Visibility>
-        <Visibility hide>
+        </HideOnlyForScreenSize>
+        <Hide>
           <p>Can't touch this.</p>
-        </Visibility>
-        <Visibility invisible>
+        </Hide>
+        <Invisible>
           <p>Can sort of touch this.</p>
-        </Visibility>
-        <Visibility showForLandscape>
+        </Invisible>
+        <ShowForScreenOrientation orientation='landscape'>
           <p>You are in landscape orientation.</p>
-        </Visibility>
-        <Visibility showForPortrait>
+        </ShowForScreenOrientation>
+        <ShowForScreenOrientation orientation='portrait'>
           <p>You are in portrait orientation.</p>
-        </Visibility>
-        <Visibility hideForLandscape>
+        </ShowForScreenOrientation>
+        <HideForScreenOrientation orientation='landscape'>
           <p>You are <em>not</em> in landscape orientation.</p>
-        </Visibility>
-        <Visibility hideForPortrait>
+        </HideForScreenOrientation>
+        <HideForScreenOrientation orientation='portrait'>
           <p>You are <em>not</em> in portrait orientation.</p>
-        </Visibility>
-        <Visibility showForScreenReaderOnly>
+        </HideForScreenOrientation>
+        <ShowOnlyForScreenReader>
           <p>This text can only be read by a screen reader.</p>
-        </Visibility>
+        </ShowOnlyForScreenReader>
         <p>There's a line of text above this one, you just can't see it.</p>
-        <Visibility hideForScreenReaderOnly>
+        <HideOnlyForScreenReader>
           <p>This text can be seen, but won't be read by a screen reader.</p>
-        </Visibility>
+        </HideOnlyForScreenReader>
         <p>
-          <Visibility showOnFocus>
+          <ShowOnlyOnFocus>
             <a href='#mainContent'>Skip to Content</a>
-          </Visibility>
+          </ShowOnlyOnFocus>
         </p>
         <header id='header' role='banner'/>
         <main id='mainContent' role='main' tabIndex='0'/>
