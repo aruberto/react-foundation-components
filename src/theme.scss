@@ -1,6 +1,7 @@
 @import './common';
-@import '~foundation-sites/scss/typography/typography';
-@import '~normalize.css';
+@import '~foundation-sites/scss/typography/base';
+@import '~foundation-sites/scss/typography/print';
 
 @include foundation-global-styles
-@include foundation-typography
+@include foundation-typography-base
+@include foundation-print-styles
