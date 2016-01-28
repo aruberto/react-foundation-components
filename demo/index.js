@@ -4,12 +4,12 @@ import {Router, Route, Link} from 'react-router';
 import {createHistory} from 'history';
 
 import '../src/theme.scss';
-import TypographyPage from './typography';
-import GridPage from './grid';
-import FlexGridPage from './flex-grid';
-import VisibilityPage from './visibility';
-import FloatPage from './float';
-import ButtonPage from './button';
+import BaseTypographyPage from './typography/base';
+import GridPage from './general/grid';
+import FlexGridPage from './general/flex-grid';
+import VisibilityPage from './general/visibility';
+import FloatPage from './general/float';
+import ButtonPage from './controls/button';
 
 const history = createHistory();
 
@@ -21,17 +21,17 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Link to='/typography'>Typography</Link>
-        &nbsp;
-        <Link to='/grid'>Grid</Link>
-        &nbsp;
-        <Link to='/flex-grid'>Flex Grid</Link>
-        &nbsp;
-        <Link to='/visibility'>Visibility</Link>
-        &nbsp;
-        <Link to='/float'>Float</Link>
-        &nbsp;
-        <Link to='/button'>Button</Link>
+        <Link to='/typography/base'>Base Typography</Link>
+        &nbsp;|&nbsp;
+        <Link to='/general/grid'>Grid</Link>
+        &nbsp;|&nbsp;
+        <Link to='/general/flex-grid'>Flex Grid</Link>
+        &nbsp;|&nbsp;
+        <Link to='/general/visibility'>Visibility</Link>
+        &nbsp;|&nbsp;
+        <Link to='/general/float'>Float</Link>
+        &nbsp;|&nbsp;
+        <Link to='/controls/button'>Button</Link>
         <br/>
         {this.props.children}
       </div>
@@ -44,12 +44,12 @@ class Demo extends Component {
     return (
       <Router history={history}>
         <Route component={HomePage} path='/'>
-          <Route component={TypographyPage} path='/typography'/>
-          <Route component={GridPage} path='/grid'/>
-          <Route component={FlexGridPage} path='/flex-grid'/>
-          <Route component={VisibilityPage} path='/visibility'/>
-          <Route component={FloatPage} path='/float'/>
-          <Route component={ButtonPage} path='/button'/>
+          <Route component={BaseTypographyPage} path='/typography/base'/>
+          <Route component={GridPage} path='/general/grid'/>
+          <Route component={FlexGridPage} path='/general/flex-grid'/>
+          <Route component={VisibilityPage} path='/general/visibility'/>
+          <Route component={FloatPage} path='/general/float'/>
+          <Route component={ButtonPage} path='/controls/button'/>
         </Route>
       </Router>
     );

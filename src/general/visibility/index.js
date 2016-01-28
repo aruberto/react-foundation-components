@@ -1,9 +1,9 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {SCREEN_SIZES, LARGER_SCREEN_SIZES, SCREEN_ORIENTATIONS} from '../util/constants';
-import joinObjects from '../util/join-objects';
-import createHigherOrderComponent from '../util/create-higher-order-component';
+import {SCREEN_SIZES, LARGER_SCREEN_SIZES, SCREEN_ORIENTATIONS} from '../../util/constants';
+import joinObjects from '../../util/join-objects';
+import createHigherOrderComponent from '../../util/create-higher-order-component';
 
 export const ShowForScreenSize = createHigherOrderComponent({
   displayName: 'ShowForScreenSize',

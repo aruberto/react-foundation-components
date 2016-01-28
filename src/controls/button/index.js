@@ -2,8 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
 import style from './style.scss';
-import {COMPONENT_SIZES, COMPONENT_COLORS} from '../util/constants';
-import joinObjects from '../util/join-objects';
+import {COMPONENT_SIZES, COMPONENT_COLORS} from '../../util/constants';
+import joinObjects from '../../util/join-objects';
 
 export default class Button extends Component {
   static propTypes = {

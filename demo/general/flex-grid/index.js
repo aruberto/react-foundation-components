@@ -5,7 +5,7 @@ import {
   FlexColumn as Column,
   ShowForScreenSize,
   ShowOnlyForScreenSize
-} from '../../src';
+} from '../../../src';
 
 const style = {borderStyle: 'solid'};
 

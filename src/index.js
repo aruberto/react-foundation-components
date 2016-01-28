@@ -1,7 +1,7 @@
 import './theme.scss';
 
-export {Row as FloatRow, Column as FloatColumn} from './grid';
-export {Row as FlexRow, Column as FlexColumn} from './flex-grid';
+export {Row as FloatRow, Column as FloatColumn} from './general/grid';
+export {Row as FlexRow, Column as FlexColumn} from './general/flex-grid';
 export {
   ShowForScreenSize,
   ShowOnlyForScreenSize,
@@ -14,6 +14,7 @@ export {
   ShowOnlyForScreenReader,
   HideOnlyForScreenReader,
   ShowOnlyOnFocus
-} from './visibility';
-export {Float, ClearFix} from './float';
-export Button from './button';
+} from './general/visibility';
+export {Float, ClearFix} from './general/float';
+
+export Button from './controls/button';

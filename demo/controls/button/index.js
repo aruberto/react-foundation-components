@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Button, ShowOnlyForScreenReader, HideOnlyForScreenReader} from '../../src';
+import {Button, ShowOnlyForScreenReader, HideOnlyForScreenReader} from '../../../src';
 
 export default class ButtonPage extends Component {
   render() {
