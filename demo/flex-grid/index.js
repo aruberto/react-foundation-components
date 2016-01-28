@@ -58,54 +58,85 @@ export default class FlexGridPage extends Component {
           <Column style={style} xxlarge={9}>9 Columns</Column>
         </Row>
         <br/>
-        <Row fluid>
-          <Column small={2} style={style}>2 Columns</Column>
-          <Column small={10} style={style}>10 Columns</Column>
+        <Row>
+          <Column small={4} style={style}>4 Columns</Column>
+          <Column style={style}>Whatever's left!</Column>
+        </Row>
+        <Row>
+          <Column small={4} style={style}>4 Columns</Column>
+          <Column style={style}>Whatever's left!</Column>
+          <Column style={style}>Whatever's left!</Column>
+        </Row>
+        <Row>
+          <Column shrink style={style}>Shrink!</Column>
+          <Column style={style}>Expand!</Column>
         </Row>
         <br/>
         <Row>
-          <Column small={8} style={style}>
-            8
-            <Row>
-              <Column small={8} style={style}>
-                8 Nested
-                <Row>
-                  <Column small={8} style={style}>8 Nested Again</Column>
-                  <Column small={4} style={style}>4</Column>
-                </Row>
-              </Column>
-              <Column small={4} style={style}>4</Column>
-            </Row>
+          <Column largeExpand small={12} style={style}>One</Column>
+          <Column largeExpand small={12} style={style}>Two</Column>
+          <Column largeExpand small={12} style={style}>Three</Column>
+          <Column largeExpand small={12} style={style}>Four</Column>
+          <Column largeExpand small={12} style={style}>Five</Column>
+          <Column largeExpand small={12} style={style}>Six</Column>
+        </Row>
+        <br/>
+        <Row mediumUnstack>
+          <Column style={style}>One</Column>
+          <Column style={style}>Two</Column>
+          <Column style={style}>Three</Column>
+          <Column style={style}>Four</Column>
+          <Column style={style}>Five</Column>
+          <Column style={style}>Six</Column>
+        </Row>
+        <br/>
+        <Row>
+          <Column small={4} style={style}>Aligned to</Column>
+          <Column small={4} style={style}>the left</Column>
+        </Row>
+        <Row horizontalAlignment='right'>
+          <Column small={4} style={style}>Aligned to</Column>
+          <Column small={4} style={style}>the right</Column>
+        </Row>
+        <Row horizontalAlignment='center'>
+          <Column small={4} style={style}>Aligned to</Column>
+          <Column small={4} style={style}>the middle</Column>
+        </Row>
+        <Row horizontalAlignment='justify'>
+          <Column small={4} style={style}>Aligned to</Column>
+          <Column small={4} style={style}>the edges</Column>
+        </Row>
+        <Row horizontalAlignment='spaced'>
+          <Column small={4} style={style}>Aligned to</Column>
+          <Column small={4} style={style}>the space around</Column>
+        </Row>
+        <br/>
+        <Row verticalAlignment='middle'>
+          <Column style={style}>I'm in the middle!</Column>
+          <Column style={style}>
+            I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Quis facere ducimus earum minus, inventore, ratione
+            doloremque deserunt neque perspiciatis accusamus explicabo soluta, quod provident
+            distinctio aliquam omnis? Labore, ullam possimus.
           </Column>
-          <Column small={4} style={style}>4</Column>
         </Row>
-        <br/>
-        <Row>
-          <Column large={1} style={style}>1</Column>
-          <Column large={11} style={style}>11</Column>
-        </Row>
-        <Row>
-          <Column large={1} style={style}>1</Column>
-          <Column large={10} largeOffset={1} style={style}>10, offset 1</Column>
-        </Row>
-        <Row>
-          <Column large={1} style={style}>1</Column>
-          <Column large={9} largeOffset={2} style={style}>9, offset 2</Column>
+        <Row verticalAlignment='stretch'>
+          <Column style={style}>These colums have the same height.</Column>
+          <Column style={style}>
+            That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit
+            amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus
+            laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe
+            sunt dolore tempore amet cupiditate.
+          </Column>
         </Row>
         <Row>
-          <Column large={1} style={style}>1</Column>
-          <Column large={8} largeOffset={3} style={style}>8, offset 3</Column>
-        </Row>
-        <br/>
-        <Row>
-          <Column medium={3} style={style}>3</Column>
-          <Column medium={3} style={style}>3</Column>
-          <Column medium={3} style={style}>3</Column>
-        </Row>
-        <Row>
-          <Column medium={3} style={style}>3</Column>
-          <Column medium={3} style={style}>3</Column>
-          <Column end medium={3} style={style}>3 end</Column>
+          <Column style={style} verticalAlignment='bottom'>Align bottom.</Column>
+          <Column style={style} verticalAlignment='middle'>Align middle.</Column>
+          <Column style={style} verticalAlignment='top'>
+            Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum
+            cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit
+            molestiae quaerat, consequuntur porro temporibus. Nisi, ex?
+          </Column>
         </Row>
         <br/>
         <Row largeCollapse mediumUncollapse>
@@ -134,42 +165,17 @@ export default class FlexGridPage extends Component {
         </Row>
         <br/>
         <Row>
-          <Column small={3} smallCentered style={style}>3 centered</Column>
-        </Row>
-        <Row>
-          <Column largeCentered small={6} style={style}>6 centered large</Column>
-        </Row>
-        <Row>
-          <Column largeUncentered small={9} smallCentered style={style}>9 centered small</Column>
-        </Row>
-        <Row>
-          <Column small={11} smallCentered style={style}>11 centered</Column>
+          <Column largeOffset={2} small={4} style={style}>Offset 2 on large</Column>
+          <Column small={4} style={style}>4 columns</Column>
         </Row>
         <br/>
         <Row>
-          <Column small={10} smallPush={2} style={style}>10</Column>
-          <Column small={2} smallPull={10} style={style}>2, last</Column>
-        </Row>
-        <Row>
-          <Column large={9} largePush={3} style={style}>9</Column>
-          <Column large={3} largePull={9} style={style}>3, last</Column>
-        </Row>
-        <Row>
-          <Column large={8} largePush={4} style={style}>8</Column>
-          <Column large={4} largePull={8} style={style}>4, last</Column>
-        </Row>
-        <Row>
-          <Column medium={7} mediumPush={5} small={5} smallPush={7} style={style}>7</Column>
-          <Column medium={5} mediumPull={7} small={7} smallPull={5} style={style}>5, last</Column>
-        </Row>
-        <br/>
-        <Row largeUp={4} mediumUp={2} smallUp={1}>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
+          <Column mediumOrder={1} smallOrder={2} style={style}>
+            This column will come second on small, and first on medium and larger.
+          </Column>
+          <Column mediumOrder={2} smallOrder={1} style={style}>
+            This column will come first on small, and second on medium and larger.
+          </Column>
         </Row>
       </div>
     );

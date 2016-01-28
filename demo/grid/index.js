@@ -53,7 +53,7 @@ export default class GridPage extends Component {
           <Column style={style} xxlarge={9}>9 Columns</Column>
         </Row>
         <br/>
-        <Row fluid>
+        <Row expanded>
           <Column small={2} style={style}>2 Columns</Column>
           <Column small={10} style={style}>10 Columns</Column>
         </Row>

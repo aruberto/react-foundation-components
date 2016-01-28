@@ -3,7 +3,16 @@ import {PropTypes} from 'react';
 import style from './style.scss';
 import {SIZES, classNamesMapper, createWrapperComponent} from '../util';
 
+const HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
+const VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];
+
+// unstack and expand should skip small ...
+
 const rowClassNameToPropMapping = {
+  unstack: {
+    basePropName: 'Unstack',
+    isNumber: false
+  },
   collapse: {
     basePropName: 'Collapse',
     isNumber: false
@@ -11,10 +20,6 @@ const rowClassNameToPropMapping = {
   uncollapse: {
     basePropName: 'Uncollapse',
     isNumber: false
-  },
-  up: {
-    basePropName: 'Up',
-    isNumber: true
   }
 };
 const columnClassNameToPropMapping = {
@@ -22,32 +27,26 @@ const columnClassNameToPropMapping = {
     basePropName: '',
     isNumber: true
   },
+  expand: {
+    basePropName: 'Expand',
+    isNumber: false
+  },
   offset: {
     basePropName: 'Offset',
     isNumber: true
   },
-  centered: {
-    basePropName: 'Centered',
-    isNumber: false
-  },
-  uncentered: {
-    basePropName: 'Uncentered',
-    isNumber: false
-  },
-  push: {
-    basePropName: 'Push',
-    isNumber: true
-  },
-  pull: {
-    basePropName: 'Pull',
+  order: {
+    basePropName: 'Order',
     isNumber: true
   }
 };
 const rowPropTypes = {
-  fluid: PropTypes.bool
+  horizontalAlignment: PropTypes.oneOf(HORIZONTAL_ALIGNMENTS),
+  verticalAlignment: PropTypes.oneOf(VERTICAL_ALIGNMENTS)
 };
 const columnPropTypes = {
-  end: PropTypes.bool
+  shrink: PropTypes.bool,
+  verticalAlignment: PropTypes.oneOf(VERTICAL_ALIGNMENTS)
 };
 
 SIZES.forEach((size) => {
@@ -86,11 +85,13 @@ function getSizeClassNames(classNameToPropMapping, props) {
 export const Row = createWrapperComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
-  mapPropsToClassNames: ({fluid, ...props}) => {
+  mapPropsToClassNames: ({horizontalAlignment, verticalAlignment, ...props}) => {
     const classNames = getSizeClassNames(rowClassNameToPropMapping, props);
 
     classNames.row = true;
-    classNames.expanded = fluid;
+    classNames[`align-${horizontalAlignment}`] =
+      HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
+    classNames[`align-${verticalAlignment}`] = VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
     return classNamesMapper(style, classNames);
   },
@@ -101,11 +102,12 @@ export const Row = createWrapperComponent({
 export const Column = createWrapperComponent({
   displayName: 'Column',
   propTypes: columnPropTypes,
-  mapPropsToClassNames: ({end, ...props}) => {
+  mapPropsToClassNames: ({shrink, verticalAlignment, ...props}) => {
     const classNames = getSizeClassNames(columnClassNameToPropMapping, props);
 
     classNames.column = true;
-    classNames.end = end;
+    classNames.shrink = shrink;
+    classNames[`align-${verticalAlignment}`] = VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
     return classNamesMapper(style, classNames);
   },

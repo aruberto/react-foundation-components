@@ -44,7 +44,7 @@ const columnClassNameToPropMapping = {
   }
 };
 const rowPropTypes = {
-  fluid: PropTypes.bool
+  expanded: PropTypes.bool
 };
 const columnPropTypes = {
   end: PropTypes.bool
@@ -86,11 +86,11 @@ function getSizeClassNames(classNameToPropMapping, props) {
 export const Row = createWrapperComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
-  mapPropsToClassNames: ({fluid, ...props}) => {
+  mapPropsToClassNames: ({expanded, ...props}) => {
     const classNames = getSizeClassNames(rowClassNameToPropMapping, props);
 
     classNames.row = true;
-    classNames.expanded = fluid;
+    classNames.expanded = expanded;
 
     return classNamesMapper(style, classNames);
   },
