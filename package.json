@@ -9,7 +9,9 @@
     "build": "npm run clean && babel src --out-dir lib && cpy \"src/**/*.scss\" lib",
     "build-demo": "npm run clean && webpack",
     "start": "node server.js --dev",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w",
+    "release-patch": "release-it",
+    "release-minor": "release-it minor"
   },
   "repository": {
     "type": "git",
