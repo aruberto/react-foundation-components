@@ -8,3 +8,5 @@ export const COMPONENT_COLORS = ['secondary', 'success', 'alert', 'warning'];
 
 export const GRID_HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
 export const GRID_VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];
+
+export const FLOAT_POSITIONS = ['left', 'right', 'center'];

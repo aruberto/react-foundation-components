@@ -8,6 +8,7 @@ import TypographyPage from './typography';
 import GridPage from './grid';
 import FlexGridPage from './flex-grid';
 import VisibilityPage from './visibility';
+import FloatPage from './float';
 import ButtonPage from './button';
 
 const history = createHistory();
@@ -28,6 +29,8 @@ class HomePage extends Component {
         &nbsp;
         <Link to='/visibility'>Visibility</Link>
         &nbsp;
+        <Link to='/float'>Float</Link>
+        &nbsp;
         <Link to='/button'>Button</Link>
         <br/>
         {this.props.children}
@@ -45,6 +48,7 @@ class Demo extends Component {
           <Route component={GridPage} path='/grid'/>
           <Route component={FlexGridPage} path='/flex-grid'/>
           <Route component={VisibilityPage} path='/visibility'/>
+          <Route component={FloatPage} path='/float'/>
           <Route component={ButtonPage} path='/button'/>
         </Route>
       </Router>
