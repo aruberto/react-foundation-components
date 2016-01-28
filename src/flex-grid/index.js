@@ -1,7 +1,9 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {SIZES, classNamesMapper, createWrapperComponent} from '../util';
+import {SIZES} from '../util/constants';
+import joinObjects from '../util/join-objects';
+import {createWrapperComponent} from '../util';
 
 const HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
 const VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];
@@ -93,7 +95,7 @@ export const Row = createWrapperComponent({
       HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
     classNames[`align-${verticalAlignment}`] = VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
-    return classNamesMapper(style, classNames);
+    return joinObjects(style, classNames);
   },
   defaultComponentClass: 'div',
   collapseOnlyChild: false
@@ -109,7 +111,7 @@ export const Column = createWrapperComponent({
     classNames.shrink = shrink;
     classNames[`align-${verticalAlignment}`] = VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
-    return classNamesMapper(style, classNames);
+    return joinObjects(style, classNames);
   },
   defaultComponentClass: 'div',
   collapseOnlyChild: false

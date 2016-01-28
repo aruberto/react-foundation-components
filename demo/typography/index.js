@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class AppPage extends Component {
+export default class TypographyPage extends Component {
   render() {
     return (
       <div>
@@ -75,7 +75,7 @@ export default class AppPage extends Component {
         </p>
         Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
         <p>Press <kbd>Cmd+Q</kbd> (or <kbd>Ctrl+Q</kbd> on Windows) to play Half-Life 3.</p>
-        <img src='assets/img/buy-now.jpg' alt='Buy now'/>
+        <img alt='Buy now' src='assets/img/buy-now.jpg'/>
       </div>
     );
   }

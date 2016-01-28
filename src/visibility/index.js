@@ -1,18 +1,14 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {
-  NON_SMALL_SIZES,
-  SIZES,
-  ORIENTATIONS,
-  classNamesMapper,
-  createWrapperComponent
-} from '../util';
+import {SIZES, NON_SMALL_SIZES, ORIENTATIONS} from '../util/constants';
+import joinObjects from '../util/join-objects';
+import {createWrapperComponent} from '../util';
 
 export const ShowForScreenSize = createWrapperComponent({
   displayName: 'ShowForScreenSize',
   propTypes: {size: PropTypes.oneOf(NON_SMALL_SIZES).isRequired},
-  mapPropsToClassNames: ({size}) => classNamesMapper(
+  mapPropsToClassNames: ({size}) => joinObjects(
     style,
     {[`show-for-${size}`]: NON_SMALL_SIZES.includes(size)}
   )
@@ -21,7 +17,7 @@ export const ShowForScreenSize = createWrapperComponent({
 export const ShowOnlyForScreenSize = createWrapperComponent({
   displayName: 'ShowOnlyForScreenSize',
   propTypes: {size: PropTypes.oneOf(SIZES).isRequired},
-  mapPropsToClassNames: ({size}) => classNamesMapper(
+  mapPropsToClassNames: ({size}) => joinObjects(
     style,
     {[`show-for-${size}-only`]: SIZES.includes(size)}
   )
@@ -30,7 +26,7 @@ export const ShowOnlyForScreenSize = createWrapperComponent({
 export const HideForScreenSize = createWrapperComponent({
   displayName: 'HideForScreenSize',
   propTypes: {size: PropTypes.oneOf(NON_SMALL_SIZES).isRequired},
-  mapPropsToClassNames: ({size}) => classNamesMapper(
+  mapPropsToClassNames: ({size}) => joinObjects(
     style,
     {[`hide-for-${size}`]: NON_SMALL_SIZES.includes(size)}
   )
@@ -39,7 +35,7 @@ export const HideForScreenSize = createWrapperComponent({
 export const HideOnlyForScreenSize = createWrapperComponent({
   displayName: 'HideOnlyForScreenSize',
   propTypes: {size: PropTypes.oneOf(SIZES).isRequired},
-  mapPropsToClassNames: ({size}) => classNamesMapper(
+  mapPropsToClassNames: ({size}) => joinObjects(
     style,
     {[`hide-for-${size}-only`]: SIZES.includes(size)}
   )
@@ -47,18 +43,18 @@ export const HideOnlyForScreenSize = createWrapperComponent({
 
 export const Hide = createWrapperComponent({
   displayName: 'Hide',
-  mapPropsToClassNames: () => classNamesMapper(style, {hide: true})
+  mapPropsToClassNames: () => joinObjects(style, {hide: true})
 });
 
 export const Invisible = createWrapperComponent({
   displayName: 'Invisible',
-  mapPropsToClassNames: () => classNamesMapper(style, {invisible: true})
+  mapPropsToClassNames: () => joinObjects(style, {invisible: true})
 });
 
 export const ShowForScreenOrientation = createWrapperComponent({
   displayName: 'ShowForScreenOrientation',
   propTypes: {orientation: PropTypes.oneOf(ORIENTATIONS).isRequired},
-  mapPropsToClassNames: ({orientation}) => classNamesMapper(
+  mapPropsToClassNames: ({orientation}) => joinObjects(
     style,
     {[`show-for-${orientation}`]: ORIENTATIONS.includes(orientation)}
   )
@@ -67,7 +63,7 @@ export const ShowForScreenOrientation = createWrapperComponent({
 export const HideForScreenOrientation = createWrapperComponent({
   displayName: 'HideForScreenOrientation',
   propTypes: {orientation: PropTypes.oneOf(ORIENTATIONS).isRequired},
-  mapPropsToClassNames: ({orientation}) => classNamesMapper(
+  mapPropsToClassNames: ({orientation}) => joinObjects(
     style,
     {[`hide-for-${orientation}`]: ORIENTATIONS.includes(orientation)}
   )
@@ -75,7 +71,7 @@ export const HideForScreenOrientation = createWrapperComponent({
 
 export const ShowOnlyForScreenReader = createWrapperComponent({
   displayName: 'ShowOnlyForScreenReader',
-  mapPropsToClassNames: () => classNamesMapper(style, {'show-for-sr': true})
+  mapPropsToClassNames: () => joinObjects(style, {'show-for-sr': true})
 });
 
 export const HideOnlyForScreenReader = createWrapperComponent({
@@ -85,5 +81,5 @@ export const HideOnlyForScreenReader = createWrapperComponent({
 
 export const ShowOnlyOnFocus = createWrapperComponent({
   displayName: 'ShowOnlyOnFocus',
-  mapPropsToClassNames: () => classNamesMapper(style, {'show-on-focus': true})
+  mapPropsToClassNames: () => joinObjects(style, {'show-on-focus': true})
 });

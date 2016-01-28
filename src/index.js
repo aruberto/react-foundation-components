@@ -1,4 +1,5 @@
-export App from './app';
+import './theme.scss';
+
 export {
   ShowForScreenSize,
   ShowOnlyForScreenSize,

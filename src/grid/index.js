@@ -1,7 +1,9 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {SIZES, classNamesMapper, createWrapperComponent} from '../util';
+import {SIZES} from '../util/constants';
+import joinObjects from '../util/join-objects';
+import {createWrapperComponent} from '../util';
 
 const rowClassNameToPropMapping = {
   collapse: {
@@ -92,7 +94,7 @@ export const Row = createWrapperComponent({
     classNames.row = true;
     classNames.expanded = expanded;
 
-    return classNamesMapper(style, classNames);
+    return joinObjects(style, classNames);
   },
   defaultComponentClass: 'div',
   collapseOnlyChild: false
@@ -107,7 +109,7 @@ export const Column = createWrapperComponent({
     classNames.column = true;
     classNames.end = end;
 
-    return classNamesMapper(style, classNames);
+    return joinObjects(style, classNames);
   },
   defaultComponentClass: 'div',
   collapseOnlyChild: false

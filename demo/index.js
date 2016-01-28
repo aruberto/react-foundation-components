@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import {Router, Route, Link} from 'react-router';
 import {createHistory} from 'history';
 
-import {App} from '../src';
-import AppPage from './app';
+import '../src/theme.scss';
+import TypographyPage from './typography';
 import GridPage from './grid';
 import FlexGridPage from './flex-grid';
 import VisibilityPage from './visibility';
@@ -20,7 +20,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Link to='/app'>App</Link>
+        <Link to='/typography'>Typography</Link>
         &nbsp;
         <Link to='/grid'>Grid</Link>
         &nbsp;
@@ -39,17 +39,15 @@ class HomePage extends Component {
 class Demo extends Component {
   render() {
     return (
-      <App>
-        <Router history={history}>
-          <Route component={HomePage} path='/'>
-            <Route component={AppPage} path='/app'/>
-            <Route component={GridPage} path='/grid'/>
-            <Route component={FlexGridPage} path='/flex-grid'/>
-            <Route component={VisibilityPage} path='/visibility'/>
-            <Route component={ButtonPage} path='/button'/>
-          </Route>
-        </Router>
-      </App>
+      <Router history={history}>
+        <Route component={HomePage} path='/'>
+          <Route component={TypographyPage} path='/typography'/>
+          <Route component={GridPage} path='/grid'/>
+          <Route component={FlexGridPage} path='/flex-grid'/>
+          <Route component={VisibilityPage} path='/visibility'/>
+          <Route component={ButtonPage} path='/button'/>
+        </Route>
+      </Router>
     );
   }
 }
