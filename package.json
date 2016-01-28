@@ -1,6 +1,6 @@
 {
   "name": "react-foundation-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Foundation Sites components built with the power of React and CSS Modules",
   "main": "lib/index.js",
   "scripts": {
@@ -70,6 +70,7 @@
     "react-transform-catch-errors": "^1.0.1",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",
+    "release-it": "^2.3.1",
     "rimraf": "^2.5.1",
     "sass-lint": "^1.5.0",
     "sass-loader": "^3.1.2",
