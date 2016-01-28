@@ -1,85 +1,85 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {SIZES, NON_SMALL_SIZES, ORIENTATIONS} from '../util/constants';
+import {SCREEN_SIZES, LARGER_SCREEN_SIZES, SCREEN_ORIENTATIONS} from '../util/constants';
 import joinObjects from '../util/join-objects';
-import {createWrapperComponent} from '../util';
+import createHigherOrderComponent from '../util/create-higher-order-component';
 
-export const ShowForScreenSize = createWrapperComponent({
+export const ShowForScreenSize = createHigherOrderComponent({
   displayName: 'ShowForScreenSize',
-  propTypes: {size: PropTypes.oneOf(NON_SMALL_SIZES).isRequired},
+  propTypes: {size: PropTypes.oneOf(LARGER_SCREEN_SIZES).isRequired},
   mapPropsToClassNames: ({size}) => joinObjects(
     style,
-    {[`show-for-${size}`]: NON_SMALL_SIZES.includes(size)}
+    {[`show-for-${size}`]: LARGER_SCREEN_SIZES.includes(size)}
   )
 });
 
-export const ShowOnlyForScreenSize = createWrapperComponent({
+export const ShowOnlyForScreenSize = createHigherOrderComponent({
   displayName: 'ShowOnlyForScreenSize',
-  propTypes: {size: PropTypes.oneOf(SIZES).isRequired},
+  propTypes: {size: PropTypes.oneOf(SCREEN_SIZES).isRequired},
   mapPropsToClassNames: ({size}) => joinObjects(
     style,
-    {[`show-for-${size}-only`]: SIZES.includes(size)}
+    {[`show-for-${size}-only`]: SCREEN_SIZES.includes(size)}
   )
 });
 
-export const HideForScreenSize = createWrapperComponent({
+export const HideForScreenSize = createHigherOrderComponent({
   displayName: 'HideForScreenSize',
-  propTypes: {size: PropTypes.oneOf(NON_SMALL_SIZES).isRequired},
+  propTypes: {size: PropTypes.oneOf(LARGER_SCREEN_SIZES).isRequired},
   mapPropsToClassNames: ({size}) => joinObjects(
     style,
-    {[`hide-for-${size}`]: NON_SMALL_SIZES.includes(size)}
+    {[`hide-for-${size}`]: LARGER_SCREEN_SIZES.includes(size)}
   )
 });
 
-export const HideOnlyForScreenSize = createWrapperComponent({
+export const HideOnlyForScreenSize = createHigherOrderComponent({
   displayName: 'HideOnlyForScreenSize',
-  propTypes: {size: PropTypes.oneOf(SIZES).isRequired},
+  propTypes: {size: PropTypes.oneOf(SCREEN_SIZES).isRequired},
   mapPropsToClassNames: ({size}) => joinObjects(
     style,
-    {[`hide-for-${size}-only`]: SIZES.includes(size)}
+    {[`hide-for-${size}-only`]: SCREEN_SIZES.includes(size)}
   )
 });
 
-export const Hide = createWrapperComponent({
+export const Hide = createHigherOrderComponent({
   displayName: 'Hide',
   mapPropsToClassNames: () => joinObjects(style, {hide: true})
 });
 
-export const Invisible = createWrapperComponent({
+export const Invisible = createHigherOrderComponent({
   displayName: 'Invisible',
   mapPropsToClassNames: () => joinObjects(style, {invisible: true})
 });
 
-export const ShowForScreenOrientation = createWrapperComponent({
+export const ShowForScreenOrientation = createHigherOrderComponent({
   displayName: 'ShowForScreenOrientation',
-  propTypes: {orientation: PropTypes.oneOf(ORIENTATIONS).isRequired},
+  propTypes: {orientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired},
   mapPropsToClassNames: ({orientation}) => joinObjects(
     style,
-    {[`show-for-${orientation}`]: ORIENTATIONS.includes(orientation)}
+    {[`show-for-${orientation}`]: SCREEN_ORIENTATIONS.includes(orientation)}
   )
 });
 
-export const HideForScreenOrientation = createWrapperComponent({
+export const HideForScreenOrientation = createHigherOrderComponent({
   displayName: 'HideForScreenOrientation',
-  propTypes: {orientation: PropTypes.oneOf(ORIENTATIONS).isRequired},
+  propTypes: {orientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired},
   mapPropsToClassNames: ({orientation}) => joinObjects(
     style,
-    {[`hide-for-${orientation}`]: ORIENTATIONS.includes(orientation)}
+    {[`hide-for-${orientation}`]: SCREEN_ORIENTATIONS.includes(orientation)}
   )
 });
 
-export const ShowOnlyForScreenReader = createWrapperComponent({
+export const ShowOnlyForScreenReader = createHigherOrderComponent({
   displayName: 'ShowOnlyForScreenReader',
   mapPropsToClassNames: () => joinObjects(style, {'show-for-sr': true})
 });
 
-export const HideOnlyForScreenReader = createWrapperComponent({
+export const HideOnlyForScreenReader = createHigherOrderComponent({
   displayName: 'HideOnlyForScreenReader',
   mapPropsToProps: (props) => ({'aria-hidden': true, ...props})
 });
 
-export const ShowOnlyOnFocus = createWrapperComponent({
+export const ShowOnlyOnFocus = createHigherOrderComponent({
   displayName: 'ShowOnlyOnFocus',
   mapPropsToClassNames: () => joinObjects(style, {'show-on-focus': true})
 });

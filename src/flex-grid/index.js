@@ -1,71 +1,82 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {SIZES} from '../util/constants';
+import {
+  SCREEN_SIZES,
+  SMALLER_SCREEN_SIZES,
+  GRID_HORIZONTAL_ALIGNMENTS,
+  GRID_VERTICAL_ALIGNMENTS
+} from '../util/constants';
 import joinObjects from '../util/join-objects';
-import {createWrapperComponent} from '../util';
-
-const HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
-const VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];
-
-// unstack and expand should skip small ...
+import createHigherOrderComponent from '../util/create-higher-order-component';
 
 const rowClassNameToPropMapping = {
   unstack: {
     basePropName: 'Unstack',
-    isNumber: false
+    isNumber: false,
+    skipSmall: true
   },
   collapse: {
     basePropName: 'Collapse',
-    isNumber: false
+    isNumber: false,
+    skipSmall: false
   },
   uncollapse: {
     basePropName: 'Uncollapse',
-    isNumber: false
+    isNumber: false,
+    skipSmall: false
   }
 };
 const columnClassNameToPropMapping = {
   '': {
     basePropName: '',
-    isNumber: true
+    isNumber: true,
+    skipSmall: false
   },
   expand: {
     basePropName: 'Expand',
-    isNumber: false
+    isNumber: false,
+    skipSmall: true
   },
   offset: {
     basePropName: 'Offset',
-    isNumber: true
+    isNumber: true,
+    skipSmall: false
   },
   order: {
     basePropName: 'Order',
-    isNumber: true
+    isNumber: true,
+    skipSmall: false
   }
 };
 const rowPropTypes = {
-  horizontalAlignment: PropTypes.oneOf(HORIZONTAL_ALIGNMENTS),
-  verticalAlignment: PropTypes.oneOf(VERTICAL_ALIGNMENTS)
+  horizontalAlignment: PropTypes.oneOf(GRID_HORIZONTAL_ALIGNMENTS),
+  verticalAlignment: PropTypes.oneOf(GRID_VERTICAL_ALIGNMENTS)
 };
 const columnPropTypes = {
   shrink: PropTypes.bool,
-  verticalAlignment: PropTypes.oneOf(VERTICAL_ALIGNMENTS)
+  verticalAlignment: PropTypes.oneOf(GRID_VERTICAL_ALIGNMENTS)
 };
 
-SIZES.forEach((size) => {
-  Object.values(rowClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
-    rowPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
-  );
+SCREEN_SIZES.forEach((size) => {
+  Object.values(rowClassNameToPropMapping).forEach(({basePropName, isNumber, skipSmall}) => {
+    if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {
+      rowPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool;
+    }
+  });
 
-  Object.values(columnClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
-    columnPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
-  );
+  Object.values(columnClassNameToPropMapping).forEach(({basePropName, isNumber, skipSmall}) => {
+    if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {
+      columnPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool;
+    }
+  });
 });
 
 function getSizeClassNames(classNameToPropMapping, props) {
   const classNames = {};
 
   Object.keys(classNameToPropMapping).forEach((baseClassName) =>
-    SIZES.forEach((size) => {
+    SCREEN_SIZES.forEach((size) => {
       const {basePropName, isNumber} = classNameToPropMapping[baseClassName];
       const propName = `${size}${basePropName}`;
       const propValue = props[propName];
@@ -84,7 +95,7 @@ function getSizeClassNames(classNameToPropMapping, props) {
   return classNames;
 }
 
-export const Row = createWrapperComponent({
+export const Row = createHigherOrderComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
   mapPropsToClassNames: ({horizontalAlignment, verticalAlignment, ...props}) => {
@@ -92,8 +103,8 @@ export const Row = createWrapperComponent({
 
     classNames.row = true;
     classNames[`align-${horizontalAlignment}`] =
-      HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
-    classNames[`align-${verticalAlignment}`] = VERTICAL_ALIGNMENTS.includes(verticalAlignment);
+      GRID_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
+    classNames[`align-${verticalAlignment}`] = GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
     return joinObjects(style, classNames);
   },
@@ -101,7 +112,7 @@ export const Row = createWrapperComponent({
   collapseOnlyChild: false
 });
 
-export const Column = createWrapperComponent({
+export const Column = createHigherOrderComponent({
   displayName: 'Column',
   propTypes: columnPropTypes,
   mapPropsToClassNames: ({shrink, verticalAlignment, ...props}) => {
@@ -109,7 +120,7 @@ export const Column = createWrapperComponent({
 
     classNames.column = true;
     classNames.shrink = shrink;
-    classNames[`align-${verticalAlignment}`] = VERTICAL_ALIGNMENTS.includes(verticalAlignment);
+    classNames[`align-${verticalAlignment}`] = GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
     return joinObjects(style, classNames);
   },

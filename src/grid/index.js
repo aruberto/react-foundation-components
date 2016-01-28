@@ -1,9 +1,9 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {SIZES} from '../util/constants';
+import {SCREEN_SIZES} from '../util/constants';
 import joinObjects from '../util/join-objects';
-import {createWrapperComponent} from '../util';
+import createHigherOrderComponent from '../util/create-higher-order-component';
 
 const rowClassNameToPropMapping = {
   collapse: {
@@ -52,7 +52,7 @@ const columnPropTypes = {
   end: PropTypes.bool
 };
 
-SIZES.forEach((size) => {
+SCREEN_SIZES.forEach((size) => {
   Object.values(rowClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
     rowPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
   );
@@ -66,7 +66,7 @@ function getSizeClassNames(classNameToPropMapping, props) {
   const classNames = {};
 
   Object.keys(classNameToPropMapping).forEach((baseClassName) =>
-    SIZES.forEach((size) => {
+    SCREEN_SIZES.forEach((size) => {
       const {basePropName, isNumber} = classNameToPropMapping[baseClassName];
       const propName = `${size}${basePropName}`;
       const propValue = props[propName];
@@ -85,7 +85,7 @@ function getSizeClassNames(classNameToPropMapping, props) {
   return classNames;
 }
 
-export const Row = createWrapperComponent({
+export const Row = createHigherOrderComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
   mapPropsToClassNames: ({expanded, ...props}) => {
@@ -100,7 +100,7 @@ export const Row = createWrapperComponent({
   collapseOnlyChild: false
 });
 
-export const Column = createWrapperComponent({
+export const Column = createHigherOrderComponent({
   displayName: 'Column',
   propTypes: columnPropTypes,
   mapPropsToClassNames: ({end, ...props}) => {

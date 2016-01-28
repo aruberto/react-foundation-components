@@ -2,7 +2,7 @@ import React, {Component, PropTypes, isValidElement} from 'react';
 import cx from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 
-export function createWrapperComponent({
+export default function createHigherOrderComponent({
   displayName = 'Wrapper',
   propTypes = {},
   mapPropsToClassNames = () => ({}),

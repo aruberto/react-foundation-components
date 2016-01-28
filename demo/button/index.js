@@ -6,9 +6,9 @@ export default class ButtonPage extends Component {
   render() {
     return (
       <div>
-        <Button href='about.html'>Learn More</Button>
+        <Button href='typography'>Learn More</Button>
         &nbsp;
-        <Button href='#features'>View All Features</Button>
+        <Button href='visibility#mainContent'>View All Features</Button>
         &nbsp;
         <Button color='success'>Save</Button>
         &nbsp;

@@ -2,22 +2,20 @@ import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
 import style from './style.scss';
+import {COMPONENT_SIZES, COMPONENT_COLORS} from '../util/constants';
 import joinObjects from '../util/join-objects';
-
-const SIZES = ['tiny', 'small', 'large'];
-const COLORS = ['secondary', 'success', 'alert', 'warning'];
 
 export default class Button extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    color: PropTypes.oneOf(COLORS),
+    color: PropTypes.oneOf(COMPONENT_COLORS),
     disabled: PropTypes.bool,
     dropdown: PropTypes.bool,
     expanded: PropTypes.bool,
     hollow: PropTypes.bool,
     href: React.PropTypes.string,
-    size: PropTypes.oneOf(SIZES),
+    size: PropTypes.oneOf(COMPONENT_SIZES),
     target: React.PropTypes.string,
     type: React.PropTypes.oneOf(['button', 'reset', 'submit'])
   };
@@ -31,12 +29,12 @@ export default class Button extends Component {
 
     return joinObjects(style, {
       button: true,
-      [color]: COLORS.includes(color),
+      [color]: COMPONENT_COLORS.includes(color),
       disabled,
       dropdown,
       expanded,
       hollow,
-      [size]: SIZES.includes(size)
+      [size]: COMPONENT_SIZES.includes(size)
     });
   };
 
