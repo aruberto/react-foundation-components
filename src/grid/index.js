@@ -1,95 +1,71 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {SCREEN_SIZES} from '../util/constants';
 import joinObjects from '../util/join-objects';
 import createHigherOrderComponent from '../util/create-higher-order-component';
+import {createGridScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../util/grid';
 
 const rowClassNameToPropMapping = {
   collapse: {
     basePropName: 'Collapse',
-    isNumber: false
+    isNumber: false,
+    skipSmall: false
   },
   uncollapse: {
     basePropName: 'Uncollapse',
-    isNumber: false
+    isNumber: false,
+    skipSmall: false
   },
   up: {
     basePropName: 'Up',
-    isNumber: true
+    isNumber: true,
+    skipSmall: false
   }
 };
 const columnClassNameToPropMapping = {
   '': {
     basePropName: '',
-    isNumber: true
+    isNumber: true,
+    skipSmall: false
   },
   offset: {
     basePropName: 'Offset',
-    isNumber: true
+    isNumber: true,
+    skipSmall: false
   },
   centered: {
     basePropName: 'Centered',
-    isNumber: false
+    isNumber: false,
+    skipSmall: false
   },
   uncentered: {
     basePropName: 'Uncentered',
-    isNumber: false
+    isNumber: false,
+    skipSmall: false
   },
   push: {
     basePropName: 'Push',
-    isNumber: true
+    isNumber: true,
+    skipSmall: false
   },
   pull: {
     basePropName: 'Pull',
-    isNumber: true
+    isNumber: true,
+    skipSmall: false
   }
 };
-const rowPropTypes = {
-  expanded: PropTypes.bool
-};
-const columnPropTypes = {
-  end: PropTypes.bool
-};
 
-SCREEN_SIZES.forEach((size) => {
-  Object.values(rowClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
-    rowPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
-  );
+const {rowPropTypes, columnPropTypes} =
+  createGridScreenSizePropTypes(rowClassNameToPropMapping, columnClassNameToPropMapping);
 
-  Object.values(columnClassNameToPropMapping).forEach(({basePropName, isNumber}) =>
-    columnPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool
-  );
-});
-
-function getSizeClassNames(classNameToPropMapping, props) {
-  const classNames = {};
-
-  Object.keys(classNameToPropMapping).forEach((baseClassName) =>
-    SCREEN_SIZES.forEach((size) => {
-      const {basePropName, isNumber} = classNameToPropMapping[baseClassName];
-      const propName = `${size}${basePropName}`;
-      const propValue = props[propName];
-      const className = size + (baseClassName ? `-${baseClassName}` : '');
-
-      if (isNumber) {
-        if (Number.isFinite(propValue) && propValue >= 0) {
-          classNames[`${className}-${propValue}`] = true;
-        }
-      } else {
-        classNames[className] = propValue;
-      }
-    })
-  );
-
-  return classNames;
-}
+rowPropTypes.expanded = PropTypes.bool;
+columnPropTypes.end = PropTypes.bool;
 
 export const Row = createHigherOrderComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
   mapPropsToClassNames: ({expanded, ...props}) => {
-    const classNames = getSizeClassNames(rowClassNameToPropMapping, props);
+    const classNames = createScreenSizeClassNamesFromProps(rowClassNameToPropMapping, props);
 
     classNames.row = true;
     classNames.expanded = expanded;
@@ -104,7 +80,7 @@ export const Column = createHigherOrderComponent({
   displayName: 'Column',
   propTypes: columnPropTypes,
   mapPropsToClassNames: ({end, ...props}) => {
-    const classNames = getSizeClassNames(columnClassNameToPropMapping, props);
+    const classNames = createScreenSizeClassNamesFromProps(columnClassNameToPropMapping, props);
 
     classNames.column = true;
     classNames.end = end;

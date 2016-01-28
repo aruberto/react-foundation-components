@@ -13,6 +13,6 @@ export {
   HideOnlyForScreenReader,
   ShowOnlyOnFocus
 } from './visibility';
-export {Row, Column} from './grid';
+export {Row as FloatRow, Column as FloatColumn} from './grid';
 export {Row as FlexRow, Column as FlexColumn} from './flex-grid';
 export Button from './button';

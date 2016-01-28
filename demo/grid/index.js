@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 
-import {Row, Column, ShowForScreenSize, ShowOnlyForScreenSize} from '../../src';
+import {
+  FloatRow as Row,
+  FloatColumn as Column,
+  ShowForScreenSize,
+  ShowOnlyForScreenSize
+} from '../../src';
 
 const style = {borderStyle: 'solid'};
 
