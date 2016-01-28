@@ -7,7 +7,7 @@ export default function createHigherOrderComponent({
   propTypes = {},
   mapPropsToClassNames = () => ({}),
   mapPropsToProps = (props) => props,
-  defaultComponentClass = 'span',
+  defaultComponentClass = 'div',
   collapseOnlyChild = true
 } = {}) {
   class Wrapper extends Component {

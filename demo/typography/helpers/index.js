@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 
-import {Subheader, Lead, UnBulletedList, Statistic} from '../../../src';
+import {Subheader, Lead, UnbulletedList, Statistic} from '../../../src';
 
 export default class TypographyHelpersPage extends Component {
   render() {
     return (
       <div>
-        <Subheader>h1 subheader unspecified</Subheader>
+        <Subheader>unspecified subheader</Subheader>
         <Subheader><h1>h1 subheader</h1></Subheader>
         <Subheader><h2>h2 subheader</h2></Subheader>
         <Subheader><h3>h3 subheader</h3></Subheader>
@@ -15,9 +15,8 @@ export default class TypographyHelpersPage extends Component {
         <Subheader><h6>h6 subheader</h6></Subheader>
         <br/>
         <Lead>What are your cats <em>really</em> dreaming about while they sleep?</Lead>
-        <Lead><p>What are your cats <em>really</em> dreaming about while they sleep?</p></Lead>
         <br/>
-        <UnBulletedList>
+        <UnbulletedList>
           <li>List item with a much longer description or more content.</li>
           <li>List item</li>
           <li>List item
@@ -30,9 +29,9 @@ export default class TypographyHelpersPage extends Component {
           <li>List item</li>
           <li>List item</li>
           <li>List item</li>
-        </UnBulletedList>
+        </UnbulletedList>
         <br/>
-        <p>Days without merge conflict</p><Statistic>128</Statistic>
+        Days without merge conflict<Statistic>128</Statistic>
       </div>
     );
   }

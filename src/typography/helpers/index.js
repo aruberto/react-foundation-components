@@ -4,8 +4,7 @@ import createHigherOrderComponent from '../../util/create-higher-order-component
 
 export const Subheader = createHigherOrderComponent({
   displayName: 'Subheader',
-  mapPropsToClassNames: () => joinObjects(style, {subheader: true}),
-  defaultComponentClass: 'h1'
+  mapPropsToClassNames: () => joinObjects(style, {subheader: true})
 });
 
 export const Lead = createHigherOrderComponent({
@@ -13,8 +12,8 @@ export const Lead = createHigherOrderComponent({
   mapPropsToClassNames: () => joinObjects(style, {lead: true})
 });
 
-export const UnBulletedList = createHigherOrderComponent({
-  displayName: 'UnBulletedList',
+export const UnbulletedList = createHigherOrderComponent({
+  displayName: 'UnbulletedList',
   mapPropsToClassNames: () => joinObjects(style, {'no-bullet': true}),
   defaultComponentClass: 'ul'
 });

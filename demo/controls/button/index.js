@@ -6,9 +6,9 @@ export default class ButtonPage extends Component {
   render() {
     return (
       <div>
-        <Button href='typography'>Learn More</Button>
+        <Button href='../typography/base'>Learn More</Button>
         &nbsp;
-        <Button href='visibility#mainContent'>View All Features</Button>
+        <Button href='../general/visibility#mainContent'>View All Features</Button>
         &nbsp;
         <Button color='success'>Save</Button>
         &nbsp;
@@ -57,12 +57,8 @@ export default class ButtonPage extends Component {
         <Button dropdown expanded>Dropdown Button</Button>
         <br/>
         <Button>
-          <ShowOnlyForScreenReader>
-            Close
-          </ShowOnlyForScreenReader>
-          <HideOnlyForScreenReader>
-            &times;
-          </HideOnlyForScreenReader>
+          <ShowOnlyForScreenReader>Close</ShowOnlyForScreenReader>
+          <HideOnlyForScreenReader>&times;</HideOnlyForScreenReader>
         </Button>
       </div>
     );

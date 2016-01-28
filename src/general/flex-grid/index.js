@@ -66,7 +66,6 @@ export const Row = createHigherOrderComponent({
 
     return joinObjects(style, classNames);
   },
-  defaultComponentClass: 'div',
   collapseOnlyChild: false
 });
 
@@ -82,6 +81,5 @@ export const Column = createHigherOrderComponent({
 
     return joinObjects(style, classNames);
   },
-  defaultComponentClass: 'div',
   collapseOnlyChild: false
 });

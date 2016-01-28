@@ -11,6 +11,5 @@ export default createHigherOrderComponent({
   mapPropsToClassNames: ({alignment}) => joinObjects(
     style,
     {[`text-${alignment}`]: TEXT_ALIGNMENTS.includes(alignment)}
-  ),
-  defaultComponentClass: 'p'
+  )
 });

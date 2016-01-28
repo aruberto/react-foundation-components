@@ -18,91 +18,93 @@ export default class VisibilityPage extends Component {
   render() {
     return (
       <div>
-        <p>You are on a small screen or larger.</p>
+        <div>
+          You are on a small screen or larger.
+        </div>
         <ShowForScreenSize size='medium'>
-          <p>You are on a medium screen or larger.</p>
+          You are on a medium screen or larger.
         </ShowForScreenSize>
         <ShowForScreenSize size='large'>
-          <p>You are on a large screen or larger.</p>
+          You are on a large screen or larger.
         </ShowForScreenSize>
         <ShowForScreenSize size='xlarge'>
-          <p>You are on an extra large screen or larger.</p>
+          You are on an extra large screen or larger.
         </ShowForScreenSize>
         <ShowForScreenSize size='xxlarge'>
-          <p>You are on an extra extra large screen or larger.</p>
+          You are on an extra extra large screen or larger.
         </ShowForScreenSize>
         <ShowOnlyForScreenSize size='small'>
-          <p>You are <em>definitely</em> on a small screen.</p>
+          You are <em>definitely</em> on a small screen.
         </ShowOnlyForScreenSize>
         <ShowOnlyForScreenSize size='medium'>
-          <p>You are <em>definitely</em> on a medium screen.</p>
+          You are <em>definitely</em> on a medium screen.
         </ShowOnlyForScreenSize>
         <ShowOnlyForScreenSize size='large'>
-          <p>You are <em>definitely</em> on a large screen.</p>
+          You are <em>definitely</em> on a large screen.
         </ShowOnlyForScreenSize>
         <ShowOnlyForScreenSize size='xlarge'>
-          <p>You are <em>definitely</em> on an extra large screen.</p>
+          You are <em>definitely</em> on an extra large screen.
         </ShowOnlyForScreenSize>
         <ShowOnlyForScreenSize size='xxlarge'>
-          <p>You are <em>definitely</em> on an extra extra large screen.</p>
+          You are <em>definitely</em> on an extra extra large screen.
         </ShowOnlyForScreenSize>
         <HideForScreenSize size='medium'>
-          <p>You are <em>not</em> on a medium screen or larger.</p>
+          You are <em>not</em> on a medium screen or larger.
         </HideForScreenSize>
         <HideForScreenSize size='large'>
-          <p>You are <em>not</em> on a large screen or larger.</p>
+          You are <em>not</em> on a large screen or larger.
         </HideForScreenSize>
         <HideForScreenSize size='xlarge'>
-          <p>You are <em>not</em> on an extra large screen or larger.</p>
+          You are <em>not</em> on an extra large screen or larger.
         </HideForScreenSize>
         <HideForScreenSize size='xxlarge'>
-          <p>You are <em>not</em> on an extra extra large screen or larger.</p>
+          You are <em>not</em> on an extra extra large screen or larger.
         </HideForScreenSize>
         <HideOnlyForScreenSize size='small'>
-          <p>You are <em>definitely not</em> on a small screen.</p>
+          You are <em>definitely not</em> on a small screen.
         </HideOnlyForScreenSize>
         <HideOnlyForScreenSize size='medium'>
-          <p>You are <em>definitely not</em> on a medium screen.</p>
+          You are <em>definitely not</em> on a medium screen.
         </HideOnlyForScreenSize>
         <HideOnlyForScreenSize size='large'>
-          <p>You are <em>definitely not</em> on a large screen.</p>
+          You are <em>definitely not</em> on a large screen.
         </HideOnlyForScreenSize>
         <HideOnlyForScreenSize size='xlarge'>
-          <p>You are <em>definitely not</em> on an extra large screen.</p>
+          You are <em>definitely not</em> on an extra large screen.
         </HideOnlyForScreenSize>
         <HideOnlyForScreenSize size='xxlarge'>
-          <p>You are <em>definitely not</em> on an extra extra large screen.</p>
+          You are <em>definitely not</em> on an extra extra large screen.
         </HideOnlyForScreenSize>
         <Hide>
-          <p>Can't touch this.</p>
+          Can't touch this.
         </Hide>
         <Invisible>
-          <p>Can sort of touch this.</p>
+          Can sort of touch this.
         </Invisible>
         <ShowForScreenOrientation orientation='landscape'>
-          <p>You are in landscape orientation.</p>
+          You are in landscape orientation.
         </ShowForScreenOrientation>
         <ShowForScreenOrientation orientation='portrait'>
-          <p>You are in portrait orientation.</p>
+          You are in portrait orientation.
         </ShowForScreenOrientation>
         <HideForScreenOrientation orientation='landscape'>
-          <p>You are <em>not</em> in landscape orientation.</p>
+          You are <em>not</em> in landscape orientation.
         </HideForScreenOrientation>
         <HideForScreenOrientation orientation='portrait'>
-          <p>You are <em>not</em> in portrait orientation.</p>
+          You are <em>not</em> in portrait orientation.
         </HideForScreenOrientation>
         <ShowOnlyForScreenReader>
-          <p>This text can only be read by a screen reader.</p>
+          This text can only be read by a screen reader.
         </ShowOnlyForScreenReader>
-        <p>There's a line of text above this one, you just can't see it.</p>
+        <div>
+          There's a line of text above this one, you just can't see it.
+        </div>
         <HideOnlyForScreenReader>
-          <p>This text can be seen, but won't be read by a screen reader.</p>
+          This text can be seen, but won't be read by a screen reader.
         </HideOnlyForScreenReader>
-        <p>
-          <ShowOnlyOnFocus>
-            <a href='#mainContent'>Skip to Content</a>
-          </ShowOnlyOnFocus>
-        </p>
+        <ShowOnlyOnFocus>
+          <a href='#mainContent'>Skip to Content</a>
+        </ShowOnlyOnFocus>
         <header id='header' role='banner'/>
         <main id='mainContent' role='main' tabIndex='0'/>
       </div>
