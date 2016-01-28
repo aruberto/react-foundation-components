@@ -9,8 +9,7 @@
     "build": "npm run clean && babel src --out-dir lib && cpy \"src/**/*.scss\" lib",
     "build-demo": "npm run clean && webpack",
     "start": "node server.js --dev",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w",
-    "release": "gh-release"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w"
   },
   "repository": {
     "type": "git",
@@ -59,7 +58,6 @@
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
-    "gh-release": "^2.0.2",
     "history": "^1.17.0",
     "html-webpack-plugin": "^2.7.2",
     "img-loader": "^1.2.2",
