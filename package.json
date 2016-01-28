@@ -4,9 +4,10 @@
   "description": "Foundation Sites components built with the power of React and CSS Modules",
   "main": "lib/index.js",
   "scripts": {
-    "clean": "rimraf lib",
+    "clean": "rimraf lib demo/lib",
     "lint": "eslint src && sass-lint --verbose",
     "build": "npm run clean && babel src --out-dir lib && cpy \"src/**/*.scss\" lib",
+    "build-demo": "npm run clean && webpack",
     "start": "node server.js --dev"
   },
   "repository": {

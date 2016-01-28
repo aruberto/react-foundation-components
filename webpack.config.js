@@ -68,14 +68,14 @@ const BABEL_DEV_PLUGINS = [
 const BABEL_PROD_PLUGINS = [];
 const SASS_LOADERS = [
   'style',
-  'css?modules&importLoaders=1&localIdentName=[path][name]---[local]---[hash:base64:5]!postcss!sass'
+  `css?modules${DEV ? '&localIdentName=[path]---[local]' : ''}!postcss!sass`
 ];
 
 module.exports = {
   entry: ENTRY_MIDDLEWARE.concat(path.join(__dirname, 'demo')),
 
   output: {
-    path: path.join(__dirname, 'lib'),
+    path: path.join(__dirname, 'demo', 'lib'),
     filename: '[name]-[hash].js',
     publicPath: '/'
   },
