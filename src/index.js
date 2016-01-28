@@ -17,4 +17,7 @@ export {
 } from './general/visibility';
 export {Float, ClearFix} from './general/float';
 
+export {Subheader, Lead, UnBulletedList, Statistic} from './typography/helpers';
+export TextAlignment from './typography/text-alignment';
+
 export Button from './controls/button';

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class TypographyPage extends Component {
+export default class BaseTypographyPage extends Component {
   render() {
     return (
       <div>
