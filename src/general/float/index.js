@@ -17,5 +17,6 @@ export const Float = createHigherOrderComponent({
 
 export const ClearFix = createHigherOrderComponent({
   displayName: 'ClearFix',
-  mapPropsToClassNames: () => joinObjects(styles, {clearfix: true})
+  mapPropsToClassNames: () => joinObjects(styles, {clearfix: true}),
+  defaultComponentClass: 'div'
 });

@@ -15,7 +15,8 @@ export const Lead = createHigherOrderComponent({
 export const UnbulletedList = createHigherOrderComponent({
   displayName: 'UnbulletedList',
   mapPropsToClassNames: () => joinObjects(styles, {'no-bullet': true}),
-  defaultComponentClass: 'ul'
+  defaultComponentClass: 'ul',
+  collapseOnlyChild: false
 });
 
 export const Statistic = createHigherOrderComponent({

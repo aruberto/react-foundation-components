@@ -10,14 +10,12 @@ import {ShowOnlyForScreenReader, HideOnlyForScreenReader} from '../../general/vi
 
 const CheckedLabel = createHigherOrderComponent({
   displayName: 'CheckedLabel',
-  mapPropsToClassNames: () => joinObjects(styles, {'switch-active': true}),
-  defaultComponentClass: 'span'
+  mapPropsToClassNames: () => joinObjects(styles, {'switch-active': true})
 });
 
 const UncheckedLabel = createHigherOrderComponent({
   displayName: 'UncheckedLabel',
-  mapPropsToClassNames: () => joinObjects(styles, {'switch-inactive': true}),
-  defaultComponentClass: 'span'
+  mapPropsToClassNames: () => joinObjects(styles, {'switch-inactive': true})
 });
 
 export default class Switch extends Component {

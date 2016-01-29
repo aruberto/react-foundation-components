@@ -18,7 +18,7 @@ export default class CloseButton extends Component {
 
     return (
       <button {...this.props} className={cx(className, this.getClassNames())} type='button'>
-        <HideOnlyForScreenReader componentClass='span'>{children}</HideOnlyForScreenReader>
+        <HideOnlyForScreenReader>{children}</HideOnlyForScreenReader>
       </button>
     );
   }
