@@ -7,31 +7,33 @@ export default class SwitchPage extends Component {
     super(props);
 
     this.state = {
-      value: true
+      checked: true
     };
   }
 
   handleToggle = () => {
-    const {value: currValue} = this.state;
-    const value = !currValue;
+    const {checked: currChecked} = this.state;
+    const checked = !currChecked;
 
-    this.setState({value});
+    this.setState({checked});
   };
 
   render() {
-    const {value} = this.state;
+    const {checked} = this.state;
 
     return (
       <div>
-        <Switch id='asda' onToggle={this.handleToggle} value={value}/>
+        <Switch checked={checked} id='mySwitch' onToggle={this.handleToggle}/>
         <br/>
-        <Switch onToggle={this.handleToggle} value={value}/>
+        <Switch checked={checked} onToggle={this.handleToggle}/>
         <br/>
-        <Switch onToggle={this.handleToggle} size='tiny' value={value}/>
+        <Switch defaultChecked/>
         <br/>
-        <Switch onToggle={this.handleToggle} size='small' value={value}/>
+        <Switch size='tiny'/>
         <br/>
-        <Switch onToggle={this.handleToggle} size='large' value={value}/>
+        <Switch size='small'/>
+        <br/>
+        <Switch size='large'/>
       </div>
     );
   }

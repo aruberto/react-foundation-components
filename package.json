@@ -37,7 +37,9 @@
     "babel-runtime": "^6.3.19",
     "classnames": "^2.2.3",
     "foundation-sites": "^6.1.2",
-    "react-prop-types": "^0.3.0"
+    "lodash": "^4.0.1",
+    "react-prop-types": "^0.3.0",
+    "uncontrollable": "^3.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.1",
