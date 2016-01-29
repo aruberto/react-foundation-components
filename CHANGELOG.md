@@ -1,3 +1,12 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/aruberto/react-foundation-components/compare/0.2.0...v0.2.0) (2016-01-29)
+
+
+#### Miscellaneous
+
+* Add button, button group, close button and switch controls
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/aruberto/react-foundation-components/compare/0.1.2...v0.1.2) (2016-01-28)
 
