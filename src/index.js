@@ -22,3 +22,4 @@ export TextAlignment from './typography/text-alignment';
 
 export Button from './controls/button';
 export ButtonGroup from './controls/button-group';
+export CloseButton from './controls/close-button';
