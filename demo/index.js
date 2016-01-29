@@ -14,6 +14,7 @@ import TextAlignmentPage from './typography/text-alignment';
 import ButtonPage from './controls/button';
 import ButtonGroupPage from './controls/button-group';
 import CloseButtonPage from './controls/close-button';
+import SwitchPage from './controls/switch';
 
 const history = createHistory();
 
@@ -44,6 +45,8 @@ class HomePage extends Component {
         <Link to='/controls/button-group'>Button Group</Link>
         &nbsp;|&nbsp;
         <Link to='/controls/close-button'>Close Button</Link>
+        &nbsp;|&nbsp;
+        <Link to='/controls/switch'>Switch</Link>
         <br/>
         {this.props.children}
       </div>
@@ -66,6 +69,7 @@ class Demo extends Component {
           <Route component={ButtonPage} path='/controls/button'/>
           <Route component={ButtonGroupPage} path='/controls/button-group'/>
           <Route component={CloseButtonPage} path='/controls/close-button'/>
+          <Route component={SwitchPage} path='/controls/switch'/>
         </Route>
       </Router>
     );
