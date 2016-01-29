@@ -1,7 +1,7 @@
 import React, {Component, PropTypes, Children, cloneElement} from 'react';
 import cx from 'classnames';
 
-import style from './style.scss';
+import styles from './styles.scss';
 import {COMPONENT_SIZES, COMPONENT_COLORS} from '../../util/constants';
 import joinObjects from '../../util/join-objects';
 
@@ -21,7 +21,7 @@ export default class ButtonGroup extends Component {
   getClassNames = () => {
     const {color, expanded, size, stack} = this.props;
 
-    return joinObjects(style, {
+    return joinObjects(styles, {
       'button-group': true,
       [color]: COMPONENT_COLORS.includes(color),
       expanded,
@@ -31,9 +31,11 @@ export default class ButtonGroup extends Component {
     });
   };
 
+  getButtonClassNames = () => joinObjects(styles, {button: true});
+
   render() {
     const {className, children} = this.props;
-    const childClassNames = joinObjects(style, {button: true});
+    const childClassNames = this.getButtonClassNames();
     const newChildren = Children.map(
       children,
       (child) => cloneElement(child, {className: cx(child.props.className, childClassNames)})

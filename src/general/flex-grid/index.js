@@ -1,6 +1,6 @@
 import {PropTypes} from 'react';
 
-import style from './style.scss';
+import styles from './styles.scss';
 import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import {createGridScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
@@ -66,7 +66,7 @@ export const Row = createHigherOrderComponent({
       GRID_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
     classNames[`align-${verticalAlignment}`] = GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
-    return joinObjects(style, classNames);
+    return joinObjects(styles, classNames);
   },
   collapseOnlyChild: false
 });
@@ -81,7 +81,7 @@ export const Column = createHigherOrderComponent({
     classNames.shrink = shrink;
     classNames[`align-${verticalAlignment}`] = GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
-    return joinObjects(style, classNames);
+    return joinObjects(styles, classNames);
   },
   collapseOnlyChild: false
 });

@@ -1,24 +1,24 @@
-import style from './style.scss';
+import styles from './styles.scss';
 import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 
 export const Subheader = createHigherOrderComponent({
   displayName: 'Subheader',
-  mapPropsToClassNames: () => joinObjects(style, {subheader: true})
+  mapPropsToClassNames: () => joinObjects(styles, {subheader: true})
 });
 
 export const Lead = createHigherOrderComponent({
   displayName: 'Lead',
-  mapPropsToClassNames: () => joinObjects(style, {lead: true})
+  mapPropsToClassNames: () => joinObjects(styles, {lead: true})
 });
 
 export const UnbulletedList = createHigherOrderComponent({
   displayName: 'UnbulletedList',
-  mapPropsToClassNames: () => joinObjects(style, {'no-bullet': true}),
+  mapPropsToClassNames: () => joinObjects(styles, {'no-bullet': true}),
   defaultComponentClass: 'ul'
 });
 
 export const Statistic = createHigherOrderComponent({
   displayName: 'Statistic',
-  mapPropsToClassNames: () => joinObjects(style, {stat: true})
+  mapPropsToClassNames: () => joinObjects(styles, {stat: true})
 });

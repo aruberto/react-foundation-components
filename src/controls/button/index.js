@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import style from './style.scss';
+import styles from './styles.scss';
 import {COMPONENT_SIZES, COMPONENT_COLORS} from '../../util/constants';
 import joinObjects from '../../util/join-objects';
 
@@ -28,7 +28,7 @@ export default class Button extends Component {
   getClassNames = () => {
     const {color, disabled, dropdown, dropdownArrowOnly, expanded, hollow, size} = this.props;
 
-    return joinObjects(style, {
+    return joinObjects(styles, {
       button: true,
       [color]: COMPONENT_COLORS.includes(color),
       disabled,

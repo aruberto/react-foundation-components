@@ -1,6 +1,6 @@
 import {PropTypes} from 'react';
 
-import style from './style.scss';
+import styles from './styles.scss';
 import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import {createGridScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
@@ -70,7 +70,7 @@ export const Row = createHigherOrderComponent({
     classNames.row = true;
     classNames.expanded = expanded;
 
-    return joinObjects(style, classNames);
+    return joinObjects(styles, classNames);
   },
   collapseOnlyChild: false
 });
@@ -84,7 +84,7 @@ export const Column = createHigherOrderComponent({
     classNames.column = true;
     classNames.end = end;
 
-    return joinObjects(style, classNames);
+    return joinObjects(styles, classNames);
   },
   collapseOnlyChild: false
 });
