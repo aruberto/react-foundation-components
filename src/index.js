@@ -26,3 +26,4 @@ export CloseButton from './controls/close-button';
 export {Switch, RadioSwitch} from './controls/switch';
 
 export Badge from './media/badge';
+export FlexVideo from './media/flex-video';
