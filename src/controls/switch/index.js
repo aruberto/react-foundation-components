@@ -6,40 +6,35 @@ import style from './style.scss';
 import {COMPONENT_SIZES} from '../../util/constants';
 import joinObjects from '../../util/join-objects';
 
-export default class CloseButton extends Component {
+export default class Switch extends Component {
   static propTypes = {
     checked: PropTypes.bool,
     className: PropTypes.string,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    onToggle: PropTypes.func,
+    onChange: PropTypes.func,
     size: PropTypes.oneOf(COMPONENT_SIZES),
-    style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-    type: PropTypes.oneOf(['checkbox', 'radio'])
-  };
-
-  static defaultProps = {
-    type: 'checkbox'
+    style: PropTypes.object // eslint-disable-line react/forbid-prop-types
   };
 
   handleInputRef = (inputRef) => this.inputRef = inputRef;
 
   handleLabelClick = (event) => {
-    const {id, checked, onToggle} = this.props;
+    const {id, checked, onChange} = this.props;
 
     if (!id) {
       if (isNil(checked)) {
         this.inputRef.click();
-      } else if (onToggle) {
-        onToggle(event);
+      } else if (onChange) {
+        onChange(event);
       }
     }
   };
 
   handleInputChange = (event) => {
-    const {id, onToggle} = this.props;
+    const {id, onChange} = this.props;
 
-    if (id && onToggle) {
-      onToggle(event);
+    if (id && onChange) {
+      onChange(event);
     }
   };
 
@@ -62,6 +57,8 @@ export default class CloseButton extends Component {
           className={style['switch-input']}
           onChange={this.handleInputChange}
           ref={this.handleInputRef}
+          size={null}
+          type='checkbox'
         />
         <label
           className={style['switch-paddle']}
