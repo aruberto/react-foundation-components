@@ -1,10 +1,12 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {GRID_HORIZONTAL_ALIGNMENTS, GRID_VERTICAL_ALIGNMENTS} from '../../util/constants';
 import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import {createGridScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
+
+export const GRID_HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
+export const GRID_VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];
 
 const rowClassNameToPropMapping = {
   unstack: {

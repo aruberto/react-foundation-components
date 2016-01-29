@@ -1,9 +1,10 @@
 import {PropTypes} from 'react';
 
 import style from './style.scss';
-import {TEXT_ALIGNMENTS} from '../../util/constants';
 import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
+
+export const TEXT_ALIGNMENTS = ['left', 'right', 'center', 'justify'];
 
 export default createHigherOrderComponent({
   displayName: 'TextAlignment',
