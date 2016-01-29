@@ -35,10 +35,10 @@ export default class ButtonGroup extends Component {
 
   render() {
     const {className, children} = this.props;
-    const childClassNames = this.getButtonClassNames();
+    const buttonClassNames = this.getButtonClassNames();
     const newChildren = Children.map(
       children,
-      (child) => cloneElement(child, {className: cx(child.props.className, childClassNames)})
+      (child) => cloneElement(child, {className: cx(child.props.className, buttonClassNames)})
     );
 
     return (

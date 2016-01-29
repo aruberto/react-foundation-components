@@ -34,6 +34,8 @@ export default class SwitchPage extends Component {
         <Switch size='small'/>
         <br/>
         <Switch size='large'/>
+        <br/>
+        <Switch checkedLabel='Yes' paddleLabel='Do you like me?' uncheckedLabel='No'/>
       </div>
     );
   }
