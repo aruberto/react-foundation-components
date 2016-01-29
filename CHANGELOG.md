@@ -1,10 +1,19 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/aruberto/react-foundation-components/compare/0.2.1...v0.2.1) (2016-01-29)
+
+
+#### Miscellaneous
+
+* Published wrong version to npm.
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/aruberto/react-foundation-components/compare/0.2.0...v0.2.0) (2016-01-29)
 
 
 #### Miscellaneous
 
-* Add button, button group, close button and switch controls
+* Add button, button group, close button and switch controls.
 
 
 <a name="0.1.2"></a>
@@ -13,7 +22,7 @@
 
 #### Miscellaneous
 
-* Add release npm scripts
+* Add release npm scripts.
 
 
 <a name="0.1.0"></a>
@@ -22,4 +31,4 @@
 
 #### Miscellaneous
 
-* Add grid, visibility, float and typography components
+* Add grid, visibility, float and typography components.
