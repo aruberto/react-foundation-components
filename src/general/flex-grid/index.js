@@ -50,6 +50,7 @@ const columnClassNameToPropMapping = {
 const {rowPropTypes, columnPropTypes} =
   createGridScreenSizePropTypes(rowClassNameToPropMapping, columnClassNameToPropMapping);
 
+rowPropTypes.expanded = PropTypes.bool;
 rowPropTypes.horizontalAlignment = PropTypes.oneOf(GRID_HORIZONTAL_ALIGNMENTS);
 rowPropTypes.verticalAlignment = PropTypes.oneOf(GRID_VERTICAL_ALIGNMENTS);
 columnPropTypes.shrink = PropTypes.bool;
@@ -58,10 +59,11 @@ columnPropTypes.verticalAlignment = PropTypes.oneOf(GRID_VERTICAL_ALIGNMENTS);
 export const Row = createHigherOrderComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
-  mapPropsToClassNames: ({horizontalAlignment, verticalAlignment, ...props}) => {
+  mapPropsToClassNames: ({expanded, horizontalAlignment, verticalAlignment, ...props}) => {
     const classNames = createScreenSizeClassNamesFromProps(rowClassNameToPropMapping, props);
 
     classNames.row = true;
+    classNames.expanded = expanded;
     classNames[`align-${horizontalAlignment}`] =
       GRID_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
     classNames[`align-${verticalAlignment}`] = GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
