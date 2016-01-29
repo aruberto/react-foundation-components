@@ -28,3 +28,4 @@ export {Switch, RadioSwitch} from './controls/switch';
 export Badge from './media/badge';
 export FlexVideo from './media/flex-video';
 export Label from './media/label';
+export ProgressBar from './media/progress-bar';
