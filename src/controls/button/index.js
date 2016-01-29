@@ -12,6 +12,7 @@ export default class Button extends Component {
     color: PropTypes.oneOf(COMPONENT_COLORS),
     disabled: PropTypes.bool,
     dropdown: PropTypes.bool,
+    dropdownArrowOnly: PropTypes.bool,
     expanded: PropTypes.bool,
     hollow: PropTypes.bool,
     href: React.PropTypes.string,
@@ -25,13 +26,14 @@ export default class Button extends Component {
   };
 
   getClassNames = () => {
-    const {color, disabled, dropdown, expanded, hollow, size} = this.props;
+    const {color, disabled, dropdown, dropdownArrowOnly, expanded, hollow, size} = this.props;
 
     return joinObjects(style, {
       button: true,
       [color]: COMPONENT_COLORS.includes(color),
       disabled,
       dropdown,
+      'arrow-only': dropdown && dropdownArrowOnly,
       expanded,
       hollow,
       [size]: COMPONENT_SIZES.includes(size)

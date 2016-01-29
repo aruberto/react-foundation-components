@@ -21,3 +21,4 @@ export {Subheader, Lead, UnbulletedList, Statistic} from './typography/helpers';
 export TextAlignment from './typography/text-alignment';
 
 export Button from './controls/button';
+export ButtonGroup from './controls/button-group';
