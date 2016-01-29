@@ -6,8 +6,8 @@ export default class CloseButtonPage extends Component {
   render() {
     return (
       <div>
-        <CloseButton/>
-        <CloseButton aria-label='Close Alert' style={{top: '50px'}}>
+        <CloseButton style={{top: '100px'}}/>
+        <CloseButton aria-label='Close Alert' style={{top: '200px'}}>
           +
         </CloseButton>
       </div>
