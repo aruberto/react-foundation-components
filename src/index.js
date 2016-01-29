@@ -24,3 +24,5 @@ export Button from './controls/button';
 export ButtonGroup from './controls/button-group';
 export CloseButton from './controls/close-button';
 export Switch from './controls/switch';
+
+export Badge from './media/badge';
