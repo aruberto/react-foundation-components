@@ -15,13 +15,20 @@ export default function createHigherOrderComponent({
 
     static propTypes = {
       children: PropTypes.node,
+      className: PropTypes.string,
       componentClass: elementType,
       forceWrap: PropTypes.bool,
       ...propTypes
     };
 
     render() {
-      const {children, componentClass: maybeComponentClass, forceWrap, ...restProps} = this.props;
+      const {
+        children,
+        className,
+        componentClass: maybeComponentClass,
+        forceWrap,
+        ...restProps
+      } = this.props;
       const ComponentClass = maybeComponentClass || defaultComponentClass;
       const classNames = mapPropsToClassNames(restProps);
       const props = mapPropsToProps(restProps);
@@ -29,12 +36,12 @@ export default function createHigherOrderComponent({
       if (!forceWrap && collapseOnlyChild && isValidElement(children)) {
         return React.cloneElement(children, {
           ...props,
-          className: cx(children.props.className, classNames)
+          className: cx(children.props.className, className, classNames)
         });
       }
 
       return (
-        <ComponentClass {...props} className={cx(classNames)}>
+        <ComponentClass {...props} className={cx(className, classNames)}>
           {children}
         </ComponentClass>
       );

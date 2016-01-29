@@ -6,11 +6,11 @@ import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 
 export default createHigherOrderComponent({
-  displayName: 'Badge',
+  displayName: 'Label',
   propTypes: {color: PropTypes.oneOf(COMPONENT_COLORS)},
   mapPropsToClassNames: ({color}) => joinObjects(
     styles,
-    {badge: true, [color]: COMPONENT_COLORS.includes(color)}
+    {label: true, [color]: COMPONENT_COLORS.includes(color)}
   ),
   collapseOnlyChild: false
 });

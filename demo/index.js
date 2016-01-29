@@ -17,6 +17,7 @@ import CloseButtonPage from './controls/close-button';
 import SwitchPage from './controls/switch';
 import BadgePage from './media/badge';
 import FlexVideoPage from './media/flex-video';
+import LabelPage from './media/label';
 
 const history = createHistory();
 
@@ -53,6 +54,8 @@ class HomePage extends Component {
         <Link to='/media/badge'>Badge</Link>
         &nbsp;|&nbsp;
         <Link to='/media/flex-video'>Flex Video</Link>
+        &nbsp;|&nbsp;
+        <Link to='/media/label'>Label</Link>
         <br/>
         {this.props.children}
       </div>
@@ -78,6 +81,7 @@ class Demo extends Component {
           <Route component={SwitchPage} path='/controls/switch'/>
           <Route component={BadgePage} path='/media/badge'/>
           <Route component={FlexVideoPage} path='/media/flex-video'/>
+          <Route component={LabelPage} path='/media/label'/>
         </Route>
       </Router>
     );
