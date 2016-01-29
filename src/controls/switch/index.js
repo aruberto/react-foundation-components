@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component, PropTypes, Children, cloneElement} from 'react';
 import cx from 'classnames';
+import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
 
 import styles from './styles.scss';
@@ -18,13 +19,14 @@ const UncheckedLabel = createHigherOrderComponent({
   mapPropsToClassNames: () => joinObjects(styles, {'switch-inactive': true})
 });
 
-export default class Switch extends Component {
+export class Switch extends Component {
   static propTypes = {
     checked: PropTypes.bool,
     checkedLabel: React.PropTypes.node,
     className: PropTypes.string,
     containerClassName: PropTypes.string,
     containerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
     paddleClassName: PropTypes.string,
@@ -37,22 +39,22 @@ export default class Switch extends Component {
   handleInputRef = (inputRef) => this.inputRef = inputRef;
 
   handleLabelClick = (event) => {
-    const {checked, id, onChange} = this.props;
+    const {checked, eventKey, id, onChange} = this.props;
 
     if (!id) {
       if (isNil(checked)) {
         this.inputRef.click();
       } else if (onChange) {
-        onChange(event);
+        onChange(event, eventKey);
       }
     }
   };
 
   handleInputChange = (event) => {
-    const {id, onChange} = this.props;
+    const {eventKey, id, onChange} = this.props;
 
     if (id && onChange) {
-      onChange(event);
+      onChange(event, eventKey);
     }
   };
 
@@ -125,7 +127,7 @@ export default class Switch extends Component {
     } = this.props;
 
     return (
-      <div className={cx(containerClassName, this.getClassNames())} style={containerStyle}>
+      <span className={cx(containerClassName, this.getClassNames())} style={containerStyle}>
         <input
           {...this.props}
           className={cx(className, this.getInputClassNames())}
@@ -144,7 +146,50 @@ export default class Switch extends Component {
           {this.renderCheckedLabel()}
           {this.renderUncheckedLabel()}
         </label>
-      </div>
+      </span>
     );
   }
 }
+
+class RadioSwitchControlled extends Component {
+  static propTypes = {
+    activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    children: PropTypes.node,
+    onChange: PropTypes.func,
+    onSelect: PropTypes.func,
+    size: PropTypes.oneOf(COMPONENT_SIZES)
+  };
+
+  handleChange = (event, key) => {
+    const {onSelect, onChange} = this.props;
+
+    if (onChange) {
+      onChange(event, key);
+    }
+
+    if (onSelect) {
+      onSelect(key);
+    }
+  };
+
+  render() {
+    const {activeKey, children, size} = this.props;
+    const newChildren = Children.map(children, (child) => {
+      if (child.props && child.props.eventKey) {
+        return cloneElement(child, {
+          checked: child.props.eventKey === activeKey,
+          onChange: this.handleChange,
+          size
+        });
+      }
+
+      return child;
+    });
+
+    return (
+      <span {...this.props}>{newChildren}</span>
+    );
+  }
+}
+
+export const RadioSwitch = uncontrollable(RadioSwitchControlled, {activeKey: 'onSelect'});
