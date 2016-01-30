@@ -36,6 +36,7 @@
   "dependencies": {
     "babel-runtime": "^6.3.19",
     "classnames": "^2.2.3",
+    "dom-helpers": "^2.4.0",
     "foundation-sites": "^6.1.2",
     "lodash": "^4.1.0",
     "motion-ui": "^1.1.1",

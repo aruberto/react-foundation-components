@@ -5,6 +5,7 @@ import {
 } from 'react-dom';
 import cx from 'classnames';
 import Overlay from 'react-overlays/lib/Overlay';
+import contains from 'dom-helpers/query/contains';
 
 import styles from './styles.scss';
 import joinObjects from '../../util/join-objects';
@@ -12,6 +13,15 @@ import createHigherOrderComponent from '../../util/create-higher-order-component
 import {HideOnlyForScreenReader} from '../../general/visibility';
 
 const TOOLTIP_POSITIONS = ['top', 'left', 'right'];
+
+function mouseOverOut(event, callback) {
+  const target = event.currentTarget;
+  const related = event.relatedTarget || event.nativeEvent.toElement;
+
+  if (!related || related !== target && !contains(target, related)) {
+    return callback(event);
+  }
+}
 
 export class Tooltip extends Component {
   static propTypes = {
@@ -55,6 +65,10 @@ const HasTooltipBase = createHigherOrderComponent({
 export class HasTooltip extends Component {
   static propTypes = {
     children: PropTypes.node,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
+    onMouseOut: PropTypes.func,
+    onMouseOver: PropTypes.func,
     position: PropTypes.oneOf(TOOLTIP_POSITIONS),
     tooltip: PropTypes.node,
     tooltipClassName: PropTypes.string,
@@ -87,6 +101,52 @@ export class HasTooltip extends Component {
   handleShow = () => this.setState({show: true});
 
   handleHide = () => this.setState({show: false});
+
+  handleBlur = (...args) => {
+    const {onBlur} = this.props;
+
+    this.handleHide();
+
+    if (onBlur) {
+      onBlur(...args);
+    }
+  };
+
+  handleFocus = (...args) => {
+    const {onFocus} = this.props;
+
+    this.handleShow();
+
+    if (onFocus) {
+      onFocus(...args);
+    }
+  };
+
+  handleMouseOut = (...args) => {
+    const {onMouseOut} = this.props;
+    const [event] = args;
+
+    mouseOverOut(event, () => {
+      this.handleHide();
+
+      if (onMouseOut) {
+        onMouseOut(...args);
+      }
+    });
+  };
+
+  handleMouseOver = (...args) => {
+    const {onMouseOver} = this.props;
+    const [event] = args;
+
+    mouseOverOut(event, () => {
+      this.handleShow();
+
+      if (onMouseOver) {
+        onMouseOver(...args);
+      }
+    });
+  };
 
   createOverlay = () => {
     const {position, tooltip, tooltipClassName, tooltipStyle} = this.props;
@@ -121,10 +181,10 @@ export class HasTooltip extends Component {
     return (
       <HasTooltipBase
         {...this.props}
-        onBlur={this.handleHide}
-        onFocus={this.handleShow}
-        onMouseOut={this.handleHide}
-        onMouseOver={this.handleShow}
+        onBlur={this.handleBlur}
+        onFocus={this.handleFocus}
+        onMouseOut={this.handleMouseOut}
+        onMouseOver={this.handleMouseOver}
         ref={this.setTargetRef}
       >
         {children}
