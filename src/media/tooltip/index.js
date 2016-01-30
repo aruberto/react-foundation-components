@@ -11,8 +11,11 @@ import styles from './styles.scss';
 import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import {HideOnlyForScreenReader} from '../../general/visibility';
+import Transition from '../../motion/transition';
 
 const TOOLTIP_POSITIONS = ['top', 'left', 'right'];
+const TOOLTIP_FADE =
+  (props) => <Transition {...props} enterClassName='fade-in' exitClassName='fade-out'/>;
 
 function mouseOverOut(event, callback) {
   const target = event.currentTarget;
@@ -159,6 +162,7 @@ export class HasTooltip extends Component {
         placement={placement}
         show={show}
         target={this.getTargetRefDOMNode}
+        transition={TOOLTIP_FADE}
       >
         <Tooltip
           className={tooltipClassName}
