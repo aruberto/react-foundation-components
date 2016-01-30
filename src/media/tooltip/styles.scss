@@ -1,7 +1,6 @@
 @import '../../common';
 @import '~foundation-sites/scss/components/tooltip';
 
-/*
 .tooltip {
   margin-top: $tooltip-pip-width;
 }
@@ -12,13 +11,12 @@
 
 .left {
   margin-left: -$tooltip-pip-width;
-  margin-top: -$tooltip-pip-width;
+  margin-top: -$tooltip-pip-width / 4;
 }
 
 .right {
   margin-left: $tooltip-pip-width;
-  margin-top: -$tooltip-pip-width;
+  margin-top: -$tooltip-pip-width / 4;
 }
-*/
 
 @include foundation-tooltip;

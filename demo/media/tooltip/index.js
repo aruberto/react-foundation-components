@@ -25,10 +25,7 @@ export default class TooltipPage extends Component {
           >
             I have a <strong>bottom</strong> tooltip!
           </HasTooltip>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+          &nbsp;
           This is a left tooltip demo and&nbsp;
           <HasTooltip
             position='left'
@@ -37,10 +34,7 @@ export default class TooltipPage extends Component {
           >
             I have a <strong>left</strong> tooltip!
           </HasTooltip>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+          &nbsp;
           This is a top tooltip demo and&nbsp;
           <HasTooltip
             position='top'
@@ -49,10 +43,7 @@ export default class TooltipPage extends Component {
           >
             I have a <strong>top</strong> tooltip!
           </HasTooltip>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+          &nbsp;
           This is a right tooltip demo and&nbsp;
           <HasTooltip
             position='right'
@@ -60,6 +51,18 @@ export default class TooltipPage extends Component {
             tooltip={<span>I am a <strong>right</strong> tooltip!</span>}
           >
             I have a <strong>right</strong> tooltip!
+          </HasTooltip>
+          &nbsp;
+          This is a long tooltip demo and&nbsp;
+          <HasTooltip
+            tabIndex='1'
+            tooltip={
+              <span>
+                I am a <strong>long</strong> tooltip! My text keeps going on and on and on and on,
+                when I'll finish who knows!
+              </span>}
+          >
+            I have a <strong>long</strong> tooltip!
           </HasTooltip>
         </p>
       </div>

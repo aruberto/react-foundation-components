@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {
   findDOMNode,
+  unmountComponentAtNode,
   unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer // eslint-disable-line camelcase
 } from 'react-dom';
 import cx from 'classnames';
@@ -97,6 +98,11 @@ export class HasTooltip extends Component {
     }
   }
 
+  componentWillUnmount() {
+    unmountComponentAtNode(this.mountNode);
+    this.mountNode = null;
+  }
+
   setTargetRef = (targetRef) => this.targetRef = targetRef;
 
   getTargetRefDOMNode = () => findDOMNode(this.targetRef);
@@ -158,7 +164,7 @@ export class HasTooltip extends Component {
 
     return (
       <Overlay
-        container={this}
+        onHide={this.handleHide}
         placement={placement}
         show={show}
         target={this.getTargetRefDOMNode}
