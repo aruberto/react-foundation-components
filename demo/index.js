@@ -21,6 +21,7 @@ import LabelPage from './media/label';
 import ProgressBarPage from './media/progress-bar';
 import ThumbnailPage from './media/thumbnail';
 import TooltipPage from './media/tooltip';
+import TransitionPage from './motion/transition';
 
 const history = createHistory();
 
@@ -65,6 +66,8 @@ class HomePage extends Component {
         <Link to='/media/thumbnail'>Thumbnail</Link>
         &nbsp;|&nbsp;
         <Link to='/media/tooltip'>Tooltip</Link>
+        &nbsp;|&nbsp;
+        <Link to='/motion/transition'>Transition</Link>
         <br/>
         {this.props.children}
       </div>
@@ -94,6 +97,7 @@ class Demo extends Component {
           <Route component={ProgressBarPage} path='/media/progress-bar'/>
           <Route component={ThumbnailPage} path='/media/thumbnail'/>
           <Route component={TooltipPage} path='/media/tooltip'/>
+          <Route component={TransitionPage} path='/motion/transition'/>
         </Route>
       </Router>
     );

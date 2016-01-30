@@ -31,3 +31,5 @@ export Label from './media/label';
 export ProgressBar from './media/progress-bar';
 export Thumbnail from './media/thumbnail';
 export {Tooltip, HasTooltip} from './media/tooltip';
+
+export Transition from './motion/transition';
