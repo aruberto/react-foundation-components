@@ -38,6 +38,8 @@
     "classnames": "^2.2.3",
     "foundation-sites": "^6.1.2",
     "lodash": "^4.1.0",
+    "motion-ui": "^1.1.1",
+    "react-overlays": "^0.6.0",
     "react-prop-types": "^0.3.0",
     "uncontrollable": "^3.2.1"
   },

@@ -36,7 +36,7 @@ export class Switch extends Component {
     uncheckedLabel: React.PropTypes.node
   };
 
-  handleInputRef = (inputRef) => this.inputRef = inputRef;
+  setInputRef = (inputRef) => this.inputRef = inputRef;
 
   handleLabelClick = (event) => {
     const {checked, eventKey, id, onChange} = this.props;
@@ -127,12 +127,12 @@ export class Switch extends Component {
     } = this.props;
 
     return (
-      <span className={cx(containerClassName, this.getClassNames())} style={containerStyle}>
+      <div className={cx(containerClassName, this.getClassNames())} style={containerStyle}>
         <input
           {...this.props}
           className={cx(className, this.getInputClassNames())}
           onChange={this.handleInputChange}
-          ref={this.handleInputRef}
+          ref={this.setInputRef}
           size={null}
           type='checkbox'
         />
@@ -146,7 +146,7 @@ export class Switch extends Component {
           {this.renderCheckedLabel()}
           {this.renderUncheckedLabel()}
         </label>
-      </span>
+      </div>
     );
   }
 }
@@ -187,7 +187,7 @@ class RadioSwitchControlled extends Component {
     });
 
     return (
-      <span {...this.props}>{newChildren}</span>
+      <div {...this.props}>{newChildren}</div>
     );
   }
 }

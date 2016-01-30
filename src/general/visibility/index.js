@@ -78,7 +78,7 @@ export const ShowOnlyForScreenReader = createHigherOrderComponent({
 
 export const HideOnlyForScreenReader = createHigherOrderComponent({
   displayName: 'HideOnlyForScreenReader',
-  mapPropsToProps: (props) => ({'aria-hidden': true, ...props})
+  mapPropsToProps: (props) => ({...props, 'aria-hidden': true})
 });
 
 export const ShowOnlyOnFocus = createHigherOrderComponent({

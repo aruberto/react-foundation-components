@@ -34,7 +34,7 @@ export default class ButtonGroup extends Component {
   getButtonClassNames = () => joinObjects(styles, {button: true});
 
   render() {
-    const {className, children} = this.props;
+    const {children, className} = this.props;
     const buttonClassNames = this.getButtonClassNames();
     const newChildren = Children.map(
       children,

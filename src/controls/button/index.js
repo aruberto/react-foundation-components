@@ -41,7 +41,7 @@ export default class Button extends Component {
   };
 
   render() {
-    const {className, children, href, target} = this.props;
+    const {children, className, href, target} = this.props;
 
     if (href || target) {
       return (

@@ -14,7 +14,7 @@ export default class CloseButton extends Component {
   getClassNames = () => joinObjects(styles, {'close-button': true});
 
   render() {
-    const {className, children = '×'} = this.props;
+    const {children = '×', className} = this.props;
 
     return (
       <button {...this.props} className={cx(className, this.getClassNames())} type='button'>
