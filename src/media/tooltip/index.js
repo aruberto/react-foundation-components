@@ -15,8 +15,13 @@ import {HideOnlyForScreenReader} from '../../general/visibility';
 import Transition from '../../motion/transition';
 
 const TOOLTIP_POSITIONS = ['top', 'left', 'right'];
-const TOOLTIP_FADE =
-  (props) => <Transition {...props} enterClassName='fade-in' exitClassName='fade-out'/>;
+const TOOLTIP_FADE = (props) =>
+  <Transition
+    {...props}
+    enterClassName='fade-in'
+    exitClassName='fade-out'
+    speed='fast'
+  />;
 
 function mouseOverOut(event, callback) {
   const target = event.currentTarget;
@@ -63,7 +68,18 @@ export class Tooltip extends Component {
 const HasTooltipBase = createHigherOrderComponent({
   displayName: 'HasTooltipBase',
   mapPropsToClassNames: () => joinObjects(styles, {'has-tip': true}),
-  mapPropsToProps: (props) => ({...props, 'aria-haspopup': true})
+  mapPropsToProps: ({tooltip, ...restProps}) => {
+    const props = {
+      ...restProps,
+      'aria-haspopup': true
+    };
+
+    if (tooltip && tooltip.id) {
+      props['aria-describedby'] = tooltip.id;
+    }
+
+    return props;
+  }
 });
 
 export class HasTooltip extends Component {
