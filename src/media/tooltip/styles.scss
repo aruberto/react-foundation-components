@@ -11,10 +11,12 @@
 
 .left {
   margin-left: -$tooltip-pip-width;
+  margin-top: 0;
 }
 
 .right {
   margin-left: $tooltip-pip-width;
+  margin-top: 0;
 }
 
 @include foundation-tooltip;
