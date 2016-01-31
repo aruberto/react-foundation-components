@@ -59,37 +59,36 @@ export default class Transition extends Component {
     easing: PropTypes.oneOf(TRANSITION_EASINGS),
     enterClassName: PropTypes.oneOf(TRANSITION_ENTER_NAMES).isRequired,
     exitClassName: PropTypes.oneOf(TRANSITION_EXIT_NAMES).isRequired,
-    speed: PropTypes.oneOf(TRANSITION_SPEEDS),
-    timeout: PropTypes.number
-  };
-
-  static defaultProps = {
-    timeout: 250
+    speed: PropTypes.oneOf(TRANSITION_SPEEDS)
   };
 
   render() {
-    const {children, delay, easing, enterClassName, exitClassName, speed} = this.props;
+    const {
+      children,
+      delay,
+      easing,
+      enterClassName,
+      exitClassName,
+      speed
+    } = this.props;
+    const timeout =
+      (speed === 'fast' && 250 || speed === 'slow' && 750 || 500)
+      + (delay === 'short' && 300 || delay === 'long' && 700 || 0);
     const commonClassNames = {
       [`${delay}-delay`]: TRANSITION_DELAYS.includes(delay),
       [easing]: TRANSITION_EASINGS.includes(easing),
       [speed]: TRANSITION_SPEEDS.includes(speed)
     };
-    const enteringClassNames = {
+    const enteredClassNames = {
       ...commonClassNames,
       [enterClassName]: true,
-      'mui-enter': true
-    };
-    const enteredClassNames = {
-      ...enteringClassNames,
+      'mui-enter': true,
       'mui-enter-active': true
     };
-    const exitingClassNames = {
+    const exitedClassNames = {
       ...commonClassNames,
       [exitClassName]: true,
-      'mui-leave': true
-    };
-    const exitedClassNames = {
-      ...exitingClassNames,
+      'mui-leave': true,
       'mui-leave-active': true
     };
 
@@ -97,9 +96,10 @@ export default class Transition extends Component {
       <TransitionBase
         {...this.props}
         enteredClassName={cx(joinObjects(styles, enteredClassNames))}
-        enteringClassName={cx(joinObjects(styles, enteringClassNames))}
+        enteringClassName={cx(joinObjects(styles, enteredClassNames))}
         exitedClassName={cx(joinObjects(styles, exitedClassNames))}
-        exitingClassName={cx(joinObjects(styles, exitingClassNames))}
+        exitingClassName={cx(joinObjects(styles, exitedClassNames))}
+        timeout={timeout}
       >
         {children}
       </TransitionBase>
