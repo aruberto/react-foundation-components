@@ -5,6 +5,7 @@ import {
   unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer // eslint-disable-line camelcase
 } from 'react-dom';
 import cx from 'classnames';
+import elementType from 'react-prop-types/lib/elementType';
 import Overlay from 'react-overlays/lib/Overlay';
 import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
@@ -93,7 +94,12 @@ export class HasTooltip extends Component {
     position: PropTypes.oneOf(TOOLTIP_POSITIONS),
     tooltip: PropTypes.node,
     tooltipClassName: PropTypes.string,
-    tooltipStyle: PropTypes.object // eslint-disable-line react/forbid-prop-types
+    tooltipStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    transition: elementType
+  };
+
+  static defaultProps = {
+    transition: TOOLTIP_FADE
   };
 
   constructor(props) {
@@ -175,7 +181,7 @@ export class HasTooltip extends Component {
   };
 
   createOverlay = () => {
-    const {position, tooltip, tooltipClassName, tooltipStyle} = this.props;
+    const {position, tooltip, tooltipClassName, tooltipStyle, transition} = this.props;
     const {show} = this.state;
     const placement = position || 'bottom';
 
@@ -185,7 +191,7 @@ export class HasTooltip extends Component {
         placement={placement}
         show={show}
         target={this.getTargetRefDOMNode}
-        transition={TOOLTIP_FADE}
+        transition={transition}
       >
         <Tooltip
           className={tooltipClassName}
