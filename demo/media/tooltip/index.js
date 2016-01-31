@@ -57,7 +57,7 @@ export default class TooltipPage extends Component {
           <HasTooltip
             tabIndex='1'
             tooltip={
-              <span>
+              <span id='myTooltip'>
                 I am a <strong>long</strong> tooltip! My text keeps going on and on and on and on,
                 when I'll finish who knows!
               </span>}

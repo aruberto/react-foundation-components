@@ -2,6 +2,7 @@ import React, {Component, PropTypes, Children, cloneElement} from 'react';
 import cx from 'classnames';
 import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
+import isBlank from 'underscore.string/isBlank';
 
 import styles from './styles.scss';
 import {COMPONENT_SIZES} from '../../util/constants';
@@ -36,14 +37,14 @@ export class Switch extends Component {
     uncheckedLabel: React.PropTypes.node
   };
 
-  setInputRef = (inputRef) => this.inputRef = inputRef;
+  setInputRef = (inputRef) => this._inputRef = inputRef;
 
   handleLabelClick = (event) => {
     const {checked, eventKey, id, onChange} = this.props;
 
-    if (!id) {
+    if (isBlank(id)) {
       if (isNil(checked)) {
-        this.inputRef.click();
+        this._inputRef.click();
       } else if (onChange) {
         onChange(event, eventKey);
       }
@@ -53,7 +54,7 @@ export class Switch extends Component {
   handleInputChange = (event) => {
     const {eventKey, id, onChange} = this.props;
 
-    if (id && onChange) {
+    if (!isBlank(id) && onChange) {
       onChange(event, eventKey);
     }
   };

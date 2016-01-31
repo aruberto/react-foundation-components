@@ -6,7 +6,8 @@ import {
 } from 'react-dom';
 import cx from 'classnames';
 import Overlay from 'react-overlays/lib/Overlay';
-import contains from 'dom-helpers/query/contains';
+import isBlank from 'underscore.string/isBlank';
+import domContains from 'dom-helpers/query/contains';
 
 import styles from './styles.scss';
 import joinObjects from '../../util/join-objects';
@@ -27,7 +28,7 @@ function mouseOverOut(event, callback) {
   const target = event.currentTarget;
   const related = event.relatedTarget || event.nativeEvent.toElement;
 
-  if (!related || related !== target && !contains(target, related)) {
+  if (!related || related !== target && !domContains(target, related)) {
     return callback(event);
   }
 }
@@ -74,8 +75,8 @@ const HasTooltipBase = createHigherOrderComponent({
       'aria-haspopup': true
     };
 
-    if (tooltip && tooltip.id) {
-      props['aria-describedby'] = tooltip.id;
+    if (tooltip && tooltip.props && !isBlank(tooltip.props.id)) {
+      props['aria-describedby'] = tooltip.props.id;
     }
 
     return props;
@@ -104,24 +105,24 @@ export class HasTooltip extends Component {
   }
 
   componentDidMount() {
-    this.mountNode = document.createElement('div');
+    this._mountNode = document.createElement('div');
     this.renderOverlay();
   }
 
   componentDidUpdate() {
-    if (this.mountNode) {
+    if (this._mountNode) {
       this.renderOverlay();
     }
   }
 
   componentWillUnmount() {
-    unmountComponentAtNode(this.mountNode);
-    this.mountNode = null;
+    unmountComponentAtNode(this._mountNode);
+    this._mountNode = null;
   }
 
-  setTargetRef = (targetRef) => this.targetRef = targetRef;
+  setTargetRef = (ref) => this._targetRef = ref;
 
-  getTargetRefDOMNode = () => findDOMNode(this.targetRef);
+  getTargetRefDOMNode = () => findDOMNode(this._targetRef);
 
   handleShow = () => this.setState({show: true});
 
@@ -197,12 +198,12 @@ export class HasTooltip extends Component {
     );
   };
 
-  renderOverlay = () => renderSubtreeIntoContainer(this, this.overlay, this.mountNode);
+  renderOverlay = () => renderSubtreeIntoContainer(this, this._overlay, this._mountNode);
 
   render() {
     const {children} = this.props;
 
-    this.overlay = this.createOverlay();
+    this._overlay = this.createOverlay();
 
     return (
       <HasTooltipBase
