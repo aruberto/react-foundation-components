@@ -23,9 +23,27 @@ export default class TransitionPage extends Component {
 
     return (
       <div>
-        <button onClick={this.handleClick}>Toggle</button>
+        <button onClick={this.handleClick} type='button'>Toggle</button>
         <br/>
         <Transition enterClassName='fade-in' exitClassName='fade-out' in={show}>
+          <div>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life
+            accusamus terry richardson ad squid.
+            Nihil anim keffiyeh helvetica, craft beer labore wes
+            anderson cred nesciunt sapiente ea proident.
+          </div>
+        </Transition>
+        <br/>
+        <Transition enterClassName='slide-in-down' exitClassName='slide-out-up' in={show}>
+          <div>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life
+            accusamus terry richardson ad squid.
+            Nihil anim keffiyeh helvetica, craft beer labore wes
+            anderson cred nesciunt sapiente ea proident.
+          </div>
+        </Transition>
+        <br/>
+        <Transition enterClassName='scale-in-down' exitClassName='scale-out-up' in={show}>
           <div>
             Anim pariatur cliche reprehenderit, enim eiusmod high life
             accusamus terry richardson ad squid.

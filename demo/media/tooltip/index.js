@@ -3,14 +3,6 @@ import React, {Component} from 'react';
 import {Tooltip, HasTooltip, Transition} from '../../../src';
 
 const tooltipStyle = {position: 'relative', top: '20px', left: '50px'};
-const TOOLTIP_HINGE = (props) =>
-  <Transition
-    {...props}
-    delay='long'
-    enterClassName='hinge-in-from-top'
-    exitClassName='hinge-out-from-top'
-    speed='slow'
-  />;
 
 export default class TooltipPage extends Component {
   render() {
@@ -57,15 +49,6 @@ export default class TooltipPage extends Component {
             }
           >
             I have a <strong>long</strong> tooltip!
-          </HasTooltip>
-          &nbsp;
-          This is a custom transition tooltip demo and&nbsp;
-          <HasTooltip
-            tabIndex='1'
-            tooltip='I am a tooltip with a custom transition!'
-            transition={TOOLTIP_HINGE}
-          >
-            I have a <strong>custom transition</strong> on my tooltip!
           </HasTooltip>
         </p>
       </div>

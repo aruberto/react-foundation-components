@@ -25,6 +25,7 @@ export ButtonGroup from './controls/button-group';
 export CloseButton from './controls/close-button';
 export {Switch, RadioSwitch} from './controls/switch';
 
+export {Accordion, AccordionItem} from './containers/accordion';
 export Callout from './containers/callout';
 
 export Badge from './media/badge';
@@ -34,4 +35,5 @@ export ProgressBar from './media/progress-bar';
 export Thumbnail from './media/thumbnail';
 export {Tooltip, HasTooltip} from './media/tooltip';
 
-export Transition from './motion/transition';
+export Fade from './transitions/fade';
+export Collapse from './transitions/collapse';

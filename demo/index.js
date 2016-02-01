@@ -15,6 +15,7 @@ import ButtonPage from './controls/button';
 import ButtonGroupPage from './controls/button-group';
 import CloseButtonPage from './controls/close-button';
 import SwitchPage from './controls/switch';
+import AccordionPage from './containers/accordion';
 import CalloutPage from './containers/callout';
 import BadgePage from './media/badge';
 import FlexVideoPage from './media/flex-video';
@@ -22,7 +23,8 @@ import LabelPage from './media/label';
 import ProgressBarPage from './media/progress-bar';
 import ThumbnailPage from './media/thumbnail';
 import TooltipPage from './media/tooltip';
-import TransitionPage from './motion/transition';
+import FadePage from './transitions/fade';
+import CollapsePage from './transitions/collapse';
 
 const history = createHistory();
 
@@ -56,6 +58,8 @@ class HomePage extends Component {
         &nbsp;|&nbsp;
         <Link to='/controls/switch'>Switch</Link>
         &nbsp;|&nbsp;
+        <Link to='/containers/accordion'>Accordion</Link>
+        &nbsp;|&nbsp;
         <Link to='/containers/callout'>Callout</Link>
         &nbsp;|&nbsp;
         <Link to='/media/badge'>Badge</Link>
@@ -70,8 +74,10 @@ class HomePage extends Component {
         &nbsp;|&nbsp;
         <Link to='/media/tooltip'>Tooltip</Link>
         &nbsp;|&nbsp;
-        <Link to='/motion/transition'>Transition</Link>
-        <br/>
+        <Link to='/transitions/fade'>Fade</Link>
+        &nbsp;|&nbsp;
+        <Link to='/transitions/collapse'>Collapse</Link>
+        <hr/>
         {this.props.children}
       </div>
     );
@@ -94,6 +100,7 @@ class Demo extends Component {
           <Route component={ButtonGroupPage} path='/controls/button-group'/>
           <Route component={CloseButtonPage} path='/controls/close-button'/>
           <Route component={SwitchPage} path='/controls/switch'/>
+          <Route component={AccordionPage} path='/containers/accordion'/>
           <Route component={CalloutPage} path='/containers/callout'/>
           <Route component={BadgePage} path='/media/badge'/>
           <Route component={FlexVideoPage} path='/media/flex-video'/>
@@ -101,7 +108,8 @@ class Demo extends Component {
           <Route component={ProgressBarPage} path='/media/progress-bar'/>
           <Route component={ThumbnailPage} path='/media/thumbnail'/>
           <Route component={TooltipPage} path='/media/tooltip'/>
-          <Route component={TransitionPage} path='/motion/transition'/>
+          <Route component={FadePage} path='/transitions/fade'/>
+          <Route component={CollapsePage} path='/transitions/collapse'/>
         </Route>
       </Router>
     );

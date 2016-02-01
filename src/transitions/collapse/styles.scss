@@ -1,0 +1,32 @@
+.collapse {
+  display: none;
+
+  &.in {
+    display: block;
+
+    tr {
+      display: table-row;
+    }
+
+    tbody {
+      display: table-row-group;
+    }
+  }
+}
+
+.collapsing {
+  overflow: hidden;
+  position: relative;
+  transition-duration: .35s;
+  transition-timing-function: ease;
+
+  &.height {
+    height: 0;
+    transition-property: height, visibility;
+  }
+
+  &.width {
+    transition-property: width, visibility;
+    width: 0;
+  }
+}
