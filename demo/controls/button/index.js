@@ -26,6 +26,8 @@ export default class ButtonPage extends Component {
         <br/>
         <Button expanded size='tiny'>Wow, Small Expand</Button>
         <br/>
+        <Button color='primary'>Primary Color</Button>
+        &nbsp;
         <Button color='secondary'>Secondary Color</Button>
         &nbsp;
         <Button color='success'>Success Color</Button>
@@ -36,7 +38,7 @@ export default class ButtonPage extends Component {
         &nbsp;
         <Button disabled>Disabled Button</Button>
         <br/>
-        <Button hollow>Primary Color</Button>
+        <Button color='primary' hollow>Primary Color</Button>
         &nbsp;
         <Button color='secondary' hollow>Secondary Color</Button>
         &nbsp;

@@ -25,6 +25,8 @@ export ButtonGroup from './controls/button-group';
 export CloseButton from './controls/close-button';
 export {Switch, RadioSwitch} from './controls/switch';
 
+export Callout from './containers/callout';
+
 export Badge from './media/badge';
 export FlexVideo from './media/flex-video';
 export Label from './media/label';

@@ -19,6 +19,7 @@ export default class ButtonGroupPage extends Component {
         </ButtonGroup>
         <br/>
         <ButtonGroup>
+          <Button color='primary'>Save</Button>
           <Button color='secondary'>View</Button>
           <Button color='success'>Edit</Button>
           <Button color='warning'>Share</Button>

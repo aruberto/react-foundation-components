@@ -15,6 +15,7 @@ import ButtonPage from './controls/button';
 import ButtonGroupPage from './controls/button-group';
 import CloseButtonPage from './controls/close-button';
 import SwitchPage from './controls/switch';
+import CalloutPage from './containers/callout';
 import BadgePage from './media/badge';
 import FlexVideoPage from './media/flex-video';
 import LabelPage from './media/label';
@@ -55,6 +56,8 @@ class HomePage extends Component {
         &nbsp;|&nbsp;
         <Link to='/controls/switch'>Switch</Link>
         &nbsp;|&nbsp;
+        <Link to='/containers/callout'>Callout</Link>
+        &nbsp;|&nbsp;
         <Link to='/media/badge'>Badge</Link>
         &nbsp;|&nbsp;
         <Link to='/media/flex-video'>Flex Video</Link>
@@ -91,6 +94,7 @@ class Demo extends Component {
           <Route component={ButtonGroupPage} path='/controls/button-group'/>
           <Route component={CloseButtonPage} path='/controls/close-button'/>
           <Route component={SwitchPage} path='/controls/switch'/>
+          <Route component={CalloutPage} path='/containers/callout'/>
           <Route component={BadgePage} path='/media/badge'/>
           <Route component={FlexVideoPage} path='/media/flex-video'/>
           <Route component={LabelPage} path='/media/label'/>
