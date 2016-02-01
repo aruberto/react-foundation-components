@@ -30,6 +30,7 @@ export class Switch extends Component {
     eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
+    onToggle: PropTypes.func,
     paddleClassName: PropTypes.string,
     paddleLabel: React.PropTypes.node,
     paddleStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
@@ -39,23 +40,31 @@ export class Switch extends Component {
 
   setInputRef = (inputRef) => this._inputRef = inputRef;
 
-  handleLabelClick = (event) => {
-    const {checked, eventKey, id, onChange} = this.props;
+  handleLabelClick = (...args) => {
+    const {checked, eventKey, id, onChange, onToggle} = this.props;
+
+    if (onChange) {
+      onChange(...args);
+    }
 
     if (isBlank(id)) {
       if (isNil(checked)) {
         this._inputRef.click();
-      } else if (onChange) {
-        onChange(event, eventKey);
+      } else if (onToggle) {
+        onToggle(eventKey);
       }
     }
   };
 
-  handleInputChange = (event) => {
-    const {eventKey, id, onChange} = this.props;
+  handleInputChange = (...args) => {
+    const {eventKey, id, onChange, onToggle} = this.props;
 
-    if (!isBlank(id) && onChange) {
-      onChange(event, eventKey);
+    if (onChange) {
+      onChange(...args);
+    }
+
+    if (!isBlank(id) && onToggle) {
+      onToggle(eventKey);
     }
   };
 
@@ -161,15 +170,19 @@ class RadioSwitchControlled extends Component {
     size: PropTypes.oneOf(COMPONENT_SIZES)
   };
 
-  handleChange = (event, key) => {
-    const {onSelect, onChange} = this.props;
+  handleChange = (...args) => {
+    const {onChange} = this.props;
 
     if (onChange) {
-      onChange(event, key);
+      onChange(...args);
     }
+  };
+
+  handleToggle = (...args) => {
+    const {onSelect} = this.props;
 
     if (onSelect) {
-      onSelect(key);
+      onSelect(...args);
     }
   };
 
@@ -180,6 +193,7 @@ class RadioSwitchControlled extends Component {
         return cloneElement(child, {
           checked: child.props.eventKey === activeKey,
           onChange: this.handleChange,
+          onToggle: this.handleToggle,
           size
         });
       }

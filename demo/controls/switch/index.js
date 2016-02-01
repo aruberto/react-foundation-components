@@ -12,7 +12,7 @@ export default class SwitchPage extends Component {
     };
   }
 
-  handleChange = () => {
+  handleToggle = () => {
     const {checked: currChecked} = this.state;
     const checked = !currChecked;
 
@@ -26,8 +26,8 @@ export default class SwitchPage extends Component {
 
     return (
       <div>
-        <Switch checked={checked} id='mySwitch' onChange={this.handleChange}/>
-        <Switch checked={checked} onChange={this.handleChange}/>
+        <Switch checked={checked} id='mySwitch' onToggle={this.handleToggle}/>
+        <Switch checked={checked} onToggle={this.handleToggle}/>
         <Switch defaultChecked/>
         <Switch size='tiny'/>
         <Switch size='small'/>

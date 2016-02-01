@@ -17,6 +17,11 @@ export default class Collapse extends React.Component {
     children: PropTypes.node,
     className: PropTypes.string,
     dimension: PropTypes.oneOf(['height', 'width']),
+    onEnter: PropTypes.func,
+    onEntered: PropTypes.func,
+    onEntering: PropTypes.func,
+    onExit: PropTypes.func,
+    onExiting: PropTypes.func,
     timeout: PropTypes.number
   };
 
@@ -37,27 +42,43 @@ export default class Collapse extends React.Component {
 
   getTransitioningClassNames = () => joinObjects(styles, {collapsing: true});
 
-  handleEnter = (elem) => {
-    const {dimension} = this.props;
+  handleEnter = (...args) => {
+    const {dimension, onEnter} = this.props;
+    const [elem] = args;
 
     elem.style[dimension] = '0';
+
+    if (onEnter) {
+      onEnter(...args);
+    }
   };
 
-  handleEntered = (elem) => {
-    const {dimension} = this.props;
+  handleEntered = (...args) => {
+    const {dimension, onEntered} = this.props;
+    const [elem] = args;
 
     elem.style[dimension] = null;
+
+    if (onEntered) {
+      onEntered(...args);
+    }
   };
 
-  handleEntering = (elem) => {
-    const {dimension} = this.props;
+  handleEntering = (...args) => {
+    const {dimension, onEntering} = this.props;
+    const [elem] = args;
     const size = elem[`scroll${capitalize(dimension)}`];
 
     elem.style[dimension] = `${size}px`;
+
+    if (onEntering) {
+      onEntering(...args);
+    }
   };
 
-  handleExit = (elem) => {
-    const {dimension} = this.props;
+  handleExit = (...args) => {
+    const {dimension, onExit} = this.props;
+    const [elem] = args;
     const baseValue = elem[`offset${capitalize(dimension)}`];
     const margins = MARGINS[dimension];
     const value =
@@ -66,17 +87,26 @@ export default class Collapse extends React.Component {
       + Number.parseInt(css(elem, margins[1]), 10);
 
     elem.style[dimension] = `${value}px`;
+
+    if (onExit) {
+      onExit(...args);
+    }
   };
 
-  handleExiting = (elem) => {
+  handleExiting = (...args) => {
     function triggerBrowserReflow(node) {
       return node.offsetHeight;
     }
 
-    const {dimension} = this.props;
+    const {dimension, onExiting} = this.props;
+    const [elem] = args;
 
     triggerBrowserReflow(elem);
     elem.style[dimension] = '0';
+
+    if (onExiting) {
+      onExiting(...args);
+    }
   };
 
   render() {
