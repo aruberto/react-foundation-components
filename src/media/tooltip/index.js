@@ -7,6 +7,7 @@ import {
 import cx from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 import Overlay from 'react-overlays/lib/Overlay';
+import RootCloseWrapper from 'react-overlays/lib/RootCloseWrapper';
 import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
 
@@ -88,6 +89,7 @@ export class HasTooltip extends Component {
   static propTypes = {
     children: PropTypes.node,
     onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onMouseOut: PropTypes.func,
     onMouseOver: PropTypes.func,
@@ -108,6 +110,8 @@ export class HasTooltip extends Component {
     this.state = {
       show: false
     };
+    this._clicked = false;
+    this._lastRootClose = new Date();
   }
 
   componentDidMount() {
@@ -132,7 +136,48 @@ export class HasTooltip extends Component {
 
   handleShow = () => this.setState({show: true});
 
-  handleHide = () => this.setState({show: false});
+  handleHide = () => {
+    if (!this._clicked) {
+      this.setState({show: false});
+    }
+  };
+
+  handleAnyClick = () => {
+    const {show} = this.state;
+
+    if (show) {
+      if (this._clicked) {
+        this._clicked = false;
+        this.handleHide();
+      } else {
+        this._clicked = true;
+      }
+    } else {
+      this._clicked = true;
+      this.handleShow();
+    }
+  };
+
+  handleRootClose = () => {
+    const now = new Date();
+    const diff = now - this._lastRootClose;
+
+    this._lastRootClose = now;
+
+    if (this._clicked && diff < 50) {
+      this.handleAnyClick();
+    }
+  };
+
+  handleClick = (...args) => {
+    const {onClick} = this.props;
+
+    this.handleAnyClick();
+
+    if (onClick) {
+      onClick(...args);
+    }
+  };
 
   handleBlur = (...args) => {
     const {onBlur} = this.props;
@@ -187,8 +232,9 @@ export class HasTooltip extends Component {
 
     return (
       <Overlay
-        onHide={this.handleHide}
+        onHide={this.handleRootClose}
         placement={placement}
+        rootClose
         show={show}
         target={this.getTargetRefDOMNode}
         transition={transition}
@@ -212,16 +258,19 @@ export class HasTooltip extends Component {
     this._overlay = this.createOverlay();
 
     return (
-      <HasTooltipBase
-        {...this.props}
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        onMouseOut={this.handleMouseOut}
-        onMouseOver={this.handleMouseOver}
-        ref={this.setTargetRef}
-      >
-        {children}
-      </HasTooltipBase>
+      <RootCloseWrapper noWrap onRootClose={this.handleRootClose}>
+        <HasTooltipBase
+          {...this.props}
+          onBlur={this.handleBlur}
+          onClick={this.handleClick}
+          onFocus={this.handleFocus}
+          onMouseOut={this.handleMouseOut}
+          onMouseOver={this.handleMouseOver}
+          ref={this.setTargetRef}
+        >
+          {children}
+        </HasTooltipBase>
+      </RootCloseWrapper>
     );
   }
 }
