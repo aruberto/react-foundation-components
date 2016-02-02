@@ -18,6 +18,7 @@ import SwitchPage from './controls/switch';
 import AccordionPage from './containers/accordion';
 import CalloutPage from './containers/callout';
 import DropdownPage from './containers/dropdown';
+import MediaObjectPage from './containers/media-object';
 import BadgePage from './media/badge';
 import FlexVideoPage from './media/flex-video';
 import LabelPage from './media/label';
@@ -65,6 +66,8 @@ class HomePage extends Component {
         &nbsp;|&nbsp;
         <Link to='/containers/dropdown'>Dropdown</Link>
         &nbsp;|&nbsp;
+        <Link to='/containers/media-object'>Media Object</Link>
+        &nbsp;|&nbsp;
         <Link to='/media/badge'>Badge</Link>
         &nbsp;|&nbsp;
         <Link to='/media/flex-video'>Flex Video</Link>
@@ -106,6 +109,7 @@ class Demo extends Component {
           <Route component={AccordionPage} path='/containers/accordion'/>
           <Route component={CalloutPage} path='/containers/callout'/>
           <Route component={DropdownPage} path='/containers/dropdown'/>
+          <Route component={MediaObjectPage} path='/containers/media-object'/>
           <Route component={BadgePage} path='/media/badge'/>
           <Route component={FlexVideoPage} path='/media/flex-video'/>
           <Route component={LabelPage} path='/media/label'/>
