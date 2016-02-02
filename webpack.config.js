@@ -77,7 +77,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'demo', 'lib'),
     filename: '[name]-[hash].js',
-    publicPath: '/'
+    publicPath: '/react-foundation-components'
   },
 
   plugins: PLUGINS.concat(DEV ? DEV_PLUGINS : PROD_PLUGINS),
