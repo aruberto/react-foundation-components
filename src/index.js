@@ -29,6 +29,8 @@ export {Accordion, AccordionItem} from './containers/accordion';
 export Callout from './containers/callout';
 export {Dropdown, HasDropdown} from './containers/dropdown';
 export {MediaObjectSection, MediaObject} from './containers/media-object';
+export OffCanvas from './containers/off-canvas';
+export {TitleBarItem, TitleBar} from './containers/title-bar';
 
 export Badge from './media/badge';
 export FlexVideo from './media/flex-video';
