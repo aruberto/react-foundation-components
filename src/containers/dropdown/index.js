@@ -12,10 +12,9 @@ import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
 
 import styles from './styles.scss';
-import {OVERLAY_POSITIONS} from '../../util/constants';
+import {COMPONENT_SIZES, OVERLAY_POSITIONS} from '../../util/constants';
 import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import Fade from '../../transitions/fade';
 
 function mouseOverOut(event, callback) {
   const target = event.currentTarget;
@@ -26,19 +25,22 @@ function mouseOverOut(event, callback) {
   }
 }
 
-export class Tooltip extends Component {
+export class Dropdown extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    position: PropTypes.oneOf(OVERLAY_POSITIONS)
+    position: PropTypes.oneOf(OVERLAY_POSITIONS),
+    size: PropTypes.oneOf(COMPONENT_SIZES)
   };
 
   getClassNames = () => {
-    const {position} = this.props;
+    const {position, size} = this.props;
 
     return joinObjects(styles, {
-      tooltip: true,
-      [position]: OVERLAY_POSITIONS.includes(position)
+      'dropdown-pane': true,
+      'is-open': true,
+      [position]: OVERLAY_POSITIONS.includes(position),
+      [size]: COMPONENT_SIZES.includes(size)
     });
   };
 
@@ -46,47 +48,43 @@ export class Tooltip extends Component {
     const {children, className} = this.props;
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())} role='tooltip'>
+      <div {...this.props} className={cx(className, this.getClassNames())}>
         {children}
       </div>
     );
   }
 }
 
-const HasTooltipBase = createHigherOrderComponent({
-  displayName: 'HasTooltipBase',
-  mapPropsToClassNames: () => joinObjects(styles, {'has-tip': true}),
-  mapPropsToProps: ({tooltip, ...restProps}) => {
+const HasDropdownBase = createHigherOrderComponent({
+  displayName: 'HasDropdownBase',
+  mapPropsToProps: ({dropdown, ...restProps}) => {
     const props = {
       ...restProps,
       'aria-haspopup': true
     };
 
-    if (tooltip && tooltip.props && !isBlank(tooltip.props.id)) {
-      props['aria-describedby'] = tooltip.props.id;
+    if (dropdown && dropdown.props && !isBlank(dropdown.props.id)) {
+      props['aria-controls'] = dropdown.props.id;
     }
 
     return props;
   }
 });
 
-export class HasTooltip extends Component {
+export class HasDropdown extends Component {
   static propTypes = {
     children: PropTypes.node,
+    dropdown: PropTypes.node,
+    dropdownClassName: PropTypes.string,
+    dropdownPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
+    dropdownSize: PropTypes.oneOf(COMPONENT_SIZES),
+    dropdownStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onMouseOut: PropTypes.func,
     onMouseOver: PropTypes.func,
-    tooltip: PropTypes.node,
-    tooltipClassName: PropTypes.string,
-    tooltipPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
-    tooltipStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     transition: elementType
-  };
-
-  static defaultProps = {
-    transition: Fade
   };
 
   constructor(props) {
@@ -211,9 +209,16 @@ export class HasTooltip extends Component {
   };
 
   createOverlay = () => {
-    const {tooltip, tooltipClassName, tooltipPosition, tooltipStyle, transition} = this.props;
+    const {
+      dropdown,
+      dropdownClassName,
+      dropdownPosition,
+      dropdownSize,
+      dropdownStyle,
+      transition
+    } = this.props;
     const {show} = this.state;
-    const placement = tooltipPosition || 'bottom';
+    const placement = dropdownPosition || 'bottom';
 
     return (
       <Overlay
@@ -224,13 +229,14 @@ export class HasTooltip extends Component {
         target={this.getTargetRefDOMNode}
         transition={transition}
       >
-        <Tooltip
-          className={tooltipClassName}
-          position={tooltipPosition}
-          style={tooltipStyle}
+        <Dropdown
+          className={dropdownClassName}
+          position={dropdownPosition}
+          size={dropdownSize}
+          style={dropdownStyle}
         >
-          {tooltip}
-        </Tooltip>
+          {dropdown}
+        </Dropdown>
       </Overlay>
     );
   };
@@ -244,7 +250,7 @@ export class HasTooltip extends Component {
 
     return (
       <RootCloseWrapper noWrap onRootClose={this.handleRootClose}>
-        <HasTooltipBase
+        <HasDropdownBase
           {...this.props}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
@@ -254,7 +260,7 @@ export class HasTooltip extends Component {
           ref={this.setTargetRef}
         >
           {children}
-        </HasTooltipBase>
+        </HasDropdownBase>
       </RootCloseWrapper>
     );
   }

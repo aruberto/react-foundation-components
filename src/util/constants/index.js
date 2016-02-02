@@ -4,3 +4,5 @@ export const LARGER_SCREEN_SIZES = SCREEN_SIZES.slice(1);
 
 export const COMPONENT_SIZES = ['tiny', 'small', 'large'];
 export const COMPONENT_COLORS = ['primary', 'secondary', 'success', 'alert', 'warning'];
+
+export const OVERLAY_POSITIONS = ['top', 'left', 'right'];

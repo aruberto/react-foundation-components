@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Tooltip, HasTooltip, Transition} from '../../../src';
+import {Tooltip, HasTooltip} from '../../../src';
 
 const tooltipStyle = {position: 'relative', top: '20px', left: '50px'};
 
@@ -24,17 +24,17 @@ export default class TooltipPage extends Component {
           </HasTooltip>
           &nbsp;
           This is a left tooltip demo and&nbsp;
-          <HasTooltip position='left' tabIndex='1' tooltip='I am a left tooltip!'>
+          <HasTooltip tabIndex='1' tooltip='I am a left tooltip!' tooltipPosition='left'>
             I have a <strong>left</strong> tooltip!
           </HasTooltip>
           &nbsp;
           This is a top tooltip demo and&nbsp;
-          <HasTooltip position='top' tabIndex='1' tooltip='I am a top tooltip!'>
+          <HasTooltip tabIndex='1' tooltip='I am a top tooltip!' tooltipPosition='top'>
             I have a <strong>top</strong> tooltip!
           </HasTooltip>
           &nbsp;
           This is a right tooltip demo and&nbsp;
-          <HasTooltip position='right' tabIndex='1' tooltip='I am a right tooltip!'>
+          <HasTooltip tabIndex='1' tooltip='I am a right tooltip!' tooltipPosition='right'>
             I have a <strong>right</strong> tooltip!
           </HasTooltip>
           &nbsp;

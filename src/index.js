@@ -27,6 +27,7 @@ export {Switch, RadioSwitch} from './controls/switch';
 
 export {Accordion, AccordionItem} from './containers/accordion';
 export Callout from './containers/callout';
+export {Dropdown, HasDropdown} from './containers/dropdown';
 
 export Badge from './media/badge';
 export FlexVideo from './media/flex-video';
