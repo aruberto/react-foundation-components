@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "description": "Foundation Sites components built with the power of React and CSS Modules",
   "main": "lib/index.js",
+  "files": ["lib"],
   "scripts": {
     "clean": "rimraf lib demo/lib",
     "lint": "eslint src && sass-lint --verbose",
@@ -73,8 +74,8 @@
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^1.0.3",
-    "react-transform-catch-errors": "^1.0.1",
-    "react-transform-hmr": "^1.0.1",
+    "react-transform-catch-errors": "^1.0.2",
+    "react-transform-hmr": "^1.0.2",
     "redbox-react": "^1.2.2",
     "release-it": "^2.3.1",
     "rimraf": "^2.5.1",
