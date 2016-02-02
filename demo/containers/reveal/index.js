@@ -24,7 +24,7 @@ export default class RevealPage extends Component {
     return (
       <div>
         <button onClick={this.handleToggle} type='button'>Show</button>
-        <Reveal show={show}>
+        <Reveal onHide={this.handleToggle} show={show}>
           This is a controlled reveal!
         </Reveal>
       </div>
