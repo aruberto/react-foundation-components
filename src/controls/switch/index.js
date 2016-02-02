@@ -189,7 +189,7 @@ class RadioSwitchControlled extends Component {
   render() {
     const {activeKey, children, size} = this.props;
     const newChildren = Children.map(children, (child) => {
-      if (child.props && child.props.eventKey) {
+      if (child.props && !isBlank(child.props.eventKey)) {
         return cloneElement(child, {
           checked: child.props.eventKey === activeKey,
           onChange: this.handleChange,
@@ -208,3 +208,5 @@ class RadioSwitchControlled extends Component {
 }
 
 export const RadioSwitch = uncontrollable(RadioSwitchControlled, {activeKey: 'onSelect'});
+
+RadioSwitch.displayName = 'RadioSwitch';
