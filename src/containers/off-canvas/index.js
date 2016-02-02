@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
 import styles from './styles.scss';
+import {LARGER_SCREEN_SIZES} from '../../util/constants';
 import joinObjects from '../../util/join-objects';
 
 const OFF_CANVAS_POSITIONS = ['left', 'right'];
@@ -18,11 +19,13 @@ export default class OffCanvas extends Component {
     innerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     leftClassName: PropTypes.string,
     leftContent: PropTypes.node,
+    leftRevealForSize: PropTypes.oneOf(LARGER_SCREEN_SIZES),
     leftStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     onClose: PropTypes.func,
     open: PropTypes.oneOf(OFF_CANVAS_POSITIONS),
     rightClassName: PropTypes.string,
     rightContent: PropTypes.node,
+    rightRevealForSize: PropTypes.oneOf(LARGER_SCREEN_SIZES),
     rightStyle: PropTypes.object // eslint-disable-line react/forbid-prop-types
   };
 
@@ -41,9 +44,25 @@ export default class OffCanvas extends Component {
 
   getContentBlockerClassNames = () => joinObjects(styles, {'js-off-canvas-exit': true});
 
-  getLeftClassNames = () => joinObjects(styles, {'off-canvas': true, 'position-left': true});
+  getLeftClassNames = () => {
+    const {leftRevealForSize} = this.props;
 
-  getRightClassNames = () => joinObjects(styles, {'off-canvas': true, 'position-right': true});
+    return joinObjects(styles, {
+      'off-canvas': true,
+      'position-left': true,
+      [`reveal-for-${leftRevealForSize}`]: LARGER_SCREEN_SIZES.includes(leftRevealForSize)
+    });
+  };
+
+  getRightClassNames = () => {
+    const {rightRevealForSize} = this.props;
+
+    return joinObjects(styles, {
+      'off-canvas': true,
+      'position-right': true,
+      [`reveal-for-${rightRevealForSize}`]: LARGER_SCREEN_SIZES.includes(rightRevealForSize)
+    });
+  };
 
   handleContentBlockerClick = () => {
     const {onClose} = this.props;

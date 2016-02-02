@@ -44,10 +44,12 @@ export default class OffCanvasPage extends Component {
           contentStyle={MAX_HEIGHT_STYLE}
           innerStyle={MAX_HEIGHT_STYLE}
           leftContent='Left Sidebar'
+          leftRevealForSize='large'
           leftStyle={MAX_HEIGHT_STYLE}
           onClose={this.handleClose}
           open={open}
           rightContent='Right Sidebar'
+          rightRevealForSize='xxlarge'
           rightStyle={MAX_HEIGHT_STYLE}
           style={MAX_HEIGHT_STYLE}
         >
