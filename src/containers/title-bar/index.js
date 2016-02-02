@@ -4,20 +4,20 @@ import cx from 'classnames';
 import styles from './styles.scss';
 import joinObjects from '../../util/join-objects';
 
-const OFF_CANVAS_POSITIONS = ['left', 'right'];
+const TITLE_BAR_POSITIONS = ['left', 'right'];
 
 export class TitleBarItem extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    position: PropTypes.oneOf(OFF_CANVAS_POSITIONS).isRequired
+    position: PropTypes.oneOf(TITLE_BAR_POSITIONS).isRequired
   };
 
   getClassNames = () => {
     const {position} = this.props;
 
     return joinObjects(styles, {
-      [`title-bar-${position}`]: OFF_CANVAS_POSITIONS.includes(position)
+      [`title-bar-${position}`]: TITLE_BAR_POSITIONS.includes(position)
     });
   };
 
