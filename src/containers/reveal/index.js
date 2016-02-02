@@ -1,10 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
+import elementType from 'react-prop-types/lib/elementType';
 import Modal from 'react-overlays/lib/Modal';
 
 import styles from './styles.scss';
 import {COMPONENT_SIZES} from '../../util/constants';
 import joinObjects from '../../util/join-objects';
+import Fade from '../../transitions/fade';
 
 const MODAL_SIZES = COMPONENT_SIZES.concat(['full']);
 
@@ -14,7 +16,12 @@ export default class Reveal extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     collapse: PropTypes.bool,
-    size: PropTypes.oneOf(MODAL_SIZES)
+    size: PropTypes.oneOf(MODAL_SIZES),
+    transition: elementType
+  };
+
+  static defaultProps = {
+    transition: Fade
   };
 
   getClassNames = () => {
@@ -37,10 +44,8 @@ export default class Reveal extends Component {
         {...this.props}
         backdropClassName={cx(backdropClassName, this.getBackdropClassNames())}
         backdropStyle={{display: 'block'}}
-        className={cx(className, this.getClassNames())}
-        style={{display: 'block'}}
       >
-        <div>
+        <div className={cx(className, this.getClassNames())} style={{display: 'block'}}>
           {children}
         </div>
       </Modal>

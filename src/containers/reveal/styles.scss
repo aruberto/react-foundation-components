@@ -2,3 +2,10 @@
 @import '~foundation-sites/scss/components/reveal';
 
 @include foundation-reveal;
+
+.reveal {
+  left: 50%;
+  margin: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
