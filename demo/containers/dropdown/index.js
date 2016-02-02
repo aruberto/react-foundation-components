@@ -18,7 +18,67 @@ export default class DropdownPage extends Component {
         <br/>
         <br/>
         <br/>
-        <HasDropdown><Button>Toggle Dropdown</Button></HasDropdown>
+        <HasDropdown
+          dropdown={
+            <div>
+              <label>Name<input placeholder='Kirk, James T.' type='text'/></label>
+              <br/>
+              <label>Rank<input placeholder='Captain' type='text'/></label>
+            </div>
+          }
+        >
+          <Button>Toggle Dropdown</Button>
+        </HasDropdown>
+        <br/>
+        <HasDropdown
+          dropdown='Just some junk that needs to be said. Or not. Your choice.'
+          toggleClick={false}
+          toggleHover
+        >
+          <Button>Hoverable Dropdown</Button>
+        </HasDropdown>
+        <br/>
+        <HasDropdown
+          dropdown='Just some junk that needs to be said. Or not. Your choice.'
+          toggleClick={false}
+          toggleFocus
+        >
+          <Button tabIndex='1'>Hoverable Dropdown</Button>
+        </HasDropdown>
+        <br/>
+        <HasDropdown
+          closeOnClick
+          dropdown='You can close me by clicking anywhere else on screen!'
+        >
+          <Button tabIndex='1'>Toggle Dropdown</Button>
+        </HasDropdown>
+        <br/>
+        <HasDropdown
+          dropdown='Just some junk that needs to be said. Or not. Your choice.'
+          dropdownPosition='top'
+        >
+          <Button>Top Dropdown</Button>
+        </HasDropdown>
+        <br/>
+        <HasDropdown
+          dropdown='Just some junk that needs to be said. Or not. Your choice.'
+          dropdownPosition='left'
+        >
+          <Button style={{left: '300px', position: 'relative'}}>Left Dropdown</Button>
+        </HasDropdown>
+        <br/>
+        <HasDropdown
+          dropdown='Just some junk that needs to be said. Or not. Your choice.'
+          dropdownPosition='right'
+        >
+          <Button>Right Dropdown</Button>
+        </HasDropdown>
+        <br/>
+        <HasDropdown
+          dropdown='Just some junk that needs to be said. Or not. Your choice.'
+        >
+          <Button id='myBtn'>Toggle Dropdown With Id</Button>
+        </HasDropdown>
       </div>
     );
   }

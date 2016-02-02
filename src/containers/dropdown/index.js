@@ -74,6 +74,7 @@ const HasDropdownBase = createHigherOrderComponent({
 export class HasDropdown extends Component {
   static propTypes = {
     children: PropTypes.node,
+    closeOnClick: PropTypes.bool,
     dropdown: PropTypes.node,
     dropdownClassName: PropTypes.string,
     dropdownPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
@@ -84,7 +85,14 @@ export class HasDropdown extends Component {
     onFocus: PropTypes.func,
     onMouseOut: PropTypes.func,
     onMouseOver: PropTypes.func,
+    toggleClick: PropTypes.bool,
+    toggleFocus: PropTypes.bool,
+    toggleHover: PropTypes.bool,
     transition: elementType
+  };
+
+  static defaultProps = {
+    toggleClick: true
   };
 
   constructor(props) {
@@ -142,74 +150,90 @@ export class HasDropdown extends Component {
   };
 
   handleRootClose = () => {
-    const now = new Date();
-    const diff = now - this._lastRootClose;
+    const {closeOnClick} = this.props;
 
-    this._lastRootClose = now;
+    if (closeOnClick) {
+      const now = new Date();
+      const diff = now - this._lastRootClose;
 
-    if (this._clicked && diff < 50) {
-      this.handleAnyClick();
+      this._lastRootClose = now;
+
+      if (this._clicked && diff < 50) {
+        this.handleAnyClick();
+      }
     }
   };
 
   handleClick = (...args) => {
-    const {onClick} = this.props;
+    const {onClick, toggleClick} = this.props;
 
-    this.handleAnyClick();
+    if (toggleClick) {
+      this.handleAnyClick();
 
-    if (onClick) {
-      onClick(...args);
+      if (onClick) {
+        onClick(...args);
+      }
     }
   };
 
   handleBlur = (...args) => {
-    const {onBlur} = this.props;
+    const {onBlur, toggleFocus} = this.props;
 
-    this.handleHide();
+    if (toggleFocus) {
+      this.handleHide();
 
-    if (onBlur) {
-      onBlur(...args);
+      if (onBlur) {
+        onBlur(...args);
+      }
     }
   };
 
   handleFocus = (...args) => {
-    const {onFocus} = this.props;
+    const {onFocus, toggleFocus} = this.props;
 
-    this.handleShow();
+    if (toggleFocus) {
+      this.handleShow();
 
-    if (onFocus) {
-      onFocus(...args);
+      if (onFocus) {
+        onFocus(...args);
+      }
     }
   };
 
   handleMouseOut = (...args) => {
-    const {onMouseOut} = this.props;
-    const [event] = args;
+    const {onMouseOut, toggleHover} = this.props;
 
-    mouseOverOut(event, () => {
-      this.handleHide();
+    if (toggleHover) {
+      const [event] = args;
 
-      if (onMouseOut) {
-        onMouseOut(...args);
-      }
-    });
+      mouseOverOut(event, () => {
+        this.handleHide();
+
+        if (onMouseOut) {
+          onMouseOut(...args);
+        }
+      });
+    }
   };
 
   handleMouseOver = (...args) => {
-    const {onMouseOver} = this.props;
+    const {onMouseOver, toggleHover} = this.props;
     const [event] = args;
 
-    mouseOverOut(event, () => {
-      this.handleShow();
+    if (toggleHover) {
+      mouseOverOut(event, () => {
+        this.handleShow();
 
-      if (onMouseOver) {
-        onMouseOver(...args);
-      }
-    });
+        if (onMouseOver) {
+          onMouseOver(...args);
+        }
+      });
+    }
   };
 
   createOverlay = () => {
     const {
+      children,
       dropdown,
       dropdownClassName,
       dropdownPosition,
@@ -219,6 +243,11 @@ export class HasDropdown extends Component {
     } = this.props;
     const {show} = this.state;
     const placement = dropdownPosition || 'bottom';
+    let labelledBy = null;
+
+    if (children && children.props && !isBlank(children.props.id)) {
+      labelledBy = children.props.id;
+    }
 
     return (
       <Overlay
@@ -230,6 +259,7 @@ export class HasDropdown extends Component {
         transition={transition}
       >
         <Dropdown
+          aria-labelledby={labelledBy}
           className={dropdownClassName}
           position={dropdownPosition}
           size={dropdownSize}
@@ -245,6 +275,7 @@ export class HasDropdown extends Component {
 
   render() {
     const {children} = this.props;
+    const {show} = this.state;
 
     this._overlay = this.createOverlay();
 
@@ -252,6 +283,7 @@ export class HasDropdown extends Component {
       <RootCloseWrapper noWrap onRootClose={this.handleRootClose}>
         <HasDropdownBase
           {...this.props}
+          aria-expanded={show}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
           onFocus={this.handleFocus}
