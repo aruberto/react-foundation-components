@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Collapse} from '../../../src';
+import {Collapse, Button} from '../../../src';
 
 export default class CollapsePage extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class CollapsePage extends Component {
 
     return (
       <div style={{whiteSpace: 'nowrap'}}>
-        <button onClick={this.handleClick} type='button'>Toggle</button>
+        <Button onClick={this.handleClick}>Toggle</Button>
         <br/>
         <Collapse in={show}>
           <div>

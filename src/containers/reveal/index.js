@@ -12,40 +12,53 @@ const MODAL_SIZES = COMPONENT_SIZES.concat(['full']);
 
 export default class Reveal extends Component {
   static propTypes = {
-    backdropClassName: PropTypes.string,
     children: PropTypes.node,
-    className: PropTypes.string,
-    collapse: PropTypes.bool,
+    overlay: PropTypes.bool,
+    overlayClassName: PropTypes.string,
+    overlayStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    revealClassName: PropTypes.string,
+    revealStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     size: PropTypes.oneOf(MODAL_SIZES),
     transition: elementType
   };
 
   static defaultProps = {
+    overlay: true,
     transition: Fade
   };
 
-  getClassNames = () => {
-    const {collapse, size} = this.props;
+  getRevealClassNames = () => {
+    const {size} = this.props;
 
     return joinObjects(styles, {
       reveal: true,
-      collapse,
       [size]: MODAL_SIZES.includes(size)
     });
   };
 
-  getBackdropClassNames = () => joinObjects(styles, {'reveal-overlay': true});
+  getOverlayClassNames = () => joinObjects(styles, {'reveal-overlay': true});
 
   render() {
-    const {backdropClassName, children, className} = this.props;
+    const {
+      children,
+      revealClassName,
+      revealStyle,
+      overlay,
+      overlayClassName,
+      overlayStyle
+    } = this.props;
 
     return (
       <Modal
         {...this.props}
-        backdropClassName={cx(backdropClassName, this.getBackdropClassNames())}
-        backdropStyle={{display: 'block'}}
+        backdrop={overlay}
+        backdropClassName={cx(overlayClassName, this.getOverlayClassNames())}
+        backdropStyle={{...overlayStyle, display: 'block'}}
       >
-        <div className={cx(className, this.getClassNames())} style={{display: 'block'}}>
+        <div
+          className={cx(revealClassName, this.getRevealClassNames())}
+          style={{...revealStyle, display: 'block'}}
+        >
           {children}
         </div>
       </Modal>

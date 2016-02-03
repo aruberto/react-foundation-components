@@ -3,7 +3,9 @@
   "version": "0.3.0",
   "description": "Foundation Sites components built with the power of React and CSS Modules",
   "main": "lib/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "clean": "rimraf lib demo/lib",
     "lint": "eslint src && sass-lint --verbose",

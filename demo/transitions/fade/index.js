@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Fade} from '../../../src';
+import {Fade, Button} from '../../../src';
 
 export default class FadePage extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class FadePage extends Component {
 
     return (
       <div>
-        <button onClick={this.handleClick} type='button'>Toggle</button>
+        <Button onClick={this.handleClick}>Toggle</Button>
         <br/>
         <Fade in={show}>
           <div>
