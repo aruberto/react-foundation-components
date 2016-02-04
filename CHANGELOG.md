@@ -1,8 +1,22 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/aruberto/react-foundation-components/compare/0.4.0...v0.4.0) (2016-02-04)
+
+
+### Miscellaneous
+
+* Add accordion, callout, dropdown, media object, off canvas, reveal, table, tabs and title bar container components.
+
+
+### BREAKING CHANGES
+
+* Use onToggle instead of onChange for switch
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/aruberto/react-foundation-components/compare/0.3.0...v0.3.0) (2016-02-01)
 
 
-#### Miscellaneous
+### Miscellaneous
 
 * Add badge, flex video, label, progress bar, thumbnail and tooltip media components.
 
@@ -20,7 +34,7 @@
 # [0.2.0](https://github.com/aruberto/react-foundation-components/compare/0.2.0...v0.2.0) (2016-01-29)
 
 
-#### Miscellaneous
+### Miscellaneous
 
 * Add button, button group, close button and switch control components.
 
@@ -38,6 +52,6 @@
 # [0.1.0](https://github.com/aruberto/react-foundation-components/compare/v0.1.0...v0.1.0) (2016-01-28)
 
 
-#### Miscellaneous
+### Miscellaneous
 
 * Add grid, visibility, float and typography components.
