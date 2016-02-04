@@ -22,6 +22,7 @@ import MediaObjectPage from './containers/media-object';
 import OffCanvasPage from './containers/off-canvas';
 import RevealPage from './containers/reveal';
 import TablePage from './containers/table';
+import TabsPage from './containers/tabs';
 import BadgePage from './media/badge';
 import FlexVideoPage from './media/flex-video';
 import LabelPage from './media/label';
@@ -77,6 +78,8 @@ class HomePage extends Component {
         &nbsp;|&nbsp;
         <Link to='/containers/table'>Table</Link>
         &nbsp;|&nbsp;
+        <Link to='/containers/tabs'>Tabs</Link>
+        &nbsp;|&nbsp;
         <Link to='/media/badge'>Badge</Link>
         &nbsp;|&nbsp;
         <Link to='/media/flex-video'>Flex Video</Link>
@@ -122,6 +125,7 @@ class Demo extends Component {
           <Route component={OffCanvasPage} path='/containers/off-canvas'/>
           <Route component={RevealPage} path='/containers/reveal'/>
           <Route component={TablePage} path='/containers/table'/>
+          <Route component={TabsPage} path='/containers/tabs'/>
           <Route component={BadgePage} path='/media/badge'/>
           <Route component={FlexVideoPage} path='/media/flex-video'/>
           <Route component={LabelPage} path='/media/label'/>

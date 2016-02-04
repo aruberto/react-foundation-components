@@ -32,7 +32,8 @@ export {MediaObjectSection, MediaObject} from './containers/media-object';
 export OffCanvas from './containers/off-canvas';
 export Reveal from './containers/reveal';
 export Table from './containers/table';
-export {TitleBarItem, TitleBar} from './containers/title-bar';
+export {Tabs, Tab} from './containers/tabs';
+export {TitleBar, TitleBarItem} from './containers/title-bar';
 
 export Badge from './media/badge';
 export FlexVideo from './media/flex-video';
