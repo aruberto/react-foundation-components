@@ -132,7 +132,7 @@
     "no-restricted-modules": 2,
     "no-sync": 2,
 
-    "array-bracket-spacing": 1,
+    "array-bracket-spacing": 0,
     "block-spacing": 1,
     "brace-style": 1,
     "camelcase": 1,
@@ -285,6 +285,7 @@
         "SetIterable"
       ]
     }],
+    "babel/array-bracket-spacing": 1,
     "babel/object-curly-spacing": 1,
     "babel/object-shorthand": 1,
     "babel/arrow-parens": 1,
