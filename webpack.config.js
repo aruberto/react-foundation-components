@@ -76,7 +76,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'demo', 'lib'),
-    filename: '[name]-[hash].js',
+    filename: '[name]-[' + (DEV ? 'hash' : 'chunkhash') + '].js',
     publicPath: '/react-foundation-components'
   },
 

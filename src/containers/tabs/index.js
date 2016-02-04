@@ -10,7 +10,8 @@ export class Tab extends Component {
   static propTypes = {
     active: PropTypes.bool,
     children: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 
   getClassNames = () => {
@@ -20,33 +21,69 @@ export class Tab extends Component {
   };
 
   render() {
-    const {children, className} = this.props;
+    const {active, children, className, id} = this.props;
+    let labelId = null;
+
+    if (!isBlank(id)) {
+      labelId = `${id}-label`;
+    }
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
-        <div role='tabpanel'>
-          {children}
-        </div>
+      <div
+        {...this.props}
+        aria-hidden={!active}
+        aria-labelledby={labelId}
+        className={cx(className, this.getClassNames())}
+        role='tabpanel'
+      >
+        {children}
       </div>
     );
   }
 }
 
-export class TabTitle extends Component {
+export class TabsContent extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string
+  };
+
+  getClassNames = () => joinObjects(styles, {'tabs-content': true});
+
+  render() {
+    const {children, className} = this.props;
+
+    return (
+      <div {...this.props} className={cx(className, this.getClassNames())}>
+        {children}
+      </div>
+    );
+  }
+}
+
+export class TabsTitle extends Component {
   static propTypes = {
     active: PropTypes.bool,
     children: PropTypes.node,
-    className: PropTypes.string,
+    containerClassName: PropTypes.string,
+    containerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    panelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 
-  getClassNames = () => joinObjects(styles, {'tabs-title': true});
+  getClassNames = () => {
+    const {active} = this.props;
+
+    return joinObjects(styles, {'tabs-title': true, 'is-active': active});
+  };
 
   handleClick = (event) => {
-    const {eventKey, onSelect} = this.props;
+    const {eventKey, panelId, onSelect} = this.props;
 
-    event.preventDefault();
+    if (isBlank(panelId)) {
+      event.preventDefault();
+    }
 
     if (onSelect) {
       onSelect(eventKey);
@@ -54,11 +91,23 @@ export class TabTitle extends Component {
   };
 
   render() {
-    const {children, className} = this.props;
+    const {active, children, containerClassName, containerStyle, panelId} = this.props;
+    const href = `#${isBlank(panelId) ? '' : panelId}`;
 
     return (
-      <li {...this.props} className={cx(className, this.getClassNames())} role='presentation'>
-        <a href='#' onClick={this.handleClick} role='tab'>
+      <li
+        className={cx(containerClassName, this.getClassNames())}
+        role='presentation'
+        style={containerStyle}
+      >
+        <a
+          {...this.props}
+          aria-controls={panelId}
+          aria-selected={active}
+          href={href}
+          onClick={this.handleClick}
+          role='tab'
+        >
           {children}
         </a>
       </li>
@@ -66,29 +115,65 @@ export class TabTitle extends Component {
   }
 }
 
-class TabsControlled extends Component {
+export class TabsHeader extends Component {
   static propTypes = {
     activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     children: PropTypes.node,
+    className: PropTypes.string,
     onSelect: PropTypes.func,
     vertical: PropTypes.bool
   };
 
-  getTabsClassNames = () => {
+  getClassNames = () => {
     const {vertical} = this.props;
 
     return joinObjects(styles, {tabs: true, vertical});
   };
 
-  getTabsContentClassNames = () => joinObjects(styles, {'tabs-content': true});
+  render() {
+    const {activeKey, children, className, onSelect} = this.props;
+    const newChildren = Children.map(children, (child) => {
+      if (child.props && !isBlank(child.props.eventKey)) {
+        return cloneElement(child, {
+          active: activeKey === child.props.eventKey,
+          onSelect
+        });
+      }
+
+      return child;
+    });
+
+    return (
+      <ul {...this.props} className={cx(className, this.getClassNames())}>
+        {newChildren}
+      </ul>
+    );
+  }
+}
+
+class TabsControlled extends Component {
+  static propTypes = {
+    activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    children: PropTypes.node
+  };
 
   render() {
-    const {activeKey, children, onSelect} = this.props;
-    const titleChildren = Children.map(children, (child) =>
-      <TabTitle {...(child.props ? child.props : {})} onSelect={onSelect}>
-        {child.props ? child.props.title : null}
-      </TabTitle>
-    );
+    const {activeKey, children} = this.props;
+    const headerChildren = Children.map(children, (child) => {
+      let id = null;
+      let panelId = null;
+
+      if (child.props && !isBlank(child.props.id)) {
+        panelId = child.props.id;
+        id = `${panelId}-label`;
+      }
+
+      return (
+        <TabsTitle {...(child.props ? child.props : {})} id={id} panelId={panelId}>
+          {child.props ? child.props.title : null}
+        </TabsTitle>
+      );
+    });
     const contentChildren = Children.map(children, (child) => {
       if (child.props && !isBlank(child.props.eventKey)) {
         return cloneElement(child, {active: activeKey === child.props.eventKey});
@@ -99,12 +184,12 @@ class TabsControlled extends Component {
 
     return (
       <div {...this.props}>
-        <ul className={cx(this.getTabsClassNames())}>
-          {titleChildren}
-        </ul>
-        <div className={cx(this.getTabsContentClassNames())}>
+        <TabsHeader {...this.props}>
+          {headerChildren}
+        </TabsHeader>
+        <TabsContent>
           {contentChildren}
-        </div>
+        </TabsContent>
       </div>
     );
   }
