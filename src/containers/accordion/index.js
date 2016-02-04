@@ -4,8 +4,7 @@ import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
 import isBlank from 'underscore.string/isBlank';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
 import Collapse from '../../transitions/collapse';
 
 class AccordionItemControlled extends Component {
@@ -22,16 +21,6 @@ class AccordionItemControlled extends Component {
     titleClassName: PropTypes.string,
     titleStyle: PropTypes.object // eslint-disable-line react/forbid-prop-types
   };
-
-  getClassNames = () => {
-    const {active} = this.props;
-
-    return joinObjects(styles, {'accordion-item': true, 'is-active': active});
-  };
-
-  getTitleClassNames = () => joinObjects(styles, {'accordion-title': true});
-
-  getContentClassNames = () => joinObjects(styles, {'accordion-content': true});
 
   handleTitleClick = (event) => {
     const {eventKey, onToggle} = this.props;
@@ -55,6 +44,9 @@ class AccordionItemControlled extends Component {
       titleClassName,
       titleStyle
     } = this.props;
+    const classNames = cx(className, styles['accordion-item'], {[styles['is-active']]: active});
+    const titleClassNames = cx(titleClassName, styles['accordion-title']);
+    const contentClassNames = cx(contentClassName, styles['accordion-content']);
     let labelId = null;
     let contentId = null;
 
@@ -64,12 +56,12 @@ class AccordionItemControlled extends Component {
     }
 
     return (
-      <li {...this.props} className={cx(className, this.getClassNames())}>
+      <li {...this.props} className={classNames}>
         <a
           aria-controls={contentId}
           aria-expanded={active}
           aria-selected={active}
-          className={cx(titleClassName, this.getTitleClassNames())}
+          className={titleClassNames}
           href='#'
           id={labelId}
           onClick={this.handleTitleClick}
@@ -83,10 +75,10 @@ class AccordionItemControlled extends Component {
             <div
               aria-hidden={!active}
               aria-labelledby={labelId}
-              className={cx(contentClassName, this.getContentClassNames())}
+              className={contentClassNames}
               id={contentId}
               role='tabpanel'
-              style={{...contentStyle, display: 'block'}}
+              style={contentStyle}
             >
               {children}
             </div>
@@ -171,8 +163,6 @@ export class Accordion extends Component {
     return !this._isChanging;
   }
 
-  getClassNames = () => joinObjects(styles, {accordion: true});
-
   handleToggle = (...args) => {
     const {allowAllClosed, multiExpand, onSelect} = this.props;
     const {activeKey: prevActiveKey} = this.state;
@@ -215,6 +205,7 @@ export class Accordion extends Component {
   render() {
     const {activeKey: propActiveKey, children, className} = this.props;
     const {activeKey: stateActiveKey} = this.state;
+    const classNames = cx(className, styles.accordion);
     let activeKey = stateActiveKey;
 
     if (Array.isArray(propActiveKey) || !isBlank(propActiveKey)) {
@@ -236,7 +227,7 @@ export class Accordion extends Component {
     });
 
     return (
-      <ul {...this.props} className={cx(className, this.getClassNames())} role='tablist'>
+      <ul {...this.props} className={classNames} role='tablist'>
         {newChildren}
       </ul>
     );

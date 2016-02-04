@@ -11,9 +11,8 @@ import RootCloseWrapper from 'react-overlays/lib/RootCloseWrapper';
 import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
 
-import styles from './styles.scss';
+import styles from './styles';
 import {COMPONENT_SIZES, OVERLAY_POSITIONS} from '../../util/constants';
-import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 
 function mouseOverOut(event, callback) {
@@ -33,22 +32,20 @@ export class Dropdown extends Component {
     size: PropTypes.oneOf(COMPONENT_SIZES)
   };
 
-  getClassNames = () => {
-    const {position, size} = this.props;
-
-    return joinObjects(styles, {
-      'dropdown-pane': true,
-      'is-open': true,
-      [position]: OVERLAY_POSITIONS.includes(position),
-      [size]: COMPONENT_SIZES.includes(size)
-    });
-  };
-
   render() {
-    const {children, className} = this.props;
+    const {children, className, position, size} = this.props;
+    const classNames = cx(
+      className,
+      styles['dropdown-pane'],
+      styles['is-open'],
+      {
+        [styles[position]]: OVERLAY_POSITIONS.includes(position),
+        [styles[size]]: COMPONENT_SIZES.includes(size)
+      }
+    );
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
+      <div {...this.props} className={classNames}>
         {children}
       </div>
     );

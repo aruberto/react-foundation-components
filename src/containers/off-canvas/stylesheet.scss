@@ -2,3 +2,9 @@
 @import '~foundation-sites/scss/components/off-canvas';
 
 @include foundation-off-canvas;
+
+.js-off-canvas-exit {
+  &.is-visible {
+    display: block;
+  }
+}

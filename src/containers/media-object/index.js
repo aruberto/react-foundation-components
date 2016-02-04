@@ -1,10 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
 
-const MEDIA_OBJECT_SECTION_ALIGNMENTS = ['middle', 'bottom'];
+import {MEDIA_OBJECT_SECTION_ALIGNMENTS} from '../../util/constants';
 
 export class MediaObjectSection extends Component {
   static propTypes = {
@@ -13,20 +12,18 @@ export class MediaObjectSection extends Component {
     className: PropTypes.string
   };
 
-  getClassNames = () => {
-    const {alignment} = this.props;
-
-    return joinObjects(styles, {
-      'media-object-section': true,
-      [alignment]: MEDIA_OBJECT_SECTION_ALIGNMENTS.includes(alignment)
-    });
-  };
-
   render() {
-    const {children, className} = this.props;
+    const {alignment, children, className} = this.props;
+    const classNames = cx(
+      className,
+      styles['media-object-section'],
+      {
+        [styles[alignment]]: MEDIA_OBJECT_SECTION_ALIGNMENTS.includes(alignment)
+      }
+    );
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
+      <div {...this.props} className={classNames}>
         {children}
       </div>
     );
@@ -40,20 +37,18 @@ export class MediaObject extends Component {
     stackForSmall: PropTypes.bool
   };
 
-  getClassNames = () => {
-    const {stackForSmall} = this.props;
-
-    return joinObjects(styles, {
-      'media-object': true,
-      'stack-for-small': stackForSmall
-    });
-  };
-
   render() {
-    const {children, className} = this.props;
+    const {children, className, stackForSmall} = this.props;
+    const classNames = cx(
+      className,
+      styles['media-object'],
+      {
+        [styles['stack-for-small']]: stackForSmall
+      }
+    );
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
+      <div {...this.props} className={classNames}>
         {children}
       </div>
     );

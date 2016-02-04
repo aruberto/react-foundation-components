@@ -3,20 +3,20 @@
 
 .tooltip {
   margin-top: $tooltip-pip-width;
-}
 
-.top {
-  margin-top: -$tooltip-pip-width;
-}
+  &.top {
+    margin-top: -$tooltip-pip-width;
+  }
 
-.left {
-  margin-left: -$tooltip-pip-width;
-  margin-top: 0;
-}
+  &.left {
+    margin-left: -$tooltip-pip-width;
+    margin-top: 0;
+  }
 
-.right {
-  margin-left: $tooltip-pip-width;
-  margin-top: 0;
+  &.right {
+    margin-left: $tooltip-pip-width;
+    margin-top: 0;
+  }
 }
 
 @include foundation-tooltip;

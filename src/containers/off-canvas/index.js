@@ -1,11 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import styles from './styles.scss';
-import {LARGER_SCREEN_SIZES} from '../../util/constants';
-import joinObjects from '../../util/join-objects';
-
-const OFF_CANVAS_POSITIONS = ['left', 'right'];
+import styles from './styles';
+import {LARGER_SCREEN_SIZES, OFF_CANVAS_POSITIONS} from '../../util/constants';
 
 export default class OffCanvas extends Component {
   static propTypes = {
@@ -29,41 +26,6 @@ export default class OffCanvas extends Component {
     rightStyle: PropTypes.object // eslint-disable-line react/forbid-prop-types
   };
 
-  getClassNames = () => joinObjects(styles, {'off-canvas-wrapper': true});
-
-  getInnerClassNames = () => {
-    const {open} = this.props;
-
-    return joinObjects(styles, {
-      'off-canvas-wrapper-inner': true,
-      [`is-open-${open}`]: OFF_CANVAS_POSITIONS.includes(open)
-    });
-  };
-
-  getContentClassNames = () => joinObjects(styles, {'off-canvas-content': true});
-
-  getContentBlockerClassNames = () => joinObjects(styles, {'js-off-canvas-exit': true});
-
-  getLeftClassNames = () => {
-    const {leftRevealForSize} = this.props;
-
-    return joinObjects(styles, {
-      'off-canvas': true,
-      'position-left': true,
-      [`reveal-for-${leftRevealForSize}`]: LARGER_SCREEN_SIZES.includes(leftRevealForSize)
-    });
-  };
-
-  getRightClassNames = () => {
-    const {rightRevealForSize} = this.props;
-
-    return joinObjects(styles, {
-      'off-canvas': true,
-      'position-right': true,
-      [`reveal-for-${rightRevealForSize}`]: LARGER_SCREEN_SIZES.includes(rightRevealForSize)
-    });
-  };
-
   handleContentBlockerClick = () => {
     const {onClose} = this.props;
 
@@ -77,38 +39,68 @@ export default class OffCanvas extends Component {
       children,
       className,
       contentBlockerClassName,
-      contentBlockerStyle: baseContentBlockerStyle,
+      contentBlockerStyle,
       contentClassName,
       contentStyle,
       innerClassName,
       innerStyle,
       leftClassName,
       leftContent,
+      leftRevealForSize,
       leftStyle,
       open,
       rightClassName,
       rightContent,
+      rightRevealForSize,
       rightStyle
     } = this.props;
-    const contentBlockerStyle = {...baseContentBlockerStyle};
-
-    if (OFF_CANVAS_POSITIONS.includes(open)) {
-      contentBlockerStyle.display = 'block';
-    }
+    const classNames = cx(className, styles['off-canvas-wrapper']);
+    const innerClassNames = cx(
+      innerClassName,
+      styles['off-canvas-wrapper-inner'],
+      {
+        [styles[`is-open-${open}`]]: OFF_CANVAS_POSITIONS.includes(open)
+      }
+    );
+    const leftClassNames = cx(
+      leftClassName,
+      styles['off-canvas'],
+      styles['position-left'],
+      {
+        [styles[`reveal-for-${leftRevealForSize}`]]: LARGER_SCREEN_SIZES.includes(leftRevealForSize)
+      }
+    );
+    const rightClassNames = cx(
+      rightClassName,
+      styles['off-canvas'],
+      styles['position-right'],
+      {
+        [styles[`reveal-for-${rightRevealForSize}`]]:
+          LARGER_SCREEN_SIZES.includes(rightRevealForSize)
+      }
+    );
+    const contentClassNames = cx(contentClassName, styles['off-canvas-content']);
+    const contentBlockerClassNames = cx(
+      contentBlockerClassName,
+      styles['js-off-canvas-exit'],
+      {
+        [styles['is-visible']]: OFF_CANVAS_POSITIONS.includes(open)
+      }
+    );
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
-        <div className={cx(innerClassName, this.getInnerClassNames())} style={innerStyle}>
-          <div className={cx(leftClassName, this.getLeftClassNames())} style={leftStyle}>
+      <div {...this.props} className={classNames}>
+        <div className={innerClassNames} style={innerStyle}>
+          <div className={leftClassNames} style={leftStyle}>
             {leftContent}
           </div>
-          <div className={cx(rightClassName, this.getRightClassNames())} style={rightStyle}>
+          <div className={rightClassNames} style={rightStyle}>
             {rightContent}
           </div>
-          <div className={cx(contentClassName, this.getContentClassNames())} style={contentStyle}>
+          <div className={contentClassNames} style={contentStyle}>
             {children}
             <div
-              className={cx(contentBlockerClassName, this.getContentBlockerClassNames())}
+              className={contentBlockerClassNames}
               onClick={this.handleContentBlockerClick}
               style={contentBlockerStyle}
             />

@@ -1,11 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import styles from './styles.scss';
-import {COMPONENT_SIZES, COMPONENT_COLORS} from '../../util/constants';
-import joinObjects from '../../util/join-objects';
-
-const CALLOUT_SIZES = COMPONENT_SIZES.filter((size) => size !== 'tiny');
+import styles from './styles';
+import {CALLOUT_SIZES, COMPONENT_COLORS} from '../../util/constants';
 
 export default class Callout extends Component {
   static propTypes = {
@@ -15,21 +12,19 @@ export default class Callout extends Component {
     size: PropTypes.oneOf(CALLOUT_SIZES)
   };
 
-  getClassNames = () => {
-    const {color, size} = this.props;
-
-    return joinObjects(styles, {
-      callout: true,
-      [color]: COMPONENT_COLORS.includes(color),
-      [size]: COMPONENT_SIZES.includes(size)
-    });
-  };
-
   render() {
-    const {children, className} = this.props;
+    const {children, className, color, size} = this.props;
+    const classNames = cx(
+      className,
+      styles.callout,
+      {
+        [styles[color]]: COMPONENT_COLORS.includes(color),
+        [styles[size]]: CALLOUT_SIZES.includes(size)
+      }
+    );
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
+      <div {...this.props} className={classNames}>
         {children}
       </div>
     );

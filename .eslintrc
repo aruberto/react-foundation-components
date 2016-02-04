@@ -15,10 +15,6 @@
     "modules": true,
     "globalReturn": false
   },
-  "globals": {
-    "__DEVELOPMENT__": true,
-    "__DEVTOOLS__": true
-  },
   "rules": {
     "comma-dangle": 2,
     "no-cond-assign": 2,
