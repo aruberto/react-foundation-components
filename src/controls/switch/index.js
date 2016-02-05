@@ -4,20 +4,19 @@ import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
 import isBlank from 'underscore.string/isBlank';
 
-import styles from './styles.scss';
+import styles from './styles';
 import {COMPONENT_SIZES} from '../../util/constants';
-import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import {ShowOnlyForScreenReader, HideOnlyForScreenReader} from '../../general/visibility';
 
 const CheckedLabel = createHigherOrderComponent({
   displayName: 'CheckedLabel',
-  mapPropsToClassNames: () => joinObjects(styles, {'switch-active': true})
+  mapPropsToClassNames: () => styles['switch-active']
 });
 
 const UncheckedLabel = createHigherOrderComponent({
   displayName: 'UncheckedLabel',
-  mapPropsToClassNames: () => joinObjects(styles, {'switch-inactive': true})
+  mapPropsToClassNames: () => styles['switch-inactive']
 });
 
 export class Switch extends Component {
@@ -68,23 +67,6 @@ export class Switch extends Component {
     }
   };
 
-  getClassNames = () => {
-    const {size} = this.props;
-
-    return joinObjects(styles, {
-      switch: true,
-      [size]: COMPONENT_SIZES.includes(size)
-    });
-  };
-
-  getInputClassNames = () => joinObjects(styles, {'switch-input': true});
-
-  getPaddleClassNames = () => joinObjects(styles, {'switch-paddle': true});
-
-  getCheckedLabelClassNames = () => joinObjects(styles, {'switch-active': true});
-
-  getUncheckedLabelClassNames = () => joinObjects(styles, {'switch-inactive': true});
-
   renderPaddleLabel = () => {
     const {paddleLabel} = this.props;
     let result = null;
@@ -133,21 +115,31 @@ export class Switch extends Component {
       containerStyle,
       id,
       paddleClassName,
-      paddleStyle
+      paddleStyle,
+      size
     } = this.props;
+    const containerClassNames = cx(
+      containerClassName,
+      styles.switch,
+      {
+        [styles[size]]: COMPONENT_SIZES.includes(size)
+      }
+    );
+    const classNames = cx(className, styles['switch-input']);
+    const paddleClassNames = cx(paddleClassName, styles['switch-paddle']);
 
     return (
-      <div className={cx(containerClassName, this.getClassNames())} style={containerStyle}>
+      <div className={containerClassNames} style={containerStyle}>
         <input
           {...this.props}
-          className={cx(className, this.getInputClassNames())}
+          className={classNames}
           onChange={this.handleInputChange}
           ref={this.setInputRef}
           size={null}
           type='checkbox'
         />
         <label
-          className={cx(paddleClassName, this.getPaddleClassNames())}
+          className={paddleClassNames}
           htmlFor={id}
           onClick={this.handleLabelClick}
           style={paddleStyle}

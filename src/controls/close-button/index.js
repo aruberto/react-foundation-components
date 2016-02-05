@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
 import {HideOnlyForScreenReader} from '../../general/visibility';
 
 export default class CloseButton extends Component {
@@ -11,13 +10,12 @@ export default class CloseButton extends Component {
     className: PropTypes.string
   };
 
-  getClassNames = () => joinObjects(styles, {'close-button': true});
-
   render() {
     const {children = '×', className} = this.props;
+    const classNames = cx(className, styles['close-button']);
 
     return (
-      <button {...this.props} className={cx(className, this.getClassNames())} type='button'>
+      <button {...this.props} className={classNames} type='button'>
         <HideOnlyForScreenReader>{children}</HideOnlyForScreenReader>
       </button>
     );
