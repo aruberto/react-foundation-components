@@ -9,9 +9,9 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {MEDIA_OBJECT_SECTION_ALIGNMENTS} = require('../../util/constants');
-  const classNames = ['media-object', 'media-object-section', 'stack-for-small']
-    .concat(MEDIA_OBJECT_SECTION_ALIGNMENTS);
+  const {TITLE_BAR_POSITIONS} = require('../../util/constants');
+  const classNames = ['title-bar', 'title-bar-title', 'menu-icon', 'dark']
+    .concat(TITLE_BAR_POSITIONS.map((pos) => `title-bar-${pos}`));
   const keyMirrorArray = require('../../util/key-mirror-array').default;
 
   styles = keyMirrorArray(classNames);

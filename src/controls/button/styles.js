@@ -9,18 +9,17 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {LARGER_SCREEN_SIZES, OFF_CANVAS_POSITIONS} = require('../../util/constants');
+  const {COMPONENT_SIZES, COMPONENT_COLORS} = require('../../util/constants');
   const classNames = [
-    'off-canvas',
-    'off-canvas-wrapper',
-    'off-canvas-wrapper-inner',
-    'off-canvas-content',
-    'js-off-canvas-exit',
-    'is-visible'
+    'button',
+    'disabled',
+    'dropdown',
+    'arrow-only',
+    'expanded',
+    'hollow'
   ]
-    .concat(OFF_CANVAS_POSITIONS.map((pos) => `position-${pos}`))
-    .concat(OFF_CANVAS_POSITIONS.map((pos) => `is-open-${pos}`))
-    .concat(LARGER_SCREEN_SIZES.map((size) => `reveal-for-${size}`));
+    .concat(COMPONENT_SIZES)
+    .concat(COMPONENT_COLORS);
   const keyMirrorArray = require('../../util/key-mirror-array').default;
 
   styles = keyMirrorArray(classNames);

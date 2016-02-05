@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {OffCanvas, TitleBarItem, TitleBar} from '../../../src';
+import {OffCanvas, TitleBar, TitleBarItem, TitleBarTitle, MenuIcon} from '../../../src';
 
 const MAX_HEIGHT_STYLE = {height: '100%'};
 
@@ -33,10 +33,11 @@ export default class OffCanvasPage extends Component {
       <div style={{height: '800px'}}>
         <TitleBar>
           <TitleBarItem position='left'>
-            <button onClick={this.handleToggleLeft} type='button'>≡</button>
+            <MenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
           </TitleBarItem>
+          <TitleBarTitle>Foundation</TitleBarTitle>
           <TitleBarItem position='right'>
-            <button onClick={this.handleToggleRight} type='button'>≡</button>
+            <MenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
           </TitleBarItem>
         </TitleBar>
         <br/>

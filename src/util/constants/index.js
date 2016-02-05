@@ -12,3 +12,6 @@ export const OVERLAY_POSITIONS = ['top', 'left', 'right'];
 export const MEDIA_OBJECT_SECTION_ALIGNMENTS = ['middle', 'bottom'];
 
 export const OFF_CANVAS_POSITIONS = ['left', 'right'];
+export const TITLE_BAR_POSITIONS = OFF_CANVAS_POSITIONS;
+
+export const MODAL_SIZES = COMPONENT_SIZES.concat(['full']);

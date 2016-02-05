@@ -3,8 +3,7 @@ import cx from 'classnames';
 import uncontrollable from 'uncontrollable/batching';
 import isBlank from 'underscore.string/isBlank';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
 
 export class Tab extends Component {
   static propTypes = {
@@ -14,14 +13,15 @@ export class Tab extends Component {
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 
-  getClassNames = () => {
-    const {active} = this.props;
-
-    return joinObjects(styles, {'tabs-panel': true, 'is-active': active});
-  };
-
   render() {
     const {active, children, className, id} = this.props;
+    const classNames = cx(
+      className,
+      styles['tabs-panel'],
+      {
+        [styles['is-active']]: active
+      }
+    );
     let labelId = null;
 
     if (!isBlank(id)) {
@@ -33,7 +33,7 @@ export class Tab extends Component {
         {...this.props}
         aria-hidden={!active}
         aria-labelledby={labelId}
-        className={cx(className, this.getClassNames())}
+        className={classNames}
         role='tabpanel'
       >
         {children}
@@ -48,13 +48,12 @@ export class TabsContent extends Component {
     className: PropTypes.string
   };
 
-  getClassNames = () => joinObjects(styles, {'tabs-content': true});
-
   render() {
     const {children, className} = this.props;
+    const classNames = cx(className, styles['tabs-content']);
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
+      <div {...this.props} className={classNames}>
         {children}
       </div>
     );
@@ -72,12 +71,6 @@ export class TabsTitle extends Component {
     panelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 
-  getClassNames = () => {
-    const {active} = this.props;
-
-    return joinObjects(styles, {'tabs-title': true, 'is-active': active});
-  };
-
   handleClick = (event) => {
     const {eventKey, panelId, onSelect} = this.props;
 
@@ -92,11 +85,18 @@ export class TabsTitle extends Component {
 
   render() {
     const {active, children, containerClassName, containerStyle, panelId} = this.props;
+    const classNames = cx(
+      containerClassName,
+      styles['tabs-title'],
+      {
+        [styles['is-active']]: active
+      }
+    );
     const href = `#${isBlank(panelId) ? '' : panelId}`;
 
     return (
       <li
-        className={cx(containerClassName, this.getClassNames())}
+        className={classNames}
         role='presentation'
         style={containerStyle}
       >
@@ -124,14 +124,15 @@ export class TabsHeader extends Component {
     vertical: PropTypes.bool
   };
 
-  getClassNames = () => {
-    const {vertical} = this.props;
-
-    return joinObjects(styles, {tabs: true, vertical});
-  };
-
   render() {
-    const {activeKey, children, className, onSelect} = this.props;
+    const {activeKey, children, className, onSelect, vertical} = this.props;
+    const classNames = cx(
+      className,
+      styles.tabs,
+      {
+        [styles.vertical]: vertical
+      }
+    );
     const newChildren = Children.map(children, (child) => {
       if (child.props && !isBlank(child.props.eventKey)) {
         return cloneElement(child, {
@@ -144,7 +145,7 @@ export class TabsHeader extends Component {
     });
 
     return (
-      <ul {...this.props} className={cx(className, this.getClassNames())}>
+      <ul {...this.props} className={classNames}>
         {newChildren}
       </ul>
     );

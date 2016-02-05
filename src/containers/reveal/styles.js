@@ -9,9 +9,8 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {MEDIA_OBJECT_SECTION_ALIGNMENTS} = require('../../util/constants');
-  const classNames = ['media-object', 'media-object-section', 'stack-for-small']
-    .concat(MEDIA_OBJECT_SECTION_ALIGNMENTS);
+  const {MODAL_SIZES} = require('../../util/constants');
+  const classNames = ['reveal', 'reveal-overlay'].concat(MODAL_SIZES);
   const keyMirrorArray = require('../../util/key-mirror-array').default;
 
   styles = keyMirrorArray(classNames);

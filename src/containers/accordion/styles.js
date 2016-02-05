@@ -2,10 +2,10 @@
 
 let styles = {};
 
-if (process.env.CSS_MODE === 'modules') {
+if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
   styles = require('./stylesheet.scss');
 } else {
-  if (process.env.CSS_MODE === 'global') {
+  if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'global') {
     require('./stylesheet.scss');
   }
 

@@ -3,12 +3,9 @@ import cx from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 import Modal from 'react-overlays/lib/Modal';
 
-import styles from './styles.scss';
-import {COMPONENT_SIZES} from '../../util/constants';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
+import {MODAL_SIZES} from '../../util/constants';
 import Fade from '../../transitions/fade';
-
-const MODAL_SIZES = COMPONENT_SIZES.concat(['full']);
 
 export default class Reveal extends Component {
   static propTypes = {
@@ -27,17 +24,6 @@ export default class Reveal extends Component {
     transition: Fade
   };
 
-  getRevealClassNames = () => {
-    const {size} = this.props;
-
-    return joinObjects(styles, {
-      reveal: true,
-      [size]: MODAL_SIZES.includes(size)
-    });
-  };
-
-  getOverlayClassNames = () => joinObjects(styles, {'reveal-overlay': true});
-
   render() {
     const {
       children,
@@ -45,20 +31,26 @@ export default class Reveal extends Component {
       revealStyle,
       overlay,
       overlayClassName,
-      overlayStyle
+      overlayStyle,
+      size
     } = this.props;
+    const overlayClassNames = cx(overlayClassName, styles['reveal-overlay']);
+    const revealClassNames = cx(
+      revealClassName,
+      styles.reveal,
+      {
+        [styles[size]]: MODAL_SIZES.includes(size)
+      }
+    );
 
     return (
       <Modal
         {...this.props}
         backdrop={overlay}
-        backdropClassName={cx(overlayClassName, this.getOverlayClassNames())}
-        backdropStyle={{...overlayStyle, display: 'block'}}
+        backdropClassName={overlayClassNames}
+        backdropStyle={overlayStyle}
       >
-        <div
-          className={cx(revealClassName, this.getRevealClassNames())}
-          style={{...revealStyle, display: 'block'}}
-        >
+        <div className={revealClassNames} style={revealStyle}>
           {children}
         </div>
       </Modal>

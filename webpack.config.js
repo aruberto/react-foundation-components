@@ -20,7 +20,7 @@ const VERBOSE = argv.verbose;
 const CSS_MODE = argv['css-mode'];
 const GLOBALS = {
   'process.env.NODE_ENV': DEV ? JSON.stringify('development') : JSON.stringify('production'),
-  'process.env.CSS_MODE': JSON.stringify(CSS_MODE)
+  'process.env.REACT_FOUNDATION_COMPONENTS_CSS': JSON.stringify(CSS_MODE)
 };
 const PLUGINS = [
   new webpack.DefinePlugin(GLOBALS),

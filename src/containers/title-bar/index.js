@@ -1,10 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
-
-const TITLE_BAR_POSITIONS = ['left', 'right'];
+import styles from './styles';
+import {TITLE_BAR_POSITIONS} from '../../util/constants';
 
 export class TitleBarItem extends Component {
   static propTypes = {
@@ -13,21 +11,70 @@ export class TitleBarItem extends Component {
     position: PropTypes.oneOf(TITLE_BAR_POSITIONS).isRequired
   };
 
-  getClassNames = () => {
-    const {position} = this.props;
+  render() {
+    const {children, className, position} = this.props;
+    const classNames = cx(
+      className,
+      {
+        [styles[`title-bar-${position}`]]: TITLE_BAR_POSITIONS.includes(position)
+      }
+    );
 
-    return joinObjects(styles, {
-      [`title-bar-${position}`]: TITLE_BAR_POSITIONS.includes(position)
-    });
+    return (
+      <div {...this.props} className={classNames}>
+        {children}
+      </div>
+    );
+  }
+}
+
+export class TitleBarTitle extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string
   };
 
   render() {
     const {children, className} = this.props;
+    const classNames = cx(className, styles['title-bar-title']);
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
+      <span {...this.props} className={classNames}>
         {children}
-      </div>
+      </span>
+    );
+  }
+}
+
+export class MenuIcon extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    dark: PropTypes.bool,
+    offCanvasId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    open: PropTypes.bool
+  };
+
+  render() {
+    const {children, className, dark, offCanvasId, open} = this.props;
+    const classNames = cx(
+      className,
+      styles['menu-icon'],
+      {
+        [styles.dark]: dark
+      }
+    );
+
+    return (
+      <button
+        {...this.props}
+        aria-controls={offCanvasId}
+        aria-expanded={open}
+        className={classNames}
+        type='button'
+      >
+        {children}
+      </button>
     );
   }
 }
@@ -38,13 +85,12 @@ export class TitleBar extends Component {
     className: PropTypes.string
   };
 
-  getClassNames = () => joinObjects(styles, {'title-bar': true});
-
   render() {
     const {children, className} = this.props;
+    const classNames = cx(className, styles['title-bar']);
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())}>
+      <div {...this.props} className={classNames}>
         {children}
       </div>
     );

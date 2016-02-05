@@ -9,9 +9,7 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {MEDIA_OBJECT_SECTION_ALIGNMENTS} = require('../../util/constants');
-  const classNames = ['media-object', 'media-object-section', 'stack-for-small']
-    .concat(MEDIA_OBJECT_SECTION_ALIGNMENTS);
+  const classNames = ['tabs', 'tabs-title', 'tabs-content', 'tabs-panel', 'is-active', 'vertical'];
   const keyMirrorArray = require('../../util/key-mirror-array').default;
 
   styles = keyMirrorArray(classNames);

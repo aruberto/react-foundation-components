@@ -1,9 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import styles from './styles.scss';
+import styles from './styles';
 import {COMPONENT_SIZES, COMPONENT_COLORS} from '../../util/constants';
-import joinObjects from '../../util/join-objects';
 
 export default class Button extends Component {
   static propTypes = {
@@ -25,39 +24,44 @@ export default class Button extends Component {
     type: 'button'
   };
 
-  getClassNames = () => {
-    const {color, disabled, dropdown, dropdownArrowOnly, expanded, hollow, size} = this.props;
-
-    return joinObjects(styles, {
-      button: true,
-      [color]: COMPONENT_COLORS.includes(color),
+  render() {
+    const {
+      children,
+      className,
+      color,
       disabled,
       dropdown,
-      'arrow-only': dropdown && dropdownArrowOnly,
+      dropdownArrowOnly,
       expanded,
       hollow,
-      [size]: COMPONENT_SIZES.includes(size)
-    });
-  };
-
-  render() {
-    const {children, className, href, target} = this.props;
+      href,
+      size,
+      target
+    } = this.props;
+    const classNames = cx(
+      className,
+      styles.button,
+      {
+        [styles[color]]: COMPONENT_COLORS.includes(color),
+        [styles.disabled]: disabled,
+        [styles.dropdown]: dropdown,
+        [styles['arrow-only']]: dropdown && dropdownArrowOnly,
+        [styles.expanded]: expanded,
+        [styles.hollow]: hollow,
+        [styles[size]]: COMPONENT_SIZES.includes(size)
+      }
+    );
 
     if (href || target) {
       return (
-        <a
-          {...this.props}
-          className={cx(className, this.getClassNames())}
-          href={href || '#'}
-          role='button'
-        >
+        <a {...this.props} className={classNames} href={href || '#'} role='button'>
           {children}
         </a>
       );
     }
 
     return (
-      <button {...this.props} className={cx(className, this.getClassNames())}>
+      <button {...this.props} className={classNames}>
         {children}
       </button>
     );

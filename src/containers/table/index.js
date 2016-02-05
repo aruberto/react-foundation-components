@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
 
 export default class Table extends Component {
   static propTypes = {
@@ -13,17 +12,19 @@ export default class Table extends Component {
     stack: PropTypes.bool
   };
 
-  getClassNames = () => {
-    const {hover, scroll, stack} = this.props;
-
-    return joinObjects(styles, {hover, scroll, stack});
-  };
-
   render() {
-    const {children, className} = this.props;
+    const {children, className, hover, scroll, stack} = this.props;
+    const classNames = cx(
+      className,
+      {
+        [styles.hover]: hover,
+        [styles.scroll]: scroll,
+        [styles.stack]: stack
+      }
+    );
 
     return (
-      <table {...this.props} className={cx(className, this.getClassNames())}>
+      <table {...this.props} className={classNames}>
         {children}
       </table>
     );
