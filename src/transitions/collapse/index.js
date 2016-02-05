@@ -4,8 +4,7 @@ import Transition from 'react-overlays/lib/Transition';
 import css from 'dom-helpers/style';
 import capitalize from 'underscore.string/capitalize';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
 
 const MARGINS = {
   height: ['marginTop', 'marginBottom'],
@@ -29,18 +28,6 @@ export default class Collapse extends React.Component {
     dimension: 'height',
     timeout: 350
   };
-
-  getClassNames = () => {
-    const {dimension} = this.props;
-
-    return joinObjects(styles, {[dimension]: true});
-  };
-
-  getExitedClassNames = () => joinObjects(styles, {collapse: true});
-
-  getEnteredClassNames = () => joinObjects(styles, {collapse: true, in: true});
-
-  getTransitioningClassNames = () => joinObjects(styles, {collapsing: true});
 
   handleEnter = (...args) => {
     const {dimension, onEnter} = this.props;
@@ -110,17 +97,22 @@ export default class Collapse extends React.Component {
   };
 
   render() {
-    const {children, className, timeout} = this.props;
-    const transitioningClassNames = cx(this.getTransitioningClassNames());
+    const {children, className, dimension, timeout} = this.props;
+    const classNames = cx(
+      className,
+      {
+        [styles[dimension]]: true
+      }
+    );
 
     return (
       <Transition
         {...this.props}
-        className={cx(className, this.getClassNames())}
-        enteredClassName={cx(this.getEnteredClassNames())}
-        enteringClassName={transitioningClassNames}
-        exitedClassName={cx(this.getExitedClassNames())}
-        exitingClassName={transitioningClassNames}
+        className={classNames}
+        enteredClassName={cx(styles.collapse, styles.in)}
+        enteringClassName={styles.collapsing}
+        exitedClassName={styles.collapse}
+        exitingClassName={styles.collapsing}
         onEnter={this.handleEnter}
         onEntered={this.handleEntered}
         onEntering={this.handleEntering}
