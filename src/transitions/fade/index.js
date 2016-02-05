@@ -2,8 +2,7 @@ import React, {PropTypes} from 'react';
 import cx from 'classnames';
 import Transition from 'react-overlays/lib/Transition';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
 
 export default class Fade extends React.Component {
   static propTypes = {
@@ -16,20 +15,16 @@ export default class Fade extends React.Component {
     timeout: 150
   };
 
-  getClassNames = () => joinObjects(styles, {fade: true});
-
-  getEnterClassNames = () => joinObjects(styles, {in: true});
-
   render() {
     const {children, className, timeout} = this.props;
-    const enterClassNames = cx(this.getEnterClassNames());
+    const classNames = cx(className, styles.fade);
 
     return (
       <Transition
         {...this.props}
-        className={cx(className, this.getClassNames())}
-        enteredClassName={enterClassNames}
-        enteringClassName={enterClassNames}
+        className={classNames}
+        enteredClassName={styles.in}
+        enteringClassName={styles.in}
         timeout={timeout}
       >
         {children}
