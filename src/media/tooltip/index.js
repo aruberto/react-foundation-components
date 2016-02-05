@@ -11,9 +11,8 @@ import RootCloseWrapper from 'react-overlays/lib/RootCloseWrapper';
 import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
 
-import styles from './styles.scss';
+import styles from './styles';
 import {OVERLAY_POSITIONS} from '../../util/constants';
-import joinObjects from '../../util/join-objects';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import Fade from '../../transitions/fade';
 
@@ -33,20 +32,18 @@ export class Tooltip extends Component {
     position: PropTypes.oneOf(OVERLAY_POSITIONS)
   };
 
-  getClassNames = () => {
-    const {position} = this.props;
-
-    return joinObjects(styles, {
-      tooltip: true,
-      [position]: OVERLAY_POSITIONS.includes(position)
-    });
-  };
-
   render() {
-    const {children, className} = this.props;
+    const {children, className, position} = this.props;
+    const classNames = cx(
+      className,
+      styles.tooltip,
+      {
+        [styles[position]]: OVERLAY_POSITIONS.includes(position)
+      }
+    );
 
     return (
-      <div {...this.props} className={cx(className, this.getClassNames())} role='tooltip'>
+      <div {...this.props} className={classNames} role='tooltip'>
         {children}
       </div>
     );
@@ -55,7 +52,7 @@ export class Tooltip extends Component {
 
 const HasTooltipBase = createHigherOrderComponent({
   displayName: 'HasTooltipBase',
-  mapPropsToClassNames: () => joinObjects(styles, {'has-tip': true}),
+  mapPropsToClassNames: () => ({[styles['has-tip']]: true}),
   mapPropsToProps: ({tooltip, ...restProps}) => {
     const props = {
       ...restProps,

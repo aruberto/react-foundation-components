@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
 
 export default class FlexVideo extends Component {
   static propTypes = {
@@ -12,21 +11,19 @@ export default class FlexVideo extends Component {
     widescreen: PropTypes.bool
   };
 
-  getClassNames = () => {
-    const {vimeo, widescreen} = this.props;
-
-    return joinObjects(styles, {
-      'flex-video': true,
-      vimeo,
-      widescreen
-    });
-  };
-
   render() {
-    const {containerClassName, containerStyle} = this.props;
+    const {containerClassName, containerStyle, vimeo, widescreen} = this.props;
+    const classNames = cx(
+      containerClassName,
+      styles['flex-video'],
+      {
+        [styles.vimeo]: vimeo,
+        [styles.widescreen]: widescreen
+      }
+    );
 
     return (
-      <div className={cx(containerClassName, this.getClassNames())} style={containerStyle}>
+      <div className={classNames} style={containerStyle}>
         <iframe {...this.props}/>
       </div>
     );
