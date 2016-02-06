@@ -1,5 +1,14 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/aruberto/react-foundation-components/compare/0.4.0...0.5.0) (2016-02-06)
+
+
+### BREAKING CHANGES
+
+* Foundation CSS stylesheets are NO LONGER REQUIRED BY DEFAULT! Please see README.md installation instructions to see how to setup Global CSS or CSS Modules
+
+
 <a name="0.4.0"></a>
-# [0.4.0](https://github.com/aruberto/react-foundation-components/compare/0.4.0...v0.4.0) (2016-02-04)
+# [0.4.0](https://github.com/aruberto/react-foundation-components/compare/0.3.0...0.4.0) (2016-02-04)
 
 
 ### Miscellaneous
@@ -13,7 +22,7 @@
 
 
 <a name="0.3.0"></a>
-# [0.3.0](https://github.com/aruberto/react-foundation-components/compare/0.3.0...v0.3.0) (2016-02-01)
+# [0.3.0](https://github.com/aruberto/react-foundation-components/compare/0.2.1...0.3.0) (2016-02-01)
 
 
 ### Miscellaneous
@@ -22,7 +31,7 @@
 
 
 <a name="0.2.1"></a>
-## [0.2.1](https://github.com/aruberto/react-foundation-components/compare/0.2.1...v0.2.1) (2016-01-29)
+## [0.2.1](https://github.com/aruberto/react-foundation-components/compare/0.2.0...0.2.1) (2016-01-29)
 
 
 #### Miscellaneous
@@ -31,7 +40,7 @@
 
 
 <a name="0.2.0"></a>
-# [0.2.0](https://github.com/aruberto/react-foundation-components/compare/0.2.0...v0.2.0) (2016-01-29)
+# [0.2.0](https://github.com/aruberto/react-foundation-components/compare/0.1.2...0.2.0) (2016-01-29)
 
 
 ### Miscellaneous
@@ -40,7 +49,7 @@
 
 
 <a name="0.1.2"></a>
-## [0.1.2](https://github.com/aruberto/react-foundation-components/compare/0.1.2...v0.1.2) (2016-01-28)
+## [0.1.2](https://github.com/aruberto/react-foundation-components/compare/0.1.1...0.1.2) (2016-01-28)
 
 
 #### Miscellaneous
@@ -48,8 +57,8 @@
 * Add release npm scripts.
 
 
-<a name="0.1.0"></a>
-# [0.1.0](https://github.com/aruberto/react-foundation-components/compare/v0.1.0...v0.1.0) (2016-01-28)
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/aruberto/react-foundation-components/compare/0.1.0...0.1.1) (2016-01-28)
 
 
 ### Miscellaneous

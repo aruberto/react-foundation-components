@@ -34,7 +34,7 @@ You must then choose to import Foundation Sites CSS stylesheets in 1 of a possib
   ]
   ```
   * For browserify, you will need to setup [sassify](https://github.com/davidguttman/sassify) or similar transform (not sure if this works, haven't tested any browserify setups yet).
-3. CSS Modules
+3. Local CSS with CSS Modules
   * This mode is meant to be used with the [webpack](https://webpack.github.io/).
   * This mode is enabled by assigning process.env.REACT_FOUNDATION_COMPONENTS_CSS to 'modules' using [webpack DefinePlugin](https://webpack.github.io/docs/list-of-plugins.html#defineplugin) (set it similar to how would set process.env.NODE_ENV to 'production' to remove all dev only features from React).
   * Each component requires the subset of Foundation Sites CSS styles it needs. Therefore the final CSS output the bundler spits out only contains the parts of Foundation Sites you actually need!
