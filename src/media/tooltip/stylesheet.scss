@@ -1,22 +1,6 @@
 @import '../../common';
 @import '~foundation-sites/scss/components/tooltip';
 
-.tooltip {
-  margin-top: $tooltip-pip-width;
-
-  &.top {
-    margin-top: -$tooltip-pip-width;
-  }
-
-  &.left {
-    margin-left: -$tooltip-pip-width;
-    margin-top: 0;
-  }
-
-  &.right {
-    margin-left: $tooltip-pip-width;
-    margin-top: 0;
-  }
-}
-
 @include foundation-tooltip;
+
+@import './custom';
