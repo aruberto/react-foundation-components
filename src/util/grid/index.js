@@ -1,46 +1,73 @@
 import {PropTypes} from 'react';
-import {SCREEN_SIZES, SMALLER_SCREEN_SIZES} from '../constants';
+import {GRID_COLUMN_MIN, GRID_COLUMN_MAX, SCREEN_SIZES, SMALLER_SCREEN_SIZES} from '../constants';
 
-export function createGridScreenSizePropTypes(rowMapping = {}, columnMapping = {}) {
-  const rowPropTypes = {};
-  const columnPropTypes = {};
+export function createScreenSizeClassNames(classNameMapping = {}) {
+  const classNames = [];
 
-  SCREEN_SIZES.forEach((size) => {
-    Object.values(rowMapping).forEach(({basePropName, isNumber, skipSmall}) => {
+  Object.keys(classNameMapping).forEach((baseClassName) => {
+    const {isNumber, skipSmall} = classNameMapping[baseClassName];
+
+    SCREEN_SIZES.forEach((size) => {
       if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {
-        rowPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool;
-      }
-    });
+        const className = size + (baseClassName ? `-${baseClassName}` : '');
 
-    Object.values(columnMapping).forEach(({basePropName, isNumber, skipSmall}) => {
-      if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {
-        columnPropTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool;
+        if (isNumber) {
+          for (let column = GRID_COLUMN_MIN; column <= GRID_COLUMN_MAX; column += 1) {
+            classNames.push(`${className}-${column}`);
+          }
+        } else {
+          classNames.push(className);
+        }
       }
     });
   });
 
-  return {rowPropTypes, columnPropTypes};
+  return classNames;
 }
 
-export function createScreenSizeClassNamesFromProps(classNameMapping = {}, props = {}) {
+export function createScreenSizePropTypes(classNameMapping = {}) {
+  const propTypes = {};
+
+  SCREEN_SIZES.forEach((size) => {
+    Object.values(classNameMapping).forEach(({basePropName, isNumber, skipSmall}) => {
+      if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {
+        propTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool;
+      }
+    });
+  });
+
+  return propTypes;
+}
+
+export function createScreenSizeClassNamesFromProps(
+  classNameMapping = {},
+  props = {},
+  styles = {}
+) {
   const classNames = {};
 
-  Object.keys(classNameMapping).forEach((baseClassName) =>
-    SCREEN_SIZES.forEach((size) => {
-      const {basePropName, isNumber} = classNameMapping[baseClassName];
-      const propName = `${size}${basePropName}`;
-      const propValue = props[propName];
-      const className = size + (baseClassName ? `-${baseClassName}` : '');
+  Object.keys(classNameMapping).forEach((baseClassName) => {
+    const {basePropName, isNumber, skipSmall} = classNameMapping[baseClassName];
 
-      if (isNumber) {
-        if (Number.isFinite(propValue) && propValue >= 0) {
-          classNames[`${className}-${propValue}`] = true;
+    SCREEN_SIZES.forEach((size) => {
+      if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {
+        const propName = `${size}${basePropName}`;
+        const propValue = props[propName];
+        const className = size + (baseClassName ? `-${baseClassName}` : '');
+
+        if (isNumber) {
+          if (styles[`${className}-${propValue}`]) {
+            classNames[styles[`${className}-${propValue}`]] =
+              Number.isFinite(propValue)
+              && propValue >= GRID_COLUMN_MIN
+              && propValue <= GRID_COLUMN_MAX;
+          }
+        } else if (styles[className]) {
+          classNames[styles[className]] = propValue;
         }
-      } else {
-        classNames[className] = propValue;
       }
-    })
-  );
+    });
+  });
 
   return classNames;
 }

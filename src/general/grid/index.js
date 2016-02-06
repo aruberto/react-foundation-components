@@ -1,62 +1,12 @@
 import {PropTypes} from 'react';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
+import {FLOAT_GRID_ROW_CLASS_NAMES, FLOAT_GRID_COLUMN_CLASS_NAMES} from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import {createGridScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
+import {createScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
 
-const rowClassNameToPropMapping = {
-  collapse: {
-    basePropName: 'Collapse',
-    isNumber: false,
-    skipSmall: false
-  },
-  uncollapse: {
-    basePropName: 'Uncollapse',
-    isNumber: false,
-    skipSmall: false
-  },
-  up: {
-    basePropName: 'Up',
-    isNumber: true,
-    skipSmall: false
-  }
-};
-const columnClassNameToPropMapping = {
-  '': {
-    basePropName: '',
-    isNumber: true,
-    skipSmall: false
-  },
-  offset: {
-    basePropName: 'Offset',
-    isNumber: true,
-    skipSmall: false
-  },
-  centered: {
-    basePropName: 'Centered',
-    isNumber: false,
-    skipSmall: false
-  },
-  uncentered: {
-    basePropName: 'Uncentered',
-    isNumber: false,
-    skipSmall: false
-  },
-  push: {
-    basePropName: 'Push',
-    isNumber: true,
-    skipSmall: false
-  },
-  pull: {
-    basePropName: 'Pull',
-    isNumber: true,
-    skipSmall: false
-  }
-};
-
-const {rowPropTypes, columnPropTypes} =
-  createGridScreenSizePropTypes(rowClassNameToPropMapping, columnClassNameToPropMapping);
+const rowPropTypes = createScreenSizePropTypes(FLOAT_GRID_ROW_CLASS_NAMES);
+const columnPropTypes = createScreenSizePropTypes(FLOAT_GRID_COLUMN_CLASS_NAMES);
 
 rowPropTypes.expanded = PropTypes.bool;
 columnPropTypes.end = PropTypes.bool;
@@ -64,13 +14,15 @@ columnPropTypes.end = PropTypes.bool;
 export const Row = createHigherOrderComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
-  mapPropsToClassNames: ({expanded, ...props}) => {
-    const classNames = createScreenSizeClassNamesFromProps(rowClassNameToPropMapping, props);
+  mapPropsToClassNames: (props) => {
+    const {expanded} = props;
+    const classNames =
+      createScreenSizeClassNamesFromProps(FLOAT_GRID_ROW_CLASS_NAMES, props, styles);
 
-    classNames.row = true;
-    classNames.expanded = expanded;
+    classNames[styles.row] = true;
+    classNames[styles.expanded] = expanded;
 
-    return joinObjects(styles, classNames);
+    return classNames;
   },
   defaultComponentClass: 'div',
   collapseOnlyChild: false
@@ -79,12 +31,14 @@ export const Row = createHigherOrderComponent({
 export const Column = createHigherOrderComponent({
   displayName: 'Column',
   propTypes: columnPropTypes,
-  mapPropsToClassNames: ({end, ...props}) => {
-    const classNames = createScreenSizeClassNamesFromProps(columnClassNameToPropMapping, props);
+  mapPropsToClassNames: (props) => {
+    const {end} = props;
+    const classNames =
+      createScreenSizeClassNamesFromProps(FLOAT_GRID_COLUMN_CLASS_NAMES, props, styles);
 
-    classNames.column = true;
-    classNames.end = end;
+    classNames[styles.column] = true;
+    classNames[styles.end] = end;
 
-    return joinObjects(styles, classNames);
+    return classNames;
   }
 });

@@ -1,74 +1,39 @@
 import {PropTypes} from 'react';
 
-import styles from './styles.scss';
-import joinObjects from '../../util/join-objects';
+import styles from './styles';
+import {
+  FLEX_GRID_ROW_CLASS_NAMES,
+  FLEX_GRID_COLUMN_CLASS_NAMES,
+  FLEX_GRID_HORIZONTAL_ALIGNMENTS,
+  FLEX_GRID_VERTICAL_ALIGNMENTS
+} from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import {createGridScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
+import {createScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
 
-export const GRID_HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
-export const GRID_VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];
-
-const rowClassNameToPropMapping = {
-  unstack: {
-    basePropName: 'Unstack',
-    isNumber: false,
-    skipSmall: true
-  },
-  collapse: {
-    basePropName: 'Collapse',
-    isNumber: false,
-    skipSmall: false
-  },
-  uncollapse: {
-    basePropName: 'Uncollapse',
-    isNumber: false,
-    skipSmall: false
-  }
-};
-const columnClassNameToPropMapping = {
-  '': {
-    basePropName: '',
-    isNumber: true,
-    skipSmall: false
-  },
-  expand: {
-    basePropName: 'Expand',
-    isNumber: false,
-    skipSmall: true
-  },
-  offset: {
-    basePropName: 'Offset',
-    isNumber: true,
-    skipSmall: false
-  },
-  order: {
-    basePropName: 'Order',
-    isNumber: true,
-    skipSmall: false
-  }
-};
-const {rowPropTypes, columnPropTypes} =
-  createGridScreenSizePropTypes(rowClassNameToPropMapping, columnClassNameToPropMapping);
+const rowPropTypes = createScreenSizePropTypes(FLEX_GRID_ROW_CLASS_NAMES);
+const columnPropTypes = createScreenSizePropTypes(FLEX_GRID_COLUMN_CLASS_NAMES);
 
 rowPropTypes.expanded = PropTypes.bool;
-rowPropTypes.horizontalAlignment = PropTypes.oneOf(GRID_HORIZONTAL_ALIGNMENTS);
-rowPropTypes.verticalAlignment = PropTypes.oneOf(GRID_VERTICAL_ALIGNMENTS);
+rowPropTypes.horizontalAlignment = PropTypes.oneOf(FLEX_GRID_HORIZONTAL_ALIGNMENTS);
+rowPropTypes.verticalAlignment = PropTypes.oneOf(FLEX_GRID_VERTICAL_ALIGNMENTS);
 columnPropTypes.shrink = PropTypes.bool;
-columnPropTypes.verticalAlignment = PropTypes.oneOf(GRID_VERTICAL_ALIGNMENTS);
+columnPropTypes.verticalAlignment = PropTypes.oneOf(FLEX_GRID_VERTICAL_ALIGNMENTS);
 
 export const Row = createHigherOrderComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
   mapPropsToClassNames: ({expanded, horizontalAlignment, verticalAlignment, ...props}) => {
-    const classNames = createScreenSizeClassNamesFromProps(rowClassNameToPropMapping, props);
+    const classNames =
+      createScreenSizeClassNamesFromProps(FLEX_GRID_ROW_CLASS_NAMES, props, styles);
 
-    classNames.row = true;
-    classNames.expanded = expanded;
-    classNames[`align-${horizontalAlignment}`] =
-      GRID_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
-    classNames[`align-${verticalAlignment}`] = GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
+    classNames[styles.row] = true;
+    classNames[styles.expanded] = expanded;
+    classNames[styles[`align-${horizontalAlignment}`]] =
+      FLEX_GRID_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
+    classNames[styles[`align-${verticalAlignment}`]] =
+      FLEX_GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
-    return joinObjects(styles, classNames);
+    return classNames;
   },
   defaultComponentClass: 'div',
   collapseOnlyChild: false
@@ -78,12 +43,14 @@ export const Column = createHigherOrderComponent({
   displayName: 'Column',
   propTypes: columnPropTypes,
   mapPropsToClassNames: ({shrink, verticalAlignment, ...props}) => {
-    const classNames = createScreenSizeClassNamesFromProps(columnClassNameToPropMapping, props);
+    const classNames =
+      createScreenSizeClassNamesFromProps(FLEX_GRID_COLUMN_CLASS_NAMES, props, styles);
 
-    classNames.column = true;
-    classNames.shrink = shrink;
-    classNames[`align-${verticalAlignment}`] = GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
+    classNames[styles.column] = true;
+    classNames[styles.shrink] = shrink;
+    classNames[styles[`align-${verticalAlignment}`]] =
+      FLEX_GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
-    return joinObjects(styles, classNames);
+    return classNames;
   }
 });
