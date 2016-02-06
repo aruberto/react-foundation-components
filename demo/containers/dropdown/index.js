@@ -43,14 +43,14 @@ export default class DropdownPage extends Component {
           toggleClick={false}
           toggleFocus
         >
-          <Button tabIndex='1'>Hoverable Dropdown</Button>
+          <Button tabIndex='1'>Focusable Dropdown</Button>
         </HasDropdown>
         <br/>
         <HasDropdown
           closeOnClick
           dropdown='You can close me by clicking anywhere else on screen!'
         >
-          <Button tabIndex='1'>Toggle Dropdown</Button>
+          <Button>Toggle Dropdown</Button>
         </HasDropdown>
         <br/>
         <HasDropdown
