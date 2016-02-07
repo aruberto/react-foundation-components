@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Transition from 'react-overlays/lib/Transition';
 
@@ -8,15 +8,15 @@ export default class Fade extends React.Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    timeout: PropTypes.number
+    timeout: PropTypes.number,
   };
 
   static defaultProps = {
-    timeout: 150
+    timeout: 150,
   };
 
   render() {
-    const {children, className, timeout} = this.props;
+    const { children, className, timeout } = this.props;
     const classNames = cx(className, styles.fade);
 
     return (

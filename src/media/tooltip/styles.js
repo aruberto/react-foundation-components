@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -9,7 +7,7 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {OVERLAY_POSITIONS} = require('../../util/constants');
+  const { OVERLAY_POSITIONS } = require('../../util/constants');
   const classNames = ['tooltip', 'has-tip'].concat(OVERLAY_POSITIONS);
   const keyMirrorArray = require('../../util/key-mirror-array').default;
 

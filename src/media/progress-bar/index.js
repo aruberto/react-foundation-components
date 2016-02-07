@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import styles from './styles';
-import {COMPONENT_COLORS} from '../../util/constants';
+import { COMPONENT_COLORS } from '../../util/constants';
 
 export default class ProgressBar extends Component {
   static propTypes = {
@@ -15,17 +15,17 @@ export default class ProgressBar extends Component {
     meterTextClassName: PropTypes.string,
     meterTextStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     min: PropTypes.number,
-    value: PropTypes.number
+    value: PropTypes.number,
   };
 
   static defaultProps = {
     max: 100,
     min: 0,
-    value: 0
+    value: 0,
   };
 
   renderMeterText = (...args) => {
-    const {labelFormatter, meterTextClassName, meterTextStyle} = this.props;
+    const { labelFormatter, meterTextClassName, meterTextStyle } = this.props;
     let result = null;
 
     if (labelFormatter) {
@@ -42,12 +42,12 @@ export default class ProgressBar extends Component {
   };
 
   render() {
-    const {className, color, max, meterClassName, meterStyle, min, value} = this.props;
+    const { className, color, max, meterClassName, meterStyle, min, value } = this.props;
     const classNames = cx(
       className,
       styles.progress,
       {
-        [styles[color]]: COMPONENT_COLORS.includes(color)
+        [styles[color]]: COMPONENT_COLORS.includes(color),
       }
     );
     const meterClassNames = cx(meterClassName, styles['progress-meter']);
@@ -61,9 +61,9 @@ export default class ProgressBar extends Component {
         aria-valuemin={min}
         aria-valuenow={boundedValue}
         className={classNames}
-        role='progressbar'
+        role="progressbar"
       >
-        <span className={meterClassNames} style={{...meterStyle, width: `${percent}%`}}>
+        <span className={meterClassNames} style={{ ...meterStyle, width: `${percent}%` }}>
           {this.renderMeterText(percent, boundedValue, min, max)}
         </span>
       </div>

@@ -1,8 +1,9 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   findDOMNode,
   unmountComponentAtNode,
-  unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer // eslint-disable-line camelcase
+  unstable_renderSubtreeIntoContainer // eslint-disable-line camelcase
+    as renderSubtreeIntoContainer,
 } from 'react-dom';
 import cx from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
@@ -12,7 +13,7 @@ import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
 
 import styles from './styles';
-import {OVERLAY_POSITIONS} from '../../util/constants';
+import { OVERLAY_POSITIONS } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import Fade from '../../transitions/fade';
 
@@ -29,21 +30,21 @@ export class Tooltip extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    position: PropTypes.oneOf(OVERLAY_POSITIONS)
+    position: PropTypes.oneOf(OVERLAY_POSITIONS),
   };
 
   render() {
-    const {children, className, position} = this.props;
+    const { children, className, position } = this.props;
     const classNames = cx(
       className,
       styles.tooltip,
       {
-        [styles[position]]: OVERLAY_POSITIONS.includes(position)
+        [styles[position]]: OVERLAY_POSITIONS.includes(position),
       }
     );
 
     return (
-      <div {...this.props} className={classNames} role='tooltip'>
+      <div {...this.props} className={classNames} role="tooltip">
         {children}
       </div>
     );
@@ -52,11 +53,13 @@ export class Tooltip extends Component {
 
 const HasTooltipBase = createHigherOrderComponent({
   displayName: 'HasTooltipBase',
-  mapPropsToClassNames: () => ({[styles['has-tip']]: true}),
-  mapPropsToProps: ({tooltip, ...restProps}) => {
+  mapPropsToClassNames: () => ({
+    [styles['has-tip']]: true,
+  }),
+  mapPropsToProps: ({ tooltip, ...restProps }) => {
     const props = {
       ...restProps,
-      'aria-haspopup': true
+      'aria-haspopup': true,
     };
 
     if (tooltip && tooltip.props && !isBlank(tooltip.props.id)) {
@@ -64,7 +67,7 @@ const HasTooltipBase = createHigherOrderComponent({
     }
 
     return props;
-  }
+  },
 });
 
 export class HasTooltip extends Component {
@@ -79,18 +82,18 @@ export class HasTooltip extends Component {
     tooltipClassName: PropTypes.string,
     tooltipPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
     tooltipStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-    transition: elementType
+    transition: elementType,
   };
 
   static defaultProps = {
-    transition: Fade
+    transition: Fade,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      show: false
+      show: false,
     };
     this._clicked = false;
     this._lastRootClose = new Date();
@@ -116,16 +119,16 @@ export class HasTooltip extends Component {
 
   getTargetRefDOMNode = () => findDOMNode(this._targetRef);
 
-  handleShow = () => this.setState({show: true});
+  handleShow = () => this.setState({ show: true });
 
   handleHide = () => {
     if (!this._clicked) {
-      this.setState({show: false});
+      this.setState({ show: false });
     }
   };
 
   handleAnyClick = () => {
-    const {show} = this.state;
+    const { show } = this.state;
 
     if (show) {
       if (this._clicked) {
@@ -152,7 +155,7 @@ export class HasTooltip extends Component {
   };
 
   handleClick = (...args) => {
-    const {onClick} = this.props;
+    const { onClick } = this.props;
 
     this.handleAnyClick();
 
@@ -162,7 +165,7 @@ export class HasTooltip extends Component {
   };
 
   handleBlur = (...args) => {
-    const {onBlur} = this.props;
+    const { onBlur } = this.props;
 
     this.handleHide();
 
@@ -172,7 +175,7 @@ export class HasTooltip extends Component {
   };
 
   handleFocus = (...args) => {
-    const {onFocus} = this.props;
+    const { onFocus } = this.props;
 
     this.handleShow();
 
@@ -182,7 +185,7 @@ export class HasTooltip extends Component {
   };
 
   handleMouseOut = (...args) => {
-    const {onMouseOut} = this.props;
+    const { onMouseOut } = this.props;
     const [event] = args;
 
     mouseOverOut(event, () => {
@@ -195,7 +198,7 @@ export class HasTooltip extends Component {
   };
 
   handleMouseOver = (...args) => {
-    const {onMouseOver} = this.props;
+    const { onMouseOver } = this.props;
     const [event] = args;
 
     mouseOverOut(event, () => {
@@ -208,8 +211,8 @@ export class HasTooltip extends Component {
   };
 
   createOverlay = () => {
-    const {tooltip, tooltipClassName, tooltipPosition, tooltipStyle, transition} = this.props;
-    const {show} = this.state;
+    const { tooltip, tooltipClassName, tooltipPosition, tooltipStyle, transition } = this.props;
+    const { show } = this.state;
     const placement = tooltipPosition || 'bottom';
 
     return (
@@ -235,7 +238,7 @@ export class HasTooltip extends Component {
   renderOverlay = () => renderSubtreeIntoContainer(this, this._overlay, this._mountNode);
 
   render() {
-    const {children} = this.props;
+    const { children } = this.props;
 
     this._overlay = this.createOverlay();
 

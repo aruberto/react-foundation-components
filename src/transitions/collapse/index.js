@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Transition from 'react-overlays/lib/Transition';
 import css from 'dom-helpers/style';
@@ -8,7 +8,7 @@ import styles from './styles';
 
 const MARGINS = {
   height: ['marginTop', 'marginBottom'],
-  width: ['marginLeft', 'marginRight']
+  width: ['marginLeft', 'marginRight'],
 };
 
 export default class Collapse extends React.Component {
@@ -21,16 +21,16 @@ export default class Collapse extends React.Component {
     onEntering: PropTypes.func,
     onExit: PropTypes.func,
     onExiting: PropTypes.func,
-    timeout: PropTypes.number
+    timeout: PropTypes.number,
   };
 
   static defaultProps = {
     dimension: 'height',
-    timeout: 350
+    timeout: 350,
   };
 
   handleEnter = (...args) => {
-    const {dimension, onEnter} = this.props;
+    const { dimension, onEnter } = this.props;
     const [elem] = args;
 
     elem.style[dimension] = '0';
@@ -41,7 +41,7 @@ export default class Collapse extends React.Component {
   };
 
   handleEntered = (...args) => {
-    const {dimension, onEntered} = this.props;
+    const { dimension, onEntered } = this.props;
     const [elem] = args;
 
     elem.style[dimension] = null;
@@ -52,7 +52,7 @@ export default class Collapse extends React.Component {
   };
 
   handleEntering = (...args) => {
-    const {dimension, onEntering} = this.props;
+    const { dimension, onEntering } = this.props;
     const [elem] = args;
     const size = elem[`scroll${capitalize(dimension)}`];
 
@@ -64,7 +64,7 @@ export default class Collapse extends React.Component {
   };
 
   handleExit = (...args) => {
-    const {dimension, onExit} = this.props;
+    const { dimension, onExit } = this.props;
     const [elem] = args;
     const baseValue = elem[`offset${capitalize(dimension)}`];
     const margins = MARGINS[dimension];
@@ -85,7 +85,7 @@ export default class Collapse extends React.Component {
       return node.offsetHeight;
     }
 
-    const {dimension, onExiting} = this.props;
+    const { dimension, onExiting } = this.props;
     const [elem] = args;
 
     triggerBrowserReflow(elem);
@@ -97,11 +97,11 @@ export default class Collapse extends React.Component {
   };
 
   render() {
-    const {children, className, dimension, timeout} = this.props;
+    const { children, className, dimension, timeout } = this.props;
     const classNames = cx(
       className,
       {
-        [styles[dimension]]: true
+        [styles[dimension]]: true,
       }
     );
 

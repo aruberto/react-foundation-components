@@ -1,15 +1,15 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import styles from './styles';
 
 export default class Thumbnail extends Component {
   static propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
   };
 
   render() {
-    const {className} = this.props;
+    const { className } = this.props;
     const classNames = cx(className, styles.thumbnail);
 
     return (
