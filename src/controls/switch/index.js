@@ -1,22 +1,22 @@
-import React, {Component, PropTypes, Children, cloneElement} from 'react';
+import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import cx from 'classnames';
 import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
 import isBlank from 'underscore.string/isBlank';
 
 import styles from './styles';
-import {COMPONENT_SIZES} from '../../util/constants';
+import { COMPONENT_SIZES } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import {ShowOnlyForScreenReader, HideOnlyForScreenReader} from '../../general/visibility';
+import { ShowOnlyForScreenReader, HideOnlyForScreenReader } from '../../general/visibility';
 
 const CheckedLabel = createHigherOrderComponent({
   displayName: 'CheckedLabel',
-  mapPropsToClassNames: () => styles['switch-active']
+  mapPropsToClassNames: () => styles['switch-active'],
 });
 
 const UncheckedLabel = createHigherOrderComponent({
   displayName: 'UncheckedLabel',
-  mapPropsToClassNames: () => styles['switch-inactive']
+  mapPropsToClassNames: () => styles['switch-inactive'],
 });
 
 export class Switch extends Component {
@@ -34,13 +34,13 @@ export class Switch extends Component {
     paddleLabel: React.PropTypes.node,
     paddleStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     size: PropTypes.oneOf(COMPONENT_SIZES),
-    uncheckedLabel: React.PropTypes.node
+    uncheckedLabel: React.PropTypes.node,
   };
 
   setInputRef = (inputRef) => this._inputRef = inputRef;
 
   handleLabelClick = (...args) => {
-    const {checked, eventKey, id, onChange, onToggle} = this.props;
+    const { checked, eventKey, id, onChange, onToggle } = this.props;
 
     if (onChange) {
       onChange(...args);
@@ -56,7 +56,7 @@ export class Switch extends Component {
   };
 
   handleInputChange = (...args) => {
-    const {eventKey, id, onChange, onToggle} = this.props;
+    const { eventKey, id, onChange, onToggle } = this.props;
 
     if (onChange) {
       onChange(...args);
@@ -68,7 +68,7 @@ export class Switch extends Component {
   };
 
   renderPaddleLabel = () => {
-    const {paddleLabel} = this.props;
+    const { paddleLabel } = this.props;
     let result = null;
 
     if (paddleLabel) {
@@ -79,7 +79,7 @@ export class Switch extends Component {
   };
 
   renderCheckedLabel = () => {
-    const {checkedLabel} = this.props;
+    const { checkedLabel } = this.props;
     let result = null;
 
     if (checkedLabel) {
@@ -94,7 +94,7 @@ export class Switch extends Component {
   };
 
   renderUncheckedLabel = () => {
-    const {uncheckedLabel} = this.props;
+    const { uncheckedLabel } = this.props;
     let result = null;
 
     if (uncheckedLabel) {
@@ -116,13 +116,13 @@ export class Switch extends Component {
       id,
       paddleClassName,
       paddleStyle,
-      size
+      size,
     } = this.props;
     const containerClassNames = cx(
       containerClassName,
       styles.switch,
       {
-        [styles[size]]: COMPONENT_SIZES.includes(size)
+        [styles[size]]: COMPONENT_SIZES.includes(size),
       }
     );
     const classNames = cx(className, styles['switch-input']);
@@ -136,7 +136,7 @@ export class Switch extends Component {
           onChange={this.handleInputChange}
           ref={this.setInputRef}
           size={null}
-          type='checkbox'
+          type="checkbox"
         />
         <label
           className={paddleClassNames}
@@ -159,11 +159,11 @@ class RadioSwitchControlled extends Component {
     children: PropTypes.node,
     onChange: PropTypes.func,
     onSelect: PropTypes.func,
-    size: PropTypes.oneOf(COMPONENT_SIZES)
+    size: PropTypes.oneOf(COMPONENT_SIZES),
   };
 
   handleChange = (...args) => {
-    const {onChange} = this.props;
+    const { onChange } = this.props;
 
     if (onChange) {
       onChange(...args);
@@ -171,7 +171,7 @@ class RadioSwitchControlled extends Component {
   };
 
   handleToggle = (...args) => {
-    const {onSelect} = this.props;
+    const { onSelect } = this.props;
 
     if (onSelect) {
       onSelect(...args);
@@ -179,14 +179,14 @@ class RadioSwitchControlled extends Component {
   };
 
   render() {
-    const {activeKey, children, size} = this.props;
+    const { activeKey, children, size } = this.props;
     const newChildren = Children.map(children, (child) => {
       if (child.props && !isBlank(child.props.eventKey)) {
         return cloneElement(child, {
           checked: child.props.eventKey === activeKey,
           onChange: this.handleChange,
           onToggle: this.handleToggle,
-          size
+          size,
         });
       }
 
@@ -199,6 +199,6 @@ class RadioSwitchControlled extends Component {
   }
 }
 
-export const RadioSwitch = uncontrollable(RadioSwitchControlled, {activeKey: 'onSelect'});
+export const RadioSwitch = uncontrollable(RadioSwitchControlled, { activeKey: 'onSelect' });
 
 RadioSwitch.displayName = 'RadioSwitch';

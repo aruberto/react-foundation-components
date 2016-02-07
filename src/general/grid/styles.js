@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -11,9 +9,9 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
 
   const {
     FLOAT_GRID_ROW_CLASS_NAMES,
-    FLOAT_GRID_COLUMN_CLASS_NAMES
+    FLOAT_GRID_COLUMN_CLASS_NAMES,
   } = require('../../util/constants');
-  const {createScreenSizeClassNames} = require('../../util/grid');
+  const { createScreenSizeClassNames } = require('../../util/grid');
 
   const classNames = ['row', 'column', 'expanded', 'end']
     .concat(createScreenSizeClassNames(FLOAT_GRID_ROW_CLASS_NAMES))

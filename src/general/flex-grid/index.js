@@ -1,14 +1,14 @@
-import {PropTypes} from 'react';
+import { PropTypes } from 'react';
 
 import styles from './styles';
 import {
   FLEX_GRID_ROW_CLASS_NAMES,
   FLEX_GRID_COLUMN_CLASS_NAMES,
   FLEX_GRID_HORIZONTAL_ALIGNMENTS,
-  FLEX_GRID_VERTICAL_ALIGNMENTS
+  FLEX_GRID_VERTICAL_ALIGNMENTS,
 } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import {createScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
+import { createScreenSizePropTypes, createScreenSizeClassNamesFromProps } from '../../util/grid';
 
 const rowPropTypes = createScreenSizePropTypes(FLEX_GRID_ROW_CLASS_NAMES);
 const columnPropTypes = createScreenSizePropTypes(FLEX_GRID_COLUMN_CLASS_NAMES);
@@ -22,7 +22,7 @@ columnPropTypes.verticalAlignment = PropTypes.oneOf(FLEX_GRID_VERTICAL_ALIGNMENT
 export const Row = createHigherOrderComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
-  mapPropsToClassNames: ({expanded, horizontalAlignment, verticalAlignment, ...props}) => {
+  mapPropsToClassNames: ({ expanded, horizontalAlignment, verticalAlignment, ...props }) => {
     const classNames =
       createScreenSizeClassNamesFromProps(FLEX_GRID_ROW_CLASS_NAMES, props, styles);
 
@@ -36,13 +36,13 @@ export const Row = createHigherOrderComponent({
     return classNames;
   },
   defaultComponentClass: 'div',
-  collapseOnlyChild: false
+  collapseOnlyChild: false,
 });
 
 export const Column = createHigherOrderComponent({
   displayName: 'Column',
   propTypes: columnPropTypes,
-  mapPropsToClassNames: ({shrink, verticalAlignment, ...props}) => {
+  mapPropsToClassNames: ({ shrink, verticalAlignment, ...props }) => {
     const classNames =
       createScreenSizeClassNamesFromProps(FLEX_GRID_COLUMN_CLASS_NAMES, props, styles);
 
@@ -52,5 +52,5 @@ export const Column = createHigherOrderComponent({
       FLEX_GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
     return classNames;
-  }
+  },
 });

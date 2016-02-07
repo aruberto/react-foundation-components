@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import styles from './styles';
-import {COMPONENT_SIZES, COMPONENT_COLORS} from '../../util/constants';
+import { COMPONENT_SIZES, COMPONENT_COLORS } from '../../util/constants';
 
 export default class Button extends Component {
   static propTypes = {
@@ -17,11 +17,11 @@ export default class Button extends Component {
     href: React.PropTypes.string,
     size: PropTypes.oneOf(COMPONENT_SIZES),
     target: React.PropTypes.string,
-    type: React.PropTypes.oneOf(['button', 'reset', 'submit'])
+    type: React.PropTypes.oneOf(['button', 'reset', 'submit']),
   };
 
   static defaultProps = {
-    type: 'button'
+    type: 'button',
   };
 
   render() {
@@ -36,7 +36,7 @@ export default class Button extends Component {
       hollow,
       href,
       size,
-      target
+      target,
     } = this.props;
     const classNames = cx(
       className,
@@ -48,13 +48,13 @@ export default class Button extends Component {
         [styles['arrow-only']]: dropdown && dropdownArrowOnly,
         [styles.expanded]: expanded,
         [styles.hollow]: hollow,
-        [styles[size]]: COMPONENT_SIZES.includes(size)
+        [styles[size]]: COMPONENT_SIZES.includes(size),
       }
     );
 
     if (href || target) {
       return (
-        <a {...this.props} className={classNames} href={href || '#'} role='button'>
+        <a {...this.props} className={classNames} href={href || '#'} role="button">
           {children}
         </a>
       );

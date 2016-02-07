@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -9,14 +7,14 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {COMPONENT_SIZES, COMPONENT_COLORS} = require('../../util/constants');
+  const { COMPONENT_SIZES, COMPONENT_COLORS } = require('../../util/constants');
   const classNames = [
     'button-group',
     'button',
     'expanded',
     'hollow',
     'stacked',
-    'stacked-for-small'
+    'stacked-for-small',
   ]
     .concat(COMPONENT_SIZES)
     .concat(COMPONENT_COLORS);

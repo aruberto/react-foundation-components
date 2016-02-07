@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -13,9 +11,9 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     FLEX_GRID_ROW_CLASS_NAMES,
     FLEX_GRID_COLUMN_CLASS_NAMES,
     FLEX_GRID_HORIZONTAL_ALIGNMENTS,
-    FLEX_GRID_VERTICAL_ALIGNMENTS
+    FLEX_GRID_VERTICAL_ALIGNMENTS,
   } = require('../../util/constants');
-  const {createScreenSizeClassNames} = require('../../util/grid');
+  const { createScreenSizeClassNames } = require('../../util/grid');
 
   const classNames = ['row', 'column', 'expanded', 'shrink']
     .concat(createScreenSizeClassNames(FLEX_GRID_ROW_CLASS_NAMES))

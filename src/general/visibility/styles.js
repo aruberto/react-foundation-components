@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -9,7 +7,10 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {SCREEN_SIZES, LARGER_SCREEN_SIZES, SCREEN_ORIENTATIONS} = require('../../util/constants');
+  const {
+    SCREEN_SIZES, LARGER_SCREEN_SIZES,
+    SCREEN_ORIENTATIONS,
+  } = require('../../util/constants');
   const classNames = ['hide', 'invisible', 'show-for-sr', 'show-on-focus']
     .concat(LARGER_SCREEN_SIZES.map((size) => `show-for-${size}`))
     .concat(SCREEN_SIZES.map((size) => `show-for-${size}-only`))

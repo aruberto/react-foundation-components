@@ -1,9 +1,9 @@
-import {PropTypes} from 'react';
+import { PropTypes } from 'react';
 
 import styles from './styles';
-import {FLOAT_GRID_ROW_CLASS_NAMES, FLOAT_GRID_COLUMN_CLASS_NAMES} from '../../util/constants';
+import { FLOAT_GRID_ROW_CLASS_NAMES, FLOAT_GRID_COLUMN_CLASS_NAMES } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import {createScreenSizePropTypes, createScreenSizeClassNamesFromProps} from '../../util/grid';
+import { createScreenSizePropTypes, createScreenSizeClassNamesFromProps } from '../../util/grid';
 
 const rowPropTypes = createScreenSizePropTypes(FLOAT_GRID_ROW_CLASS_NAMES);
 const columnPropTypes = createScreenSizePropTypes(FLOAT_GRID_COLUMN_CLASS_NAMES);
@@ -15,7 +15,7 @@ export const Row = createHigherOrderComponent({
   displayName: 'Row',
   propTypes: rowPropTypes,
   mapPropsToClassNames: (props) => {
-    const {expanded} = props;
+    const { expanded } = props;
     const classNames =
       createScreenSizeClassNamesFromProps(FLOAT_GRID_ROW_CLASS_NAMES, props, styles);
 
@@ -25,14 +25,14 @@ export const Row = createHigherOrderComponent({
     return classNames;
   },
   defaultComponentClass: 'div',
-  collapseOnlyChild: false
+  collapseOnlyChild: false,
 });
 
 export const Column = createHigherOrderComponent({
   displayName: 'Column',
   propTypes: columnPropTypes,
   mapPropsToClassNames: (props) => {
-    const {end} = props;
+    const { end } = props;
     const classNames =
       createScreenSizeClassNamesFromProps(FLOAT_GRID_COLUMN_CLASS_NAMES, props, styles);
 
@@ -40,5 +40,5 @@ export const Column = createHigherOrderComponent({
     classNames[styles.end] = end;
 
     return classNames;
-  }
+  },
 });

@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -9,7 +7,7 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {FLOAT_POSITIONS} = require('../../util/constants');
+  const { FLOAT_POSITIONS } = require('../../util/constants');
   const classNames = ['clearfix'].concat(FLOAT_POSITIONS.map((pos) => `float-${pos}`));
   const keyMirrorArray = require('../../util/key-mirror-array').default;
 
