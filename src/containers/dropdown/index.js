@@ -1,8 +1,9 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   findDOMNode,
   unmountComponentAtNode,
-  unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer // eslint-disable-line camelcase
+  unstable_renderSubtreeIntoContainer // eslint-disable-line camelcase
+    as renderSubtreeIntoContainer,
 } from 'react-dom';
 import cx from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
@@ -12,7 +13,7 @@ import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
 
 import styles from './styles';
-import {COMPONENT_SIZES, OVERLAY_POSITIONS} from '../../util/constants';
+import { COMPONENT_SIZES, OVERLAY_POSITIONS } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 
 function mouseOverOut(event, callback) {
@@ -29,18 +30,18 @@ export class Dropdown extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     position: PropTypes.oneOf(OVERLAY_POSITIONS),
-    size: PropTypes.oneOf(COMPONENT_SIZES)
+    size: PropTypes.oneOf(COMPONENT_SIZES),
   };
 
   render() {
-    const {children, className, position, size} = this.props;
+    const { children, className, position, size } = this.props;
     const classNames = cx(
       className,
       styles['dropdown-pane'],
       styles['is-open'],
       {
         [styles[position]]: OVERLAY_POSITIONS.includes(position),
-        [styles[size]]: COMPONENT_SIZES.includes(size)
+        [styles[size]]: COMPONENT_SIZES.includes(size),
       }
     );
 
@@ -54,10 +55,10 @@ export class Dropdown extends Component {
 
 const HasDropdownBase = createHigherOrderComponent({
   displayName: 'HasDropdownBase',
-  mapPropsToProps: ({dropdown, ...restProps}) => {
+  mapPropsToProps: ({ dropdown, ...restProps }) => {
     const props = {
       ...restProps,
-      'aria-haspopup': true
+      'aria-haspopup': true,
     };
 
     if (dropdown && dropdown.props && !isBlank(dropdown.props.id)) {
@@ -65,7 +66,7 @@ const HasDropdownBase = createHigherOrderComponent({
     }
 
     return props;
-  }
+  },
 });
 
 export class HasDropdown extends Component {
@@ -85,18 +86,18 @@ export class HasDropdown extends Component {
     toggleClick: PropTypes.bool,
     toggleFocus: PropTypes.bool,
     toggleHover: PropTypes.bool,
-    transition: elementType
+    transition: elementType,
   };
 
   static defaultProps = {
-    toggleClick: true
+    toggleClick: true,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      show: false
+      show: false,
     };
     this._clicked = false;
     this._lastRootClose = new Date();
@@ -122,16 +123,16 @@ export class HasDropdown extends Component {
 
   getTargetRefDOMNode = () => findDOMNode(this._targetRef);
 
-  handleShow = () => this.setState({show: true});
+  handleShow = () => this.setState({ show: true });
 
   handleHide = () => {
     if (!this._clicked) {
-      this.setState({show: false});
+      this.setState({ show: false });
     }
   };
 
   handleAnyClick = () => {
-    const {show} = this.state;
+    const { show } = this.state;
 
     if (show) {
       if (this._clicked) {
@@ -147,7 +148,7 @@ export class HasDropdown extends Component {
   };
 
   handleRootClose = () => {
-    const {closeOnClick} = this.props;
+    const { closeOnClick } = this.props;
 
     if (closeOnClick) {
       const now = new Date();
@@ -162,7 +163,7 @@ export class HasDropdown extends Component {
   };
 
   handleClick = (...args) => {
-    const {onClick, toggleClick} = this.props;
+    const { onClick, toggleClick } = this.props;
 
     if (toggleClick) {
       this.handleAnyClick();
@@ -174,7 +175,7 @@ export class HasDropdown extends Component {
   };
 
   handleBlur = (...args) => {
-    const {onBlur, toggleFocus} = this.props;
+    const { onBlur, toggleFocus } = this.props;
 
     if (toggleFocus) {
       this.handleHide();
@@ -186,7 +187,7 @@ export class HasDropdown extends Component {
   };
 
   handleFocus = (...args) => {
-    const {onFocus, toggleFocus} = this.props;
+    const { onFocus, toggleFocus } = this.props;
 
     if (toggleFocus) {
       this.handleShow();
@@ -198,7 +199,7 @@ export class HasDropdown extends Component {
   };
 
   handleMouseOut = (...args) => {
-    const {onMouseOut, toggleHover} = this.props;
+    const { onMouseOut, toggleHover } = this.props;
 
     if (toggleHover) {
       const [event] = args;
@@ -214,7 +215,7 @@ export class HasDropdown extends Component {
   };
 
   handleMouseOver = (...args) => {
-    const {onMouseOver, toggleHover} = this.props;
+    const { onMouseOver, toggleHover } = this.props;
     const [event] = args;
 
     if (toggleHover) {
@@ -236,9 +237,9 @@ export class HasDropdown extends Component {
       dropdownPosition,
       dropdownSize,
       dropdownStyle,
-      transition
+      transition,
     } = this.props;
-    const {show} = this.state;
+    const { show } = this.state;
     const placement = dropdownPosition || 'bottom';
     let labelledBy = null;
 
@@ -271,8 +272,8 @@ export class HasDropdown extends Component {
   renderOverlay = () => renderSubtreeIntoContainer(this, this._overlay, this._mountNode);
 
   render() {
-    const {children} = this.props;
-    const {show} = this.state;
+    const { children } = this.props;
+    const { show } = this.state;
 
     this._overlay = this.createOverlay();
 

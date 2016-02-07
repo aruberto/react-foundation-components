@@ -1,4 +1,4 @@
-import React, {Component, PropTypes, Children, cloneElement} from 'react';
+import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import cx from 'classnames';
 import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
@@ -19,11 +19,11 @@ class AccordionItemControlled extends Component {
     onToggle: PropTypes.func,
     title: PropTypes.node,
     titleClassName: PropTypes.string,
-    titleStyle: PropTypes.object // eslint-disable-line react/forbid-prop-types
+    titleStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   };
 
   handleTitleClick = (event) => {
-    const {eventKey, onToggle} = this.props;
+    const { eventKey, onToggle } = this.props;
 
     event.preventDefault();
 
@@ -42,9 +42,15 @@ class AccordionItemControlled extends Component {
       id,
       title,
       titleClassName,
-      titleStyle
+      titleStyle,
     } = this.props;
-    const classNames = cx(className, styles['accordion-item'], {[styles['is-active']]: active});
+    const classNames = cx(
+      className,
+      styles['accordion-item'],
+      {
+        [styles['is-active']]: active,
+      }
+    );
     const titleClassNames = cx(titleClassName, styles['accordion-title']);
     const contentClassNames = cx(contentClassName, styles['accordion-content']);
     let labelId = null;
@@ -62,10 +68,10 @@ class AccordionItemControlled extends Component {
           aria-expanded={active}
           aria-selected={active}
           className={titleClassNames}
-          href='#'
+          href="#"
           id={labelId}
           onClick={this.handleTitleClick}
-          role='tab'
+          role="tab"
           style={titleStyle}
         >
           {title}
@@ -77,7 +83,7 @@ class AccordionItemControlled extends Component {
               aria-labelledby={labelId}
               className={contentClassNames}
               id={contentId}
-              role='tabpanel'
+              role="tabpanel"
               style={contentStyle}
             >
               {children}
@@ -89,7 +95,7 @@ class AccordionItemControlled extends Component {
   }
 }
 
-export const AccordionItem = uncontrollable(AccordionItemControlled, {active: 'onToggle'});
+export const AccordionItem = uncontrollable(AccordionItemControlled, { active: 'onToggle' });
 
 AccordionItem.displayName = 'AccordionItem';
 
@@ -98,7 +104,7 @@ export class Accordion extends Component {
     activeKey: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
-      PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+      PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     ]),
     allowAllClosed: PropTypes.bool,
     children: PropTypes.node,
@@ -106,16 +112,16 @@ export class Accordion extends Component {
     defaultActiveKey: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
-      PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+      PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     ]),
     multiExpand: PropTypes.bool,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
 
-    const {allowAllClosed, children, defaultActiveKey, multiExpand} = props;
+    const { allowAllClosed, children, defaultActiveKey, multiExpand } = props;
     let activeKey = null;
 
     if (multiExpand) {
@@ -156,7 +162,7 @@ export class Accordion extends Component {
       }
     }
 
-    this.state = {activeKey};
+    this.state = { activeKey };
   }
 
   shouldComponentUpdate() {
@@ -164,8 +170,8 @@ export class Accordion extends Component {
   }
 
   handleToggle = (...args) => {
-    const {allowAllClosed, multiExpand, onSelect} = this.props;
-    const {activeKey: prevActiveKey} = this.state;
+    const { allowAllClosed, multiExpand, onSelect } = this.props;
+    const { activeKey: prevActiveKey } = this.state;
 
     if (onSelect) {
       this._isChanging = true;
@@ -198,13 +204,13 @@ export class Accordion extends Component {
         activeKey = selectedKey;
       }
 
-      this.setState({activeKey});
+      this.setState({ activeKey });
     }
   };
 
   render() {
-    const {activeKey: propActiveKey, children, className} = this.props;
-    const {activeKey: stateActiveKey} = this.state;
+    const { activeKey: propActiveKey, children, className } = this.props;
+    const { activeKey: stateActiveKey } = this.state;
     const classNames = cx(className, styles.accordion);
     let activeKey = stateActiveKey;
 
@@ -219,7 +225,7 @@ export class Accordion extends Component {
             Array.isArray(activeKey)
             ? activeKey.includes(child.props.eventKey)
             : activeKey === child.props.eventKey,
-          onToggle: this.handleToggle
+          onToggle: this.handleToggle,
         });
       }
 
@@ -227,7 +233,7 @@ export class Accordion extends Component {
     });
 
     return (
-      <ul {...this.props} className={classNames} role='tablist'>
+      <ul {...this.props} className={classNames} role="tablist">
         {newChildren}
       </ul>
     );

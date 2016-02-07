@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import styles from './styles';
@@ -9,17 +9,17 @@ export default class Table extends Component {
     className: PropTypes.string,
     hover: PropTypes.bool,
     scroll: PropTypes.bool,
-    stack: PropTypes.bool
+    stack: PropTypes.bool,
   };
 
   render() {
-    const {children, className, hover, scroll, stack} = this.props;
+    const { children, className, hover, scroll, stack } = this.props;
     const classNames = cx(
       className,
       {
         [styles.hover]: hover,
         [styles.scroll]: scroll,
-        [styles.stack]: stack
+        [styles.stack]: stack,
       }
     );
 

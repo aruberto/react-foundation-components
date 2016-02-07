@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -14,7 +12,7 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     'accordion-item',
     'accordion-title',
     'accordion-content',
-    'is-active'
+    'is-active',
   ];
   const keyMirrorArray = require('../../util/key-mirror-array').default;
 

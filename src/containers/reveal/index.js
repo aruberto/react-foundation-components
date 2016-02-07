@@ -1,10 +1,10 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 import Modal from 'react-overlays/lib/Modal';
 
 import styles from './styles';
-import {MODAL_SIZES} from '../../util/constants';
+import { MODAL_SIZES } from '../../util/constants';
 import Fade from '../../transitions/fade';
 
 export default class Reveal extends Component {
@@ -16,12 +16,12 @@ export default class Reveal extends Component {
     revealClassName: PropTypes.string,
     revealStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     size: PropTypes.oneOf(MODAL_SIZES),
-    transition: elementType
+    transition: elementType,
   };
 
   static defaultProps = {
     overlay: true,
-    transition: Fade
+    transition: Fade,
   };
 
   render() {
@@ -32,14 +32,14 @@ export default class Reveal extends Component {
       overlay,
       overlayClassName,
       overlayStyle,
-      size
+      size,
     } = this.props;
     const overlayClassNames = cx(overlayClassName, styles['reveal-overlay']);
     const revealClassNames = cx(
       revealClassName,
       styles.reveal,
       {
-        [styles[size]]: MODAL_SIZES.includes(size)
+        [styles[size]]: MODAL_SIZES.includes(size),
       }
     );
 

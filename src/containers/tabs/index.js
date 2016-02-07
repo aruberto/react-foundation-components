@@ -1,4 +1,4 @@
-import React, {Component, PropTypes, Children, cloneElement} from 'react';
+import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import cx from 'classnames';
 import uncontrollable from 'uncontrollable/batching';
 import isBlank from 'underscore.string/isBlank';
@@ -10,16 +10,16 @@ export class Tab extends Component {
     active: PropTypes.bool,
     children: PropTypes.node,
     className: PropTypes.string,
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   render() {
-    const {active, children, className, id} = this.props;
+    const { active, children, className, id } = this.props;
     const classNames = cx(
       className,
       styles['tabs-panel'],
       {
-        [styles['is-active']]: active
+        [styles['is-active']]: active,
       }
     );
     let labelId = null;
@@ -34,7 +34,7 @@ export class Tab extends Component {
         aria-hidden={!active}
         aria-labelledby={labelId}
         className={classNames}
-        role='tabpanel'
+        role="tabpanel"
       >
         {children}
       </div>
@@ -45,11 +45,11 @@ export class Tab extends Component {
 export class TabsContent extends Component {
   static propTypes = {
     children: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
   };
 
   render() {
-    const {children, className} = this.props;
+    const { children, className } = this.props;
     const classNames = cx(className, styles['tabs-content']);
 
     return (
@@ -68,11 +68,11 @@ export class TabsTitle extends Component {
     containerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onSelect: PropTypes.func,
-    panelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    panelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   handleClick = (event) => {
-    const {eventKey, panelId, onSelect} = this.props;
+    const { eventKey, panelId, onSelect } = this.props;
 
     if (isBlank(panelId)) {
       event.preventDefault();
@@ -84,12 +84,12 @@ export class TabsTitle extends Component {
   };
 
   render() {
-    const {active, children, containerClassName, containerStyle, panelId} = this.props;
+    const { active, children, containerClassName, containerStyle, panelId } = this.props;
     const classNames = cx(
       containerClassName,
       styles['tabs-title'],
       {
-        [styles['is-active']]: active
+        [styles['is-active']]: active,
       }
     );
     const href = `#${isBlank(panelId) ? '' : panelId}`;
@@ -97,7 +97,7 @@ export class TabsTitle extends Component {
     return (
       <li
         className={classNames}
-        role='presentation'
+        role="presentation"
         style={containerStyle}
       >
         <a
@@ -106,7 +106,7 @@ export class TabsTitle extends Component {
           aria-selected={active}
           href={href}
           onClick={this.handleClick}
-          role='tab'
+          role="tab"
         >
           {children}
         </a>
@@ -121,23 +121,23 @@ export class TabsHeader extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     onSelect: PropTypes.func,
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
   };
 
   render() {
-    const {activeKey, children, className, onSelect, vertical} = this.props;
+    const { activeKey, children, className, onSelect, vertical } = this.props;
     const classNames = cx(
       className,
       styles.tabs,
       {
-        [styles.vertical]: vertical
+        [styles.vertical]: vertical,
       }
     );
     const newChildren = Children.map(children, (child) => {
       if (child.props && !isBlank(child.props.eventKey)) {
         return cloneElement(child, {
           active: activeKey === child.props.eventKey,
-          onSelect
+          onSelect,
         });
       }
 
@@ -155,11 +155,11 @@ export class TabsHeader extends Component {
 class TabsControlled extends Component {
   static propTypes = {
     activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    children: PropTypes.node
+    children: PropTypes.node,
   };
 
   render() {
-    const {activeKey, children} = this.props;
+    const { activeKey, children } = this.props;
     const headerChildren = Children.map(children, (child) => {
       let id = null;
       let panelId = null;
@@ -177,7 +177,12 @@ class TabsControlled extends Component {
     });
     const contentChildren = Children.map(children, (child) => {
       if (child.props && !isBlank(child.props.eventKey)) {
-        return cloneElement(child, {active: activeKey === child.props.eventKey});
+        return cloneElement(
+          child,
+          {
+            active: activeKey === child.props.eventKey,
+          }
+        );
       }
 
       return child;
@@ -196,6 +201,6 @@ class TabsControlled extends Component {
   }
 }
 
-export const Tabs = uncontrollable(TabsControlled, {activeKey: 'onSelect'});
+export const Tabs = uncontrollable(TabsControlled, { activeKey: 'onSelect' });
 
 Tabs.displayName = 'Tabs';

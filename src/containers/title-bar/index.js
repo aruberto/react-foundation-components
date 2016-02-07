@@ -1,22 +1,22 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import styles from './styles';
-import {TITLE_BAR_POSITIONS} from '../../util/constants';
+import { TITLE_BAR_POSITIONS } from '../../util/constants';
 
 export class TitleBarItem extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    position: PropTypes.oneOf(TITLE_BAR_POSITIONS).isRequired
+    position: PropTypes.oneOf(TITLE_BAR_POSITIONS).isRequired,
   };
 
   render() {
-    const {children, className, position} = this.props;
+    const { children, className, position } = this.props;
     const classNames = cx(
       className,
       {
-        [styles[`title-bar-${position}`]]: TITLE_BAR_POSITIONS.includes(position)
+        [styles[`title-bar-${position}`]]: TITLE_BAR_POSITIONS.includes(position),
       }
     );
 
@@ -31,11 +31,11 @@ export class TitleBarItem extends Component {
 export class TitleBarTitle extends Component {
   static propTypes = {
     children: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
   };
 
   render() {
-    const {children, className} = this.props;
+    const { children, className } = this.props;
     const classNames = cx(className, styles['title-bar-title']);
 
     return (
@@ -52,16 +52,16 @@ export class MenuIcon extends Component {
     className: PropTypes.string,
     dark: PropTypes.bool,
     offCanvasId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    open: PropTypes.bool
+    open: PropTypes.bool,
   };
 
   render() {
-    const {children, className, dark, offCanvasId, open} = this.props;
+    const { children, className, dark, offCanvasId, open } = this.props;
     const classNames = cx(
       className,
       styles['menu-icon'],
       {
-        [styles.dark]: dark
+        [styles.dark]: dark,
       }
     );
 
@@ -71,7 +71,7 @@ export class MenuIcon extends Component {
         aria-controls={offCanvasId}
         aria-expanded={open}
         className={classNames}
-        type='button'
+        type="button"
       >
         {children}
       </button>
@@ -82,11 +82,11 @@ export class MenuIcon extends Component {
 export class TitleBar extends Component {
   static propTypes = {
     children: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
   };
 
   render() {
-    const {children, className} = this.props;
+    const { children, className } = this.props;
     const classNames = cx(className, styles['title-bar']);
 
     return (

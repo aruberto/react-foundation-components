@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import styles from './styles';
-import {LARGER_SCREEN_SIZES, OFF_CANVAS_POSITIONS} from '../../util/constants';
+import { LARGER_SCREEN_SIZES, OFF_CANVAS_POSITIONS } from '../../util/constants';
 
 export default class OffCanvas extends Component {
   static propTypes = {
@@ -23,11 +23,11 @@ export default class OffCanvas extends Component {
     rightClassName: PropTypes.string,
     rightContent: PropTypes.node,
     rightRevealForSize: PropTypes.oneOf(LARGER_SCREEN_SIZES),
-    rightStyle: PropTypes.object // eslint-disable-line react/forbid-prop-types
+    rightStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   };
 
   handleContentBlockerClick = () => {
-    const {onClose} = this.props;
+    const { onClose } = this.props;
 
     if (onClose) {
       onClose();
@@ -52,14 +52,14 @@ export default class OffCanvas extends Component {
       rightClassName,
       rightContent,
       rightRevealForSize,
-      rightStyle
+      rightStyle,
     } = this.props;
     const classNames = cx(className, styles['off-canvas-wrapper']);
     const innerClassNames = cx(
       innerClassName,
       styles['off-canvas-wrapper-inner'],
       {
-        [styles[`is-open-${open}`]]: OFF_CANVAS_POSITIONS.includes(open)
+        [styles[`is-open-${open}`]]: OFF_CANVAS_POSITIONS.includes(open),
       }
     );
     const leftClassNames = cx(
@@ -67,7 +67,8 @@ export default class OffCanvas extends Component {
       styles['off-canvas'],
       styles['position-left'],
       {
-        [styles[`reveal-for-${leftRevealForSize}`]]: LARGER_SCREEN_SIZES.includes(leftRevealForSize)
+        [styles[`reveal-for-${leftRevealForSize}`]]:
+          LARGER_SCREEN_SIZES.includes(leftRevealForSize),
       }
     );
     const rightClassNames = cx(
@@ -76,7 +77,7 @@ export default class OffCanvas extends Component {
       styles['position-right'],
       {
         [styles[`reveal-for-${rightRevealForSize}`]]:
-          LARGER_SCREEN_SIZES.includes(rightRevealForSize)
+          LARGER_SCREEN_SIZES.includes(rightRevealForSize),
       }
     );
     const contentClassNames = cx(contentClassName, styles['off-canvas-content']);
@@ -84,7 +85,7 @@ export default class OffCanvas extends Component {
       contentBlockerClassName,
       styles['js-off-canvas-exit'],
       {
-        [styles['is-visible']]: OFF_CANVAS_POSITIONS.includes(open)
+        [styles['is-visible']]: OFF_CANVAS_POSITIONS.includes(open),
       }
     );
 

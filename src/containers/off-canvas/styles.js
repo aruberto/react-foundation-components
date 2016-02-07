@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -9,14 +7,14 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {LARGER_SCREEN_SIZES, OFF_CANVAS_POSITIONS} = require('../../util/constants');
+  const { LARGER_SCREEN_SIZES, OFF_CANVAS_POSITIONS } = require('../../util/constants');
   const classNames = [
     'off-canvas',
     'off-canvas-wrapper',
     'off-canvas-wrapper-inner',
     'off-canvas-content',
     'js-off-canvas-exit',
-    'is-visible'
+    'is-visible',
   ]
     .concat(OFF_CANVAS_POSITIONS.map((pos) => `position-${pos}`))
     .concat(OFF_CANVAS_POSITIONS.map((pos) => `is-open-${pos}`))

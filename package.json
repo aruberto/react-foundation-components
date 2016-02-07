@@ -62,6 +62,7 @@
     "cpy-cli": "^1.0.0",
     "css-loader": "^0.23.1",
     "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^5.0.0",
     "eslint-plugin-babel": "^3.1.0",
     "eslint-plugin-react": "^3.16.1",
     "express": "^4.13.4",

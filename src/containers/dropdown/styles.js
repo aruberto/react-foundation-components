@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -9,7 +7,7 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {COMPONENT_SIZES, OVERLAY_POSITIONS} = require('../../util/constants');
+  const { COMPONENT_SIZES, OVERLAY_POSITIONS } = require('../../util/constants');
   const classNames = ['dropdown-pane', 'is-open'].concat(COMPONENT_SIZES).concat(OVERLAY_POSITIONS);
   const keyMirrorArray = require('../../util/key-mirror-array').default;
 

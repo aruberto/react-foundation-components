@@ -1,5 +1,3 @@
-/* eslint-disable no-process-env */
-
 let styles = {};
 
 if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
@@ -9,7 +7,7 @@ if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
     require('./stylesheet.scss');
   }
 
-  const {MEDIA_OBJECT_SECTION_ALIGNMENTS} = require('../../util/constants');
+  const { MEDIA_OBJECT_SECTION_ALIGNMENTS } = require('../../util/constants');
   const classNames = ['media-object', 'media-object-section', 'stack-for-small']
     .concat(MEDIA_OBJECT_SECTION_ALIGNMENTS);
   const keyMirrorArray = require('../../util/key-mirror-array').default;
