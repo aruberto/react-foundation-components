@@ -1,11 +1,11 @@
-import {PropTypes} from 'react';
-import {GRID_COLUMN_MIN, GRID_COLUMN_MAX, SCREEN_SIZES, SMALLER_SCREEN_SIZES} from '../constants';
+import { PropTypes } from 'react';
+import { GRID_COLUMN_MIN, GRID_COLUMN_MAX, SCREEN_SIZES, SMALLER_SCREEN_SIZES } from '../constants';
 
 export function createScreenSizeClassNames(classNameMapping = {}) {
   const classNames = [];
 
   Object.keys(classNameMapping).forEach((baseClassName) => {
-    const {isNumber, skipSmall} = classNameMapping[baseClassName];
+    const { isNumber, skipSmall } = classNameMapping[baseClassName];
 
     SCREEN_SIZES.forEach((size) => {
       if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {
@@ -29,7 +29,7 @@ export function createScreenSizePropTypes(classNameMapping = {}) {
   const propTypes = {};
 
   SCREEN_SIZES.forEach((size) => {
-    Object.values(classNameMapping).forEach(({basePropName, isNumber, skipSmall}) => {
+    Object.values(classNameMapping).forEach(({ basePropName, isNumber, skipSmall }) => {
       if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {
         propTypes[`${size}${basePropName}`] = isNumber ? PropTypes.number : PropTypes.bool;
       }
@@ -47,7 +47,7 @@ export function createScreenSizeClassNamesFromProps(
   const classNames = {};
 
   Object.keys(classNameMapping).forEach((baseClassName) => {
-    const {basePropName, isNumber, skipSmall} = classNameMapping[baseClassName];
+    const { basePropName, isNumber, skipSmall } = classNameMapping[baseClassName];
 
     SCREEN_SIZES.forEach((size) => {
       if (!skipSmall || !SMALLER_SCREEN_SIZES.includes(size)) {

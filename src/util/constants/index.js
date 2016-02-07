@@ -24,89 +24,89 @@ export const FLOAT_GRID_ROW_CLASS_NAMES = {
   collapse: {
     basePropName: 'Collapse',
     isNumber: false,
-    skipSmall: false
+    skipSmall: false,
   },
   uncollapse: {
     basePropName: 'Uncollapse',
     isNumber: false,
-    skipSmall: false
+    skipSmall: false,
   },
   up: {
     basePropName: 'Up',
     isNumber: true,
-    skipSmall: false
-  }
+    skipSmall: false,
+  },
 };
 export const FLOAT_GRID_COLUMN_CLASS_NAMES = {
   '': {
     basePropName: '',
     isNumber: true,
-    skipSmall: false
+    skipSmall: false,
   },
   offset: {
     basePropName: 'Offset',
     isNumber: true,
-    skipSmall: false
+    skipSmall: false,
   },
   centered: {
     basePropName: 'Centered',
     isNumber: false,
-    skipSmall: false
+    skipSmall: false,
   },
   uncentered: {
     basePropName: 'Uncentered',
     isNumber: false,
-    skipSmall: false
+    skipSmall: false,
   },
   push: {
     basePropName: 'Push',
     isNumber: true,
-    skipSmall: false
+    skipSmall: false,
   },
   pull: {
     basePropName: 'Pull',
     isNumber: true,
-    skipSmall: false
-  }
+    skipSmall: false,
+  },
 };
 export const FLEX_GRID_ROW_CLASS_NAMES = {
   unstack: {
     basePropName: 'Unstack',
     isNumber: false,
-    skipSmall: true
+    skipSmall: true,
   },
   collapse: {
     basePropName: 'Collapse',
     isNumber: false,
-    skipSmall: false
+    skipSmall: false,
   },
   uncollapse: {
     basePropName: 'Uncollapse',
     isNumber: false,
-    skipSmall: false
-  }
+    skipSmall: false,
+  },
 };
 export const FLEX_GRID_COLUMN_CLASS_NAMES = {
   '': {
     basePropName: '',
     isNumber: true,
-    skipSmall: false
+    skipSmall: false,
   },
   expand: {
     basePropName: 'Expand',
     isNumber: false,
-    skipSmall: true
+    skipSmall: true,
   },
   offset: {
     basePropName: 'Offset',
     isNumber: true,
-    skipSmall: false
+    skipSmall: false,
   },
   order: {
     basePropName: 'Order',
     isNumber: true,
-    skipSmall: false
-  }
+    skipSmall: false,
+  },
 };
 export const FLEX_GRID_HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
 export const FLEX_GRID_VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];

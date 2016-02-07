@@ -1,4 +1,4 @@
-import React, {Component, PropTypes, isValidElement} from 'react';
+import React, { Component, PropTypes, isValidElement } from 'react';
 import cx from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 
@@ -8,7 +8,7 @@ export default function createHigherOrderComponent({
   mapPropsToClassNames = () => ({}),
   mapPropsToProps = (props) => props,
   defaultComponentClass = 'span',
-  collapseOnlyChild = true
+  collapseOnlyChild = true,
 } = {}) {
   class Wrapper extends Component {
     static displayName = displayName;
@@ -18,7 +18,7 @@ export default function createHigherOrderComponent({
       className: PropTypes.string,
       componentClass: elementType,
       forceWrap: PropTypes.bool,
-      ...propTypes
+      ...propTypes,
     };
 
     render() {
@@ -27,7 +27,7 @@ export default function createHigherOrderComponent({
         className,
         componentClass: maybeComponentClass,
         forceWrap,
-        ...restProps
+        ...restProps,
       } = this.props;
       const ComponentClass = maybeComponentClass || defaultComponentClass;
       const classNames = mapPropsToClassNames(restProps);
@@ -36,7 +36,7 @@ export default function createHigherOrderComponent({
       if (!forceWrap && collapseOnlyChild && isValidElement(children)) {
         return React.cloneElement(children, {
           ...props,
-          className: cx(children.props.className, className, classNames)
+          className: cx(children.props.className, className, classNames),
         });
       }
 
