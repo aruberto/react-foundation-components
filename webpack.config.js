@@ -11,16 +11,13 @@ const argv = parseArgs(process.argv.slice(2), {
   default: {
     dev: false,
     verbose: false,
-    'css-mode': 'global',
   },
 });
 
 const DEV = argv.dev;
 const VERBOSE = argv.verbose;
-const CSS_MODE = argv['css-mode'];
 const GLOBALS = {
   'process.env.NODE_ENV': DEV ? JSON.stringify('development') : JSON.stringify('production'),
-  'process.env.REACT_FOUNDATION_COMPONENTS_CSS': JSON.stringify(CSS_MODE),
 };
 const PLUGINS = [
   new webpack.DefinePlugin(GLOBALS),
@@ -67,10 +64,9 @@ const BABEL_DEV_PLUGINS = [
   ],
 ];
 const BABEL_PROD_PLUGINS = [];
-const CSS_MODULES_FLAGS = `?modules${DEV ? '&localIdentName=[path]---[local]' : ''}`;
 const SASS_LOADERS = [
   'style',
-  `css${CSS_MODE === 'modules' ? CSS_MODULES_FLAGS : ''}!postcss!sass`,
+  `css?mo${DEV ? '&localIdentName=[path]---[local]' : ''}!postcss!sass`,
 ];
 
 module.exports = {

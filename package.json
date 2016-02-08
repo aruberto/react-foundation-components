@@ -10,8 +10,8 @@
     "clean": "rimraf lib demo/lib",
     "lint": "eslint src && sass-lint --verbose",
     "build": "npm run clean && babel src --out-dir lib && cpy \"**/*.scss\" ../lib --parents --cwd=src",
-    "build-demo": "npm run clean && webpack --css-mode=modules",
-    "start": "node server.js --dev --css-mode=modules",
+    "build-demo": "npm run clean && webpack",
+    "start": "node server.js --dev",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "release-patch": "npm run build && release-it",
     "release-minor": "npm run build && release-it minor"

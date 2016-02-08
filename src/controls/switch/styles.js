@@ -1,18 +1,8 @@
-let styles = {};
+import checkStyles from '../../util/check-styles';
+import { COMPONENT_SIZES } from '../../util/constants';
 
-if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
-  styles = require('./stylesheet.scss');
-} else {
-  if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'global') {
-    require('./stylesheet.scss');
-  }
-
-  const { COMPONENT_SIZES } = require('../../util/constants');
-  const classNames = ['switch', 'switch-input', 'switch-paddle', 'switch-active', 'switch-inactive']
-    .concat(COMPONENT_SIZES);
-  const keyMirrorArray = require('../../util/key-mirror-array').default;
-
-  styles = keyMirrorArray(classNames);
-}
-
-export default styles;
+export default checkStyles(
+  require('./stylesheet.scss'),
+  ['switch', 'switch-input', 'switch-paddle', 'switch-active', 'switch-inactive']
+    .concat(COMPONENT_SIZES)
+);

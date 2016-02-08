@@ -1,6 +1,6 @@
 # react-foundation-components
 
-Foundation Sites components implemented in React and compatible with CSS Modules!
+Foundation Sites 6 components implemented in React and compatible with CSS Modules!
 
 ## Why?
 

@@ -1,6 +1,7 @@
 let styles = {};
 
-if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'modules') {
+if (process.env.REACT_FOUNDATION_COMPONENTS_CSS !== 'global'
+    && process.env.REACT_FOUNDATION_COMPONENTS_CSS !== 'none') {
   styles = require('./stylesheet.scss');
 } else {
   if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'global') {
