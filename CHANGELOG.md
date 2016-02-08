@@ -1,3 +1,12 @@
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/aruberto/react-foundation-components/compare/0.6.0...0.6.1) (2016-02-08)
+
+
+#### Miscellaneous
+
+* Column no longer merges with child component.
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/aruberto/react-foundation-components/compare/0.5.1...0.6.0) (2016-02-08)
 
