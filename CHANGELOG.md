@@ -1,3 +1,12 @@
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/aruberto/react-foundation-components/compare/0.5.0...0.5.1) (2016-02-08)
+
+
+#### Miscellaneous
+
+* SCSS files were not being copied to lib folder correctly. This should be first working build on npm. Sorry.
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/aruberto/react-foundation-components/compare/0.4.0...0.5.0) (2016-02-06)
 
