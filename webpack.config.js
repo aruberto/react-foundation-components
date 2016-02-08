@@ -66,7 +66,7 @@ const BABEL_DEV_PLUGINS = [
 const BABEL_PROD_PLUGINS = [];
 const SASS_LOADERS = [
   'style',
-  `css?mo${DEV ? '&localIdentName=[path]---[local]' : ''}!postcss!sass`,
+  `css?modules${DEV ? '&localIdentName=[path]---[local]' : ''}!postcss!sass`,
 ];
 
 module.exports = {
