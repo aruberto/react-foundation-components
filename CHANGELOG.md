@@ -1,3 +1,12 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/aruberto/react-foundation-components/compare/0.5.1...0.6.0) (2016-02-08)
+
+
+### BREAKING CHANGES
+
+* Removed usage of REACT_FOUNDATION_COMPONENTS_CSS process flag. Foundation stylesheets are always required. Code will fall back to using global class names if result from require is not an object or an empty object.
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/aruberto/react-foundation-components/compare/0.5.0...0.5.1) (2016-02-08)
 
