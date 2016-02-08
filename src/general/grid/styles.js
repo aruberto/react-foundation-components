@@ -1,25 +1,10 @@
-let styles = {};
+import checkStyles from '../../util/check-styles';
+import { FLOAT_GRID_ROW_CLASS_NAMES, FLOAT_GRID_COLUMN_CLASS_NAMES } from '../../util/constants';
+import { createScreenSizeClassNames } from '../../util/grid';
 
-if (process.env.REACT_FOUNDATION_COMPONENTS_CSS !== 'global'
-    && process.env.REACT_FOUNDATION_COMPONENTS_CSS !== 'none') {
-  styles = require('./stylesheet.scss');
-} else {
-  if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'global') {
-    require('./stylesheet.scss');
-  }
-
-  const {
-    FLOAT_GRID_ROW_CLASS_NAMES,
-    FLOAT_GRID_COLUMN_CLASS_NAMES,
-  } = require('../../util/constants');
-  const { createScreenSizeClassNames } = require('../../util/grid');
-
-  const classNames = ['row', 'column', 'expanded', 'end']
+export default checkStyles(
+  require('./stylesheet.scss'),
+  ['row', 'column', 'expanded', 'end']
     .concat(createScreenSizeClassNames(FLOAT_GRID_ROW_CLASS_NAMES))
-    .concat(createScreenSizeClassNames(FLOAT_GRID_COLUMN_CLASS_NAMES));
-  const keyMirrorArray = require('../../util/key-mirror-array').default;
-
-  styles = keyMirrorArray(classNames);
-}
-
-export default styles;
+    .concat(createScreenSizeClassNames(FLOAT_GRID_COLUMN_CLASS_NAMES))
+);

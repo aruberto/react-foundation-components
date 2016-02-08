@@ -1,18 +1,7 @@
-let styles = {};
+import checkStyles from '../../util/check-styles';
+import { TEXT_ALIGNMENTS } from '../../util/constants';
 
-if (process.env.REACT_FOUNDATION_COMPONENTS_CSS !== 'global'
-    && process.env.REACT_FOUNDATION_COMPONENTS_CSS !== 'none') {
-  styles = require('./stylesheet.scss');
-} else {
-  if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'global') {
-    require('./stylesheet.scss');
-  }
-
-  const { TEXT_ALIGNMENTS } = require('../../util/constants');
-  const classNames = TEXT_ALIGNMENTS.map((alignment) => `text-${alignment}`);
-  const keyMirrorArray = require('../../util/key-mirror-array').default;
-
-  styles = keyMirrorArray(classNames);
-}
-
-export default styles;
+export default checkStyles(
+  require('./stylesheet.scss'),
+  TEXT_ALIGNMENTS.map((alignment) => `text-${alignment}`)
+);

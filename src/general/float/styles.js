@@ -1,18 +1,7 @@
-let styles = {};
+import checkStyles from '../../util/check-styles';
+import { FLOAT_POSITIONS } from '../../util/constants';
 
-if (process.env.REACT_FOUNDATION_COMPONENTS_CSS !== 'global'
-    && process.env.REACT_FOUNDATION_COMPONENTS_CSS !== 'none') {
-  styles = require('./stylesheet.scss');
-} else {
-  if (process.env.REACT_FOUNDATION_COMPONENTS_CSS === 'global') {
-    require('./stylesheet.scss');
-  }
-
-  const { FLOAT_POSITIONS } = require('../../util/constants');
-  const classNames = ['clearfix'].concat(FLOAT_POSITIONS.map((pos) => `float-${pos}`));
-  const keyMirrorArray = require('../../util/key-mirror-array').default;
-
-  styles = keyMirrorArray(classNames);
-}
-
-export default styles;
+export default checkStyles(
+  require('./stylesheet.scss'),
+  ['clearfix'].concat(FLOAT_POSITIONS.map((position) => `float-${position}`))
+);
