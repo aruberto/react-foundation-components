@@ -41,4 +41,6 @@ export const Column = createHigherOrderComponent({
 
     return classNames;
   },
+  defaultComponentClass: 'div',
+  collapseOnlyChild: false,
 });
