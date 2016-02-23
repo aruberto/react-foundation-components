@@ -2,7 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, hashHistory } from 'react-router';
 
-import '../src/_theme.scss';
+import './docs.scss';
+import {
+  OffCanvas,
+  OffCanvasContent,
+  OffCanvasContainer,
+  TitleBar,
+  TitleBarItem,
+  TitleBarTitle,
+  MenuIcon,
+  HideForScreenSize,
+} from '../src';
+
 import GridPage from './general/grid';
 import FlexGridPage from './general/flex-grid';
 import VisibilityPage from './general/visibility';
@@ -36,65 +47,96 @@ class HomePage extends Component {
     children: PropTypes.node,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      leftNavOpen: false,
+    };
+  }
+
+  handleClose = () => this.setState({ leftNavOpen: false });
+
+  handleToggle = () => {
+    const { leftNavOpen } = this.state;
+
+    this.setState({ leftNavOpen: !leftNavOpen });
+  };
+
   render() {
+    const { leftNavOpen } = this.state;
+    const open = leftNavOpen ? 'left' : null;
+
     return (
-      <div>
-        <Link to="/general/grid">Grid</Link>
-        &nbsp;|&nbsp;
-        <Link to="/general/flex-grid">Flex Grid</Link>
-        &nbsp;|&nbsp;
-        <Link to="/general/visibility">Visibility</Link>
-        &nbsp;|&nbsp;
-        <Link to="/general/float">Float</Link>
-        &nbsp;|&nbsp;
-        <Link to="/typography/base">Base Typography</Link>
-        &nbsp;|&nbsp;
-        <Link to="/typography/helpers">Typography Helpers</Link>
-        &nbsp;|&nbsp;
-        <Link to="/typography/text-alignment">Text Alignment</Link>
-        &nbsp;|&nbsp;
-        <Link to="/controls/button">Button</Link>
-        &nbsp;|&nbsp;
-        <Link to="/controls/button-group">Button Group</Link>
-        &nbsp;|&nbsp;
-        <Link to="/controls/close-button">Close Button</Link>
-        &nbsp;|&nbsp;
-        <Link to="/controls/switch">Switch</Link>
-        &nbsp;|&nbsp;
-        <Link to="/containers/accordion">Accordion</Link>
-        &nbsp;|&nbsp;
-        <Link to="/containers/callout">Callout</Link>
-        &nbsp;|&nbsp;
-        <Link to="/containers/dropdown">Dropdown</Link>
-        &nbsp;|&nbsp;
-        <Link to="/containers/media-object">Media Object</Link>
-        &nbsp;|&nbsp;
-        <Link to="/containers/off-canvas">Off Canvas</Link>
-        &nbsp;|&nbsp;
-        <Link to="/containers/reveal">Reveal</Link>
-        &nbsp;|&nbsp;
-        <Link to="/containers/table">Table</Link>
-        &nbsp;|&nbsp;
-        <Link to="/containers/tabs">Tabs</Link>
-        &nbsp;|&nbsp;
-        <Link to="/media/badge">Badge</Link>
-        &nbsp;|&nbsp;
-        <Link to="/media/flex-video">Flex Video</Link>
-        &nbsp;|&nbsp;
-        <Link to="/media/label">Label</Link>
-        &nbsp;|&nbsp;
-        <Link to="/media/progress-bar">Progress Bar</Link>
-        &nbsp;|&nbsp;
-        <Link to="/media/thumbnail">Thumbnail</Link>
-        &nbsp;|&nbsp;
-        <Link to="/media/tooltip">Tooltip</Link>
-        &nbsp;|&nbsp;
-        <Link to="/transitions/fade">Fade</Link>
-        &nbsp;|&nbsp;
-        <Link to="/transitions/collapse">Collapse</Link>
-        <hr/>
-        {this.props.children}
-      </div>
+      <OffCanvasContainer open={open}>
+        <OffCanvas position="left" revealForSize="large">
+          <Link to="/general/grid">Grid</Link>
+          <br/>
+          <Link to="/general/flex-grid">Flex Grid</Link>
+          <br/>
+          <Link to="/general/visibility">Visibility</Link>
+          <br/>
+          <Link to="/general/float">Float</Link>
+          <br/>
+          <Link to="/typography/base">Base Typography</Link>
+          <br/>
+          <Link to="/typography/helpers">Typography Helpers</Link>
+          <br/>
+          <Link to="/typography/text-alignment">Text Alignment</Link>
+          <br/>
+          <Link to="/controls/button">Button</Link>
+          <br/>
+          <Link to="/controls/button-group">Button Group</Link>
+          <br/>
+          <Link to="/controls/close-button">Close Button</Link>
+          <br/>
+          <Link to="/controls/switch">Switch</Link>
+          <br/>
+          <Link to="/containers/accordion">Accordion</Link>
+          <br/>
+          <Link to="/containers/callout">Callout</Link>
+          <br/>
+          <Link to="/containers/dropdown">Dropdown</Link>
+          <br/>
+          <Link to="/containers/media-object">Media Object</Link>
+          <br/>
+          <Link to="/containers/off-canvas">Off Canvas</Link>
+          <br/>
+          <Link to="/containers/reveal">Reveal</Link>
+          <br/>
+          <Link to="/containers/table">Table</Link>
+          <br/>
+          <Link to="/containers/tabs">Tabs</Link>
+          <br/>
+          <Link to="/media/badge">Badge</Link>
+          <br/>
+          <Link to="/media/flex-video">Flex Video</Link>
+          <br/>
+          <Link to="/media/label">Label</Link>
+          <br/>
+          <Link to="/media/progress-bar">Progress Bar</Link>
+          <br/>
+          <Link to="/media/thumbnail">Thumbnail</Link>
+          <br/>
+          <Link to="/media/tooltip">Tooltip</Link>
+          <br/>
+          <Link to="/transitions/fade">Fade</Link>
+          <br/>
+          <Link to="/transitions/collapse">Collapse</Link>
+        </OffCanvas>
+        <OffCanvasContent onContentBlockerClick={this.handleClose}>
+          <TitleBar>
+            <HideForScreenSize size="large">
+              <TitleBarItem position="left">
+                <MenuIcon onClick={this.handleToggle} open={leftNavOpen}/>
+              </TitleBarItem>
+            </HideForScreenSize>
+            <TitleBarTitle>React Foundation Components</TitleBarTitle>
+          </TitleBar>
+          <br/>
+          {this.props.children}
+        </OffCanvasContent>
+      </OffCanvasContainer>
     );
   }
 }

@@ -8,9 +8,8 @@ import {
   TitleBarItem,
   TitleBarTitle,
   MenuIcon,
+  HideForScreenSize,
 } from '../../../src';
-
-const MAX_HEIGHT_STYLE = { height: '100%' };
 
 export default class OffCanvasPage extends Component {
   constructor(props) {
@@ -38,29 +37,31 @@ export default class OffCanvasPage extends Component {
     const { open } = this.state;
 
     return (
-      <div style={{ height: '800px' }}>
-        <TitleBar>
-          <TitleBarItem position="left">
-            <MenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
-          </TitleBarItem>
-          <TitleBarTitle>Foundation</TitleBarTitle>
-          <TitleBarItem position="right">
-            <MenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
-          </TitleBarItem>
-        </TitleBar>
-        <br/>
-        <OffCanvasContainer innerStyle={MAX_HEIGHT_STYLE} open={open} style={MAX_HEIGHT_STYLE}>
-          <OffCanvas position="left" revealForSize="large" style={MAX_HEIGHT_STYLE}>
-            Left Sidebar
-          </OffCanvas>
-          <OffCanvas position="right" revealForSize="xxlarge" style={MAX_HEIGHT_STYLE}>
-            Right Sidebar
-          </OffCanvas>
-          <OffCanvasContent onContentBlockerClick={this.handleClose} style={MAX_HEIGHT_STYLE}>
-            <div style={{ margin: '0 auto', width: '100px' }}>Main Content</div>
-          </OffCanvasContent>
-        </OffCanvasContainer>
-      </div>
+      <OffCanvasContainer open={open}>
+        <OffCanvas position="left" revealForSize="large" style={{ position: 'absolute' }}>
+          Left Sidebar
+        </OffCanvas>
+        <OffCanvas position="right" revealForSize="xxlarge" style={{ position: 'absolute' }}>
+          Right Sidebar
+        </OffCanvas>
+        <OffCanvasContent onContentBlockerClick={this.handleClose}>
+          <TitleBar>
+            <HideForScreenSize size="large">
+              <TitleBarItem position="left">
+                <MenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
+              </TitleBarItem>
+            </HideForScreenSize>
+            <TitleBarTitle>Foundation</TitleBarTitle>
+            <HideForScreenSize size="xxlarge">
+              <TitleBarItem position="right">
+                <MenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
+              </TitleBarItem>
+            </HideForScreenSize>
+          </TitleBar>
+          <br/>
+          <div style={{ margin: '0 auto', width: '100px' }}>Main Content</div>
+        </OffCanvasContent>
+      </OffCanvasContainer>
     );
   }
 }

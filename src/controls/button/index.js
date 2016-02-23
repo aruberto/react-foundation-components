@@ -52,7 +52,13 @@ export default class Button extends Component {
 
     if (href || target) {
       return (
-        <a {...this.props} className={classNames} href={href || '#'} role="button"/>
+        <a
+          {...this.props}
+          aria-disabled={disabled}
+          className={classNames}
+          href={href || '#'}
+          role="button"
+        />
       );
     }
 

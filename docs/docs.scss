@@ -1,0 +1,23 @@
+$color-background: #f4f5f6 !default
+
+@import '../src/theme';
+
+code {
+  background: $color-background;
+  border-radius: .4rem;
+  font-size: 86%;
+  margin: 0 .2rem 1rem;
+  padding: .2rem .5rem;
+  white-space: nowrap;
+}
+
+pre {
+  font-family: 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Monaco', monospace;
+
+  & > code {
+    border-radius: 0;
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre;
+  }
+}

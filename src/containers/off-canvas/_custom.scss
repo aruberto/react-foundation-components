@@ -1,5 +1,9 @@
-.js-off-canvas-exit {
-  &.is-visible {
-    display: block;
-  }
+.off-canvas-wrapper,
+.off-canvas-wrapper-inner,
+.off-canvas {
+  min-height: 100%;
+}
+
+.is-visible {
+  display: block;
 }
