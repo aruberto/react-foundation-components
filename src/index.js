@@ -27,7 +27,7 @@ export { Accordion, AccordionItem } from './containers/accordion';
 export Callout from './containers/callout';
 export { Dropdown, HasDropdown } from './containers/dropdown';
 export { MediaObjectSection, MediaObject } from './containers/media-object';
-export OffCanvas from './containers/off-canvas';
+export { OffCanvas, OffCanvasContent, OffCanvasContainer } from './containers/off-canvas';
 export Reveal from './containers/reveal';
 export Table from './containers/table';
 export { Tabs, TabsHeader, TabsTitle, TabsContent, Tab } from './containers/tabs';

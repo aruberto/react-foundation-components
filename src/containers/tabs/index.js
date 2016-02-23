@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
+import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import uncontrollable from 'uncontrollable/batching';
 import isBlank from 'underscore.string/isBlank';
@@ -125,7 +125,7 @@ export class TabsHeader extends Component {
       }
     );
     const newChildren = Children.map(children, (child) => {
-      if (child.props && !isBlank(child.props.eventKey)) {
+      if (isValidElement(child) && !isBlank(child.props.eventKey)) {
         return cloneElement(child, {
           active: activeKey === child.props.eventKey,
           onSelect,
@@ -155,7 +155,7 @@ class TabsControlled extends Component {
       let id = null;
       let panelId = null;
 
-      if (child.props && !isBlank(child.props.id)) {
+      if (isValidElement(child) && !isBlank(child.props.id)) {
         panelId = child.props.id;
         id = `${panelId}-label`;
       }
@@ -167,7 +167,7 @@ class TabsControlled extends Component {
       );
     });
     const contentChildren = Children.map(children, (child) => {
-      if (child.props && !isBlank(child.props.eventKey)) {
+      if (isValidElement(child) && !isBlank(child.props.eventKey)) {
         return cloneElement(
           child,
           {
@@ -180,7 +180,7 @@ class TabsControlled extends Component {
     });
 
     return (
-      <div {...this.props}>
+      <div>
         <TabsHeader {...this.props}>
           {headerChildren}
         </TabsHeader>

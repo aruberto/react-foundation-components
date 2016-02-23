@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
+import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
@@ -148,7 +148,7 @@ export class Accordion extends Component {
       let firstChildEventKey = null;
 
       Children.forEach(children, (child) => {
-        if (isNil(firstChildEventKey) && child.props && !isBlank(child.props.eventKey)) {
+        if (isNil(firstChildEventKey) && isValidElement(child) && !isBlank(child.props.eventKey)) {
           firstChildEventKey = child.props.eventKey;
         }
       });
@@ -219,7 +219,7 @@ export class Accordion extends Component {
     }
 
     const newChildren = Children.map(children, (child) => {
-      if (child.props && !isBlank(child.props.eventKey)) {
+      if (isValidElement(child) && !isBlank(child.props.eventKey)) {
         return cloneElement(child, {
           active:
             Array.isArray(activeKey)

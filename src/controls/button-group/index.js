@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
+import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 
 import styles from './styles';
@@ -30,15 +30,20 @@ export default class ButtonGroup extends Component {
         [styles['stacked-for-small']]: stack === STACK_FOR_SMALL,
       }
     );
-    const buttonClassNames = styles.button;
     const newChildren = Children.map(
       children,
-      (child) => cloneElement(
-        child,
-        {
-          className: cx(child.props.className, buttonClassNames),
+      (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(
+            child,
+            {
+              className: cx(child.props.className, styles.button),
+            }
+          );
         }
-      )
+
+        return child;
+      }
     );
 
     return (

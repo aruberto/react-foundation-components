@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
+import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
@@ -181,7 +181,7 @@ class RadioSwitchControlled extends Component {
   render() {
     const { activeKey, children, size } = this.props;
     const newChildren = Children.map(children, (child) => {
-      if (child.props && !isBlank(child.props.eventKey)) {
+      if (isValidElement(child) && !isBlank(child.props.eventKey)) {
         return cloneElement(child, {
           checked: child.props.eventKey === activeKey,
           onChange: this.handleChange,
