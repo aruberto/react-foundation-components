@@ -1,3 +1,12 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/aruberto/react-foundation-components/compare/0.6.1...0.7.0) (2016-02-23)
+
+
+### BREAKING CHANGES
+
+* OffCanvas now has a more composable API. It has been split into 3 components: OffCanvas, OffCanvasContainer and OffCanvasContent. Please see demo for example use of new API.
+
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/aruberto/react-foundation-components/compare/0.6.0...0.6.1) (2016-02-08)
 
