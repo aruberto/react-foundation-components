@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Table} from '../../../src';
+import { Table } from '../../../src';
 
 export default class TablePage extends Component {
   render() {
@@ -9,10 +9,10 @@ export default class TablePage extends Component {
         <Table>
           <thead>
             <tr>
-              <th width='200'>Table Header</th>
+              <th width="200">Table Header</th>
               <th>Table Header</th>
-              <th width='150'>Table Header</th>
-              <th width='150'>Table Header</th>
+              <th width="150">Table Header</th>
+              <th width="150">Table Header</th>
             </tr>
           </thead>
           <tbody>
@@ -44,10 +44,10 @@ export default class TablePage extends Component {
         <Table hover>
           <thead>
             <tr>
-              <th width='200'>Table Header</th>
+              <th width="200">Table Header</th>
               <th>Table Header</th>
-              <th width='150'>Table Header</th>
-              <th width='150'>Table Header</th>
+              <th width="150">Table Header</th>
+              <th width="150">Table Header</th>
             </tr>
           </thead>
           <tbody>
@@ -127,7 +127,7 @@ export default class TablePage extends Component {
           </thead>
           <tbody>
             <tr>
-              <td style={{display: 'block', width: '400px'}}>
+              <td style={{ display: 'block', width: '400px' }}>
                 These are all the words that people use to describe Foundation 6!
               </td>
               <td>Cool</td>

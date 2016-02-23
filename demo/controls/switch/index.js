@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Switch, RadioSwitch} from '../../../src';
+import { Switch, RadioSwitch } from '../../../src';
 
 export default class SwitchPage extends Component {
   constructor(props) {
@@ -8,55 +8,55 @@ export default class SwitchPage extends Component {
 
     this.state = {
       checked: true,
-      activeKey: '3'
+      activeKey: '3',
     };
   }
 
   handleToggle = () => {
-    const {checked: currChecked} = this.state;
+    const { checked: currChecked } = this.state;
     const checked = !currChecked;
 
-    this.setState({checked});
+    this.setState({ checked });
   };
 
-  handleSelect = (activeKey) => this.setState({activeKey});
+  handleSelect = (activeKey) => this.setState({ activeKey });
 
   render() {
-    const {activeKey, checked} = this.state;
+    const { activeKey, checked } = this.state;
 
     return (
       <div>
-        <Switch checked={checked} id='mySwitch' onToggle={this.handleToggle}/>
+        <Switch checked={checked} id="mySwitch" onToggle={this.handleToggle}/>
         <Switch checked={checked} onToggle={this.handleToggle}/>
         <Switch defaultChecked/>
-        <Switch size='tiny'/>
-        <Switch size='small'/>
-        <Switch size='large'/>
-        <Switch checkedLabel='Yes' paddleLabel='Do you like me?' uncheckedLabel='No'/>
+        <Switch size="tiny"/>
+        <Switch size="small"/>
+        <Switch size="large"/>
+        <Switch checkedLabel="Yes" paddleLabel="Do you like me?" uncheckedLabel="No"/>
         <RadioSwitch activeKey={activeKey} onSelect={this.handleSelect}>
-          <Switch eventKey='1'/>
-          <Switch eventKey='2'/>
-          <Switch eventKey='3'/>
+          <Switch eventKey="1"/>
+          <Switch eventKey="2"/>
+          <Switch eventKey="3"/>
         </RadioSwitch>
-        <RadioSwitch defaultActiveKey='2'>
-          <Switch eventKey='1'/>
-          <Switch eventKey='2'/>
-          <Switch eventKey='3'/>
+        <RadioSwitch defaultActiveKey="2">
+          <Switch eventKey="1"/>
+          <Switch eventKey="2"/>
+          <Switch eventKey="3"/>
         </RadioSwitch>
-        <RadioSwitch defaultActiveKey='1' size='tiny'>
-          <Switch eventKey='1'/>
-          <Switch eventKey='2'/>
-          <Switch eventKey='3'/>
+        <RadioSwitch defaultActiveKey="1" size="tiny">
+          <Switch eventKey="1"/>
+          <Switch eventKey="2"/>
+          <Switch eventKey="3"/>
         </RadioSwitch>
-        <RadioSwitch defaultActiveKey='2' size='small'>
-          <Switch eventKey='1'/>
-          <Switch eventKey='2'/>
-          <Switch eventKey='3'/>
+        <RadioSwitch defaultActiveKey="2" size="small">
+          <Switch eventKey="1"/>
+          <Switch eventKey="2"/>
+          <Switch eventKey="3"/>
         </RadioSwitch>
-        <RadioSwitch defaultActiveKey='3' size='large'>
-          <Switch eventKey='1'/>
-          <Switch eventKey='2'/>
-          <Switch eventKey='3'/>
+        <RadioSwitch defaultActiveKey="3" size="large">
+          <Switch eventKey="1"/>
+          <Switch eventKey="2"/>
+          <Switch eventKey="3"/>
         </RadioSwitch>
       </div>
     );

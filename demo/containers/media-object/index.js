@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {MediaObjectSection, MediaObject} from '../../../src';
+import { MediaObjectSection, MediaObject } from '../../../src';
 
 export default class MediaObjectPage extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class MediaObjectPage extends Component {
       <div>
         <MediaObject>
           <MediaObjectSection>
-            <img src='http://foundation.zurb.com/sites/docs/assets/img/avatar-1.jpg'/>
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-1.jpg"/>
           </MediaObjectSection>
           <MediaObjectSection>
             <h4>Dreams feel real while we're in them.</h4>
@@ -21,8 +21,8 @@ export default class MediaObjectPage extends Component {
         </MediaObject>
         <br/>
         <MediaObject>
-          <MediaObjectSection alignment='middle'>
-            <img src='http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg'/>
+          <MediaObjectSection alignment="middle">
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg"/>
           </MediaObjectSection>
           <MediaObjectSection>
             <h4>Why is it so important to dream?</h4>
@@ -38,14 +38,14 @@ export default class MediaObjectPage extends Component {
               sticks; right in there somewhere.
             </p>
           </MediaObjectSection>
-          <MediaObjectSection alignment='bottom'>
-            <img src='http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg'/>
+          <MediaObjectSection alignment="bottom">
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg"/>
           </MediaObjectSection>
         </MediaObject>
         <br/>
         <MediaObject stackForSmall>
           <MediaObjectSection>
-            <img src='http://foundation.zurb.com/sites/docs/assets/img/rectangle-1.jpg'/>
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-1.jpg"/>
           </MediaObjectSection>
           <MediaObjectSection>
             <h4>I Can Stack.</h4>

@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "clean": "rimraf lib demo/lib",
-    "lint": "eslint src && sass-lint --verbose",
+    "lint": "eslint src && eslint demo && sass-lint --verbose",
     "build": "npm run clean && babel src --out-dir lib && cpy \"**/*.scss\" ../lib --parents --cwd=src",
     "build-demo": "npm run clean && webpack",
     "start": "node server.js --dev",
@@ -63,7 +63,6 @@
     "css-loader": "^0.23.1",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^5.0.1",
-    "eslint-plugin-babel": "^3.1.0",
     "eslint-plugin-react": "^3.16.1",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",

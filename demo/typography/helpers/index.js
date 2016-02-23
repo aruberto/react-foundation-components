@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Subheader, Lead, UnbulletedList, Statistic} from '../../../src';
+import { Subheader, Lead, UnbulletedList, Statistic } from '../../../src';
 
 export default class TypographyHelpersPage extends Component {
   render() {

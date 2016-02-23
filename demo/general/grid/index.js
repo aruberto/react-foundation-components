@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import {
   FloatRow as Row,
   FloatColumn as Column,
   ShowForScreenSize,
-  ShowOnlyForScreenSize
+  ShowOnlyForScreenSize,
 } from '../../../src';
 
-const style = {borderStyle: 'solid'};
+const style = { borderStyle: 'solid' };
 
 export default class GridPage extends Component {
   render() {
@@ -110,24 +110,24 @@ export default class GridPage extends Component {
         <br/>
         <Row largeCollapse mediumUncollapse>
           <Column small={6} style={style}>
-            <ShowOnlyForScreenSize size='small'>
+            <ShowOnlyForScreenSize size="small">
               On a small screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowOnlyForScreenSize size='medium'>
+            <ShowOnlyForScreenSize size="medium">
               On a medium screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowForScreenSize size='large'>
+            <ShowForScreenSize size="large">
               On a large screen, I have no gutters!
             </ShowForScreenSize>
           </Column>
           <Column small={6} style={style}>
-            <ShowOnlyForScreenSize size='small'>
+            <ShowOnlyForScreenSize size="small">
               On a small screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowOnlyForScreenSize size='medium'>
+            <ShowOnlyForScreenSize size="medium">
               On a medium screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowForScreenSize size='large'>
+            <ShowForScreenSize size="large">
               On a large screen, I have no gutters!
             </ShowForScreenSize>
           </Column>
@@ -164,12 +164,12 @@ export default class GridPage extends Component {
         </Row>
         <br/>
         <Row largeUp={4} mediumUp={2} smallUp={1}>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
-          <Column style={style}><img alt='' src='http://placehold.it/300x300'/></Column>
+          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
         </Row>
       </div>
     );

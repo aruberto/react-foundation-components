@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import {
   ShowForScreenSize,
@@ -11,7 +11,7 @@ import {
   HideForScreenOrientation,
   ShowOnlyForScreenReader,
   HideOnlyForScreenReader,
-  ShowOnlyOnFocus
+  ShowOnlyOnFocus,
 } from '../../../src';
 
 export default class VisibilityPage extends Component {
@@ -20,75 +20,75 @@ export default class VisibilityPage extends Component {
       <div>
         You are on a small screen or larger.
         <br/>
-        <ShowForScreenSize size='medium'>
+        <ShowForScreenSize size="medium">
           You are on a medium screen or larger.
         </ShowForScreenSize>
         <br/>
-        <ShowForScreenSize size='large'>
+        <ShowForScreenSize size="large">
           You are on a large screen or larger.
         </ShowForScreenSize>
         <br/>
-        <ShowForScreenSize size='xlarge'>
+        <ShowForScreenSize size="xlarge">
           You are on an extra large screen or larger.
         </ShowForScreenSize>
         <br/>
-        <ShowForScreenSize size='xxlarge'>
+        <ShowForScreenSize size="xxlarge">
           You are on an extra extra large screen or larger.
         </ShowForScreenSize>
         <br/>
-        <ShowOnlyForScreenSize size='small'>
+        <ShowOnlyForScreenSize size="small">
           You are <em>definitely</em> on a small screen.
         </ShowOnlyForScreenSize>
         <br/>
-        <ShowOnlyForScreenSize size='medium'>
+        <ShowOnlyForScreenSize size="medium">
           You are <em>definitely</em> on a medium screen.
         </ShowOnlyForScreenSize>
         <br/>
-        <ShowOnlyForScreenSize size='large'>
+        <ShowOnlyForScreenSize size="large">
           You are <em>definitely</em> on a large screen.
         </ShowOnlyForScreenSize>
         <br/>
-        <ShowOnlyForScreenSize size='xlarge'>
+        <ShowOnlyForScreenSize size="xlarge">
           You are <em>definitely</em> on an extra large screen.
         </ShowOnlyForScreenSize>
         <br/>
-        <ShowOnlyForScreenSize size='xxlarge'>
+        <ShowOnlyForScreenSize size="xxlarge">
           You are <em>definitely</em> on an extra extra large screen.
         </ShowOnlyForScreenSize>
         <br/>
-        <HideForScreenSize size='medium'>
+        <HideForScreenSize size="medium">
           You are <em>not</em> on a medium screen or larger.
         </HideForScreenSize>
         <br/>
-        <HideForScreenSize size='large'>
+        <HideForScreenSize size="large">
           You are <em>not</em> on a large screen or larger.
         </HideForScreenSize>
         <br/>
-        <HideForScreenSize size='xlarge'>
+        <HideForScreenSize size="xlarge">
           You are <em>not</em> on an extra large screen or larger.
         </HideForScreenSize>
         <br/>
-        <HideForScreenSize size='xxlarge'>
+        <HideForScreenSize size="xxlarge">
           You are <em>not</em> on an extra extra large screen or larger.
         </HideForScreenSize>
         <br/>
-        <HideOnlyForScreenSize size='small'>
+        <HideOnlyForScreenSize size="small">
           You are <em>definitely not</em> on a small screen.
         </HideOnlyForScreenSize>
         <br/>
-        <HideOnlyForScreenSize size='medium'>
+        <HideOnlyForScreenSize size="medium">
           You are <em>definitely not</em> on a medium screen.
         </HideOnlyForScreenSize>
         <br/>
-        <HideOnlyForScreenSize size='large'>
+        <HideOnlyForScreenSize size="large">
           You are <em>definitely not</em> on a large screen.
         </HideOnlyForScreenSize>
         <br/>
-        <HideOnlyForScreenSize size='xlarge'>
+        <HideOnlyForScreenSize size="xlarge">
           You are <em>definitely not</em> on an extra large screen.
         </HideOnlyForScreenSize>
         <br/>
-        <HideOnlyForScreenSize size='xxlarge'>
+        <HideOnlyForScreenSize size="xxlarge">
           You are <em>definitely not</em> on an extra extra large screen.
         </HideOnlyForScreenSize>
         <br/>
@@ -100,19 +100,19 @@ export default class VisibilityPage extends Component {
           Can sort of touch this.
         </Invisible>
         <br/>
-        <ShowForScreenOrientation orientation='landscape'>
+        <ShowForScreenOrientation orientation="landscape">
           You are in landscape orientation.
         </ShowForScreenOrientation>
         <br/>
-        <ShowForScreenOrientation orientation='portrait'>
+        <ShowForScreenOrientation orientation="portrait">
           You are in portrait orientation.
         </ShowForScreenOrientation>
         <br/>
-        <HideForScreenOrientation orientation='landscape'>
+        <HideForScreenOrientation orientation="landscape">
           You are <em>not</em> in landscape orientation.
         </HideForScreenOrientation>
         <br/>
-        <HideForScreenOrientation orientation='portrait'>
+        <HideForScreenOrientation orientation="portrait">
           You are <em>not</em> in portrait orientation.
         </HideForScreenOrientation>
         <br/>
@@ -126,10 +126,10 @@ export default class VisibilityPage extends Component {
         </HideOnlyForScreenReader>
         <br/>
         <ShowOnlyOnFocus>
-          <a href='#mainContent'>Skip to Content</a>
+          <a href="#mainContent">Skip to Content</a>
         </ShowOnlyOnFocus>
-        <header id='header' role='banner'/>
-        <main id='mainContent' role='main' tabIndex='0'/>
+        <header id="header" role="banner"/>
+        <main id="mainContent" role="main" tabIndex="0"/>
       </div>
     );
   }

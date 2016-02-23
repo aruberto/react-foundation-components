@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Reveal, Button, CloseButton} from '../../../src';
+import { Reveal, Button, CloseButton } from '../../../src';
 
 export default class RevealPage extends Component {
   constructor(props) {
@@ -13,11 +13,11 @@ export default class RevealPage extends Component {
       showLarge: false,
       showFull: false,
       showNested1: false,
-      showNested2: false
+      showNested2: false,
     };
   }
 
-  handleShowHide = (type, show) => this.setState({[`show${type}`]: show});
+  handleShowHide = (type, show) => this.setState({ [`show${type}`]: show });
 
   handleShowBasic = () => this.handleShowHide('Basic', true);
 
@@ -60,7 +60,7 @@ export default class RevealPage extends Component {
       showFull,
       showNested1,
       showNested2,
-      showNoOverlay
+      showNoOverlay,
     } = this.state;
 
     return (
@@ -74,28 +74,28 @@ export default class RevealPage extends Component {
         </Reveal>
         <br/>
         <Button onClick={this.handleShowTiny}>Click me for a Tiny Modal</Button>
-        <Reveal onHide={this.handleHideTiny} show={showTiny} size='tiny'>
+        <Reveal onHide={this.handleHideTiny} show={showTiny} size="tiny">
           <CloseButton onClick={this.handleHideTiny}/>
           <p>OH I'M SO TIIINY</p>
         </Reveal>
         <br/>
         <Button onClick={this.handleShowSmall}>Click me for a Small Modal</Button>
-        <Reveal onHide={this.handleHideSmall} show={showSmall} size='small'>
+        <Reveal onHide={this.handleHideSmall} show={showSmall} size="small">
           <CloseButton onClick={this.handleHideSmall}/>
           <p>I may be small, but I've got a big heart!</p>
         </Reveal>
         <br/>
         <Button onClick={this.handleShowLarge}>Click me for a Large Modal</Button>
-        <Reveal onHide={this.handleHideLarge} show={showLarge} size='large'>
+        <Reveal onHide={this.handleHideLarge} show={showLarge} size="large">
           <CloseButton onClick={this.handleHideLarge}/>
           <p>I'm big, like bear!</p>
         </Reveal>
         <br/>
         <Button onClick={this.handleShowFull}>Click me for a Full Screen Modal</Button>
-        <Reveal onHide={this.handleHideFull} show={showFull} size='full'>
+        <Reveal onHide={this.handleHideFull} show={showFull} size="full">
           <CloseButton onClick={this.handleHideFull}/>
           <p>OH I'M SO FUUUUL</p>
-          <img alt='Intropsective Cage' src='http://placekitten.com/1920/1280'/>
+          <img alt="Intropsective Cage" src="http://placekitten.com/1920/1280"/>
         </Reveal>
         <br/>
         <Button onClick={this.handleShowNested1}>Click me for a Modal</Button>

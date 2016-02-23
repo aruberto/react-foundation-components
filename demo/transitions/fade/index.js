@@ -1,25 +1,25 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Fade, Button} from '../../../src';
+import { Fade, Button } from '../../../src';
 
 export default class FadePage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      show: false
+      show: false,
     };
   }
 
   handleClick = () => {
-    const {show: prevShow} = this.state;
+    const { show: prevShow } = this.state;
     const show = !prevShow;
 
-    this.setState({show});
+    this.setState({ show });
   };
 
   render() {
-    const {show} = this.state;
+    const { show } = this.state;
 
     return (
       <div>

@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import {
   FlexRow as Row,
   FlexColumn as Column,
   ShowForScreenSize,
-  ShowOnlyForScreenSize
+  ShowOnlyForScreenSize,
 } from '../../../src';
 
-const style = {borderStyle: 'solid'};
+const style = { borderStyle: 'solid' };
 
 export default class FlexGridPage extends Component {
   render() {
@@ -99,24 +99,24 @@ export default class FlexGridPage extends Component {
           <Column small={4} style={style}>Aligned to</Column>
           <Column small={4} style={style}>the left</Column>
         </Row>
-        <Row horizontalAlignment='right'>
+        <Row horizontalAlignment="right">
           <Column small={4} style={style}>Aligned to</Column>
           <Column small={4} style={style}>the right</Column>
         </Row>
-        <Row horizontalAlignment='center'>
+        <Row horizontalAlignment="center">
           <Column small={4} style={style}>Aligned to</Column>
           <Column small={4} style={style}>the middle</Column>
         </Row>
-        <Row horizontalAlignment='justify'>
+        <Row horizontalAlignment="justify">
           <Column small={4} style={style}>Aligned to</Column>
           <Column small={4} style={style}>the edges</Column>
         </Row>
-        <Row horizontalAlignment='spaced'>
+        <Row horizontalAlignment="spaced">
           <Column small={4} style={style}>Aligned to</Column>
           <Column small={4} style={style}>the space around</Column>
         </Row>
         <br/>
-        <Row verticalAlignment='middle'>
+        <Row verticalAlignment="middle">
           <Column style={style}>I'm in the middle!</Column>
           <Column style={style}>
             I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet,
@@ -125,7 +125,7 @@ export default class FlexGridPage extends Component {
             distinctio aliquam omnis? Labore, ullam possimus.
           </Column>
         </Row>
-        <Row verticalAlignment='stretch'>
+        <Row verticalAlignment="stretch">
           <Column style={style}>These colums have the same height.</Column>
           <Column style={style}>
             That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit
@@ -135,9 +135,9 @@ export default class FlexGridPage extends Component {
           </Column>
         </Row>
         <Row>
-          <Column style={style} verticalAlignment='bottom'>Align bottom.</Column>
-          <Column style={style} verticalAlignment='middle'>Align middle.</Column>
-          <Column style={style} verticalAlignment='top'>
+          <Column style={style} verticalAlignment="bottom">Align bottom.</Column>
+          <Column style={style} verticalAlignment="middle">Align middle.</Column>
+          <Column style={style} verticalAlignment="top">
             Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum
             cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit
             molestiae quaerat, consequuntur porro temporibus. Nisi, ex?
@@ -146,24 +146,24 @@ export default class FlexGridPage extends Component {
         <br/>
         <Row largeCollapse mediumUncollapse>
           <Column small={6} style={style}>
-            <ShowOnlyForScreenSize size='small'>
+            <ShowOnlyForScreenSize size="small">
               On a small screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowOnlyForScreenSize size='medium'>
+            <ShowOnlyForScreenSize size="medium">
               On a medium screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowForScreenSize size='large'>
+            <ShowForScreenSize size="large">
               On a large screen, I have no gutters!
             </ShowForScreenSize>
           </Column>
           <Column small={6} style={style}>
-            <ShowOnlyForScreenSize size='small'>
+            <ShowOnlyForScreenSize size="small">
               On a small screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowOnlyForScreenSize size='medium'>
+            <ShowOnlyForScreenSize size="medium">
               On a medium screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowForScreenSize size='large'>
+            <ShowForScreenSize size="large">
               On a large screen, I have no gutters!
             </ShowForScreenSize>
           </Column>

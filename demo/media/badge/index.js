@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Badge} from '../../../src';
+import { Badge } from '../../../src';
 
 export default class BadgePage extends Component {
   render() {
@@ -9,18 +9,18 @@ export default class BadgePage extends Component {
         <Badge>1</Badge>
         <br/>
         <br/>
-        <b aria-describedby='messageCount'>Unread Messages</b>
+        <b aria-describedby="messageCount">Unread Messages</b>
         &nbsp;
-        <Badge id='messageCount'>12</Badge>
+        <Badge id="messageCount">12</Badge>
         <br/>
         <br/>
-        <Badge color='secondary'>2</Badge>
+        <Badge color="secondary">2</Badge>
         &nbsp;
-        <Badge color='success'>3</Badge>
+        <Badge color="success">3</Badge>
         &nbsp;
-        <Badge color='alert'>A</Badge>
+        <Badge color="alert">A</Badge>
         &nbsp;
-        <Badge color='warning'>B</Badge>
+        <Badge color="warning">B</Badge>
       </div>
     );
   }

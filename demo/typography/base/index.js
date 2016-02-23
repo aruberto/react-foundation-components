@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class BaseTypographyPage extends Component {
   render() {
@@ -20,7 +20,7 @@ export default class BaseTypographyPage extends Component {
         <h3>Foundation for Sites <small>Version 6.0.4</small></h3>
         <p>
           Links are very standard, and the color is preset to the Foundation primary color.
-          <a href='http://foundation.zurb.com/sites/docs/global.html'>
+          <a href="http://foundation.zurb.com/sites/docs/global.html">
             Learn more about Foundation's global colors.
           </a>
         </p>
@@ -69,13 +69,13 @@ export default class BaseTypographyPage extends Component {
           <cite>Isaac Asimov</cite>
         </blockquote>
         <p>
-          In my dream last night, I saw <abbr title='John Ronald Reuel'>J. R. R.</abbr> Tolkien and
-          George <abbr title='Raymond Richard'>R. R.</abbr> Martin hanging out on
-          Sunset <abbr title='Boulevard'>Blvd</abbr>.
+          In my dream last night, I saw <abbr title="John Ronald Reuel">J. R. R.</abbr> Tolkien and
+          George <abbr title="Raymond Richard">R. R.</abbr> Martin hanging out on
+          Sunset <abbr title="Boulevard">Blvd</abbr>.
         </p>
         Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
         <p>Press <kbd>Cmd+Q</kbd> (or <kbd>Ctrl+Q</kbd> on Windows) to play Half-Life 3.</p>
-        <img alt='Buy now' src='assets/img/buy-now.jpg'/>
+        <img alt="Buy now" src="assets/img/buy-now.jpg"/>
       </div>
     );
   }
