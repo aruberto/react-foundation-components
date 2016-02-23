@@ -77,7 +77,7 @@ export class HasDropdown extends Component {
     dropdownClassName: PropTypes.string,
     dropdownPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
     dropdownSize: PropTypes.oneOf(COMPONENT_SIZES),
-    dropdownStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    dropdownStyle: PropTypes.object,
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,

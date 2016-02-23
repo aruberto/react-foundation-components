@@ -65,7 +65,7 @@ export class TabsTitle extends Component {
     active: PropTypes.bool,
     children: PropTypes.node,
     containerClassName: PropTypes.string,
-    containerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    containerStyle: PropTypes.object,
     eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onSelect: PropTypes.func,
     panelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

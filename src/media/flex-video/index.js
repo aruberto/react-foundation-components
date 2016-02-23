@@ -6,7 +6,7 @@ import styles from './styles';
 export default class FlexVideo extends Component {
   static propTypes = {
     containerClassName: PropTypes.string,
-    containerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    containerStyle: PropTypes.object,
     vimeo: PropTypes.bool,
     widescreen: PropTypes.bool,
   };

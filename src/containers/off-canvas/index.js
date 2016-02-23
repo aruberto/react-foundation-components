@@ -9,21 +9,21 @@ export default class OffCanvas extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     contentBlockerClassName: PropTypes.string,
-    contentBlockerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    contentBlockerStyle: PropTypes.object,
     contentClassName: PropTypes.string,
-    contentStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    contentStyle: PropTypes.object,
     innerClassName: PropTypes.string,
-    innerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    innerStyle: PropTypes.object,
     leftClassName: PropTypes.string,
     leftContent: PropTypes.node,
     leftRevealForSize: PropTypes.oneOf(LARGER_SCREEN_SIZES),
-    leftStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    leftStyle: PropTypes.object,
     onClose: PropTypes.func,
     open: PropTypes.oneOf(OFF_CANVAS_POSITIONS),
     rightClassName: PropTypes.string,
     rightContent: PropTypes.node,
     rightRevealForSize: PropTypes.oneOf(LARGER_SCREEN_SIZES),
-    rightStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    rightStyle: PropTypes.object,
   };
 
   handleContentBlockerClick = () => {

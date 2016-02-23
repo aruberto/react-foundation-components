@@ -81,7 +81,7 @@ export class HasTooltip extends Component {
     tooltip: PropTypes.node,
     tooltipClassName: PropTypes.string,
     tooltipPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
-    tooltipStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    tooltipStyle: PropTypes.object,
     transition: elementType,
   };
 

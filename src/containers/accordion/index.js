@@ -13,13 +13,13 @@ class AccordionItemControlled extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     contentClassName: PropTypes.string,
-    contentStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    contentStyle: PropTypes.object,
     eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onToggle: PropTypes.func,
     title: PropTypes.node,
     titleClassName: PropTypes.string,
-    titleStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    titleStyle: PropTypes.object,
   };
 
   handleTitleClick = (event) => {

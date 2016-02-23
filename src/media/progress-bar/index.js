@@ -11,9 +11,9 @@ export default class ProgressBar extends Component {
     labelFormatter: PropTypes.func,
     max: PropTypes.number,
     meterClassName: PropTypes.string,
-    meterStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    meterStyle: PropTypes.object,
     meterTextClassName: PropTypes.string,
-    meterTextStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    meterTextStyle: PropTypes.object,
     min: PropTypes.number,
     value: PropTypes.number,
   };

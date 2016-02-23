@@ -12,9 +12,9 @@ export default class Reveal extends Component {
     children: PropTypes.node,
     overlay: PropTypes.bool,
     overlayClassName: PropTypes.string,
-    overlayStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    overlayStyle: PropTypes.object,
     revealClassName: PropTypes.string,
-    revealStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    revealStyle: PropTypes.object,
     size: PropTypes.oneOf(MODAL_SIZES),
     transition: elementType,
   };

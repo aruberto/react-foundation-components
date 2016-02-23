@@ -25,14 +25,14 @@ export class Switch extends Component {
     checkedLabel: React.PropTypes.node,
     className: PropTypes.string,
     containerClassName: PropTypes.string,
-    containerStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    containerStyle: PropTypes.object,
     eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
     onToggle: PropTypes.func,
     paddleClassName: PropTypes.string,
     paddleLabel: React.PropTypes.node,
-    paddleStyle: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    paddleStyle: PropTypes.object,
     size: PropTypes.oneOf(COMPONENT_SIZES),
     uncheckedLabel: React.PropTypes.node,
   };
