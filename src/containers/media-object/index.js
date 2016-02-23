@@ -8,12 +8,11 @@ import { MEDIA_OBJECT_SECTION_ALIGNMENTS } from '../../util/constants';
 export class MediaObjectSection extends Component {
   static propTypes = {
     alignment: PropTypes.oneOf(MEDIA_OBJECT_SECTION_ALIGNMENTS),
-    children: PropTypes.node,
     className: PropTypes.string,
   };
 
   render() {
-    const { alignment, children, className } = this.props;
+    const { alignment, className } = this.props;
     const classNames = cx(
       className,
       styles['media-object-section'],
@@ -23,22 +22,19 @@ export class MediaObjectSection extends Component {
     );
 
     return (
-      <div {...this.props} className={classNames}>
-        {children}
-      </div>
+      <div {...this.props} className={classNames}/>
     );
   }
 }
 
 export class MediaObject extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     stackForSmall: PropTypes.bool,
   };
 
   render() {
-    const { children, className, stackForSmall } = this.props;
+    const { className, stackForSmall } = this.props;
     const classNames = cx(
       className,
       styles['media-object'],
@@ -48,9 +44,7 @@ export class MediaObject extends Component {
     );
 
     return (
-      <div {...this.props} className={classNames}>
-        {children}
-      </div>
+      <div {...this.props} className={classNames}/>
     );
   }
 }

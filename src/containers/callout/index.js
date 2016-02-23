@@ -6,14 +6,13 @@ import { CALLOUT_SIZES, COMPONENT_COLORS } from '../../util/constants';
 
 export default class Callout extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     color: PropTypes.oneOf(COMPONENT_COLORS),
     size: PropTypes.oneOf(CALLOUT_SIZES),
   };
 
   render() {
-    const { children, className, color, size } = this.props;
+    const { className, color, size } = this.props;
     const classNames = cx(
       className,
       styles.callout,
@@ -24,9 +23,7 @@ export default class Callout extends Component {
     );
 
     return (
-      <div {...this.props} className={classNames}>
-        {children}
-      </div>
+      <div {...this.props} className={classNames}/>
     );
   }
 }

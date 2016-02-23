@@ -1,5 +1,3 @@
-import './theme.scss';
-
 export { Row as FloatRow, Column as FloatColumn } from './general/grid';
 export { Row as FlexRow, Column as FlexColumn } from './general/flex-grid';
 export {

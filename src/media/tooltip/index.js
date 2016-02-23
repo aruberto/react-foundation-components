@@ -28,13 +28,12 @@ function mouseOverOut(event, callback) {
 
 export class Tooltip extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     position: PropTypes.oneOf(OVERLAY_POSITIONS),
   };
 
   render() {
-    const { children, className, position } = this.props;
+    const { className, position } = this.props;
     const classNames = cx(
       className,
       styles.tooltip,
@@ -44,9 +43,7 @@ export class Tooltip extends Component {
     );
 
     return (
-      <div {...this.props} className={classNames} role="tooltip">
-        {children}
-      </div>
+      <div {...this.props} className={classNames} role="tooltip"/>
     );
   }
 }
@@ -72,7 +69,6 @@ const HasTooltipBase = createHigherOrderComponent({
 
 export class HasTooltip extends Component {
   static propTypes = {
-    children: PropTypes.node,
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
@@ -238,8 +234,6 @@ export class HasTooltip extends Component {
   renderOverlay = () => renderSubtreeIntoContainer(this, this._overlay, this._mountNode);
 
   render() {
-    const { children } = this.props;
-
     this._overlay = this.createOverlay();
 
     return (
@@ -252,9 +246,7 @@ export class HasTooltip extends Component {
           onMouseOut={this.handleMouseOut}
           onMouseOver={this.handleMouseOver}
           ref={this.setTargetRef}
-        >
-          {children}
-        </HasTooltipBase>
+        />
       </RootCloseWrapper>
     );
   }

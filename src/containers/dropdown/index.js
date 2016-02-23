@@ -27,14 +27,13 @@ function mouseOverOut(event, callback) {
 
 export class Dropdown extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     position: PropTypes.oneOf(OVERLAY_POSITIONS),
     size: PropTypes.oneOf(COMPONENT_SIZES),
   };
 
   render() {
-    const { children, className, position, size } = this.props;
+    const { className, position, size } = this.props;
     const classNames = cx(
       className,
       styles['dropdown-pane'],
@@ -46,9 +45,7 @@ export class Dropdown extends Component {
     );
 
     return (
-      <div {...this.props} className={classNames}>
-        {children}
-      </div>
+      <div {...this.props} className={classNames}/>
     );
   }
 }
@@ -272,7 +269,6 @@ export class HasDropdown extends Component {
   renderOverlay = () => renderSubtreeIntoContainer(this, this._overlay, this._mountNode);
 
   render() {
-    const { children } = this.props;
     const { show } = this.state;
 
     this._overlay = this.createOverlay();
@@ -288,9 +284,7 @@ export class HasDropdown extends Component {
           onMouseOut={this.handleMouseOut}
           onMouseOver={this.handleMouseOver}
           ref={this.setTargetRef}
-        >
-          {children}
-        </HasDropdownBase>
+        />
       </RootCloseWrapper>
     );
   }

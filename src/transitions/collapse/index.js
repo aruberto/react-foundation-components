@@ -13,7 +13,6 @@ const MARGINS = {
 
 export default class Collapse extends React.Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     dimension: PropTypes.oneOf(['height', 'width']),
     onEnter: PropTypes.func,
@@ -97,7 +96,7 @@ export default class Collapse extends React.Component {
   };
 
   render() {
-    const { children, className, dimension, timeout } = this.props;
+    const { className, dimension, timeout } = this.props;
     const classNames = cx(
       className,
       {
@@ -119,9 +118,7 @@ export default class Collapse extends React.Component {
         onExit={this.handleExit}
         onExiting={this.handleExiting}
         timeout={timeout}
-      >
-        {children}
-      </Transition>
+      />
     );
   }
 }

@@ -6,7 +6,6 @@ import styles from './styles';
 
 export default class Fade extends React.Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     timeout: PropTypes.number,
   };
@@ -16,7 +15,7 @@ export default class Fade extends React.Component {
   };
 
   render() {
-    const { children, className, timeout } = this.props;
+    const { className, timeout } = this.props;
     const classNames = cx(className, styles.fade);
 
     return (
@@ -26,9 +25,7 @@ export default class Fade extends React.Component {
         enteredClassName={styles.in}
         enteringClassName={styles.in}
         timeout={timeout}
-      >
-        {children}
-      </Transition>
+      />
     );
   }
 }

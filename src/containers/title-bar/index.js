@@ -6,13 +6,12 @@ import { TITLE_BAR_POSITIONS } from '../../util/constants';
 
 export class TitleBarItem extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     position: PropTypes.oneOf(TITLE_BAR_POSITIONS).isRequired,
   };
 
   render() {
-    const { children, className, position } = this.props;
+    const { className, position } = this.props;
     const classNames = cx(
       className,
       {
@@ -21,34 +20,28 @@ export class TitleBarItem extends Component {
     );
 
     return (
-      <div {...this.props} className={classNames}>
-        {children}
-      </div>
+      <div {...this.props} className={classNames}/>
     );
   }
 }
 
 export class TitleBarTitle extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
   };
 
   render() {
-    const { children, className } = this.props;
+    const { className } = this.props;
     const classNames = cx(className, styles['title-bar-title']);
 
     return (
-      <span {...this.props} className={classNames}>
-        {children}
-      </span>
+      <span {...this.props} className={classNames}/>
     );
   }
 }
 
 export class MenuIcon extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     dark: PropTypes.bool,
     offCanvasId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -56,7 +49,7 @@ export class MenuIcon extends Component {
   };
 
   render() {
-    const { children, className, dark, offCanvasId, open } = this.props;
+    const { className, dark, offCanvasId, open } = this.props;
     const classNames = cx(
       className,
       styles['menu-icon'],
@@ -72,27 +65,22 @@ export class MenuIcon extends Component {
         aria-expanded={open}
         className={classNames}
         type="button"
-      >
-        {children}
-      </button>
+      />
     );
   }
 }
 
 export class TitleBar extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
   };
 
   render() {
-    const { children, className } = this.props;
+    const { className } = this.props;
     const classNames = cx(className, styles['title-bar']);
 
     return (
-      <div {...this.props} className={classNames}>
-        {children}
-      </div>
+      <div {...this.props} className={classNames}/>
     );
   }
 }

@@ -6,7 +6,6 @@ import { COMPONENT_SIZES, COMPONENT_COLORS } from '../../util/constants';
 
 export default class Button extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     color: PropTypes.oneOf(COMPONENT_COLORS),
     disabled: PropTypes.bool,
@@ -26,7 +25,6 @@ export default class Button extends Component {
 
   render() {
     const {
-      children,
       className,
       color,
       disabled,
@@ -54,16 +52,12 @@ export default class Button extends Component {
 
     if (href || target) {
       return (
-        <a {...this.props} className={classNames} href={href || '#'} role="button">
-          {children}
-        </a>
+        <a {...this.props} className={classNames} href={href || '#'} role="button"/>
       );
     }
 
     return (
-      <button {...this.props} className={classNames}>
-        {children}
-      </button>
+      <button {...this.props} className={classNames}/>
     );
   }
 }

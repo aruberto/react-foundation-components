@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, hashHistory } from 'react-router';
 
-import '../src/theme.scss';
+import '../src/_theme.scss';
 import GridPage from './general/grid';
 import FlexGridPage from './general/flex-grid';
 import VisibilityPage from './general/visibility';

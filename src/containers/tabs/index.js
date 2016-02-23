@@ -8,13 +8,12 @@ import styles from './styles';
 export class Tab extends Component {
   static propTypes = {
     active: PropTypes.bool,
-    children: PropTypes.node,
     className: PropTypes.string,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   render() {
-    const { active, children, className, id } = this.props;
+    const { active, className, id } = this.props;
     const classNames = cx(
       className,
       styles['tabs-panel'],
@@ -35,27 +34,22 @@ export class Tab extends Component {
         aria-labelledby={labelId}
         className={classNames}
         role="tabpanel"
-      >
-        {children}
-      </div>
+      />
     );
   }
 }
 
 export class TabsContent extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
   };
 
   render() {
-    const { children, className } = this.props;
+    const { className } = this.props;
     const classNames = cx(className, styles['tabs-content']);
 
     return (
-      <div {...this.props} className={classNames}>
-        {children}
-      </div>
+      <div {...this.props} className={classNames}/>
     );
   }
 }
@@ -63,7 +57,6 @@ export class TabsContent extends Component {
 export class TabsTitle extends Component {
   static propTypes = {
     active: PropTypes.bool,
-    children: PropTypes.node,
     containerClassName: PropTypes.string,
     containerStyle: PropTypes.object,
     eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -84,7 +77,7 @@ export class TabsTitle extends Component {
   };
 
   render() {
-    const { active, children, containerClassName, containerStyle, panelId } = this.props;
+    const { active, containerClassName, containerStyle, panelId } = this.props;
     const classNames = cx(
       containerClassName,
       styles['tabs-title'],
@@ -107,9 +100,7 @@ export class TabsTitle extends Component {
           href={href}
           onClick={this.handleClick}
           role="tab"
-        >
-          {children}
-        </a>
+        />
       </li>
     );
   }

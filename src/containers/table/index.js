@@ -5,7 +5,6 @@ import styles from './styles';
 
 export default class Table extends Component {
   static propTypes = {
-    children: PropTypes.node,
     className: PropTypes.string,
     hover: PropTypes.bool,
     scroll: PropTypes.bool,
@@ -13,7 +12,7 @@ export default class Table extends Component {
   };
 
   render() {
-    const { children, className, hover, scroll, stack } = this.props;
+    const { className, hover, scroll, stack } = this.props;
     const classNames = cx(
       className,
       {
@@ -24,9 +23,7 @@ export default class Table extends Component {
     );
 
     return (
-      <table {...this.props} className={classNames}>
-        {children}
-      </table>
+      <table {...this.props} className={classNames}/>
     );
   }
 }
