@@ -1,7 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Link} from 'react-router';
-import {createHashHistory} from 'history';
+import { Router, Route, Link, hashHistory } from 'react-router';
 
 import '../src/theme.scss';
 import GridPage from './general/grid';
@@ -31,8 +30,6 @@ import ThumbnailPage from './media/thumbnail';
 import TooltipPage from './media/tooltip';
 import FadePage from './transitions/fade';
 import CollapsePage from './transitions/collapse';
-
-const history = createHashHistory();
 
 class HomePage extends Component {
   static propTypes = {
@@ -105,7 +102,7 @@ class HomePage extends Component {
 class Demo extends Component {
   render() {
     return (
-      <Router history={history}>
+      <Router history={hashHistory}>
         <Route component={HomePage} path='/'>
           <Route component={GridPage} path='/general/grid'/>
           <Route component={FlexGridPage} path='/general/flex-grid'/>
