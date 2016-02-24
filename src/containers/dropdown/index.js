@@ -13,7 +13,11 @@ import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
 
 import styles from './styles';
-import { COMPONENT_SIZES, OVERLAY_POSITIONS } from '../../util/constants';
+import {
+  COMPONENT_SIZES,
+  OVERLAY_POSITIONS,
+  OVERLAY_POSITIONS_INTERNAL,
+} from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 
 function mouseOverOut(event, callback) {
@@ -32,6 +36,10 @@ export class Dropdown extends Component {
     size: PropTypes.oneOf(COMPONENT_SIZES),
   };
 
+  static defaultProps = {
+    position: 'bottom',
+  };
+
   render() {
     const { className, position, size } = this.props;
     const classNames = cx(
@@ -39,7 +47,7 @@ export class Dropdown extends Component {
       styles['dropdown-pane'],
       styles['is-open'],
       {
-        [styles[position]]: OVERLAY_POSITIONS.includes(position),
+        [styles[position]]: OVERLAY_POSITIONS_INTERNAL.includes(position),
         [styles[size]]: COMPONENT_SIZES.includes(size),
       }
     );
@@ -87,6 +95,7 @@ export class HasDropdown extends Component {
   };
 
   static defaultProps = {
+    dropdownPosition: 'bottom',
     toggleClick: true,
   };
 
@@ -237,7 +246,6 @@ export class HasDropdown extends Component {
       transition,
     } = this.props;
     const { show } = this.state;
-    const placement = dropdownPosition || 'bottom';
     let labelledBy = null;
 
     if (children && children.props && !isBlank(children.props.id)) {
@@ -247,7 +255,7 @@ export class HasDropdown extends Component {
     return (
       <Overlay
         onHide={this.handleRootClose}
-        placement={placement}
+        placement={dropdownPosition}
         rootClose
         show={show}
         target={this.getTargetRefDOMNode}

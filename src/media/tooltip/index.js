@@ -13,7 +13,7 @@ import isBlank from 'underscore.string/isBlank';
 import domContains from 'dom-helpers/query/contains';
 
 import styles from './styles';
-import { OVERLAY_POSITIONS } from '../../util/constants';
+import { OVERLAY_POSITIONS, OVERLAY_POSITIONS_INTERNAL } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import Fade from '../../transitions/fade';
 
@@ -32,13 +32,17 @@ export class Tooltip extends Component {
     position: PropTypes.oneOf(OVERLAY_POSITIONS),
   };
 
+  static defaultProps = {
+    position: 'bottom',
+  };
+
   render() {
     const { className, position } = this.props;
     const classNames = cx(
       className,
       styles.tooltip,
       {
-        [styles[position]]: OVERLAY_POSITIONS.includes(position),
+        [styles[position]]: OVERLAY_POSITIONS_INTERNAL.includes(position),
       }
     );
 
@@ -82,6 +86,7 @@ export class HasTooltip extends Component {
   };
 
   static defaultProps = {
+    tooltipPosition: 'bottom',
     transition: Fade,
   };
 
@@ -209,12 +214,11 @@ export class HasTooltip extends Component {
   createOverlay = () => {
     const { tooltip, tooltipClassName, tooltipPosition, tooltipStyle, transition } = this.props;
     const { show } = this.state;
-    const placement = tooltipPosition || 'bottom';
 
     return (
       <Overlay
         onHide={this.handleRootClose}
-        placement={placement}
+        placement={tooltipPosition}
         rootClose
         show={show}
         target={this.getTargetRefDOMNode}

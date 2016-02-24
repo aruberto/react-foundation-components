@@ -14,7 +14,8 @@ export const MEDIA_OBJECT_SECTION_ALIGNMENTS = ['middle', 'bottom'];
 
 export const OFF_CANVAS_POSITIONS = ['left', 'right'];
 export const TITLE_BAR_POSITIONS = OFF_CANVAS_POSITIONS;
-export const OVERLAY_POSITIONS = OFF_CANVAS_POSITIONS.concat(['top']);
+export const OVERLAY_POSITIONS_INTERNAL = OFF_CANVAS_POSITIONS.concat(['top']);
+export const OVERLAY_POSITIONS = OVERLAY_POSITIONS_INTERNAL.concat(['bottom']);
 export const FLOAT_POSITIONS = OFF_CANVAS_POSITIONS.concat(['center']);
 export const TEXT_ALIGNMENTS = FLOAT_POSITIONS.concat(['justify']);
 
