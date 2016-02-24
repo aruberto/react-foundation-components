@@ -39,8 +39,6 @@ import LabelPage from './media/label';
 import ProgressBarPage from './media/progress-bar';
 import ThumbnailPage from './media/thumbnail';
 import TooltipPage from './media/tooltip';
-import FadePage from './transitions/fade';
-import CollapsePage from './transitions/collapse';
 
 class HomePage extends Component {
   static propTypes = {
@@ -119,10 +117,6 @@ class HomePage extends Component {
           <Link to="/media/thumbnail">Thumbnail</Link>
           <br/>
           <Link to="/media/tooltip">Tooltip</Link>
-          <br/>
-          <Link to="/transitions/fade">Fade</Link>
-          <br/>
-          <Link to="/transitions/collapse">Collapse</Link>
         </OffCanvas>
         <OffCanvasContent onContentBlockerClick={this.handleClose}>
           <TitleBar>
@@ -171,8 +165,6 @@ class Demo extends Component {
           <Route component={ProgressBarPage} path="/media/progress-bar"/>
           <Route component={ThumbnailPage} path="/media/thumbnail"/>
           <Route component={TooltipPage} path="/media/tooltip"/>
-          <Route component={FadePage} path="/transitions/fade"/>
-          <Route component={CollapsePage} path="/transitions/collapse"/>
         </Route>
       </Router>
     );
