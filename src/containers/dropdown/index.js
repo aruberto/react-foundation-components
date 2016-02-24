@@ -60,14 +60,14 @@ export class Dropdown extends Component {
 
 const HasDropdownBase = createHigherOrderComponent({
   displayName: 'HasDropdownBase',
-  mapPropsToProps: ({ dropdown, ...restProps }) => {
+  mapPropsToProps: ({ dropdownId, ...restProps }) => {
     const props = {
       ...restProps,
       'aria-haspopup': true,
     };
 
-    if (dropdown && dropdown.props && !isBlank(dropdown.props.id)) {
-      props['aria-controls'] = dropdown.props.id;
+    if (!isBlank(dropdownId)) {
+      props['aria-controls'] = dropdownId;
     }
 
     return props;
@@ -80,6 +80,7 @@ export class HasDropdown extends Component {
     closeOnClick: PropTypes.bool,
     dropdown: PropTypes.node,
     dropdownClassName: PropTypes.string,
+    dropdownId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     dropdownPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
     dropdownSize: PropTypes.oneOf(COMPONENT_SIZES),
     dropdownStyle: PropTypes.object,
@@ -240,6 +241,7 @@ export class HasDropdown extends Component {
       children,
       dropdown,
       dropdownClassName,
+      dropdownId,
       dropdownPosition,
       dropdownSize,
       dropdownStyle,
@@ -264,6 +266,7 @@ export class HasDropdown extends Component {
         <Dropdown
           aria-labelledby={labelledBy}
           className={dropdownClassName}
+          id={dropdownId}
           position={dropdownPosition}
           size={dropdownSize}
           style={dropdownStyle}

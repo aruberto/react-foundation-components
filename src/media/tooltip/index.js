@@ -57,14 +57,14 @@ const HasTooltipBase = createHigherOrderComponent({
   mapPropsToClassNames: () => ({
     [styles['has-tip']]: true,
   }),
-  mapPropsToProps: ({ tooltip, ...restProps }) => {
+  mapPropsToProps: ({ tooltipId, ...restProps }) => {
     const props = {
       ...restProps,
       'aria-haspopup': true,
     };
 
-    if (tooltip && tooltip.props && !isBlank(tooltip.props.id)) {
-      props['aria-describedby'] = tooltip.props.id;
+    if (!isBlank(tooltipId)) {
+      props['aria-describedby'] = tooltipId;
     }
 
     return props;
@@ -80,6 +80,7 @@ export class HasTooltip extends Component {
     onMouseOver: PropTypes.func,
     tooltip: PropTypes.node,
     tooltipClassName: PropTypes.string,
+    tooltipId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     tooltipPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
     tooltipStyle: PropTypes.object,
     transition: elementType,
@@ -212,7 +213,14 @@ export class HasTooltip extends Component {
   };
 
   createOverlay = () => {
-    const { tooltip, tooltipClassName, tooltipPosition, tooltipStyle, transition } = this.props;
+    const {
+      tooltip,
+      tooltipClassName,
+      tooltipId,
+      tooltipPosition,
+      tooltipStyle,
+      transition,
+    } = this.props;
     const { show } = this.state;
 
     return (
@@ -226,6 +234,7 @@ export class HasTooltip extends Component {
       >
         <Tooltip
           className={tooltipClassName}
+          id={tooltipId}
           position={tooltipPosition}
           style={tooltipStyle}
         >
