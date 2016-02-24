@@ -21,8 +21,8 @@ export default class ButtonPage extends Component {
         </pre>
         <p>
           Because buttons can be used for many purposes, the underlying tag changes based on
-          if certain props are set. If href or target prop is provided, an &lt;a&gt; tag is
-          generated. Otherwise a &lt;button&gt; tag is generated.
+          if certain props are set. If the <code>href</code> or <code>target</code> prop is
+          provided, an &lt;a&gt; tag is generated. Otherwise a &lt;button&gt; tag is generated.
         </p>
         <pre>
           <code>

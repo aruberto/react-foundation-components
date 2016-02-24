@@ -8,6 +8,19 @@ export default class TooltipPage extends Component {
   render() {
     return (
       <div>
+        <h1>Tooltips</h1>
+        <p>
+          Tooltips are used for displaying extended information for a term or action on a page.
+        </p>
+        <h2>Basics</h2>
+        <p>Importing the Tooltip component:</p>
+        <pre>
+          <code>
+{
+`import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/tooltip';`
+}
+          </code>
+        </pre>
         <Tooltip style={tooltipStyle}>I'm a bottom tooltip!</Tooltip>
         <br/>
         <Tooltip position="top" style={tooltipStyle}>I'm a top tooltip!</Tooltip>

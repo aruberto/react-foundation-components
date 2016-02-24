@@ -12,8 +12,6 @@ export default class Thumbnail extends Component {
     const { className } = this.props;
     const classNames = cx(className, styles.thumbnail);
 
-    return (
-      <img {...this.props} className={classNames}/>
-    );
+    return <img {...this.props} className={classNames}/>;
   }
 }

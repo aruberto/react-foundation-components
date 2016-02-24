@@ -52,7 +52,9 @@ export default class ProgressBar extends Component {
     );
     const meterClassNames = cx(meterClassName, styles['progress-meter']);
     const boundedValue = Math.min(Math.max(min, value), max);
-    const percent = Math.round(((boundedValue - min) / (max - min) * 100) * 1000) / 1000;
+    const percent = (boundedValue - min) / (max - min);
+    const width = Math.round((percent * 100) * 1000) / 1000;
+    const label = this.renderMeterText(percent, boundedValue, min, max);
 
     return (
       <div
@@ -60,11 +62,12 @@ export default class ProgressBar extends Component {
         aria-valuemax={max}
         aria-valuemin={min}
         aria-valuenow={boundedValue}
+        aria-valuetext={label}
         className={classNames}
         role="progressbar"
       >
-        <span className={meterClassNames} style={{ ...meterStyle, width: `${percent}%` }}>
-          {this.renderMeterText(percent, boundedValue, min, max)}
+        <span className={meterClassNames} style={{ ...meterStyle, width: `${width}%` }}>
+          {label}
         </span>
       </div>
     );

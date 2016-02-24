@@ -30,7 +30,7 @@ export default class SwitchPage extends Component {
           Now you can tell your users to flip the switch or switch off.
         </p>
         <h2>Basics</h2>
-        <p>Importing the CloseButton component:</p>
+        <p>Importing the Switch components:</p>
         <pre>
           <code>
 {

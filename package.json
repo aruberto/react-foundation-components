@@ -45,7 +45,7 @@
     "react-overlays": "^0.6.0",
     "react-prop-types": "^0.3.0",
     "uncontrollable": "^3.2.1",
-    "underscore.string": "^3.2.3"
+    "underscore.string": "^3.3.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",

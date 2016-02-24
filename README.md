@@ -21,8 +21,8 @@ Recommend importing on a per component basis instead of importing the main entry
 Favor
 
 ```
-import Button from 'react-foundation-components/lib/button';
-import {ShowForScreenSize, HideForScreenSize} from 'react-foundation-components/lib/visibility';
+import Button from 'react-foundation-components/lib/controls/button';
+import {ShowForScreenSize, HideForScreenSize} from 'react-foundation-components/lib/general/visibility';
 ```
 
 over
