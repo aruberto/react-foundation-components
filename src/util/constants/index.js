@@ -4,7 +4,8 @@ export const LARGER_SCREEN_SIZES = SCREEN_SIZES.slice(1);
 
 export const SCREEN_ORIENTATIONS = ['landscape', 'portrait'];
 
-export const COMPONENT_COLORS = ['primary', 'secondary', 'success', 'alert', 'warning'];
+export const COMPONENT_ALTERNATIVE_COLORS = ['secondary', 'success', 'alert', 'warning'];
+export const COMPONENT_COLORS = ['primary'].concat(COMPONENT_ALTERNATIVE_COLORS);
 
 export const COMPONENT_SIZES = ['tiny', 'small', 'large'];
 export const CALLOUT_SIZES = COMPONENT_SIZES.filter((size) => size !== 'tiny');
