@@ -18,5 +18,5 @@ export const ClearFix = createHigherOrderComponent({
   displayName: 'ClearFix',
   mapPropsToClassNames: () => styles.clearfix,
   defaultComponentClass: 'div',
-  collapseOnlyChild: false,
+  mergeSingleChild: false,
 });

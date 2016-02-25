@@ -36,7 +36,7 @@ export const Row = createHigherOrderComponent({
     return classNames;
   },
   defaultComponentClass: 'div',
-  collapseOnlyChild: false,
+  mergeSingleChild: false,
 });
 
 export const Column = createHigherOrderComponent({
@@ -54,5 +54,5 @@ export const Column = createHigherOrderComponent({
     return classNames;
   },
   defaultComponentClass: 'div',
-  collapseOnlyChild: false,
+  mergeSingleChild: false,
 });

@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['flex-video', 'vimeo', 'widescreen']
-);
+const styles = ['flex-video', 'vimeo', 'widescreen'];
+
+export default keyMirrorArray(styles);

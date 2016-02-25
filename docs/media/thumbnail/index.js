@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Thumbnail } from '../../../src';
+import { Thumbnail } from '../../../src/media/thumbnail';
 
 export default class ThumbnailPage extends Component {
   render() {
@@ -15,7 +15,13 @@ export default class ThumbnailPage extends Component {
         <pre>
           <code>
 {
-`import Thumbnail from 'react-foundation-components/lib/media/thumbnail';`
+`// Import with local scoped class names (via CSS Modules)
+import { Thumbnail } from 'react-foundation-components/lib/media/thumbnail';
+
+or
+
+// Import with global scoped class names
+import { Thumbnail } from 'react-foundation-components/lib/media/thumbnail/global';`
 }
           </code>
         </pre>

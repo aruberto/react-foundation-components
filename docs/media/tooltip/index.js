@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Tooltip, HasTooltip } from '../../../src';
+import { Tooltip, HasTooltip } from '../../../src/media/tooltip';
 
 const tooltipStyle = {
   position: 'relative',
@@ -22,7 +22,13 @@ export default class TooltipPage extends Component {
         <pre>
           <code>
 {
-`import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/tooltip';`
+`// Import with local scoped class names (via CSS Modules)
+import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/tooltip';
+
+or
+
+// Import with global scoped class names
+import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/tooltip/global';`
 }
           </code>
         </pre>

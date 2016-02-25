@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { ProgressBar } from '../../../src';
+import { ProgressBar } from '../../../src/media/progress-bar';
 
 function percentFormatter(percent) {
   const rounded = Math.round(percent * 100);
@@ -25,7 +25,13 @@ export default class ProgressBarPage extends Component {
         <pre>
           <code>
 {
-`import ProgressBar from 'react-foundation-components/lib/media/progress-bar';`
+`// Import with local scoped class names (via CSS Modules)
+import { ProgressBar } from 'react-foundation-components/lib/media/progress-bar';
+
+or
+
+// Import with global scoped class names
+import { ProgressBar } from 'react-foundation-components/lib/media/progress-bar/global';`
 }
           </code>
         </pre>

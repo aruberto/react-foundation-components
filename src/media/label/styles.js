@@ -1,7 +1,6 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 import { COMPONENT_COLORS } from '../../util/constants';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['label'].concat(COMPONENT_COLORS)
-);
+const styles = ['label'].concat(COMPONENT_COLORS);
+
+export default keyMirrorArray(styles);

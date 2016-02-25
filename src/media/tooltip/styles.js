@@ -1,7 +1,6 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 import { OVERLAY_POSITIONS_INTERNAL } from '../../util/constants';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['tooltip', 'has-tip'].concat(OVERLAY_POSITIONS_INTERNAL)
-);
+const styles = ['tooltip', 'has-tip'].concat(OVERLAY_POSITIONS_INTERNAL);
+
+export default keyMirrorArray(styles);

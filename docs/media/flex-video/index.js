@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { FlexVideo } from '../../../src';
+import { FlexVideo } from '../../../src/media/flex-video';
 
 export default class FlexVideoPage extends Component {
   render() {
@@ -16,7 +16,13 @@ export default class FlexVideoPage extends Component {
         <pre>
           <code>
 {
-`import FlexVideo from 'react-foundation-components/lib/media/flex-video';`
+`// Import with local scoped class names (via CSS Modules)
+import { FlexVideo } from 'react-foundation-components/lib/media/flex-video';
+
+or
+
+// Import with global scoped class names
+import { FlexVideo } from 'react-foundation-components/lib/media/flex-video/global';`
 }
           </code>
         </pre>
@@ -81,6 +87,7 @@ export default class FlexVideoPage extends Component {
   height="225"
   src="http://player.vimeo.com/video/60122989"
   vimeo
+  widescreen
   width="400"
 />`
 }
@@ -92,6 +99,7 @@ export default class FlexVideoPage extends Component {
           height="225"
           src="http://player.vimeo.com/video/60122989"
           vimeo
+          widescreen
           width="400"
         />
       </div>

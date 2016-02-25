@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Badge, ShowOnlyForScreenReader } from '../../../src';
+import { Badge } from '../../../src/media/badge';
+import { ShowOnlyForScreenReader } from '../../../src/general/visibility';
 
 export default class BadgePage extends Component {
   render() {
@@ -15,7 +16,13 @@ export default class BadgePage extends Component {
         <pre>
           <code>
 {
-`import Badge from 'react-foundation-components/lib/media/badge';`
+`// Import with local scoped class names (via CSS Modules)
+import { Badge } from 'react-foundation-components/lib/media/badge';
+
+or
+
+// Import with global scoped class names
+import { Badge } from 'react-foundation-components/lib/media/badge/global';`
 }
           </code>
         </pre>

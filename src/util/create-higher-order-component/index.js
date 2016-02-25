@@ -8,7 +8,7 @@ export default function createHigherOrderComponent({
   mapPropsToClassNames = () => ({}),
   mapPropsToProps = (props) => props,
   defaultComponentClass = 'span',
-  collapseOnlyChild = true,
+  mergeSingleChild = true,
 } = {}) {
   class Wrapper extends Component {
     static displayName = displayName;
@@ -17,7 +17,6 @@ export default function createHigherOrderComponent({
       children: PropTypes.node,
       className: PropTypes.string,
       componentClass: elementType,
-      forceWrap: PropTypes.bool,
       ...propTypes,
     };
 
@@ -26,14 +25,13 @@ export default function createHigherOrderComponent({
         children,
         className,
         componentClass: maybeComponentClass,
-        forceWrap,
         ...restProps,
       } = this.props;
       const ComponentClass = maybeComponentClass || defaultComponentClass;
       const classNames = mapPropsToClassNames(restProps);
       const props = mapPropsToProps(restProps);
 
-      if (!forceWrap && collapseOnlyChild && isValidElement(children)) {
+      if (mergeSingleChild && !maybeComponentClass && isValidElement(children)) {
         return React.cloneElement(children, {
           ...props,
           className: cx(children.props.className, className, classNames),

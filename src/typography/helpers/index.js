@@ -15,7 +15,7 @@ export const UnbulletedList = createHigherOrderComponent({
   displayName: 'UnbulletedList',
   mapPropsToClassNames: () => styles['no-bullet'],
   defaultComponentClass: 'ul',
-  collapseOnlyChild: false,
+  mergeSingleChild: false,
 });
 
 export const Statistic = createHigherOrderComponent({

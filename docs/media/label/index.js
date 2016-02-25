@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Label } from '../../../src';
+import { Label } from '../../../src/media/label';
 
 export default class LabelPage extends Component {
   render() {
@@ -15,7 +15,13 @@ export default class LabelPage extends Component {
         <pre>
           <code>
 {
-`import Label from 'react-foundation-components/lib/media/label';`
+`// Import with local scoped class names (via CSS Modules)
+import { Label } from 'react-foundation-components/lib/media/label';
+
+or
+
+// Import with global scoped class names
+import { Label } from 'react-foundation-components/lib/media/label/global';`
 }
           </code>
         </pre>
