@@ -13,10 +13,10 @@ export default class Button extends Component {
     dropdownArrowOnly: PropTypes.bool,
     expanded: PropTypes.bool,
     hollow: PropTypes.bool,
-    href: React.PropTypes.string,
+    href: PropTypes.string,
     size: PropTypes.oneOf(COMPONENT_SIZES),
-    target: React.PropTypes.string,
-    type: React.PropTypes.oneOf(['button', 'reset', 'submit']),
+    target: PropTypes.string,
+    type: PropTypes.oneOf(['button', 'reset', 'submit']),
   };
 
   static defaultProps = {
