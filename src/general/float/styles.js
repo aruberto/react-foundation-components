@@ -1,7 +1,6 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 import { FLOAT_POSITIONS } from '../../util/constants';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['clearfix'].concat(FLOAT_POSITIONS.map((position) => `float-${position}`))
-);
+const styles = ['clearfix'].concat(FLOAT_POSITIONS.map((position) => `float-${position}`));
+
+export default keyMirrorArray(styles);
