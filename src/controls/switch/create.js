@@ -9,20 +9,42 @@ import createHigherOrderComponent from '../../util/create-higher-order-component
 import { ShowOnlyForScreenReader, HideOnlyForScreenReader } from '../../general/visibility';
 
 export default function create(styles) {
-  const SwitchCheckedLabel = createHigherOrderComponent({
-    displayName: 'SwitchCheckedLabel',
+  const SwitchCheckedLabelBase = createHigherOrderComponent({
+    displayName: 'SwitchCheckedLabelBase',
     mapPropsToClassNames: () => styles['switch-active'],
   });
 
-  const SwitchUncheckedLabel = createHigherOrderComponent({
-    displayName: 'SwitchUncheckedLabel',
+  class SwitchCheckedLabel extends Component {
+    render() {
+      return (
+        <HideOnlyForScreenReader>
+          <SwitchCheckedLabelBase {...this.props}/>
+        </HideOnlyForScreenReader>
+      );
+    }
+  }
+
+  const SwitchUncheckedLabelBase = createHigherOrderComponent({
+    displayName: 'SwitchUncheckedLabelBase',
     mapPropsToClassNames: () => styles['switch-inactive'],
   });
+
+  class SwitchUncheckedLabel extends Component {
+    render() {
+      return (
+        <HideOnlyForScreenReader>
+          <SwitchUncheckedLabelBase {...this.props}/>
+        </HideOnlyForScreenReader>
+      );
+    }
+  }
+
+  const SwitchPadelLabel = ShowOnlyForScreenReader;
 
   class Switch extends Component {
     static propTypes = {
       checked: PropTypes.bool,
-      checkedLabel: React.PropTypes.node,
+      children: PropTypes.node,
       className: PropTypes.string,
       containerClassName: PropTypes.string,
       containerStyle: PropTypes.object,
@@ -31,10 +53,8 @@ export default function create(styles) {
       onChange: PropTypes.func,
       onToggle: PropTypes.func,
       paddleClassName: PropTypes.string,
-      paddleLabel: React.PropTypes.node,
       paddleStyle: PropTypes.object,
       size: PropTypes.oneOf(COMPONENT_SIZES),
-      uncheckedLabel: React.PropTypes.node,
     };
 
     setInputRef = (inputRef) => this._inputRef = inputRef;
@@ -67,49 +87,9 @@ export default function create(styles) {
       }
     };
 
-    renderPaddleLabel = () => {
-      const { paddleLabel } = this.props;
-      let result = null;
-
-      if (paddleLabel) {
-        result = <ShowOnlyForScreenReader>{paddleLabel}</ShowOnlyForScreenReader>;
-      }
-
-      return result;
-    };
-
-    renderCheckedLabel = () => {
-      const { checkedLabel } = this.props;
-      let result = null;
-
-      if (checkedLabel) {
-        result = (
-          <HideOnlyForScreenReader>
-            <SwitchCheckedLabel>{checkedLabel}</SwitchCheckedLabel>
-          </HideOnlyForScreenReader>
-        );
-      }
-
-      return result;
-    };
-
-    renderUncheckedLabel = () => {
-      const { uncheckedLabel } = this.props;
-      let result = null;
-
-      if (uncheckedLabel) {
-        result = (
-          <HideOnlyForScreenReader>
-            <SwitchUncheckedLabel>{uncheckedLabel}</SwitchUncheckedLabel>
-          </HideOnlyForScreenReader>
-        );
-      }
-
-      return result;
-    };
-
     render() {
       const {
+        children,
         className,
         containerClassName,
         containerStyle,
@@ -132,6 +112,7 @@ export default function create(styles) {
         <div className={containerClassNames} style={containerStyle}>
           <input
             {...this.props}
+            children={null}
             className={classNames}
             onChange={this.handleInputChange}
             ref={this.setInputRef}
@@ -144,9 +125,7 @@ export default function create(styles) {
             onClick={this.handleLabelClick}
             style={paddleStyle}
           >
-            {this.renderPaddleLabel()}
-            {this.renderCheckedLabel()}
-            {this.renderUncheckedLabel()}
+            {children}
           </label>
         </div>
       );
@@ -202,5 +181,5 @@ export default function create(styles) {
   const RadioSwitch = uncontrollable(RadioSwitchControlled, { activeKey: 'onSelect' });
   RadioSwitch.displayName = 'RadioSwitch';
 
-  return { Switch, RadioSwitch };
+  return { Switch, RadioSwitch, SwitchCheckedLabel, SwitchUncheckedLabel, SwitchPadelLabel };
 }

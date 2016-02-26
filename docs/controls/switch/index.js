@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
-import { Switch, RadioSwitch } from '../../../src/controls/switch';
+import {
+  Switch,
+  RadioSwitch,
+  SwitchCheckedLabel,
+  SwitchUncheckedLabel,
+  SwitchPadelLabel,
+} from '../../../src/controls/switch';
 
 export default class SwitchPage extends Component {
   constructor(props) {
@@ -35,12 +41,24 @@ export default class SwitchPage extends Component {
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { Switch, RadioSwitch } from '../../../src/controls/switch';
+import {
+  Switch,
+  RadioSwitch,
+  SwitchCheckedLabel,
+  SwitchUncheckedLabel,
+  SwitchPadelLabel
+} from '../../../src/controls/switch';
 
 or
 
 // Import with global scoped class names
-import { Switch, RadioSwitch } from 'react-foundation-components/lib/controls/switch/global';`
+import {
+  Switch,
+  RadioSwitch,
+  SwitchCheckedLabel,
+  SwitchUncheckedLabel,
+  SwitchPadelLabel
+} from 'react-foundation-components/lib/controls/switch/global';`
 }
           </code>
         </pre>
@@ -109,20 +127,30 @@ render() {
         <h2>Accessibility</h2>
         <p>
           Provide an <code>id</code> so the Switch populates the for attribute of the Switch
-          paddle/label. Set the <code>paddleLabel</code> prop to provide a label for screen
+          paddle/label. Declare SwitchPadelLabel component as a child to provide a label for screen
           readers.
         </p>
         <p>
           You can also place active and inactive text inside of the switch using
-          the <code>checkedLabel</code> and <code>uncheckedLabel</code> props. These labels are
+          the SwitchCheckedLabel and SwitchUncheckedLabel child components. These labels are
           hidden for screen readers.
         </p>
         <pre>
           <code>
-{`<Switch checkedLabel="Yes" id="mySwitch" paddleLabel="Do you like me?" uncheckedLabel="No"/>`}
+{
+`<Switch id="mySwitch">
+  <SwitchPadelLabel>Do you like me?</SwitchPadelLabel>
+  <SwitchCheckedLabel>Yes</SwitchCheckedLabel>
+  <SwitchUncheckedLabel>No</SwitchUncheckedLabel>
+</Switch>`
+}
           </code>
         </pre>
-        <Switch checkedLabel="Yes" id="mySwitch" paddleLabel="Do you like me?" uncheckedLabel="No"/>
+        <Switch id="mySwitch">
+          <SwitchPadelLabel>Do you like me?</SwitchPadelLabel>
+          <SwitchCheckedLabel>Yes</SwitchCheckedLabel>
+          <SwitchUncheckedLabel>No</SwitchUncheckedLabel>
+        </Switch>
         <h2>Radio Switch</h2>
         <p>
           RadioSwitch component is a container for Switches. Switches contained in a RadioSwitch
@@ -136,11 +164,13 @@ render() {
         </p>
         <pre>
           <code>
-{`<RadioSwitch>
+{
+`<RadioSwitch>
   <Switch eventKey="1"/>
   <Switch eventKey="2"/>
   <Switch eventKey="3"/>
-</RadioSwitch>`}
+</RadioSwitch>`
+}
           </code>
         </pre>
         <RadioSwitch>
@@ -150,11 +180,13 @@ render() {
         </RadioSwitch>
         <pre>
           <code>
-{`<RadioSwitch defaultActiveKey="2">
+{
+`<RadioSwitch defaultActiveKey="2">
   <Switch eventKey="1"/>
   <Switch eventKey="2"/>
   <Switch eventKey="3"/>
-</RadioSwitch>`}
+</RadioSwitch>`
+}
           </code>
         </pre>
         <RadioSwitch defaultActiveKey="2">

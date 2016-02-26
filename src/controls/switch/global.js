@@ -1,7 +1,13 @@
 import styles from './styles';
 import create from './create';
 
-const { Switch, RadioSwitch } = create(styles);
+const {
+  Switch,
+  RadioSwitch,
+  SwitchCheckedLabel,
+  SwitchUncheckedLabel,
+  SwitchPadelLabel,
+} = create(styles);
 
 export default Switch;
-export { Switch, RadioSwitch };
+export { Switch, RadioSwitch, SwitchCheckedLabel, SwitchUncheckedLabel, SwitchPadelLabel };
