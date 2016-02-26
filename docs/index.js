@@ -10,7 +10,7 @@ import {
   TitleBar,
   TitleBarItem,
   TitleBarTitle,
-  MenuIcon,
+  TitleBarMenuIcon,
   HideForScreenSize,
 } from '../src';
 
@@ -122,7 +122,7 @@ class HomePage extends Component {
           <TitleBar>
             <HideForScreenSize size="large">
               <TitleBarItem position="left">
-                <MenuIcon onClick={this.handleToggle} open={leftNavOpen}/>
+                <TitleBarMenuIcon onClick={this.handleToggle} open={leftNavOpen}/>
               </TitleBarItem>
             </HideForScreenSize>
             <TitleBarTitle>React Foundation Components</TitleBarTitle>

@@ -3,6 +3,7 @@ import cx from 'classnames';
 
 import styles from './styles';
 import { TITLE_BAR_POSITIONS } from '../../util/constants';
+import MenuIcon from '../menu-icon';
 
 export class TitleBarItem extends Component {
   static propTypes = {
@@ -40,16 +41,14 @@ export class TitleBarTitle extends Component {
   }
 }
 
-export class MenuIcon extends Component {
+export class TitleBarMenuIcon extends Component {
   static propTypes = {
     className: PropTypes.string,
     dark: PropTypes.bool,
-    offCanvasId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    open: PropTypes.bool,
   };
 
   render() {
-    const { className, dark, offCanvasId, open } = this.props;
+    const { className, dark } = this.props;
     const classNames = cx(
       className,
       styles['menu-icon'],
@@ -59,13 +58,7 @@ export class MenuIcon extends Component {
     );
 
     return (
-      <button
-        {...this.props}
-        aria-controls={offCanvasId}
-        aria-expanded={open}
-        className={classNames}
-        type="button"
-      />
+      <MenuIcon {...this.props} className={classNames}/>
     );
   }
 }

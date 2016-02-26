@@ -7,7 +7,7 @@ import {
   TitleBar,
   TitleBarItem,
   TitleBarTitle,
-  MenuIcon,
+  TitleBarMenuIcon,
   HideForScreenSize,
 } from '../../../src';
 
@@ -48,13 +48,13 @@ export default class OffCanvasPage extends Component {
           <TitleBar>
             <HideForScreenSize size="large">
               <TitleBarItem position="left">
-                <MenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
+                <TitleBarMenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
               </TitleBarItem>
             </HideForScreenSize>
             <TitleBarTitle>Foundation</TitleBarTitle>
             <HideForScreenSize size="xxlarge">
               <TitleBarItem position="right">
-                <MenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
+                <TitleBarMenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
               </TitleBarItem>
             </HideForScreenSize>
           </TitleBar>
