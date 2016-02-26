@@ -1,7 +1,6 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 import { TEXT_ALIGNMENTS } from '../../util/constants';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  TEXT_ALIGNMENTS.map((alignment) => `text-${alignment}`)
-);
+const styles = TEXT_ALIGNMENTS.map((alignment) => `text-${alignment}`);
+
+export default keyMirrorArray(styles);

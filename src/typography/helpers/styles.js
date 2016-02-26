@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['subheader', 'lead', 'no-bullet', 'stat']
-);
+const styles = ['subheader', 'lead', 'no-bullet', 'stat'];
+
+export default keyMirrorArray(styles);

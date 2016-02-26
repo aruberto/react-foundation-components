@@ -1,6 +1,6 @@
 $color-background: #f4f5f6 !default
 
-@import '../src/typography';
+@import '../src/typography/base';
 
 code {
   background: $color-background;

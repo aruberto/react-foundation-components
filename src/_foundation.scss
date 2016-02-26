@@ -1,2 +1,6 @@
-@import './typography';
+$rfc-flex: false !default;
+
+@import './typography/styles';
+@import './controls/styles';
+@import './general/styles';
 @import './media/styles';
