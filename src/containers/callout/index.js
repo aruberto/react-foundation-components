@@ -27,3 +27,5 @@ export default class Callout extends Component {
     );
   }
 }
+
+export { Callout };

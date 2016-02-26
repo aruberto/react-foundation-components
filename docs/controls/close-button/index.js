@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { CloseButton } from '../../../src/controls/close-button';
-import Callout from '../../../src/containers/callout';
+import { Callout } from '../../../src/containers/callout';
 
 export default class CloseButtonPage extends Component {
   render() {
