@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['fade', 'in']
-);
+const styles = ['fade', 'in'];
+
+export default keyMirrorArray(styles);

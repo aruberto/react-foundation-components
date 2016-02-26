@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['collapse', 'collapsing', 'in', 'height', 'width']
-);
+const styles = ['collapse', 'collapsing', 'in', 'height', 'width'];
+
+export default keyMirrorArray(styles);

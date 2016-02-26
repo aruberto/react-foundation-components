@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
-import { HideOnlyForScreenReader } from '../../general/visibility';
+import DefaultComponent from '../../util/default-component';
 
-export default function create(styles) {
+export default function create(styles, HideOnlyForScreenReader = DefaultComponent) {
   class CloseButton extends Component {
     static propTypes = {
       className: PropTypes.string,

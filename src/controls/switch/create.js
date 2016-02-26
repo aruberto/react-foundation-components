@@ -6,9 +6,13 @@ import isBlank from 'underscore.string/isBlank';
 
 import { COMPONENT_SIZES } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import { ShowOnlyForScreenReader, HideOnlyForScreenReader } from '../../general/visibility';
+import DefaultComponent from '../../util/default-component';
 
-export default function create(styles) {
+export default function create(
+  styles,
+  ShowOnlyForScreenReader = DefaultComponent,
+  HideOnlyForScreenReader = DefaultComponent
+) {
   const SwitchCheckedLabelBase = createHigherOrderComponent({
     displayName: 'SwitchCheckedLabelBase',
     mapPropsToClassNames: () => styles['switch-active'],

@@ -14,7 +14,6 @@ import domContains from 'dom-helpers/query/contains';
 
 import { OVERLAY_POSITIONS, OVERLAY_POSITIONS_INTERNAL } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import Fade from '../../transitions/fade';
 
 function mouseOverOut(event, callback) {
   const target = event.currentTarget;
@@ -25,7 +24,7 @@ function mouseOverOut(event, callback) {
   }
 }
 
-export default function create(styles) {
+export default function create(styles, Fade) {
   class Tooltip extends Component {
     static propTypes = {
       className: PropTypes.string,

@@ -195,10 +195,8 @@ render() {
           <Switch eventKey="3"/>
         </RadioSwitch>
         <p>
-          <p>
-            Use the <code>activeKey</code> and <code>onSelect</code> props to create a controlled
-            component.
-          </p>
+          Use the <code>activeKey</code> and <code>onSelect</code> props to create a controlled
+          component.
         </p>
         <pre>
           <code>
