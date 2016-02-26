@@ -1,7 +1,7 @@
 @import './float/styles';
 @import './visibility/styles';
 
-@if $rfc-flex {
+@if $global-flexbox {
   @import './grid/flex/styles';
 } @else {
   @import './grid/styles';
