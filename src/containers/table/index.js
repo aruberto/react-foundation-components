@@ -6,24 +6,53 @@ import styles from './styles';
 export default class Table extends Component {
   static propTypes = {
     className: PropTypes.string,
+    containerClassName: PropTypes.string,
+    containerStyle: PropTypes.object,
     hover: PropTypes.bool,
     scroll: PropTypes.bool,
+    scrollContainerClassName: PropTypes.string,
+    scrollContainerStyle: PropTypes.object,
     stack: PropTypes.bool,
   };
 
   render() {
-    const { className, hover, scroll, stack } = this.props;
+    const {
+      className,
+      containerClassName,
+      containerStyle,
+      hover,
+      scroll,
+      scrollContainerClassName,
+      scrollContainerStyle,
+      stack,
+    } = this.props;
+    const containerClassNames = cx(
+      containerClassName,
+      {
+        [styles.table]: true,
+        [styles['table-scroll']]: scroll,
+      }
+    );
+    const scrollContainerClassNames = cx(
+      scrollContainerClassName,
+      {
+        [styles['table-scroll']]: scroll,
+      }
+    );
     const classNames = cx(
       className,
       {
         [styles.hover]: hover,
-        [styles.scroll]: scroll,
         [styles.stack]: stack,
       }
     );
 
     return (
-      <table {...this.props} className={classNames}/>
+      <div className={containerClassNames} style={containerStyle}>
+        <div className={scrollContainerClassNames} style={scrollContainerStyle}>
+          <table {...this.props} className={classNames}/>
+        </div>
+      </div>
     );
   }
 }
