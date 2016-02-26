@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { CloseButton, Callout } from '../../../src';
+import { CloseButton } from '../../../src/controls/close-button';
+import { Callout } from '../../../src/containers/callout';
 
 export default class CloseButtonPage extends Component {
   render() {
@@ -15,7 +16,13 @@ export default class CloseButtonPage extends Component {
         <pre>
           <code>
 {
-`import CloseButton from 'react-foundation-components/lib/controls/close-button';`
+`// Import with local scoped class names (via CSS Modules)
+import { CloseButton } from '../../../src/controls/close-button';
+
+or
+
+// Import with global scoped class names
+import { CloseButton } from 'react-foundation-components/lib/controls/close-button/global';`
 }
           </code>
         </pre>

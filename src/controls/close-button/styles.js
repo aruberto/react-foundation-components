@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['close-button']
-);
+const styles = ['close-button'];
+
+export default keyMirrorArray(styles);

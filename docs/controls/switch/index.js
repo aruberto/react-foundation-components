@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Switch, RadioSwitch } from '../../../src';
+import { Switch, RadioSwitch } from '../../../src/controls/switch';
 
 export default class SwitchPage extends Component {
   constructor(props) {
@@ -34,7 +34,13 @@ export default class SwitchPage extends Component {
         <pre>
           <code>
 {
-`import { Switch, RadioSwitch } from 'react-foundation-components/lib/controls/switch';`
+`// Import with local scoped class names (via CSS Modules)
+import { Switch, RadioSwitch } from '../../../src/controls/switch';
+
+or
+
+// Import with global scoped class names
+import { Switch, RadioSwitch } from 'react-foundation-components/lib/controls/switch/global';`
 }
           </code>
         </pre>

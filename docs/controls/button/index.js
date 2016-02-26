@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Button, ShowOnlyForScreenReader, HideOnlyForScreenReader } from '../../../src';
+import { Button } from '../../../src/controls/button';
+import { ShowOnlyForScreenReader, HideOnlyForScreenReader } from '../../../src/general/visibility';
 
 export default class ButtonPage extends Component {
   render() {
@@ -15,7 +16,13 @@ export default class ButtonPage extends Component {
         <pre>
           <code>
 {
-`import Button from 'react-foundation-components/lib/controls/button';`
+`// Import with local scoped class names (via CSS Modules)
+import { Button } from 'react-foundation-components/lib/controls/button';
+
+or
+
+// Import with global scoped class names
+import { Button } from 'react-foundation-components/lib/controls/button/global';`
 }
           </code>
         </pre>

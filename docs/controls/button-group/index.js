@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import { Button, ButtonGroup, ShowOnlyForScreenReader } from '../../../src';
+import { Button } from '../../../src/controls/button';
+import { ButtonGroup } from '../../../src/controls/button-group';
+import { ShowOnlyForScreenReader } from '../../../src/general/visibility';
 
 export default class ButtonGroupPage extends Component {
   render() {
@@ -15,7 +17,15 @@ export default class ButtonGroupPage extends Component {
         <pre>
           <code>
 {
-`import ButtonGroup from 'react-foundation-components/lib/controls/button-group';`
+`// Import with local scoped class names (via CSS Modules)
+import { Button } from '../../../src/controls/button';
+import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group';
+
+or
+
+// Import with global scoped class names
+import { Button } from 'react-foundation-components/lib/controls/button/global';
+import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group/global';`
 }
           </code>
         </pre>

@@ -1,9 +1,9 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 import { COMPONENT_SIZES, COMPONENT_COLORS } from '../../util/constants';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
+const styles =
   ['button', 'disabled', 'dropdown', 'arrow-only', 'expanded', 'hollow']
     .concat(COMPONENT_SIZES)
-    .concat(COMPONENT_COLORS)
-);
+    .concat(COMPONENT_COLORS);
+
+export default keyMirrorArray(styles);

@@ -1,4 +1,4 @@
-import styles from './_styles.scss';
+import styles from './styles';
 import create from './create';
 
 const { ButtonGroup } = create(styles);
