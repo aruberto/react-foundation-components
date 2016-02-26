@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['accordion', 'accordion-item', 'accordion-title', 'accordion-content', 'is-active']
-);
+const styles = ['accordion', 'accordion-item', 'accordion-title', 'accordion-content', 'is-active'];
+
+export default keyMirrorArray(styles);

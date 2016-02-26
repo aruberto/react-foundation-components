@@ -1,7 +1,6 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 import { CALLOUT_SIZES, COMPONENT_COLORS } from '../../util/constants';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['callout'].concat(CALLOUT_SIZES).concat(COMPONENT_COLORS)
-);
+const styles = ['callout'].concat(CALLOUT_SIZES).concat(COMPONENT_COLORS);
+
+export default keyMirrorArray(styles);
