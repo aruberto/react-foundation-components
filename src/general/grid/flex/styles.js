@@ -1,11 +1,11 @@
-import checkStyles from '../../util/check-styles';
+import checkStyles from '../../../util/check-styles';
 import {
   FLEX_GRID_ROW_CLASS_NAMES,
   FLEX_GRID_COLUMN_CLASS_NAMES,
   FLEX_GRID_HORIZONTAL_ALIGNMENTS,
   FLEX_GRID_VERTICAL_ALIGNMENTS,
-} from '../../util/constants';
-import { createScreenSizeClassNames } from '../../util/grid';
+} from '../../../util/constants';
+import { createScreenSizeClassNames } from '../../../util/grid';
 
 export default checkStyles(
   require('./stylesheet.scss'),

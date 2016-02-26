@@ -1,9 +1,9 @@
 import { PropTypes } from 'react';
 
 import styles from './styles';
-import { FLOAT_GRID_ROW_CLASS_NAMES, FLOAT_GRID_COLUMN_CLASS_NAMES } from '../../util/constants';
-import createHigherOrderComponent from '../../util/create-higher-order-component';
-import { createScreenSizePropTypes, createScreenSizeClassNamesFromProps } from '../../util/grid';
+import { FLOAT_GRID_ROW_CLASS_NAMES, FLOAT_GRID_COLUMN_CLASS_NAMES } from '../../../util/constants';
+import createHigherOrderComponent from '../../../util/create-higher-order-component';
+import { createScreenSizePropTypes, createScreenSizeClassNamesFromProps } from '../../../util/grid';
 
 const rowPropTypes = createScreenSizePropTypes(FLOAT_GRID_ROW_CLASS_NAMES);
 const columnPropTypes = createScreenSizePropTypes(FLOAT_GRID_COLUMN_CLASS_NAMES);

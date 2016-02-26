@@ -14,8 +14,8 @@ import {
   HideForScreenSize,
 } from '../src';
 
-import GridPage from './general/grid';
-import FlexGridPage from './general/flex-grid';
+import FloatGridPage from './general/grid/float';
+import FlexGridPage from './general/grid/flex';
 import VisibilityPage from './general/visibility';
 import FloatPage from './general/float';
 import BaseTypographyPage from './typography/base';
@@ -68,9 +68,9 @@ class HomePage extends Component {
     return (
       <OffCanvasContainer open={open}>
         <OffCanvas position="left" revealForSize="large">
-          <Link to="/general/grid">Grid</Link>
+          <Link to="/general/grid/float">Float Grid</Link>
           <br/>
-          <Link to="/general/flex-grid">Flex Grid</Link>
+          <Link to="/general/grid/flex">Flex Grid</Link>
           <br/>
           <Link to="/general/visibility">Visibility</Link>
           <br/>
@@ -140,8 +140,8 @@ class Demo extends Component {
     return (
       <Router history={hashHistory}>
         <Route component={HomePage} path="/">
-          <Route component={GridPage} path="/general/grid"/>
-          <Route component={FlexGridPage} path="/general/flex-grid"/>
+          <Route component={FloatGridPage} path="/general/grid/float"/>
+          <Route component={FlexGridPage} path="/general/grid/flex"/>
           <Route component={VisibilityPage} path="/general/visibility"/>
           <Route component={FloatPage} path="/general/float"/>
           <Route component={BaseTypographyPage} path="/typography/base"/>

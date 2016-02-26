@@ -5,11 +5,11 @@ import {
   FloatColumn as Column,
   ShowForScreenSize,
   ShowOnlyForScreenSize,
-} from '../../../src';
+} from '../../../../src';
 
 const style = { borderStyle: 'solid' };
 
-export default class GridPage extends Component {
+export default class FloatGridPage extends Component {
   render() {
     return (
       <div>

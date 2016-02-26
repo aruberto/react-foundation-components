@@ -6,9 +6,9 @@ import {
   FLEX_GRID_COLUMN_CLASS_NAMES,
   FLEX_GRID_HORIZONTAL_ALIGNMENTS,
   FLEX_GRID_VERTICAL_ALIGNMENTS,
-} from '../../util/constants';
-import createHigherOrderComponent from '../../util/create-higher-order-component';
-import { createScreenSizePropTypes, createScreenSizeClassNamesFromProps } from '../../util/grid';
+} from '../../../util/constants';
+import createHigherOrderComponent from '../../../util/create-higher-order-component';
+import { createScreenSizePropTypes, createScreenSizeClassNamesFromProps } from '../../../util/grid';
 
 const rowPropTypes = createScreenSizePropTypes(FLEX_GRID_ROW_CLASS_NAMES);
 const columnPropTypes = createScreenSizePropTypes(FLEX_GRID_COLUMN_CLASS_NAMES);
