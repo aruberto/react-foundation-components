@@ -95,7 +95,7 @@ export default function create(styles) {
         }
       );
       const newChildren = Children.map(children, (child) => {
-        if (isValidElement(child) && child.type === OffCanvasContent) {
+        if (isValidElement(child)) {
           return cloneElement(child, { blocked: openValid });
         }
 

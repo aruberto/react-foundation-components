@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['table', 'table-scroll', 'hover', 'scroll', 'stack']
-);
+const styles = ['table', 'table-scroll', 'hover', 'scroll', 'stack'];
+
+export default keyMirrorArray(styles);
