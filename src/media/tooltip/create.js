@@ -6,7 +6,7 @@ import { OVERLAY_POSITIONS, OVERLAY_POSITIONS_INTERNAL } from '../../util/consta
 import createHigherOrderComponent from '../../util/create-higher-order-component';
 import OverlayTrigger from '../../util/overlay-trigger';
 
-export default function create(styles, Fade) {
+export default function create(styles, Transition) {
   class Tooltip extends Component {
     static propTypes = {
       className: PropTypes.string,
@@ -67,7 +67,7 @@ export default function create(styles, Fade) {
       closeOnClickOutside: true,
       tooltipIndicator: true,
       tooltipPosition: 'bottom',
-      transition: Fade,
+      transition: Transition,
       triggerClick: true,
       triggerFocus: true,
       triggerHover: true,
@@ -101,5 +101,5 @@ export default function create(styles, Fade) {
     }
   }
 
-  return { Tooltip, LinkWithTooltip };
+  return { Tooltip, HasTooltip, LinkWithTooltip };
 }
