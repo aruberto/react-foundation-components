@@ -1,17 +1,16 @@
 .reveal {
   display: block;
-  left: 50%;
-  margin: 0;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  &.full {
-    left: 0;
-    top: 0;
-    transform: translate(0, 0);
-  }
 }
 
 .reveal-overlay {
   display: block;
+}
+
+.reveal-container {
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 0;
 }

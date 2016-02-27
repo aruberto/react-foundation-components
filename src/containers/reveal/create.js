@@ -9,6 +9,8 @@ export default function create(styles, Transition) {
   class Reveal extends Component {
     static propTypes = {
       children: PropTypes.node,
+      containerClassName: PropTypes.string,
+      containerStyle: PropTypes.object,
       overlay: PropTypes.bool,
       overlayClassName: PropTypes.string,
       overlayStyle: PropTypes.object,
@@ -26,6 +28,8 @@ export default function create(styles, Transition) {
     render() {
       const {
         children,
+        containerClassName,
+        containerStyle,
         revealClassName,
         revealStyle,
         overlay,
@@ -33,15 +37,15 @@ export default function create(styles, Transition) {
         overlayStyle,
         size,
       } = this.props;
-      const overlayClassNames = cx(overlayClassName, styles['reveal-overlay']);
       const revealClassNames = cx(
         revealClassName,
         styles.reveal,
         {
           [styles[size]]: MODAL_SIZES.includes(size),
-          [styles['without-overlay']]: true,
         }
       );
+      const overlayClassNames = cx(overlayClassName, styles['reveal-overlay']);
+      const containerClassNames = cx(containerClassName, styles['reveal-container']);
 
       return (
         <Modal
@@ -49,6 +53,8 @@ export default function create(styles, Transition) {
           backdrop={overlay}
           backdropClassName={overlayClassNames}
           backdropStyle={overlayStyle}
+          className={containerClassNames}
+          style={containerStyle}
         >
           <div className={revealClassNames} style={revealStyle}>
             {children}
