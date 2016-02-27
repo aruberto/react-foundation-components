@@ -107,9 +107,9 @@ export default function create(styles) {
         <Transition
           {...this.props}
           className={classNames}
-          enteredClassName={cx(styles.collapse, styles.in)}
+          enteredClassName={cx(styles.collapsible, styles.in)}
           enteringClassName={styles.collapsing}
-          exitedClassName={styles.collapse}
+          exitedClassName={styles.collapsible}
           exitingClassName={styles.collapsing}
           onEnter={this.handleEnter}
           onEntered={this.handleEntered}
