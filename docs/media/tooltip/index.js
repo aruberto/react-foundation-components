@@ -114,8 +114,8 @@ import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/media/
           </LinkWithTooltip>
         </p>
         <p>
-          The tooltip content is emphasized with a dotted underline by default. You can disable
-          this by setting <code>tooltipContentIndicator</code> to false.
+          Content linked with a tooltip is emphasized with a dotted underline by default. You can
+          disable this by setting <code>tooltipIndicator</code> to false.
         </p>
         <pre>
           <code>
@@ -123,7 +123,7 @@ import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/media/
 `<LinkWithTooltip tooltipContent="I am a warning label tooltip!">
   <Label color="warning">Warning With Underline!</Label>
 </LinkWithTooltip>
-<LinkWithTooltip tooltipContent="I am a warning label tooltip!" tooltipContentIndicator={false}>
+<LinkWithTooltip tooltipContent="I am a warning label tooltip!" tooltipIndicator={false}>
   <Label color="warning">Warning With No Underline!</Label>
 </LinkWithTooltip>`
 }
@@ -138,7 +138,7 @@ import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/media/
           <LinkWithTooltip
             tabIndex="1"
             tooltipContent="I am a warning label tooltip!"
-            tooltipContentIndicator={false}
+            tooltipIndicator={false}
           >
             <Label color="warning" style={{ marginLeft: '100px' }}>
               Warning With No Underline!
