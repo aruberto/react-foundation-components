@@ -11,13 +11,11 @@ const filter = through2.obj(function componentDirectoryFilter(item, enc, next) {
 
     if (fileName === 'index.js') {
       const directory = path.dirname(item.path);
-      const createPath = path.join(directory, 'create.js');
       const stylesPath = path.join(directory, 'styles.js');
       const cssPath = path.join(directory, '_styles.scss');
 
       try {
         fs.accessSync(item.path, fs.F_OK);
-        fs.accessSync(createPath, fs.F_OK);
         fs.accessSync(stylesPath, fs.F_OK);
         fs.accessSync(cssPath, fs.F_OK);
 
@@ -48,10 +46,12 @@ fs.walk('.' + path.sep + 'lib')
 
     const stylesPath = '\'' + relativePath + '/' + 'styles\'';
     const createPath = '\'' + relativePath + '/' + 'create\'';
+    const variantCreatePath = '\'' + relativePath + '/../' + 'create\'';
     const content =
       s(fs.readFileSync(item.path, 'utf8'))
         .replace('\'./_styles.scss\'', stylesPath)
         .replace('\'./create\'', createPath)
+        .replace('\'../create\'', variantCreatePath)
         .value();
 
     fs.ensureDirSync(path.dirname(globalPath));
