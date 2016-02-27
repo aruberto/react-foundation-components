@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { Tooltip, LinkWithTooltip } from '../../../src/media/tooltip';
+import { Label } from '../../../src/media/label';
 
 const tooltipStyle = {
   position: 'relative',
@@ -23,12 +24,12 @@ export default class TooltipPage extends Component {
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/tooltip';
+import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/media/tooltip';
 
 or
 
 // Import with global scoped class names
-import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/tooltip/global';`
+import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/media/tooltip/global';`
 }
           </code>
         </pre>
@@ -80,50 +81,88 @@ import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/toolt
 }
           </code>
         </pre>
-        <LinkWithTooltip tabIndex="1" tooltipContent="I am a bottom tooltip!">
-          I have a <strong>bottom</strong> tooltip!
-        </LinkWithTooltip>
-        &nbsp;&nbsp;&nbsp;
-        <LinkWithTooltip
-          tabIndex="1"
-          tooltipContent="I am also a bottom tooltip!" tooltipPosition="bottom"
-        >
-          I also have a <strong>bottom</strong> tooltip!
-        </LinkWithTooltip>
-        &nbsp;&nbsp;&nbsp;
-        <LinkWithTooltip tabIndex="1" tooltipContent="I am a top tooltip!" tooltipPosition="top">
-          I have a <strong>top</strong> tooltip!
-        </LinkWithTooltip>
-        &nbsp;&nbsp;&nbsp;
-        <LinkWithTooltip tabIndex="1" tooltipContent="I am a left tooltip!" tooltipPosition="left">
-          I have a <strong>left</strong> tooltip!
-        </LinkWithTooltip>
-        &nbsp;&nbsp;&nbsp;
-        <LinkWithTooltip
-          tabIndex="1"
-          tooltipContent="I am a right tooltip!"
-          tooltipPosition="right"
-        >
-          I have a <strong>right</strong> tooltip!
-        </LinkWithTooltip>
+        <p>
+          <LinkWithTooltip tabIndex="1" tooltipContent="I am a bottom tooltip!">
+            I have a <strong>bottom</strong> tooltip!
+          </LinkWithTooltip>
+          &nbsp;&nbsp;&nbsp;
+          <LinkWithTooltip
+            tabIndex="1"
+            tooltipContent="I am also a bottom tooltip!" tooltipPosition="bottom"
+          >
+            I also have a <strong>bottom</strong> tooltip!
+          </LinkWithTooltip>
+          &nbsp;&nbsp;&nbsp;
+          <LinkWithTooltip tabIndex="1" tooltipContent="I am a top tooltip!" tooltipPosition="top">
+            I have a <strong>top</strong> tooltip!
+          </LinkWithTooltip>
+          &nbsp;&nbsp;&nbsp;
+          <LinkWithTooltip
+            tabIndex="1"
+            tooltipContent="I am a left tooltip!"
+            tooltipPosition="left"
+          >
+            I have a <strong>left</strong> tooltip!
+          </LinkWithTooltip>
+          &nbsp;&nbsp;&nbsp;
+          <LinkWithTooltip
+            tabIndex="1"
+            tooltipContent="I am a right tooltip!"
+            tooltipPosition="right"
+          >
+            I have a <strong>right</strong> tooltip!
+          </LinkWithTooltip>
+        </p>
+        <p>
+          The tooltip content is emphasized with a dotted underline by default. You can disable
+          this by setting <code>tooltipContentIndicator</code> to false.
+        </p>
+        <pre>
+          <code>
+{
+`<LinkWithTooltip tooltipContent="I am a warning label tooltip!">
+  <Label color="warning">Warning With Underline!</Label>
+</LinkWithTooltip>
+<LinkWithTooltip tooltipContent="I am a warning label tooltip!" tooltipContentIndicator={false}>
+  <Label color="warning">Warning With No Underline!</Label>
+</LinkWithTooltip>`
+}
+          </code>
+        </pre>
+        <p>
+          <LinkWithTooltip tabIndex="1" tooltipContent="I am a warning label tooltip!">
+            <Label color="warning" style={{ marginLeft: '100px' }}>
+              Warning With Underline!
+            </Label>
+          </LinkWithTooltip>
+          <LinkWithTooltip
+            tabIndex="1"
+            tooltipContent="I am a warning label tooltip!"
+            tooltipContentIndicator={false}
+          >
+            <Label color="warning" style={{ marginLeft: '100px' }}>
+              Warning With No Underline!
+            </Label>
+          </LinkWithTooltip>
+        </p>
         <h2>Accessibility</h2>
         <p>
-          If the <code>tooltipId</code> prop is set, the HasTooltip
+          If the <code>tooltipId</code> prop is set, the LinkWithTooltip
           higher order component will set <code>aria-describedby</code> on its
           child and set <code>id</code> on its tooltip.
         </p>
         <pre>
           <code>
 {
-`<HasTooltip
+`<LinkWithTooltip
   tabIndex="1"
-  tooltip="I am a long tooltip! My text keeps going on and on and on and on, when I'll
+  tooltipContent="I am a long tooltip! My text keeps going on and on and on and on, when I'll
            finish who knows! I also have an id for accessibility!"
   tooltipId="myTooltip"
   tooltipPosition="top"
 >
   I have an <strong>accessible</strong> tooltip!
-</HasTooltip>`
+</LinkWithTooltip>`
 }
           </code>
         </pre>

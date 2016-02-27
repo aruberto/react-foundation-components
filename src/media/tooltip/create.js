@@ -35,8 +35,8 @@ export default function create(styles, Fade) {
 
   const HasTooltip = createHigherOrderComponent({
     displayName: 'HasTooltipBase',
-    mapPropsToClassNames: () => ({
-      [styles['has-tip']]: true,
+    mapPropsToClassNames: ({ tooltipContentIndicator }) => ({
+      [styles['has-tip']]: tooltipContentIndicator,
     }),
     mapPropsToProps: ({ tooltipId, ...restProps }) => {
       const props = {
@@ -57,6 +57,7 @@ export default function create(styles, Fade) {
       children: PropTypes.node,
       tooltipClassName: PropTypes.string,
       tooltipContent: PropTypes.node,
+      tooltipContentIndicator: PropTypes.bool,
       tooltipId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       tooltipPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
       tooltipStyle: PropTypes.object,
@@ -64,6 +65,7 @@ export default function create(styles, Fade) {
 
     static defaultProps = {
       closeOnClickOutside: true,
+      tooltipContentIndicator: true,
       tooltipPosition: 'bottom',
       transition: Fade,
       triggerClick: true,
