@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['tabs', 'tabs-title', 'tabs-content', 'tabs-panel', 'is-active', 'vertical']
-);
+const styles = ['tabs', 'tabs-title', 'tabs-content', 'tabs-panel', 'is-active', 'vertical'];
+
+export default keyMirrorArray(styles);
