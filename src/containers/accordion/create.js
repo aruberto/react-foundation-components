@@ -84,7 +84,7 @@ export default function create(styles, Collapse = DefaultComponent) {
                 className={contentClassNames}
                 id={contentId}
                 role="tabpanel"
-                style={contentStyle}
+                style={{ ...contentStyle, display: 'block' }}
               >
                 {children}
               </div>

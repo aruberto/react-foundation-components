@@ -45,18 +45,26 @@ export default function create(styles, Transition) {
         }
       );
       const overlayClassNames = cx(overlayClassName, styles['reveal-overlay']);
-      const containerClassNames = cx(containerClassName, styles['reveal-container']);
+      const containerStyleMerged = {
+        ...containerStyle,
+        bottom: 0,
+        left: 0,
+        overflowY: 'scroll',
+        position: 'fixed',
+        right: 0,
+        top: 0,
+      };
 
       return (
         <Modal
           {...this.props}
           backdrop={overlay}
           backdropClassName={overlayClassNames}
-          backdropStyle={overlayStyle}
-          className={containerClassNames}
-          style={containerStyle}
+          backdropStyle={{ overlayStyle, display: 'block' }}
+          className={containerClassName}
+          style={containerStyleMerged}
         >
-          <div className={revealClassNames} style={revealStyle}>
+          <div className={revealClassNames} style={{ ...revealStyle, display: 'block' }}>
             {children}
           </div>
         </Modal>

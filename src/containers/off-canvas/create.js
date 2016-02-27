@@ -56,9 +56,6 @@ export default function create(styles) {
       const contentBlockerClassNames = cx(
         contentBlockerClassName,
         styles['js-off-canvas-exit'],
-        {
-          [styles['is-visible']]: blocked,
-        }
       );
 
       return (
@@ -67,7 +64,7 @@ export default function create(styles) {
           <div
             className={contentBlockerClassNames}
             onClick={this.handleContentBlockerClick}
-            style={contentBlockerStyle}
+            style={blocked ? { ...contentBlockerStyle, display: 'block' } : contentBlockerStyle}
           />
         </div>
       );

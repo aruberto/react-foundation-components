@@ -7,7 +7,6 @@ const styles = [
   'off-canvas-wrapper-inner',
   'off-canvas-content',
   'js-off-canvas-exit',
-  'is-visible',
 ]
   .concat(OFF_CANVAS_POSITIONS.map((position) => `position-${position}`))
   .concat(OFF_CANVAS_POSITIONS.map((position) => `is-open-${position}`))
