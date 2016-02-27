@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Button } from '../../../src/controls/button';
 import { ButtonGroup } from '../../../src/controls/button-group';
+import { ButtonGroup as FlexButtonGroup } from '../../../src/controls/button-group/flex';
 import { ShowOnlyForScreenReader } from '../../../src/general/visibility';
 
 export default class ButtonGroupPage extends Component {
@@ -245,6 +246,41 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/controls/but
             <ShowOnlyForScreenReader>Show Menu</ShowOnlyForScreenReader>
           </Button>
         </ButtonGroup>
+        <h2>Flexbox</h2>
+        <p>
+          If using local scoped class names with CSS Modules, you can also simulateously import a
+          Flexbox based version of the ButtonGroup component. This is not possible using global
+          scoped class names since the class names conflict. The Flexbox based ButtonGroup component
+          can be used exactly like float based ButtonGroup component.
+        </p>
+        <pre>
+          <code>
+{
+`// Import with local scoped class names (via CSS Modules)
+import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group/flex';`
+}
+          </code>
+        </pre>
+        <pre>
+          <code>
+{
+`<ButtonGroup stack="small">
+  <Button color="primary">I</Button>
+  <Button color="secondary">Am</Button>
+  <Button color="success">Using</Button>
+  <Button color="warning">Flexbox</Button>
+  <Button color="alert">Yay!</Button>
+</ButtonGroup>`
+}
+          </code>
+        </pre>
+        <FlexButtonGroup stack="small">
+          <Button color="primary">I</Button>
+          <Button color="secondary">Am</Button>
+          <Button color="success">Using</Button>
+          <Button color="warning">Flexbox</Button>
+          <Button color="alert">Yay!</Button>
+        </FlexButtonGroup>
       </div>
     );
   }
