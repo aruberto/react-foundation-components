@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Tooltip, HasTooltip } from '../../../src/media/tooltip';
+import { Tooltip, LinkWithTooltip } from '../../../src/media/tooltip';
 
 const tooltipStyle = {
   position: 'relative',
@@ -55,50 +55,57 @@ import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/toolt
         <p>
           In majority of use cases, a Tooltip component will be associated to some text
           or other component on the page. Add a tooltip to your text or component with the
-          HasTooltip higher order component. The tooltip content is set using
-          the <code>tooltip</code> prop on the HasTooltip component. The tooltip position is set
-          using the <code>tooltipPosition</code> prop.
+          LinkWithTooltip higher order component. The tooltip content is set using
+          the <code>tooltipContent</code> prop on the LinkWithTooltip component. The tooltip
+          position is set using the <code>tooltipPosition</code> prop.
         </p>
         <pre>
           <code>
 {
-`<HasTooltip tooltip="I am a bottom tooltip!">
+`<LinkWithTooltip tooltipContent="I am a bottom tooltip!">
   I have a <strong>bottom</strong> tooltip!
-</HasTooltip>
-<HasTooltip tooltip="I am also a bottom tooltip!" tooltipPosition="bottom">
+</LinkWithTooltip>
+<LinkWithTooltip tooltipContent="I am also a bottom tooltip!" tooltipPosition="bottom">
   I also have a <strong>bottom</strong> tooltip!
-</HasTooltip>
-<HasTooltip tooltip="I am a top tooltip!" tooltipPosition="top">
+</LinkWithTooltip>
+<LinkWithTooltip tooltipContent="I am a top tooltip!" tooltipPosition="top">
   I have a <strong>top</strong> tooltip!
-</HasTooltip>
-<HasTooltip tooltip="I am a left tooltip!" tooltipPosition="left">
+</LinkWithTooltip>
+<LinkWithTooltip tooltipContent="I am a left tooltip!" tooltipPosition="left">
   I have a <strong>left</strong> tooltip!
-</HasTooltip>
-<HasTooltip tooltip="I am a right tooltip!" tooltipPosition="right">
+</LinkWithTooltip>
+<LinkWithTooltip tooltipContent="I am a right tooltip!" tooltipPosition="right">
   I have a <strong>right</strong> tooltip!
-</HasTooltip>`
+</LinkWithTooltip>`
 }
           </code>
         </pre>
-        <HasTooltip tabIndex="1" tooltip="I am a bottom tooltip!">
+        <LinkWithTooltip tabIndex="1" tooltipContent="I am a bottom tooltip!">
           I have a <strong>bottom</strong> tooltip!
-        </HasTooltip>
+        </LinkWithTooltip>
         &nbsp;&nbsp;&nbsp;
-        <HasTooltip tabIndex="1" tooltip="I am also a bottom tooltip!" tooltipPosition="bottom">
+        <LinkWithTooltip
+          tabIndex="1"
+          tooltipContent="I am also a bottom tooltip!" tooltipPosition="bottom"
+        >
           I also have a <strong>bottom</strong> tooltip!
-        </HasTooltip>
+        </LinkWithTooltip>
         &nbsp;&nbsp;&nbsp;
-        <HasTooltip tabIndex="1" tooltip="I am a top tooltip!" tooltipPosition="top">
+        <LinkWithTooltip tabIndex="1" tooltipContent="I am a top tooltip!" tooltipPosition="top">
           I have a <strong>top</strong> tooltip!
-        </HasTooltip>
+        </LinkWithTooltip>
         &nbsp;&nbsp;&nbsp;
-        <HasTooltip tabIndex="1" tooltip="I am a left tooltip!" tooltipPosition="left">
+        <LinkWithTooltip tabIndex="1" tooltipContent="I am a left tooltip!" tooltipPosition="left">
           I have a <strong>left</strong> tooltip!
-        </HasTooltip>
+        </LinkWithTooltip>
         &nbsp;&nbsp;&nbsp;
-        <HasTooltip tabIndex="1" tooltip="I am a right tooltip!" tooltipPosition="right">
+        <LinkWithTooltip
+          tabIndex="1"
+          tooltipContent="I am a right tooltip!"
+          tooltipPosition="right"
+        >
           I have a <strong>right</strong> tooltip!
-        </HasTooltip>
+        </LinkWithTooltip>
         <h2>Accessibility</h2>
         <p>
           If the <code>tooltipId</code> prop is set, the HasTooltip
@@ -120,15 +127,15 @@ import { Tooltip, HasTooltip } from 'react-foundation-components/lib/media/toolt
 }
           </code>
         </pre>
-        <HasTooltip
+        <LinkWithTooltip
           tabIndex="1"
-          tooltip="I am a long tooltip! My text keeps going on and on and on and on, when I'll
-                   finish who knows! I also have an id for accessibility!"
+          tooltipContent="I am a long tooltip! My text keeps going on and on and on and on, when
+                          I'll finish who knows! I also have an id for accessibility!"
           tooltipId="myTooltip"
           tooltipPosition="top"
         >
           I have an <strong>accessible</strong> tooltip!
-        </HasTooltip>
+        </LinkWithTooltip>
       </div>
     );
   }

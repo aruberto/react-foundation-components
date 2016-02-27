@@ -2,8 +2,8 @@ import styles from './styles';
 import create from './create';
 import Fade from '../../transitions/fade/global';
 
-const { Tooltip, HasTooltip } = create(styles, Fade);
-Tooltip.Has = HasTooltip;
+const { Tooltip, LinkWithTooltip } = create(styles, Fade);
+Tooltip.LinkWith = LinkWithTooltip;
 
 export default Tooltip;
-export { Tooltip, HasTooltip };
+export { Tooltip, LinkWithTooltip };

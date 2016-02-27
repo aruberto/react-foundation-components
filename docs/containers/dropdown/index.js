@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Dropdown, HasDropdown, Button } from '../../../src';
+import { Button } from '../../../src/controls/button';
+import { Dropdown, LinkWithDropdown } from '../../../src/containers/dropdown';
 
 const dropdownStyle = { position: 'relative', top: '20px', left: '50px' };
 
@@ -18,8 +19,8 @@ export default class DropdownPage extends Component {
         <br/>
         <br/>
         <br/>
-        <HasDropdown
-          dropdown={
+        <LinkWithDropdown
+          dropdownContent={
             <div>
               <label>Name<input placeholder="Kirk, James T." type="text"/></label>
               <br/>
@@ -27,58 +28,59 @@ export default class DropdownPage extends Component {
             </div>
           }
         >
-          <Button>Toggle Dropdown</Button>
-        </HasDropdown>
+          <Button dropdown>Toggle Dropdown</Button>
+        </LinkWithDropdown>
         <br/>
-        <HasDropdown
-          dropdown="Just some junk that needs to be said. Or not. Your choice."
-          toggleClick={false}
-          toggleHover
+        <LinkWithDropdown
+          dropdownContent="Just some junk that needs to be said. Or not. Your choice."
+          triggerClick={false}
+          triggerHover
         >
-          <Button>Hoverable Dropdown</Button>
-        </HasDropdown>
+          <Button dropdown>Hoverable Dropdown</Button>
+        </LinkWithDropdown>
         <br/>
-        <HasDropdown
-          dropdown="Just some junk that needs to be said. Or not. Your choice."
-          toggleClick={false}
-          toggleFocus
+        <LinkWithDropdown
+          dropdownContent="Just some junk that needs to be said. Or not. Your choice."
+          triggerClick={false}
+          triggerFocus
         >
-          <Button tabIndex="1">Focusable Dropdown</Button>
-        </HasDropdown>
+          <Button dropdown tabIndex="1">Focusable Dropdown</Button>
+        </LinkWithDropdown>
         <br/>
-        <HasDropdown
-          closeOnClick
-          dropdown="You can close me by clicking anywhere else on screen!"
+        <LinkWithDropdown
+          closeOnClickOutside
+          dropdownContent="You can close me by clicking anywhere else on screen!"
         >
-          <Button>Toggle Dropdown</Button>
-        </HasDropdown>
+          <Button dropdown>Toggle Dropdown</Button>
+        </LinkWithDropdown>
         <br/>
-        <HasDropdown
-          dropdown="Just some junk that needs to be said. Or not. Your choice."
+        <LinkWithDropdown
+          dropdownContent="Just some junk that needs to be said. Or not. Your choice."
           dropdownPosition="top"
         >
-          <Button>Top Dropdown</Button>
-        </HasDropdown>
+          <Button dropdown>Top Dropdown</Button>
+        </LinkWithDropdown>
         <br/>
-        <HasDropdown
-          dropdown="Just some junk that needs to be said. Or not. Your choice."
+        <LinkWithDropdown
+          dropdownContent="Just some junk that needs to be said. Or not. Your choice."
           dropdownPosition="left"
         >
-          <Button style={{ left: '300px', position: 'relative' }}>Left Dropdown</Button>
-        </HasDropdown>
+          <Button dropdown style={{ left: '300px', position: 'relative' }}>Left Dropdown</Button>
+        </LinkWithDropdown>
         <br/>
-        <HasDropdown
-          dropdown="Just some junk that needs to be said. Or not. Your choice."
+        <LinkWithDropdown
+          dropdownContent="Just some junk that needs to be said. Or not. Your choice."
           dropdownPosition="right"
         >
-          <Button>Right Dropdown</Button>
-        </HasDropdown>
+          <Button dropdown>Right Dropdown</Button>
+        </LinkWithDropdown>
         <br/>
-        <HasDropdown
-          dropdown="Just some junk that needs to be said. Or not. Your choice."
+        <LinkWithDropdown
+          dropdownContent="Just some junk that needs to be said. Or not. Your choice."
+          dropdownId="myDropdown"
         >
-          <Button id="myBtn">Toggle Dropdown With Id</Button>
-        </HasDropdown>
+          <Button dropdown id="myButton">Toggle Dropdown With Id</Button>
+        </LinkWithDropdown>
       </div>
     );
   }
