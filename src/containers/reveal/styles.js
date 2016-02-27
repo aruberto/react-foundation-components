@@ -1,7 +1,6 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 import { MODAL_SIZES } from '../../util/constants';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['reveal', 'reveal-overlay'].concat(MODAL_SIZES)
-);
+const styles = ['reveal', 'reveal-overlay', 'without-overlay'].concat(MODAL_SIZES);
+
+export default keyMirrorArray(styles);

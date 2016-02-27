@@ -1,59 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import cx from 'classnames';
-import elementType from 'react-prop-types/lib/elementType';
-import Modal from 'react-overlays/lib/Modal';
-
-import styles from './styles';
-import { MODAL_SIZES } from '../../util/constants';
+import styles from './_styles.scss';
+import create from './create';
 import Fade from '../../transitions/fade';
 
-export default class Reveal extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    overlay: PropTypes.bool,
-    overlayClassName: PropTypes.string,
-    overlayStyle: PropTypes.object,
-    revealClassName: PropTypes.string,
-    revealStyle: PropTypes.object,
-    size: PropTypes.oneOf(MODAL_SIZES),
-    transition: elementType,
-  };
+const { Reveal } = create(styles, Fade);
 
-  static defaultProps = {
-    overlay: true,
-    transition: Fade,
-  };
-
-  render() {
-    const {
-      children,
-      revealClassName,
-      revealStyle,
-      overlay,
-      overlayClassName,
-      overlayStyle,
-      size,
-    } = this.props;
-    const overlayClassNames = cx(overlayClassName, styles['reveal-overlay']);
-    const revealClassNames = cx(
-      revealClassName,
-      styles.reveal,
-      {
-        [styles[size]]: MODAL_SIZES.includes(size),
-      }
-    );
-
-    return (
-      <Modal
-        {...this.props}
-        backdrop={overlay}
-        backdropClassName={overlayClassNames}
-        backdropStyle={overlayStyle}
-      >
-        <div className={revealClassNames} style={revealStyle}>
-          {children}
-        </div>
-      </Modal>
-    );
-  }
-}
+export default Reveal;
+export { Reveal };

@@ -1,6 +1,5 @@
-import checkStyles from '../../util/check-styles';
+import keyMirrorArray from '../../util/key-mirror-array';
 
-export default checkStyles(
-  require('./stylesheet.scss'),
-  ['menu-icon', 'dark']
-);
+const styles = ['menu-icon', 'dark'];
+
+export default keyMirrorArray(styles);

@@ -18,11 +18,11 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-app.listen(3000, 'localhost', function callback(err) {
+app.listen(3000, '0.0.0.0', function callback(err) {
   if (err) {
     console.error(err);
     return;
   }
 
-  console.info('Listening at http://localhost:3000');
+  console.info('Listening at http://0.0.0.0:3000');
 });
