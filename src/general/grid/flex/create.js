@@ -48,7 +48,7 @@ export default function create(styles) {
 
       classNames[styles.column] = true;
       classNames[styles.shrink] = shrink;
-      classNames[styles[`align-${verticalAlignment}`]] =
+      classNames[styles[`align-self-${verticalAlignment}`]] =
         FLEX_GRID_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
 
       return classNames;

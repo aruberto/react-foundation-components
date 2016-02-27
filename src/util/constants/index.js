@@ -88,6 +88,11 @@ export const FLEX_GRID_ROW_CLASS_NAMES = {
     isNumber: false,
     skipSmall: false,
   },
+  up: {
+    basePropName: 'Up',
+    isNumber: true,
+    skipSmall: false,
+  },
 };
 export const FLEX_GRID_COLUMN_CLASS_NAMES = {
   '': {

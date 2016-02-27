@@ -12,6 +12,7 @@ const styles =
     .concat(createScreenSizeClassNames(FLEX_GRID_ROW_CLASS_NAMES))
     .concat(createScreenSizeClassNames(FLEX_GRID_COLUMN_CLASS_NAMES))
     .concat(FLEX_GRID_HORIZONTAL_ALIGNMENTS.map((align) => `align-${align}`))
-    .concat(FLEX_GRID_VERTICAL_ALIGNMENTS.map((align) => `align-${align}`));
+    .concat(FLEX_GRID_VERTICAL_ALIGNMENTS.map((align) => `align-${align}`))
+    .concat(FLEX_GRID_VERTICAL_ALIGNMENTS.map((align) => `align-self-${align}`));
 
 export default keyMirrorArray(styles);

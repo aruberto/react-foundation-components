@@ -1,4 +1,6 @@
 @import '../../../common';
+@import '~foundation-sites/scss/components/flex';
 @import '~foundation-sites/scss/grid/grid';
 
+@include foundation-flex-classes;
 @include foundation-flex-grid;

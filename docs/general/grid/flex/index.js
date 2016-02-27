@@ -178,6 +178,12 @@ export default class FlexGridPage extends Component {
             This column will come first on small, and second on medium and larger.
           </Column>
         </Row>
+        <br/>
+        <Row smallUp={1} mediumUp={2} largeUp={3}>
+          <Column style={style}>1 per row on small</Column>
+          <Column style={style}>2 per row on medium</Column>
+          <Column style={style}>3 per row on large</Column>
+        </Row>
       </div>
     );
   }
