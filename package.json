@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rimraf lib docs/lib",
     "lint": "eslint src && eslint docs && sass-lint --verbose",
-    "build": "npm run clean && babel src --out-dir lib && cpy \"**/*.scss\" ../lib --parents --cwd=src",
+    "build": "npm run clean && babel src --out-dir lib/global && cpy \"**/*.scss\" ../lib/global --parents --cwd=src && cpy \"**/*.*\" ../ --parents --cwd=lib/global && replace \"./_styles.scss\" \"./styles\" lib/global --recursive --silent --include=\"index.js\"",
     "build-docs": "npm run clean && webpack",
     "start": "node server.js --dev",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -79,6 +79,7 @@
     "react-transform-hmr": "^1.0.2",
     "redbox-react": "^1.2.2",
     "release-it": "^2.3.1",
+    "replace": "^0.3.0",
     "rimraf": "^2.5.2",
     "sass-lint": "^1.5.1",
     "sass-loader": "^3.1.2",

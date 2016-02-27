@@ -58,7 +58,7 @@ import {
   SwitchCheckedLabel,
   SwitchUncheckedLabel,
   SwitchPadelLabel
-} from 'react-foundation-components/lib/controls/switch/global';`
+} from 'react-foundation-components/lib/global/controls/switch';`
 }
           </code>
         </pre>

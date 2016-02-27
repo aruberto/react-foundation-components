@@ -21,7 +21,7 @@ import { Label } from 'react-foundation-components/lib/media/label';
 or
 
 // Import with global scoped class names
-import { Label } from 'react-foundation-components/lib/media/label/global';`
+import { Label } from 'react-foundation-components/lib/global/media/label';`
 }
           </code>
         </pre>

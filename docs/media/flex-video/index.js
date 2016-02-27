@@ -22,7 +22,7 @@ import { FlexVideo } from 'react-foundation-components/lib/media/flex-video';
 or
 
 // Import with global scoped class names
-import { FlexVideo } from 'react-foundation-components/lib/media/flex-video/global';`
+import { FlexVideo } from 'react-foundation-components/lib/global/media/flex-video';`
 }
           </code>
         </pre>

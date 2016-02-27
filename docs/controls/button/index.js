@@ -22,7 +22,7 @@ import { Button } from 'react-foundation-components/lib/controls/button';
 or
 
 // Import with global scoped class names
-import { Button } from 'react-foundation-components/lib/controls/button/global';`
+import { Button } from 'react-foundation-components/lib/global/controls/button';`
 }
           </code>
         </pre>

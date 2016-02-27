@@ -22,7 +22,7 @@ import { CloseButton } from '../../../src/controls/close-button';
 or
 
 // Import with global scoped class names
-import { CloseButton } from 'react-foundation-components/lib/controls/close-button/global';`
+import { CloseButton } from 'react-foundation-components/lib/global/controls/close-button';`
 }
           </code>
         </pre>

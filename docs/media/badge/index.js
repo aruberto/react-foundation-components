@@ -22,7 +22,7 @@ import { Badge } from 'react-foundation-components/lib/media/badge';
 or
 
 // Import with global scoped class names
-import { Badge } from 'react-foundation-components/lib/media/badge/global';`
+import { Badge } from 'react-foundation-components/lib/global/media/badge';`
 }
           </code>
         </pre>

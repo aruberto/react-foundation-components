@@ -31,7 +31,7 @@ import { ProgressBar } from 'react-foundation-components/lib/media/progress-bar'
 or
 
 // Import with global scoped class names
-import { ProgressBar } from 'react-foundation-components/lib/media/progress-bar/global';`
+import { ProgressBar } from 'react-foundation-components/lib/global/media/progress-bar';`
 }
           </code>
         </pre>

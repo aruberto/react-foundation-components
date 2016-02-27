@@ -21,7 +21,7 @@ import { Thumbnail } from 'react-foundation-components/lib/media/thumbnail';
 or
 
 // Import with global scoped class names
-import { Thumbnail } from 'react-foundation-components/lib/media/thumbnail/global';`
+import { Thumbnail } from 'react-foundation-components/lib/global/media/thumbnail';`
 }
           </code>
         </pre>

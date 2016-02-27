@@ -24,8 +24,8 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
 or
 
 // Import with global scoped class names
-import { Button } from 'react-foundation-components/lib/controls/button/global';
-import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group/global';`
+import { Button } from 'react-foundation-components/lib/global/controls/button';
+import { ButtonGroup } from 'react-foundation-components/lib/global/controls/button-group';`
 }
           </code>
         </pre>

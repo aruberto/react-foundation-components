@@ -29,7 +29,7 @@ import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/media/
 or
 
 // Import with global scoped class names
-import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/media/tooltip/global';`
+import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/global/media/tooltip';`
 }
           </code>
         </pre>
