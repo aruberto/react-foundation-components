@@ -1,5 +1,6 @@
-export const SCREEN_SIZES = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
-export const SMALLER_SCREEN_SIZES = SCREEN_SIZES.slice(0, 1);
+export const SCREEN_SIZE_SMALL = 'small';
+export const SCREEN_SIZE_MEDIUM = 'medium';
+export const SCREEN_SIZES = [SCREEN_SIZE_SMALL, SCREEN_SIZE_MEDIUM, 'large', 'xlarge', 'xxlarge'];
 export const LARGER_SCREEN_SIZES = SCREEN_SIZES.slice(1);
 
 export const SCREEN_ORIENTATIONS = ['landscape', 'portrait'];

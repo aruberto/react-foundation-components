@@ -157,27 +157,28 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/controls/but
           </code>
         </pre>
         <ButtonGroup expanded>
-          {
-
-            /*
-              expanded button group currently only works with anchors.
-              https://github.com/zurb/foundation-sites/issues/7844
-             */
-          }
-          <Button href="#">Expanded</Button>
-          <Button href="#">Button</Button>
-          <Button href="#">Group</Button>
+          <Button>Expanded</Button>
+          <Button>Button</Button>
+          <Button>Group</Button>
         </ButtonGroup>
         <h2>Stacking</h2>
         <p>
           A ButtonGroup can be made to stack vertically by setting the <code>stack</code> prop. The
           value "always" will cause the ButtonGroup to always stack vertically. The value "small"
-          will cause the ButtonGroup to stack vertically on small screens only.
+          will cause the ButtonGroup to stack vertically on small screens only. The value "medium"
+          will cause the ButtonGroup to stack vertically on medium or smaller screens.
         </p>
         <pre>
           <code>
 {
 `<ButtonGroup stack="always">
+  <Button>How</Button>
+  <Button>Low</Button>
+  <Button>Can</Button>
+  <Button>You</Button>
+  <Button>Go</Button>
+</ButtonGroup>
+<ButtonGroup stack="medium">
   <Button>How</Button>
   <Button>Low</Button>
   <Button>Can</Button>
@@ -195,6 +196,13 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/controls/but
           </code>
         </pre>
         <ButtonGroup stack="always">
+          <Button>How</Button>
+          <Button>Low</Button>
+          <Button>Can</Button>
+          <Button>You</Button>
+          <Button>Go</Button>
+        </ButtonGroup>
+        <ButtonGroup stack="medium">
           <Button>How</Button>
           <Button>Low</Button>
           <Button>Can</Button>
