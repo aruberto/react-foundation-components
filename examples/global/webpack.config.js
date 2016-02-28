@@ -60,7 +60,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules!postcss!sass'),
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       },
     ],
   },
