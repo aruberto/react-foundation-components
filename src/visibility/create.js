@@ -7,7 +7,7 @@ export default function create(styles) {
   const ShowForScreenSize = createHigherOrderComponent({
     displayName: 'ShowForScreenSize',
     propTypes: {
-      size: PropTypes.oneOf(LARGER_SCREEN_SIZES).isRequired,
+      size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
     },
     mapPropsToClassNames: ({ size }) => ({
       [styles[`show-for-${size}`]]: LARGER_SCREEN_SIZES.includes(size),
@@ -27,9 +27,10 @@ export default function create(styles) {
   const HideForScreenSize = createHigherOrderComponent({
     displayName: 'HideForScreenSize',
     propTypes: {
-      size: PropTypes.oneOf(LARGER_SCREEN_SIZES).isRequired,
+      size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
     },
     mapPropsToClassNames: ({ size }) => ({
+      [styles.hide]: !LARGER_SCREEN_SIZES.includes(size) && SCREEN_SIZES.includes(size),
       [styles[`hide-for-${size}`]]: LARGER_SCREEN_SIZES.includes(size),
     }),
   });

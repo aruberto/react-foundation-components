@@ -80,7 +80,7 @@ export default class TopBarPage extends Component {
             </HideForScreenSize>
             <MenuText>Site Title</MenuText>
           </TopBarTitle>
-          <ShowForScreenSize size={this.state.show ? null : 'large'}>
+          <ShowForScreenSize size={this.state.show ? 'medium' : 'large'}>
             <TopBarContent>
               <TopBarItem position="left">
                 <Menu vertical horizontal="large">
@@ -148,7 +148,7 @@ export default class TopBarPage extends Component {
             </HideForScreenSize>
             <FlexMenuText>Site Title</FlexMenuText>
           </FlexTopBarTitle>
-          <ShowForScreenSize size={this.state.show ? null : 'large'}>
+          <ShowForScreenSize size={this.state.show ? 'medium' : 'large'}>
             <FlexTopBarContent>
               <FlexTopBarItem position="left">
                 <FlexMenu vertical horizontal="large">
