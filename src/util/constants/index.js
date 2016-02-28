@@ -21,100 +21,126 @@ export const OVERLAY_POSITIONS = OVERLAY_POSITIONS_INTERNAL.concat(['bottom']);
 export const FLOAT_POSITIONS = OFF_CANVAS_POSITIONS.concat(['center']);
 export const TEXT_ALIGNMENTS = FLOAT_POSITIONS.concat(['justify']);
 
-export const GRID_COLUMN_MIN = 1;
-export const GRID_COLUMN_MAX = 12;
-export const FLOAT_GRID_ROW_CLASS_NAMES = {
+export const GRID_ROW_CLASS_NAMES = {
   collapse: {
     basePropName: 'Collapse',
-    isNumber: false,
+    range: false,
     skipSmall: false,
   },
   uncollapse: {
     basePropName: 'Uncollapse',
-    isNumber: false,
+    range: false,
     skipSmall: false,
   },
   up: {
     basePropName: 'Up',
-    isNumber: true,
+    range: true,
+    rangeMin: 1,
+    rangeMax: 8,
     skipSmall: false,
   },
 };
-export const FLOAT_GRID_COLUMN_CLASS_NAMES = {
+export const GRID_COLUMN_CLASS_NAMES = {
   '': {
     basePropName: '',
-    isNumber: true,
+    range: true,
+    rangeMin: 1,
+    rangeMax: 12,
     skipSmall: false,
   },
   offset: {
     basePropName: 'Offset',
-    isNumber: true,
+    range: true,
+    rangeMin: 0,
+    rangeMax: 11,
     skipSmall: false,
   },
   centered: {
     basePropName: 'Centered',
-    isNumber: false,
+    range: false,
     skipSmall: false,
   },
   uncentered: {
     basePropName: 'Uncentered',
-    isNumber: false,
+    range: false,
     skipSmall: false,
   },
   push: {
     basePropName: 'Push',
-    isNumber: true,
+    range: true,
+    rangeMin: 1,
+    rangeMax: 11,
     skipSmall: false,
   },
   pull: {
     basePropName: 'Pull',
-    isNumber: true,
+    range: true,
+    rangeMin: 1,
+    rangeMax: 11,
+    skipSmall: false,
+  },
+};
+
+export const FLEX_HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
+export const FLEX_VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];
+export const FLEX_CHILD_CLASS_NAMES = {
+  order: {
+    basePropName: 'Order',
+    range: true,
+    rangeMin: 1,
+    rangeMax: 6,
     skipSmall: false,
   },
 };
 export const FLEX_GRID_ROW_CLASS_NAMES = {
   unstack: {
     basePropName: 'Unstack',
-    isNumber: false,
+    range: false,
     skipSmall: true,
   },
   collapse: {
     basePropName: 'Collapse',
-    isNumber: false,
+    range: false,
     skipSmall: false,
   },
   uncollapse: {
     basePropName: 'Uncollapse',
-    isNumber: false,
+    range: false,
     skipSmall: false,
   },
   up: {
     basePropName: 'Up',
-    isNumber: true,
+    range: true,
+    rangeMin: 1,
+    rangeMax: 8,
     skipSmall: false,
   },
 };
 export const FLEX_GRID_COLUMN_CLASS_NAMES = {
   '': {
     basePropName: '',
-    isNumber: true,
+    range: true,
+    rangeMin: 1,
+    rangeMax: 12,
     skipSmall: false,
   },
   expand: {
     basePropName: 'Expand',
-    isNumber: false,
+    range: false,
     skipSmall: true,
   },
   offset: {
     basePropName: 'Offset',
-    isNumber: true,
+    range: true,
+    rangeMin: 0,
+    rangeMax: 11,
     skipSmall: false,
   },
   order: {
     basePropName: 'Order',
-    isNumber: true,
+    range: true,
+    rangeMin: 1,
+    rangeMax: 6,
     skipSmall: false,
   },
 };
-export const FLEX_GRID_HORIZONTAL_ALIGNMENTS = ['right', 'center', 'justify', 'spaced'];
-export const FLEX_GRID_VERTICAL_ALIGNMENTS = ['top', 'middle', 'bottom', 'stretch'];

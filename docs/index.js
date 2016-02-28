@@ -18,6 +18,7 @@ import GridPage from './general/grid';
 import FlexGridPage from './general/grid/flex';
 import VisibilityPage from './general/visibility';
 import FloatPage from './general/float';
+import FlexPage from './general/flex';
 import BaseTypographyPage from './typography/base';
 import TypographyHelpersPage from './typography/helpers';
 import TextAlignmentPage from './typography/text-alignment';
@@ -75,6 +76,8 @@ class HomePage extends Component {
           <Link to="/general/visibility">Visibility</Link>
           <br/>
           <Link to="/general/float">Float</Link>
+          <br/>
+          <Link to="/general/flex">Flexbox</Link>
           <br/>
           <Link to="/typography/base">Base Typography</Link>
           <br/>
@@ -144,6 +147,7 @@ class Demo extends Component {
           <Route component={FlexGridPage} path="/general/grid/flex"/>
           <Route component={VisibilityPage} path="/general/visibility"/>
           <Route component={FloatPage} path="/general/float"/>
+          <Route component={FlexPage} path="/general/flex"/>
           <Route component={BaseTypographyPage} path="/typography/base"/>
           <Route component={TypographyHelpersPage} path="/typography/helpers"/>
           <Route component={TextAlignmentPage} path="/typography/text-alignment"/>

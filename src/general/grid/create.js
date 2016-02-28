@@ -1,11 +1,14 @@
 import { PropTypes } from 'react';
 
-import { FLOAT_GRID_ROW_CLASS_NAMES, FLOAT_GRID_COLUMN_CLASS_NAMES } from '../../util/constants';
+import { GRID_ROW_CLASS_NAMES, GRID_COLUMN_CLASS_NAMES } from '../../util/constants';
 import createHigherOrderComponent from '../../util/create-higher-order-component';
-import { createScreenSizePropTypes, createScreenSizeClassNamesFromProps } from '../../util/grid';
+import {
+  createScreenSizePropTypes,
+  createScreenSizeClassNamesFromProps,
+} from '../../util/screen-size';
 
-const rowPropTypes = createScreenSizePropTypes(FLOAT_GRID_ROW_CLASS_NAMES);
-const columnPropTypes = createScreenSizePropTypes(FLOAT_GRID_COLUMN_CLASS_NAMES);
+const rowPropTypes = createScreenSizePropTypes(GRID_ROW_CLASS_NAMES);
+const columnPropTypes = createScreenSizePropTypes(GRID_COLUMN_CLASS_NAMES);
 
 rowPropTypes.expanded = PropTypes.bool;
 columnPropTypes.end = PropTypes.bool;
@@ -17,7 +20,7 @@ export default function create(styles) {
     mapPropsToClassNames: (props) => {
       const { expanded } = props;
       const classNames =
-        createScreenSizeClassNamesFromProps(FLOAT_GRID_ROW_CLASS_NAMES, props, styles);
+        createScreenSizeClassNamesFromProps(GRID_ROW_CLASS_NAMES, props, styles);
 
       classNames[styles.row] = true;
       classNames[styles.expanded] = expanded;
@@ -34,7 +37,7 @@ export default function create(styles) {
     mapPropsToClassNames: (props) => {
       const { end } = props;
       const classNames =
-        createScreenSizeClassNamesFromProps(FLOAT_GRID_COLUMN_CLASS_NAMES, props, styles);
+        createScreenSizeClassNamesFromProps(GRID_COLUMN_CLASS_NAMES, props, styles);
 
       classNames[styles.column] = true;
       classNames[styles.end] = end;
