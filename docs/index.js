@@ -13,7 +13,7 @@ import {
   TitleBarItem,
   TitleBarTitle,
   TitleBarMenuIcon,
-} from '../src/containers/title-bar';
+} from '../src/containers/title-bar/flex';
 import { HideForScreenSize } from '../src/general/visibility';
 
 import GridPage from './general/grid';
@@ -28,6 +28,7 @@ import ButtonPage from './controls/button';
 import ButtonGroupPage from './controls/button-group';
 import CloseButtonPage from './controls/close-button';
 import SwitchPage from './controls/switch';
+import MenuPage from './navigation/menu';
 import AccordionPage from './containers/accordion';
 import CalloutPage from './containers/callout';
 import DropdownPage from './containers/dropdown';
@@ -95,6 +96,8 @@ class HomePage extends Component {
           <br/>
           <Link to="/controls/switch">Switch</Link>
           <br/>
+          <Link to="/navigation/menu">Menu</Link>
+          <br/>
           <Link to="/containers/accordion">Accordion</Link>
           <br/>
           <Link to="/containers/callout">Callout</Link>
@@ -157,6 +160,7 @@ class Demo extends Component {
           <Route component={ButtonGroupPage} path="/controls/button-group"/>
           <Route component={CloseButtonPage} path="/controls/close-button"/>
           <Route component={SwitchPage} path="/controls/switch"/>
+          <Route component={MenuPage} path="/navigation/menu"/>
           <Route component={AccordionPage} path="/containers/accordion"/>
           <Route component={CalloutPage} path="/containers/callout"/>
           <Route component={DropdownPage} path="/containers/dropdown"/>

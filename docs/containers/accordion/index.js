@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Accordion, AccordionItem } from '../../../src';
+import { Accordion, AccordionItem } from '../../../src/containers/accordion';
 
 export default class AccordionPage extends Component {
   constructor(props) {

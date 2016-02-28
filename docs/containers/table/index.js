@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Table } from '../../../src';
+import { Table } from '../../../src/containers/table';
 
 export default class TablePage extends Component {
   render() {

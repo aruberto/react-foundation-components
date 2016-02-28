@@ -11,14 +11,17 @@ export default function create(
   class Menu extends Component {
     static propTypes = {
       className: PropTypes.string,
+      expanded: PropTypes.bool,
     };
 
     render() {
-      const { className } = this.props;
+      const { className, expanded } = this.props;
       const classNames = cx(
         className,
         styles.menu,
-        {}
+        {
+          [styles.expanded]: expanded,
+        }
       );
 
       return <FlexParent {...this.props} className={classNames} componentClass="ul"/>;

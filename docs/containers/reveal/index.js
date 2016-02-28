@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import { Reveal, Button, CloseButton } from '../../../src';
+import { Reveal } from '../../../src/containers/reveal';
+import { Button } from '../../../src/controls/button';
+import { CloseButton } from '../../../src/controls/close-button';
 
 export default class RevealPage extends Component {
   constructor(props) {

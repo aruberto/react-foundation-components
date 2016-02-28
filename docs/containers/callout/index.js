@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Callout } from '../../../src';
+import { Callout } from '../../../src/containers/callout';
 
 export default class CalloutPage extends Component {
   render() {
