@@ -164,15 +164,15 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/controls/but
         </ButtonGroup>
         <h2>Stacking</h2>
         <p>
-          A ButtonGroup can be made to stack vertically by setting the <code>stack</code> prop. The
-          value "always" will cause the ButtonGroup to always stack vertically. The value "small"
+          A ButtonGroup can be made to stack vertically by setting the <code>stack</code> prop. A
+          true value will cause the ButtonGroup to always stack vertically. The value "small"
           will cause the ButtonGroup to stack vertically on small screens only. The value "medium"
           will cause the ButtonGroup to stack vertically on medium or smaller screens.
         </p>
         <pre>
           <code>
 {
-`<ButtonGroup stack="always">
+`<ButtonGroup stack>
   <Button>How</Button>
   <Button>Low</Button>
   <Button>Can</Button>
@@ -196,7 +196,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/controls/but
 }
           </code>
         </pre>
-        <ButtonGroup stack="always">
+        <ButtonGroup stack>
           <Button>How</Button>
           <Button>Low</Button>
           <Button>Can</Button>
