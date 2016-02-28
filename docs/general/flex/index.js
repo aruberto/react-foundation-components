@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { FlexParent, FlexChild } from '../../../src/general/flex';
+import { FlexParent, FlexChild } from '../../../src/flex';
 
 const parentStyle = {
   display: '-webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex',

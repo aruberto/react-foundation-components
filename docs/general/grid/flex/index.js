@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Row, Column } from '../../../../src/general/grid/flex';
-import { ShowForScreenSize, ShowOnlyForScreenSize } from '../../../../src/general/visibility';
+import { Row, Column } from '../../../../src/grid/flex';
+import { ShowForScreenSize, ShowOnlyForScreenSize } from '../../../../src/visibility';
 
 const style = { borderStyle: 'solid' };
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { Button } from '../../../src/controls/button';
-import { ButtonGroup } from '../../../src/controls/button-group';
-import { ButtonGroup as FlexButtonGroup } from '../../../src/controls/button-group/flex';
-import { ShowOnlyForScreenReader } from '../../../src/general/visibility';
+import { Button } from '../../../src/button';
+import { ButtonGroup } from '../../../src/button-group';
+import { ButtonGroup as FlexButtonGroup } from '../../../src/button-group/flex';
+import { ShowOnlyForScreenReader } from '../../../src/visibility';
 
 export default class ButtonGroupPage extends Component {
   render() {
@@ -19,14 +19,14 @@ export default class ButtonGroupPage extends Component {
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { Button } from '../../../src/controls/button';
-import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group';
+import { Button } from '../../../src/button';
+import { ButtonGroup } from 'react-foundation-components/lib/button-group';
 
 or
 
 // Import with global scoped class names
-import { Button } from 'react-foundation-components/lib/global/controls/button';
-import { ButtonGroup } from 'react-foundation-components/lib/global/controls/button-group';`
+import { Button } from 'react-foundation-components/lib/global/button';
+import { ButtonGroup } from 'react-foundation-components/lib/global/button-group';`
 }
           </code>
         </pre>

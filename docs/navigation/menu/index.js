@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Menu, MenuItem } from '../../../src/navigation/menu';
-import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../src/navigation/menu/flex';
+import { Menu, MenuItem } from '../../../src/menu';
+import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../src/menu/flex';
 
 const iconStyle = {
   fontStyle: 'normal',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Subheader, Lead, UnbulletedList, Statistic } from '../../../src/typography/helpers';
+import { Subheader, Lead, UnbulletedList, Statistic } from '../../../src/typography-helpers';
 
 export default class TypographyHelpersPage extends Component {
   render() {

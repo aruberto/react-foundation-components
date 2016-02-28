@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import '../../lib/typography/_base.scss';
+import '../../lib/_typography.scss';
 
 import {
   Button,
-} from '../../lib/controls/button';
+} from '../../lib/button';
 
 class App extends Component {
   render() {

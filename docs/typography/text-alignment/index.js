@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { TextAlignment } from '../../../src/typography/text-alignment';
+import { TextAlignment } from '../../../src/text-alignment';
 
 export default class TextAlignmentPage extends Component {
   render() {

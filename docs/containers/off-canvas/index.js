@@ -4,20 +4,20 @@ import {
   OffCanvas,
   OffCanvasContent,
   OffCanvasContainer,
-} from '../../../src/containers/off-canvas';
+} from '../../../src/off-canvas';
 import {
   TitleBar,
   TitleBarItem,
   TitleBarTitle,
   TitleBarMenuIcon,
-} from '../../../src/containers/title-bar';
+} from '../../../src/title-bar';
 import {
   TitleBar as FlexTitleBar,
   TitleBarItem as FlexTitleBarItem,
   TitleBarTitle as FlexTitleBarTitle,
   TitleBarMenuIcon as FlexTitleBarMenuIcon,
-} from '../../../src/containers/title-bar/flex';
-import { HideForScreenSize } from '../../../src/general/visibility';
+} from '../../../src/title-bar/flex';
+import { HideForScreenSize } from '../../../src/visibility';
 
 export default class OffCanvasPage extends Component {
   constructor(props) {

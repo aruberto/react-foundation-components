@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Tabs, Tab } from '../../../src/containers/tabs';
+import { Tabs, Tab } from '../../../src/tabs';
 
 export default class TabPage extends Component {
   constructor(props) {

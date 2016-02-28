@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Dropdown, LinkWithDropdown } from '../../../src/containers/dropdown';
-import { Button } from '../../../src/controls/button';
+import { Dropdown, LinkWithDropdown } from '../../../src/dropdown';
+import { Button } from '../../../src/button';
 
 const dropdownStyle = { position: 'relative', top: '20px', left: '50px' };
 

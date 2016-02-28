@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Float, ClearFix } from '../../../src/general/float';
+import { Float, ClearFix } from '../../../src/float';
 
 export default class FloatPage extends Component {
   render() {

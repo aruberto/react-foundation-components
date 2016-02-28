@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import { MediaObjectSection, MediaObject } from '../../../src/containers/media-object';
+import { MediaObjectSection, MediaObject } from '../../../src/media-object';
 import {
   MediaObjectSection as FlexMediaObjectSection,
   MediaObject as FlexMediaObject,
-} from '../../../src/containers/media-object/flex';
+} from '../../../src/media-object/flex';
 
 export default class MediaObjectPage extends Component {
   render() {

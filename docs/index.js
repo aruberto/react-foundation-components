@@ -7,14 +7,14 @@ import {
   OffCanvas,
   OffCanvasContent,
   OffCanvasContainer,
-} from '../src/containers/off-canvas';
+} from '../src/off-canvas';
 import {
   TitleBar,
   TitleBarItem,
   TitleBarTitle,
   TitleBarMenuIcon,
-} from '../src/containers/title-bar/flex';
-import { HideForScreenSize } from '../src/general/visibility';
+} from '../src/title-bar/flex';
+import { HideForScreenSize } from '../src/visibility';
 
 import GridPage from './general/grid';
 import FlexGridPage from './general/grid/flex';

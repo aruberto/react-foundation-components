@@ -6,7 +6,7 @@ import {
   SwitchCheckedLabel,
   SwitchUncheckedLabel,
   SwitchPadelLabel,
-} from '../../../src/controls/switch';
+} from '../../../src/switch';
 
 export default class SwitchPage extends Component {
   constructor(props) {
@@ -47,7 +47,7 @@ import {
   SwitchCheckedLabel,
   SwitchUncheckedLabel,
   SwitchPadelLabel
-} from '../../../src/controls/switch';
+} from '../../../src/switch';
 
 or
 
@@ -58,7 +58,7 @@ import {
   SwitchCheckedLabel,
   SwitchUncheckedLabel,
   SwitchPadelLabel
-} from 'react-foundation-components/lib/global/controls/switch';`
+} from 'react-foundation-components/lib/global/switch';`
 }
           </code>
         </pre>

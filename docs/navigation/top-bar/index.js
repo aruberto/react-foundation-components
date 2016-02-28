@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 
-import { TopBar, TopBarContent, TopBarItem, TopBarTitle } from '../../../src/navigation/top-bar';
+import { TopBar, TopBarContent, TopBarItem, TopBarTitle } from '../../../src/top-bar';
 import {
   TopBar as FlexTopBar,
   TopBarContent as FlexTopBarContent,
   TopBarItem as FlexTopBarItem,
   TopBarTitle as FlexTopBarTitle,
-} from '../../../src/navigation/top-bar/flex';
-import { Menu, MenuItem, MenuText } from '../../../src/navigation/menu';
+} from '../../../src/top-bar/flex';
+import { Menu, MenuItem, MenuText } from '../../../src/menu';
 import {
   Menu as FlexMenu,
   MenuItem as FlexMenuItem,
   MenuText as FlexMenuText,
-} from '../../../src/navigation/menu/flex';
-import { Button } from '../../../src/controls/button';
-import { MenuIcon } from '../../../src/containers/menu-icon';
-import { ShowForScreenSize, HideForScreenSize } from '../../../src/general/visibility';
+} from '../../../src/menu/flex';
+import { Button } from '../../../src/button';
+import { MenuIcon } from '../../../src/menu-icon';
+import { ShowForScreenSize, HideForScreenSize } from '../../../src/visibility';
 
 export default class TopBarPage extends Component {
   constructor(props) {
@@ -80,7 +80,7 @@ export default class TopBarPage extends Component {
             </HideForScreenSize>
             <MenuText>Site Title</MenuText>
           </TopBarTitle>
-          <ShowForScreenSize size={this.state.show ? 'small' : 'large'}>
+          <ShowForScreenSize size={this.state.show ? null : 'large'}>
             <TopBarContent>
               <TopBarItem position="left">
                 <Menu vertical horizontal="large">

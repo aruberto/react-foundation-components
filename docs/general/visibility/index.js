@@ -12,7 +12,7 @@ import {
   ShowOnlyForScreenReader,
   HideOnlyForScreenReader,
   ShowOnlyOnFocus,
-} from '../../../src/general/visibility';
+} from '../../../src/visibility';
 
 export default class VisibilityPage extends Component {
   render() {

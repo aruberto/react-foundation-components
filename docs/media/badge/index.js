@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Badge } from '../../../src/media/badge';
-import { ShowOnlyForScreenReader } from '../../../src/general/visibility';
+import { Badge } from '../../../src/badge';
+import { ShowOnlyForScreenReader } from '../../../src/visibility';
 
 export default class BadgePage extends Component {
   render() {
@@ -17,12 +17,12 @@ export default class BadgePage extends Component {
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { Badge } from 'react-foundation-components/lib/media/badge';
+import { Badge } from 'react-foundation-components/lib/badge';
 
 or
 
 // Import with global scoped class names
-import { Badge } from 'react-foundation-components/lib/global/media/badge';`
+import { Badge } from 'react-foundation-components/lib/global/badge';`
 }
           </code>
         </pre>

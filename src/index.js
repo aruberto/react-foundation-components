@@ -1,4 +1,4 @@
-export { Row, Column } from './general/grid';
+export { Row, Column } from './grid';
 export {
   ShowForScreenSize,
   ShowOnlyForScreenSize,
@@ -11,43 +11,43 @@ export {
   ShowOnlyForScreenReader,
   HideOnlyForScreenReader,
   ShowOnlyOnFocus,
-} from './general/visibility';
-export { Float, ClearFix } from './general/float';
+} from './visibility';
+export { Float, ClearFix } from './float';
 
-export { Subheader, Lead, UnbulletedList, Statistic } from './typography/helpers';
-export { TextAlignment } from './typography/text-alignment';
+export { Subheader, Lead, UnbulletedList, Statistic } from './typography-helpers';
+export { TextAlignment } from './text-alignment';
 
-export { Button } from './controls/button';
-export { ButtonGroup } from './controls/button-group';
-export { CloseButton } from './controls/close-button';
+export { Button } from './button';
+export { ButtonGroup } from './button-group';
+export { CloseButton } from './close-button';
 export {
   Switch,
   RadioSwitch,
   SwitchCheckedLabel,
   SwitchUncheckedLabel,
   SwitchPadelLabel,
-} from './controls/switch';
+} from './switch';
 
-export { Menu, MenuItem, MenuText } from './navigation/menu';
-export { TopBar, TopBarContent, TopBarItem, TopBarTitle } from './navigation/top-bar';
+export { Menu, MenuItem, MenuText } from './menu';
+export { TopBar, TopBarContent, TopBarItem, TopBarTitle } from './top-bar';
 
-export { Accordion, AccordionItem } from './containers/accordion';
-export { Callout } from './containers/callout';
-export { Dropdown, HasDropdown, LinkWithDropdown } from './containers/dropdown';
-export { MediaObject, MediaObjectSection } from './containers/media-object';
-export { MenuIcon } from './containers/menu-icon';
-export { OffCanvas, OffCanvasContent, OffCanvasContainer } from './containers/off-canvas';
-export { Reveal } from './containers/reveal';
-export { Table } from './containers/table';
-export { Tabs, TabsHeader, TabsContent, Tab, TabTitle } from './containers/tabs';
-export { TitleBar, TitleBarItem, TitleBarTitle, TitleBarMenuIcon } from './containers/title-bar';
+export { Accordion, AccordionItem } from './accordion';
+export { Callout } from './callout';
+export { Dropdown, HasDropdown, LinkWithDropdown } from './dropdown';
+export { MediaObject, MediaObjectSection } from './media-object';
+export { MenuIcon } from './menu-icon';
+export { OffCanvas, OffCanvasContent, OffCanvasContainer } from './off-canvas';
+export { Reveal } from './reveal';
+export { Table } from './table';
+export { Tabs, TabsHeader, TabsContent, Tab, TabTitle } from './tabs';
+export { TitleBar, TitleBarItem, TitleBarTitle, TitleBarMenuIcon } from './title-bar';
 
-export { Badge } from './media/badge';
-export { FlexVideo } from './media/flex-video';
-export { Label } from './media/label';
-export { ProgressBar } from './media/progress-bar';
-export { Thumbnail } from './media/thumbnail';
-export { Tooltip, HasTooltip, LinkWithTooltip } from './media/tooltip';
+export { Badge } from './badge';
+export { FlexVideo } from './flex-video';
+export { Label } from './label';
+export { ProgressBar } from './progress-bar';
+export { Thumbnail } from './thumbnail';
+export { Tooltip, HasTooltip, LinkWithTooltip } from './tooltip';
 
-export { Fade } from './transitions/fade';
-export { Collapse } from './transitions/collapse';
+export { Fade } from './fade';
+export { Collapse } from './collapse';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { FlexVideo } from '../../../src/media/flex-video';
+import { FlexVideo } from '../../../src/flex-video';
 
 export default class FlexVideoPage extends Component {
   render() {
@@ -17,12 +17,12 @@ export default class FlexVideoPage extends Component {
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { FlexVideo } from 'react-foundation-components/lib/media/flex-video';
+import { FlexVideo } from 'react-foundation-components/lib/flex-video';
 
 or
 
 // Import with global scoped class names
-import { FlexVideo } from 'react-foundation-components/lib/global/media/flex-video';`
+import { FlexVideo } from 'react-foundation-components/lib/global/flex-video';`
 }
           </code>
         </pre>
