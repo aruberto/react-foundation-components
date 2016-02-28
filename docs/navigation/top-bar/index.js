@@ -11,11 +11,22 @@ import { Menu, MenuItem, MenuText } from '../../../src/navigation/menu';
 import {
   Menu as FlexMenu,
   MenuItem as FlexMenuItem,
-  MenuText as FlexMenuText
+  MenuText as FlexMenuText,
 } from '../../../src/navigation/menu/flex';
 import { Button } from '../../../src/controls/button';
-
+import { MenuIcon } from '../../../src/containers/menu-icon';
+import { ShowForScreenSize, HideForScreenSize } from '../../../src/general/visibility';
 export default class TopBarPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      show: false,
+    };
+  }
+
+  handleToggle = () => this.setState({ show: !this.state.show });
+
   render() {
     return (
       <div>
@@ -61,6 +72,32 @@ export default class TopBarPage extends Component {
           </TopBarContent>
         </TopBar>
         <br/>
+        <TopBar stack="medium">
+          <TopBarTitle>
+            <HideForScreenSize size="large">
+              <MenuIcon dark onClick={this.handleToggle}/>
+            </HideForScreenSize>
+            <MenuText>Site Title</MenuText>
+          </TopBarTitle>
+          <ShowForScreenSize size={this.state.show ? 'small' : 'large'}>
+            <TopBarContent>
+              <TopBarItem position="left">
+                <Menu vertical horizontal="large">
+                  <MenuItem><a href="#">One</a></MenuItem>
+                  <MenuItem><a href="#">Two</a></MenuItem>
+                  <MenuItem><a href="#">Three</a></MenuItem>
+                </Menu>
+              </TopBarItem>
+              <TopBarItem position="right">
+                <Menu>
+                  <MenuItem><input type="search" placeholder="Search"/></MenuItem>
+                  <MenuItem><Button>Search</Button></MenuItem>
+                </Menu>
+              </TopBarItem>
+            </TopBarContent>
+          </ShowForScreenSize>
+        </TopBar>
+        <br/>
         <FlexTopBar>
           <FlexTopBarTitle>
             <FlexMenuText>Site Title</FlexMenuText>
@@ -101,6 +138,32 @@ export default class TopBarPage extends Component {
               </FlexMenu>
             </FlexTopBarItem>
           </FlexTopBarContent>
+        </FlexTopBar>
+        <br/>
+        <FlexTopBar stack="medium">
+          <FlexTopBarTitle>
+            <HideForScreenSize size="large">
+              <MenuIcon dark onClick={this.handleToggle}/>
+            </HideForScreenSize>
+            <FlexMenuText>Site Title</FlexMenuText>
+          </FlexTopBarTitle>
+          <ShowForScreenSize size={this.state.show ? 'small' : 'large'}>
+            <FlexTopBarContent>
+              <FlexTopBarItem position="left">
+                <FlexMenu vertical horizontal="large">
+                  <FlexMenuItem><a href="#">One</a></FlexMenuItem>
+                  <FlexMenuItem><a href="#">Two</a></FlexMenuItem>
+                  <FlexMenuItem><a href="#">Three</a></FlexMenuItem>
+                </FlexMenu>
+              </FlexTopBarItem>
+              <FlexTopBarItem position="right">
+                <FlexMenu>
+                  <FlexMenuItem><input type="search" placeholder="Search"/></FlexMenuItem>
+                  <FlexMenuItem><Button>Search</Button></FlexMenuItem>
+                </FlexMenu>
+              </FlexTopBarItem>
+            </FlexTopBarContent>
+          </ShowForScreenSize>
         </FlexTopBar>
       </div>
     );
