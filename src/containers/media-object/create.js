@@ -4,11 +4,7 @@ import cx from 'classnames';
 import { MEDIA_OBJECT_SECTION_ALIGNMENTS, FLEX_VERTICAL_ALIGNMENTS } from '../../util/constants';
 import DefaultComponent from '../../util/default-component';
 
-export default function create(
-  styles,
-  FlexParent = DefaultComponent,
-  FlexChild = DefaultComponent
-) {
+export default function create(styles, FlexChild = DefaultComponent) {
   class MediaObjectSection extends Component {
     static propTypes = {
       alignment: PropTypes.oneOf(MEDIA_OBJECT_SECTION_ALIGNMENTS),
@@ -56,7 +52,7 @@ export default function create(
       );
 
       return (
-        <FlexParent {...this.props} className={classNames}/>
+        <div {...this.props} className={classNames}/>
       );
     }
   }

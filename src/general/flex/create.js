@@ -21,7 +21,7 @@ export default function create(styles) {
       verticalAlignment: PropTypes.oneOf(FLEX_VERTICAL_ALIGNMENTS),
     },
     mapPropsToClassNames: ({ horizontalAlignment, verticalAlignment }) => ({
-      [styles['parent']]: true,
+      [styles.parent]: true,
       [styles[`align-${horizontalAlignment}`]]:
         FLEX_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment),
       [styles[`align-${verticalAlignment}`]]:
@@ -47,7 +47,6 @@ export default function create(styles) {
       return classNames;
     },
     defaultComponentClass: 'div',
-    mergeSingleChild: false,
   });
 
   return { Parent, Child };

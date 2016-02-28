@@ -1,8 +1,8 @@
 import styles from './_styles.scss';
 import create from '../create';
-import { FlexParent, FlexChild } from '../../../general/flex';
+import { FlexChild } from '../../../general/flex';
 
-const { MediaObject, MediaObjectSection } = create(styles, FlexParent, FlexChild);
+const { MediaObject, MediaObjectSection } = create(styles, FlexChild);
 MediaObject.Section = MediaObjectSection;
 
 export default MediaObject;

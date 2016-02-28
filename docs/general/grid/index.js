@@ -169,12 +169,12 @@ export default class FloatGridPage extends Component {
         </Row>
         <br/>
         <Row largeUp={4} mediumUp={2} smallUp={1}>
-          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
-          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
-          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
-          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
-          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
-          <Column style={style}><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column><img alt="" src="http://placehold.it/300x300"/></Column>
+          <Column><img alt="" src="http://placehold.it/300x300"/></Column>
         </Row>
       </div>
     );
