@@ -1,11 +1,12 @@
 /* eslint-disable no-console, prefer-arrow-callback */
 
+const path = require('path');
 const webpack = require('webpack');
 const express = require('express');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
-const config = require('./webpack.config');
+const config = require(path.join(__dirname, process.argv[2]));
 
 const app = express();
 const compiler = webpack(config);
