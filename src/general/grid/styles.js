@@ -3,7 +3,7 @@ import { GRID_ROW_CLASS_NAMES, GRID_COLUMN_CLASS_NAMES } from '../../util/consta
 import { createScreenSizeClassNames } from '../../util/screen-size';
 
 const styles =
-  ['row', 'column', 'expanded', 'end']
+  ['row', 'column', 'collapse', 'expanded', 'end']
     .concat(createScreenSizeClassNames(GRID_ROW_CLASS_NAMES))
     .concat(createScreenSizeClassNames(GRID_COLUMN_CLASS_NAMES));
 

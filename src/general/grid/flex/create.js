@@ -1,64 +1,66 @@
-import { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import cx from 'classnames';
 
 import {
-  FLEX_HORIZONTAL_ALIGNMENTS,
-  FLEX_VERTICAL_ALIGNMENTS,
   FLEX_GRID_ROW_CLASS_NAMES,
   FLEX_GRID_COLUMN_CLASS_NAMES,
 } from '../../../util/constants';
-import createHigherOrderComponent from '../../../util/create-higher-order-component';
 import {
   createScreenSizePropTypes,
   createScreenSizeClassNamesFromProps,
 } from '../../../util/screen-size';
+import DefaultComponent from '../../../util/default-component';
 
 const rowPropTypes = createScreenSizePropTypes(FLEX_GRID_ROW_CLASS_NAMES);
-const columnPropTypes = createScreenSizePropTypes(FLEX_GRID_COLUMN_CLASS_NAMES);
-
+rowPropTypes.className = PropTypes.string;
+rowPropTypes.collapse = PropTypes.bool;
 rowPropTypes.expanded = PropTypes.bool;
-rowPropTypes.horizontalAlignment = PropTypes.oneOf(FLEX_HORIZONTAL_ALIGNMENTS);
-rowPropTypes.verticalAlignment = PropTypes.oneOf(FLEX_VERTICAL_ALIGNMENTS);
+
+const columnPropTypes = createScreenSizePropTypes(FLEX_GRID_COLUMN_CLASS_NAMES);
+columnPropTypes.className = PropTypes.string;
 columnPropTypes.shrink = PropTypes.bool;
-columnPropTypes.verticalAlignment = PropTypes.oneOf(FLEX_VERTICAL_ALIGNMENTS);
 
-export default function create(styles) {
-  const Row = createHigherOrderComponent({
-    displayName: 'Row',
-    propTypes: rowPropTypes,
-    mapPropsToClassNames: ({ expanded, horizontalAlignment, verticalAlignment, ...props }) => {
-      const classNames =
-        createScreenSizeClassNamesFromProps(FLEX_GRID_ROW_CLASS_NAMES, props, styles);
+export default function create(
+  styles,
+  FlexParent = DefaultComponent,
+  FlexChild = DefaultComponent
+) {
+  class Row extends Component {
+    static propTypes = rowPropTypes;
 
-      classNames[styles.row] = true;
-      classNames[styles.expanded] = expanded;
-      classNames[styles[`align-${horizontalAlignment}`]] =
-        FLEX_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment);
-      classNames[styles[`align-${verticalAlignment}`]] =
-        FLEX_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
+    render() {
+      const { className, collapse, expanded } = this.props;
+      const classNames = cx(
+        className,
+        createScreenSizeClassNamesFromProps(FLEX_GRID_ROW_CLASS_NAMES, this.props, styles),
+        {
+          [styles.row]: true,
+          [styles.collapse]: collapse,
+          [styles.expanded]: expanded,
+        }
+      );
 
-      return classNames;
-    },
-    defaultComponentClass: 'div',
-    mergeSingleChild: false,
-  });
+      return <FlexParent {...this.props} className={classNames}/>;
+    }
+  }
 
-  const Column = createHigherOrderComponent({
-    displayName: 'Column',
-    propTypes: columnPropTypes,
-    mapPropsToClassNames: ({ shrink, verticalAlignment, ...props }) => {
-      const classNames =
-        createScreenSizeClassNamesFromProps(FLEX_GRID_COLUMN_CLASS_NAMES, props, styles);
+  class Column extends Component {
+    static propTypes = columnPropTypes;
 
-      classNames[styles.column] = true;
-      classNames[styles.shrink] = shrink;
-      classNames[styles[`align-self-${verticalAlignment}`]] =
-        FLEX_VERTICAL_ALIGNMENTS.includes(verticalAlignment);
+    render() {
+      const { className, shrink } = this.props;
+      const classNames = cx(
+        className,
+        createScreenSizeClassNamesFromProps(FLEX_GRID_COLUMN_CLASS_NAMES, this.props, styles),
+        {
+          [styles.column]: true,
+          [styles.shrink]: shrink,
+        }
+      );
 
-      return classNames;
-    },
-    defaultComponentClass: 'div',
-    mergeSingleChild: false,
-  });
+      return <FlexChild {...this.props} className={classNames}/>;
+    }
+  }
 
   return { Row, Column };
 }

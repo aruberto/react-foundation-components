@@ -140,6 +140,15 @@ export default class FlexGridPage extends Component {
           </Column>
         </Row>
         <br/>
+        <Row collapse>
+          <Column small={6} style={style}>
+            I have no gutters!
+          </Column>
+          <Column small={6} style={style}>
+            I have no gutters!
+          </Column>
+        </Row>
+        <br/>
         <Row largeCollapse mediumUncollapse>
           <Column small={6} style={style}>
             <ShowOnlyForScreenSize size="small">

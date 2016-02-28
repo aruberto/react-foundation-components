@@ -10,6 +10,7 @@ import {
 const rowPropTypes = createScreenSizePropTypes(GRID_ROW_CLASS_NAMES);
 const columnPropTypes = createScreenSizePropTypes(GRID_COLUMN_CLASS_NAMES);
 
+rowPropTypes.collapse = PropTypes.bool;
 rowPropTypes.expanded = PropTypes.bool;
 columnPropTypes.end = PropTypes.bool;
 
@@ -18,11 +19,12 @@ export default function create(styles) {
     displayName: 'Row',
     propTypes: rowPropTypes,
     mapPropsToClassNames: (props) => {
-      const { expanded } = props;
+      const { collapse, expanded } = props;
       const classNames =
         createScreenSizeClassNamesFromProps(GRID_ROW_CLASS_NAMES, props, styles);
 
       classNames[styles.row] = true;
+      classNames[styles.collapse] = collapse;
       classNames[styles.expanded] = expanded;
 
       return classNames;

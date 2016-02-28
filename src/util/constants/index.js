@@ -136,11 +136,4 @@ export const FLEX_GRID_COLUMN_CLASS_NAMES = {
     rangeMax: 11,
     skipSmall: false,
   },
-  order: {
-    basePropName: 'Order',
-    range: true,
-    rangeMin: 1,
-    rangeMax: 6,
-    skipSmall: false,
-  },
 };
