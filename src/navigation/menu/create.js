@@ -1,7 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
-import { LARGER_SCREEN_SIZES } from '../../util/constants';
+import {
+  LARGER_SCREEN_SIZES,
+  CENTER_POSITION,
+  MENU_ALIGNMENTS,
+  FLEX_HORIZONTAL_ALIGNMENTS,
+} from '../../util/constants';
 import DefaultComponent from '../../util/default-component';
 
 export default function create(
@@ -11,9 +16,13 @@ export default function create(
 ) {
   class Menu extends Component {
     static propTypes = {
+      alignment: PropTypes.oneOf(MENU_ALIGNMENTS),
+      centerContainerClassName: PropTypes.string,
+      centerContainerStyle: PropTypes.object,
       className: PropTypes.string,
       expanded: PropTypes.bool,
       horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(LARGER_SCREEN_SIZES)]),
+      horizontalAlignment: PropTypes.oneOf(FLEX_HORIZONTAL_ALIGNMENTS),
       iconTop: PropTypes.bool,
       nested: PropTypes.bool,
       simple: PropTypes.bool,
@@ -21,11 +30,27 @@ export default function create(
     };
 
     render() {
-      const { className, expanded, horizontal, iconTop, nested, simple, vertical } = this.props;
+      const {
+        alignment,
+        centerContainerClassName,
+        centerContainerStyle,
+        className,
+        expanded,
+        horizontal,
+        horizontalAlignment,
+        iconTop,
+        nested,
+        simple,
+        vertical,
+      } = this.props;
       const classNames = cx(
         className,
         styles.menu,
         {
+          [styles[`align-${alignment}`]]:
+            styles[`align-${alignment}`]
+            && alignment !== CENTER_POSITION
+            && MENU_ALIGNMENTS.includes(alignment),
           [styles.expanded]: expanded,
           [styles.horizontal]: horizontal && !LARGER_SCREEN_SIZES.includes(horizontal),
           [styles[`${horizontal}-horizontal`]]: LARGER_SCREEN_SIZES.includes(horizontal),
@@ -37,7 +62,26 @@ export default function create(
         }
       );
 
-      return <FlexParent {...this.props} className={classNames} componentClass="ul"/>;
+      const content = (
+        <FlexParent
+          {...this.props}
+          className={classNames}
+          componentClass="ul"
+          horizontalAlignment={horizontalAlignment || alignment}
+        />
+      );
+
+      if (alignment === CENTER_POSITION && styles['menu-centered']) {
+        const centerContainerClassNames = cx(centerContainerClassName, styles['menu-centered']);
+
+        return (
+          <div className={centerContainerClassNames} style={centerContainerStyle}>
+            {content}
+          </div>
+        );
+      }
+
+      return content;
     }
   }
 

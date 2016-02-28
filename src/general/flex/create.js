@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 
 import {
   FLEX_HORIZONTAL_ALIGNMENTS,
+  FLEX_HORIZONTAL_ALIGNMENTS_INTERNAL,
   FLEX_VERTICAL_ALIGNMENTS,
   FLEX_CHILD_CLASS_NAMES,
 } from '../../util/constants';
@@ -22,7 +23,7 @@ export default function create(styles) {
     },
     mapPropsToClassNames: ({ horizontalAlignment, verticalAlignment }) => ({
       [styles[`align-${horizontalAlignment}`]]:
-        FLEX_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment),
+        FLEX_HORIZONTAL_ALIGNMENTS_INTERNAL.includes(horizontalAlignment),
       [styles[`align-${verticalAlignment}`]]:
         FLEX_VERTICAL_ALIGNMENTS.includes(verticalAlignment),
     }),

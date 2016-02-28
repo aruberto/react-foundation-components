@@ -7,11 +7,23 @@ const iconStyle = {
   fontStyle: 'normal',
 };
 
-export default class MediaObjectPage extends Component {
+export default class MenuPage extends Component {
   render() {
     return (
       <div>
         <Menu>
+          <MenuItem><a href="#">One</a></MenuItem>
+          <MenuItem><a href="#">Two</a></MenuItem>
+          <MenuItem><a href="#">Three</a></MenuItem>
+          <MenuItem><a href="#">Four</a></MenuItem>
+        </Menu>
+        <Menu alignment="right">
+          <MenuItem><a href="#">One</a></MenuItem>
+          <MenuItem><a href="#">Two</a></MenuItem>
+          <MenuItem><a href="#">Three</a></MenuItem>
+          <MenuItem><a href="#">Four</a></MenuItem>
+        </Menu>
+        <Menu alignment="center">
           <MenuItem><a href="#">One</a></MenuItem>
           <MenuItem><a href="#">Two</a></MenuItem>
           <MenuItem><a href="#">Three</a></MenuItem>
@@ -88,6 +100,18 @@ export default class MediaObjectPage extends Component {
           <MenuItem><a href="#"><i style={iconStyle}>&#9776;</i> Four</a></MenuItem>
         </Menu>
         <FlexMenu>
+          <FlexMenuItem><a href="#">One</a></FlexMenuItem>
+          <FlexMenuItem><a href="#">Two</a></FlexMenuItem>
+          <FlexMenuItem><a href="#">Three</a></FlexMenuItem>
+          <FlexMenuItem><a href="#">Four</a></FlexMenuItem>
+        </FlexMenu>
+        <FlexMenu alignment="right">
+          <FlexMenuItem><a href="#">One</a></FlexMenuItem>
+          <FlexMenuItem><a href="#">Two</a></FlexMenuItem>
+          <FlexMenuItem><a href="#">Three</a></FlexMenuItem>
+          <FlexMenuItem><a href="#">Four</a></FlexMenuItem>
+        </FlexMenu>
+        <FlexMenu alignment="center">
           <FlexMenuItem><a href="#">One</a></FlexMenuItem>
           <FlexMenuItem><a href="#">Two</a></FlexMenuItem>
           <FlexMenuItem><a href="#">Three</a></FlexMenuItem>
