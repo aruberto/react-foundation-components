@@ -32,15 +32,15 @@ export default function create(
       const { className, collapse, expanded } = this.props;
       const classNames = cx(
         className,
+        styles.row,
         createScreenSizeClassNamesFromProps(FLEX_GRID_ROW_CLASS_NAMES, this.props, styles),
         {
-          [styles.row]: true,
           [styles.collapse]: collapse,
           [styles.expanded]: expanded,
         }
       );
 
-      return <FlexParent {...this.props} className={classNames}/>;
+      return <FlexParent {...this.props} className={classNames} componentClass="div"/>;
     }
   }
 
@@ -51,9 +51,9 @@ export default function create(
       const { className, shrink } = this.props;
       const classNames = cx(
         className,
+        styles.column,
         createScreenSizeClassNamesFromProps(FLEX_GRID_COLUMN_CLASS_NAMES, this.props, styles),
         {
-          [styles.column]: true,
           [styles.shrink]: shrink,
         }
       );

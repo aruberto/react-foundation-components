@@ -25,13 +25,7 @@ export default function create(styles) {
         scrollContainerStyle,
         stack,
       } = this.props;
-      const containerClassNames = cx(
-        containerClassName,
-        {
-          [styles.table]: true,
-          [styles['table-scroll']]: scroll,
-        }
-      );
+      const containerClassNames = cx(containerClassName, styles.table);
       const scrollContainerClassNames = cx(
         scrollContainerClassName,
         {

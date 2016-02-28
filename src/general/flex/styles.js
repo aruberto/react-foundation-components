@@ -7,7 +7,7 @@ import {
 import { createScreenSizeClassNames } from '../../util/screen-size';
 
 const styles =
-  ['parent']
+  []
     .concat(FLEX_HORIZONTAL_ALIGNMENTS.map((align) => `align-${align}`))
     .concat(FLEX_VERTICAL_ALIGNMENTS.map((align) => `align-${align}`))
     .concat(FLEX_VERTICAL_ALIGNMENTS.map((align) => `align-self-${align}`))

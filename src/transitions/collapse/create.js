@@ -96,12 +96,7 @@ export default function create(styles) {
 
     render() {
       const { className, dimension, timeout } = this.props;
-      const classNames = cx(
-        className,
-        {
-          [styles[dimension]]: true,
-        }
-      );
+      const classNames = cx(className, styles[dimension]);
 
       return (
         <Transition
