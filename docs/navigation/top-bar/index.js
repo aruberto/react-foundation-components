@@ -7,8 +7,12 @@ import {
   TopBarItem as FlexTopBarItem,
   TopBarTitle as FlexTopBarTitle,
 } from '../../../src/navigation/top-bar/flex';
-import { Menu, MenuItem } from '../../../src/navigation/menu';
-import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../src/navigation/menu/flex';
+import { Menu, MenuItem, MenuText } from '../../../src/navigation/menu';
+import {
+  Menu as FlexMenu,
+  MenuItem as FlexMenuItem,
+  MenuText as FlexMenuText
+} from '../../../src/navigation/menu/flex';
 import { Button } from '../../../src/controls/button';
 
 export default class TopBarPage extends Component {
@@ -17,7 +21,7 @@ export default class TopBarPage extends Component {
       <div>
         <TopBar>
           <TopBarTitle>
-            <h4><strong>Site Title</strong></h4>
+            <MenuText>Site Title</MenuText>
           </TopBarTitle>
           <TopBarContent>
             <TopBarItem position="left">
@@ -38,7 +42,7 @@ export default class TopBarPage extends Component {
         <br/>
         <TopBar stack="large">
           <TopBarTitle>
-            <h4><strong>Site Title</strong></h4>
+            <MenuText>Site Title</MenuText>
           </TopBarTitle>
           <TopBarContent>
             <TopBarItem position="left">
@@ -59,7 +63,7 @@ export default class TopBarPage extends Component {
         <br/>
         <FlexTopBar>
           <FlexTopBarTitle>
-            <h4><strong>Site Title</strong></h4>
+            <FlexMenuText>Site Title</FlexMenuText>
           </FlexTopBarTitle>
           <FlexTopBarContent>
             <FlexTopBarItem position="left">
@@ -80,7 +84,7 @@ export default class TopBarPage extends Component {
         <br/>
         <FlexTopBar stack="large">
           <FlexTopBarTitle>
-            <h4><strong>Site Title</strong></h4>
+            <FlexMenuText>Site Title</FlexMenuText>
           </FlexTopBarTitle>
           <FlexTopBarContent>
             <FlexTopBarItem position="left">

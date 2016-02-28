@@ -7,8 +7,9 @@ const styles = { ...baseStyles };
 delete styles['menu-centered'];
 MENU_ALIGNMENTS.forEach((alignment) => delete styles[`align-${alignment}`]);
 
-const { Menu, MenuItem } = create(styles, FlexParent, FlexChild);
+const { Menu, MenuItem, MenuText } = create(styles, FlexParent, FlexChild);
 Menu.Item = MenuItem;
+Menu.Text = MenuText;
 
 export default Menu;
-export { Menu, MenuItem };
+export { Menu, MenuItem, MenuText };
