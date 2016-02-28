@@ -15,6 +15,7 @@ export const MODAL_SIZES = [...COMPONENT_SIZES, 'full'];
 export const CENTER_POSITION = 'center';
 export const OFF_CANVAS_POSITIONS = ['left', 'right'];
 export const TITLE_BAR_POSITIONS = [...OFF_CANVAS_POSITIONS];
+export const TOP_BAR_POSITIONS = [...OFF_CANVAS_POSITIONS];
 export const OVERLAY_POSITIONS_INTERNAL = [...OFF_CANVAS_POSITIONS, 'top'];
 export const OVERLAY_POSITIONS = [...OVERLAY_POSITIONS_INTERNAL, 'bottom'];
 export const FLOAT_POSITIONS = [...OFF_CANVAS_POSITIONS, CENTER_POSITION];
