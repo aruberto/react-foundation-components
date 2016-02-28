@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
-import { MediaObjectSection, MediaObject } from '../../../src';
+import { MediaObjectSection, MediaObject } from '../../../src/containers/media-object';
+import {
+  MediaObjectSection as FlexMediaObjectSection,
+  MediaObject as FlexMediaObject,
+} from '../../../src/containers/media-object/flex';
 
 export default class MediaObjectPage extends Component {
   render() {
@@ -55,6 +59,29 @@ export default class MediaObjectPage extends Component {
             </p>
           </MediaObjectSection>
         </MediaObject>
+        <br/>
+        <FlexMediaObject>
+          <FlexMediaObjectSection alignment="middle">
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg"/>
+          </FlexMediaObjectSection>
+          <FlexMediaObjectSection main>
+            <h4>Why is it so important to dream?</h4>
+            <p>
+              So, once we've made the plant, how do we go out? Hope you have something more elegant
+              in mind than shooting me in the head? A kick. Whats a kick? This, Ariadne, would be a
+              kick.
+            </p>
+            <p>
+              What is the most resilient parasite? Bacteria? A virus? An intestinal worm? An idea.
+              Resilient... highly contagious. Once an idea has taken hold of the brain it's almost
+              impossible to eradicate. An idea that is fully formed - fully understood - that
+              sticks; right in there somewhere.
+            </p>
+          </FlexMediaObjectSection>
+          <FlexMediaObjectSection alignment="bottom">
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg"/>
+          </FlexMediaObjectSection>
+        </FlexMediaObject>
       </div>
     );
   }

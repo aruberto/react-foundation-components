@@ -21,13 +21,11 @@ export default function create(styles) {
       verticalAlignment: PropTypes.oneOf(FLEX_VERTICAL_ALIGNMENTS),
     },
     mapPropsToClassNames: ({ horizontalAlignment, verticalAlignment }) => ({
+      [styles['parent']]: true,
       [styles[`align-${horizontalAlignment}`]]:
         FLEX_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment),
       [styles[`align-${verticalAlignment}`]]:
         FLEX_VERTICAL_ALIGNMENTS.includes(verticalAlignment),
-    }),
-    mapPropsToStyle: () => ({
-      display: 'flex',
     }),
     defaultComponentClass: 'div',
     mergeSingleChild: false,

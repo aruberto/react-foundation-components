@@ -6,7 +6,6 @@ export default function createHigherOrderComponent({
   displayName = 'Wrapper',
   propTypes = {},
   mapPropsToClassNames = () => ({}),
-  mapPropsToStyle = () => ({}),
   mapPropsToProps = (props) => props,
   defaultComponentClass = 'span',
   mergeSingleChild = true,
@@ -26,24 +25,21 @@ export default function createHigherOrderComponent({
         children,
         className,
         componentClass: maybeComponentClass,
-        style: baseStyle,
         ...restProps,
       } = this.props;
       const ComponentClass = maybeComponentClass || defaultComponentClass;
       const classNames = mapPropsToClassNames(restProps);
-      const style = { ...baseStyle, ...mapPropsToStyle(restProps) };
       const props = mapPropsToProps(restProps);
 
       if (mergeSingleChild && !maybeComponentClass && isValidElement(children)) {
         return React.cloneElement(children, {
           ...props,
           className: cx(children.props.className, className, classNames),
-          style,
         });
       }
 
       return (
-        <ComponentClass {...props} className={cx(className, classNames)} style={style}>
+        <ComponentClass {...props} className={cx(className, classNames)}>
           {children}
         </ComponentClass>
       );

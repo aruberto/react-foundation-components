@@ -1,5 +1,7 @@
-import createHigherOrderComponent from '../create-higher-order-component';
+import React, { Component } from 'react';
 
-export default createHigherOrderComponent({
-  displayName: 'DefaultComponent',
-});
+export default class DefaultComponent extends Component {
+  render() {
+    return <div {...this.props}/>;
+  }
+}
