@@ -16,6 +16,7 @@ import {
 import { Button } from '../../../src/controls/button';
 import { MenuIcon } from '../../../src/containers/menu-icon';
 import { ShowForScreenSize, HideForScreenSize } from '../../../src/general/visibility';
+
 export default class TopBarPage extends Component {
   constructor(props) {
     super(props);
@@ -147,7 +148,7 @@ export default class TopBarPage extends Component {
             </HideForScreenSize>
             <FlexMenuText>Site Title</FlexMenuText>
           </FlexTopBarTitle>
-          <ShowForScreenSize size={this.state.show ? 'small' : 'large'}>
+          <ShowForScreenSize size={this.state.show ? null : 'large'}>
             <FlexTopBarContent>
               <FlexTopBarItem position="left">
                 <FlexMenu vertical horizontal="large">
