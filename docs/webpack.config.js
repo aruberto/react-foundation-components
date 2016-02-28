@@ -23,8 +23,8 @@ const PLUGINS = [
   new webpack.DefinePlugin(GLOBALS),
   new HtmlWebpackPlugin({
     title: 'React Foundation Components',
-    template: path.join(__dirname, 'docs', 'index.html'),
-    favicon: path.join(__dirname, 'docs', 'favicon.ico'),
+    template: path.join(__dirname, 'index.html'),
+    favicon: path.join(__dirname, 'favicon.ico'),
     inject: 'body',
   }),
 ];
@@ -70,10 +70,10 @@ const SASS_LOADERS = [
 ];
 
 module.exports = {
-  entry: ENTRY_MIDDLEWARE.concat(path.join(__dirname, 'docs')),
+  entry: ENTRY_MIDDLEWARE.concat(path.join(__dirname)),
 
   output: {
-    path: path.join(__dirname, 'docs', 'lib'),
+    path: path.join(__dirname, 'lib'),
     filename: '[name]-[' + (DEV ? 'hash' : 'chunkhash') + '].js',
     publicPath: '/react-foundation-components',
   },

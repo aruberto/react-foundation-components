@@ -193,5 +193,5 @@ export default function create(styles) {
 
   const Tabs = uncontrollable(TabsControlled, { activeKey: 'onSelect' });
 
-  return { Tab, TabTitle, TabsContent, TabsHeader, Tabs };
+  return { Tabs, TabsHeader, TabsContent, Tab, TabTitle };
 }

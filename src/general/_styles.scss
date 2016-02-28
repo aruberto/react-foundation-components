@@ -2,6 +2,7 @@
 @import './visibility/styles';
 
 @if $global-flexbox {
+  @import './flex/styles';
   @import './grid/flex/styles';
 } @else {
   @import './grid/styles';
