@@ -12,24 +12,44 @@ I like [React](https://facebook.github.io/react). I like [CSS Modules](https://g
 npm install --save react-foundation-components
 ```
 
-Each component requires the subset of Foundation CSS it needs. If CSS Modules is enabled, the final CSS and JS bundle will use local scoped class names instead of Foundation's global class names!
+Each component uses local scoped CSS by requiring the subset of the Foundation stylesheets it needs.
 
-Demo of the components is available [here](http://aruberto.github.io/react-foundation-components). Please see [demo source code](https://github.com/aruberto/react-foundation-components/tree/master/demo) for an example webpack setup and example use of each component. Proper documentation to come later ...
+Documentation (in progress) or demos of the components are available at http://aruberto.github.io/react-foundation-components. Please look at https://github.com/aruberto/react-foundation-components/tree/master/docs for an example webpack setup and example use of each component.
+
+You can also look at https://github.com/aruberto/react-foundation-components/tree/master/examples/css-modules as an example project that uses CSS Modules with this library.
 
 Recommend importing on a per component basis instead of importing the main entry point of package. Importing main entry point will cause final bundle to include all CSS and JS whereas importing on a per component basis will cause your final bundle to only include the CSS and JS you actually need (this may change when tree shaking is introduced in webpack 2)!
 
 Favor
 
 ```
-import Button from 'react-foundation-components/lib/controls/button';
-import {ShowForScreenSize, HideForScreenSize} from 'react-foundation-components/lib/general/visibility';
+import Button from 'react-foundation-components/lib/button';
+import { ShowForScreenSize, HideForScreenSize } from 'react-foundation-components/lib/visibility';
 ```
 
 over
 
 ```
-import {Button, ShowForScreenSize, HideForScreenSize} from 'react-foundation-components';
+import { Button, ShowForScreenSize, HideForScreenSize } from 'react-foundation-components';
 ```
+
+If you can't use CSS Modules, a set of components that use Foundation's global scoped class names are also provided. These are located under react-foundation-components/lib/global. To import Button that uses global scoped class names:
+
+```
+import Button from 'react-foundation-components/lib/global/button';
+import { ShowForScreenSize, HideForScreenSize } from 'react-foundation-components/lib/global/visibility';
+```
+
+If you use the components under react-foundation-components/lib/global, you are responsible for loading Foundation CSS stylesheet. You can do this in a few ways:
+ * include stylesheet such as https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css in head of your html with CDN link
+ * Import/Require react-foundation-components/lib/\_foundation.scss
+ * Use https://www.npmjs.com/package/foundation-sites-loader
+
+Here are some example applications that use global scoped class name components:
+ * Uses Foundation from CDN - https://github.com/aruberto/react-foundation-components/tree/master/examples/cdn
+ * Uses Foundation (Flexbox Version) from CDN - https://github.com/aruberto/react-foundation-components/tree/master/examples/cdn-flex
+ * Requires react-foundation-components/lib/\_foundation.scss with global-flexbox set to false - https://github.com/aruberto/react-foundation-components/tree/master/examples/global
+ * Requires react-foundation-components/lib/\_foundation.scss with global-flexbox set to true - https://github.com/aruberto/react-foundation-components/tree/master/examples/global-flex
 
 ## Thanks
 
