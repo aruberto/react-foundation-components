@@ -7,12 +7,14 @@ import {
   OffCanvas,
   OffCanvasContent,
   OffCanvasContainer,
+} from '../src/containers/off-canvas';
+import {
   TitleBar,
   TitleBarItem,
   TitleBarTitle,
   TitleBarMenuIcon,
-  HideForScreenSize,
-} from '../src';
+} from '../src/containers/title-bar';
+import { HideForScreenSize } from '../src/general/visibility';
 
 import GridPage from './general/grid';
 import FlexGridPage from './general/grid/flex';
@@ -123,12 +125,12 @@ class HomePage extends Component {
         </OffCanvas>
         <OffCanvasContent onContentBlockerClick={this.handleClose}>
           <TitleBar>
-            <HideForScreenSize size="large">
-              <TitleBarItem position="left">
+            <TitleBarItem position="left">
+              <HideForScreenSize size="large">
                 <TitleBarMenuIcon onClick={this.handleToggle} open={leftNavOpen}/>
-              </TitleBarItem>
-            </HideForScreenSize>
-            <TitleBarTitle>React Foundation Components</TitleBarTitle>
+              </HideForScreenSize>
+              <TitleBarTitle>React Foundation Components</TitleBarTitle>
+            </TitleBarItem>
           </TitleBar>
           <br/>
           {this.props.children}

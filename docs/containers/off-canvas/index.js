@@ -4,12 +4,20 @@ import {
   OffCanvas,
   OffCanvasContent,
   OffCanvasContainer,
+} from '../../../src/containers/off-canvas';
+import {
   TitleBar,
   TitleBarItem,
   TitleBarTitle,
   TitleBarMenuIcon,
-  HideForScreenSize,
-} from '../../../src';
+} from '../../../src/containers/title-bar';
+import {
+  TitleBar as FlexTitleBar,
+  TitleBarItem as FlexTitleBarItem,
+  TitleBarTitle as FlexTitleBarTitle,
+  TitleBarMenuIcon as FlexTitleBarMenuIcon,
+} from '../../../src/containers/title-bar/flex';
+import { HideForScreenSize } from '../../../src/general/visibility';
 
 export default class OffCanvasPage extends Component {
   constructor(props) {
@@ -46,18 +54,32 @@ export default class OffCanvasPage extends Component {
         </OffCanvas>
         <OffCanvasContent onContentBlockerClick={this.handleClose}>
           <TitleBar>
-            <HideForScreenSize size="large">
-              <TitleBarItem position="left">
+            <TitleBarItem position="left">
+              <HideForScreenSize size="large">
                 <TitleBarMenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
-              </TitleBarItem>
-            </HideForScreenSize>
-            <TitleBarTitle>Foundation</TitleBarTitle>
-            <HideForScreenSize size="xxlarge">
-              <TitleBarItem position="right">
+              </HideForScreenSize>
+              <TitleBarTitle>Foundation</TitleBarTitle>
+            </TitleBarItem>
+            <TitleBarItem position="right">
+              <HideForScreenSize size="xxlarge">
                 <TitleBarMenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
-              </TitleBarItem>
-            </HideForScreenSize>
+              </HideForScreenSize>
+            </TitleBarItem>
           </TitleBar>
+          <br/>
+          <FlexTitleBar>
+            <FlexTitleBarItem position="left">
+              <HideForScreenSize size="large">
+                <FlexTitleBarMenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
+              </HideForScreenSize>
+              <FlexTitleBarTitle>Foundation</FlexTitleBarTitle>
+            </FlexTitleBarItem>
+            <FlexTitleBarItem position="right">
+              <HideForScreenSize size="xxlarge">
+                <FlexTitleBarMenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
+              </HideForScreenSize>
+            </FlexTitleBarItem>
+          </FlexTitleBar>
           <br/>
           <div style={{ margin: '0 auto', width: '100px' }}>Main Content</div>
         </OffCanvasContent>
