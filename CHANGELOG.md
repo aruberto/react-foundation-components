@@ -1,3 +1,23 @@
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/aruberto/react-foundation-components/compare/0.8.0...0.8.1) (2016-02-28)
+
+
+#### Miscellaneous
+
+* Updated README.
+
+
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/aruberto/react-foundation-components/compare/0.7.0...0.8.0) (2016-02-28)
+
+
+### BREAKING CHANGES
+
+* Updated to Foundation Sites 6.2
+* Massive re-write of entire project. Main set of components (ones under lib) now assume that CSS Modules is used. If you can't use CSS Modules, use components under lib/global. Components under lib and lib/global are identical with exception that lib/global components use Foundation's class names whereas components under lib use class names generated from requiring SCSS file.
+* Removed the component categories. Now import button instead of controls/button.
+* Added Menu and Top Bar components.
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/aruberto/react-foundation-components/compare/0.6.1...0.7.0) (2016-02-23)
 
