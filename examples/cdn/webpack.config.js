@@ -1,5 +1,3 @@
-/* eslint-disable prefer-template, prefer-arrow-callback, prefer-reflect */
-
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

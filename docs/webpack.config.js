@@ -1,5 +1,3 @@
-/* eslint-disable prefer-template, prefer-arrow-callback, prefer-reflect */
-
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -74,7 +72,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'lib'),
-    filename: '[name]-[' + (DEV ? 'hash' : 'chunkhash') + '].js',
+    filename: `[name]-[${DEV ? 'hash' : 'chunkhash'}].js`,
     publicPath: '/react-foundation-components',
   },
 

@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
+const themePath = path.join(__dirname, 'theme.json');
+
 module.exports = {
   entry: path.join(__dirname, 'app.js'),
 
@@ -58,7 +60,10 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules!postcss!sass'),
+        loader: ExtractTextPlugin.extract(
+          'style',
+          `css?modules!postcss!sass!jsontosass?path=${themePath}`
+        ),
       },
     ],
   },
