@@ -1,3 +1,12 @@
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/aruberto/react-foundation-components/compare/0.8.1...0.8.2) (2016-02-29)
+
+
+#### Miscellaneous
+
+* Menu horizontal and vertical props accept small as value. Value of small is same as a value of true.
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/aruberto/react-foundation-components/compare/0.8.0...0.8.1) (2016-02-28)
 
