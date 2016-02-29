@@ -14,6 +14,7 @@ import {
   TitleBarTitle,
   TitleBarMenuIcon,
 } from '../src/title-bar/flex';
+import { Menu, MenuItem, MenuText } from '../src/menu/flex';
 import { HideForScreenSize } from '../src/visibility';
 
 import GridPage from './general/grid';
@@ -73,61 +74,128 @@ class HomePage extends Component {
     return (
       <OffCanvasContainer open={open}>
         <OffCanvas position="left" revealForSize="large">
-          <Link to="/general/grid">Grid</Link>
-          <br/>
-          <Link to="/general/grid/flex">Flex Grid</Link>
-          <br/>
-          <Link to="/general/visibility">Visibility</Link>
-          <br/>
-          <Link to="/general/float">Float</Link>
-          <br/>
-          <Link to="/general/flex">Flexbox</Link>
-          <br/>
-          <Link to="/typography/base">Base Typography</Link>
-          <br/>
-          <Link to="/typography/helpers">Typography Helpers</Link>
-          <br/>
-          <Link to="/typography/text-alignment">Text Alignment</Link>
-          <br/>
-          <Link to="/controls/button">Button</Link>
-          <br/>
-          <Link to="/controls/button-group">Button Group</Link>
-          <br/>
-          <Link to="/controls/close-button">Close Button</Link>
-          <br/>
-          <Link to="/controls/switch">Switch</Link>
-          <br/>
-          <Link to="/navigation/menu">Menu</Link>
-          <br/>
-          <Link to="/navigation/top-bar">Top Bar</Link>
-          <br/>
-          <Link to="/containers/accordion">Accordion</Link>
-          <br/>
-          <Link to="/containers/callout">Callout</Link>
-          <br/>
-          <Link to="/containers/dropdown">Dropdown</Link>
-          <br/>
-          <Link to="/containers/media-object">Media Object</Link>
-          <br/>
-          <Link to="/containers/off-canvas">Off Canvas</Link>
-          <br/>
-          <Link to="/containers/reveal">Reveal</Link>
-          <br/>
-          <Link to="/containers/table">Table</Link>
-          <br/>
-          <Link to="/containers/tabs">Tabs</Link>
-          <br/>
-          <Link to="/media/badge">Badge</Link>
-          <br/>
-          <Link to="/media/flex-video">Flex Video</Link>
-          <br/>
-          <Link to="/media/label">Label</Link>
-          <br/>
-          <Link to="/media/progress-bar">Progress Bar</Link>
-          <br/>
-          <Link to="/media/thumbnail">Thumbnail</Link>
-          <br/>
-          <Link to="/media/tooltip">Tooltip</Link>
+          <Menu vertical>
+            <MenuItem>
+              <MenuText>General</MenuText>
+              <Menu nested vertical>
+                <MenuItem>
+                  <Link to="/general/grid">Grid</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/general/grid/flex">Flex Grid</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/general/visibility">Visibility</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/general/float">Float</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/general/flex">Flexbox</Link>
+                </MenuItem>
+              </Menu>
+            </MenuItem>
+            <MenuItem>
+              <MenuText>Typography</MenuText>
+              <Menu nested vertical>
+                <MenuItem>
+                  <Link to="/typography/base">Base Typography</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/typography/helpers">Typography Helpers</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/typography/text-alignment">Text Alignment</Link>
+                </MenuItem>
+              </Menu>
+            </MenuItem>
+            <MenuItem>
+              <MenuText>Controls</MenuText>
+              <Menu nested vertical>
+                <MenuItem>
+                  <Link to="/controls/button">Button</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/controls/button-group">Button Group</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/controls/close-button">Close Button</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/controls/switch">Switch</Link>
+                </MenuItem>
+              </Menu>
+            </MenuItem>
+            <MenuItem>
+              <MenuText>Navigation</MenuText>
+              <Menu nested vertical>
+                <MenuItem>
+                  <Link to="/navigation/menu">Menu</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/navigation/top-bar">Top Bar</Link>
+                </MenuItem>
+              </Menu>
+            </MenuItem>
+            <MenuItem>
+              <MenuText>Containers</MenuText>
+              <Menu nested vertical>
+                <MenuItem>
+                  <Link to="/containers/accordion">Accordion</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/callout">Callout</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/dropdown">Dropdown</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/media-object">Media Object</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/off-canvas">Off Canvas</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/reveal">Reveal</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/table">Table</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/tabs">Tabs</Link>
+                </MenuItem>
+              </Menu>
+            </MenuItem>
+            <MenuItem>
+              <MenuText>Media</MenuText>
+              <Menu nested vertical>
+                <MenuItem>
+                  <Link to="/media/badge">Badge</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/media/flex-video">Flex Video</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/media/label">Label</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/media/progress-bar">Progress Bar</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/media/thumbnail">Thumbnail</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/media/tooltip">Tooltip</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/table">Table</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/containers/tabs">Tabs</Link>
+                </MenuItem>
+              </Menu>
+            </MenuItem>
+          </Menu>  
         </OffCanvas>
         <OffCanvasContent onContentBlockerClick={this.handleClose}>
           <TitleBar>
