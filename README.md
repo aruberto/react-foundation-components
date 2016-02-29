@@ -18,6 +18,8 @@ Documentation (in progress) or demos of the components are available at http://a
 
 You can also look at https://github.com/aruberto/react-foundation-components/tree/master/examples/css-modules as an example project that uses CSS Modules with this library.
 
+If you want to use CSS modules and customize Foundation at the same time, look at https://github.com/aruberto/react-foundation-components/tree/master/examples/css-modules-custom which uses https://www.npmjs.com/package/jsontosass-loader to inject sass variables that override Foundation's default settings.
+
 Recommend importing on a per component basis instead of importing the main entry point of package. Importing main entry point will cause final bundle to include all CSS and JS whereas importing on a per component basis will cause your final bundle to only include the CSS and JS you actually need (this may change when tree shaking is introduced in webpack 2)!
 
 Favor
