@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import {
+  SCREEN_SIZES,
   LARGER_SCREEN_SIZES,
   CENTER_POSITION,
   MENU_ALIGNMENTS,
@@ -22,12 +23,12 @@ export default function create(
       centerContainerStyle: PropTypes.object,
       className: PropTypes.string,
       expanded: PropTypes.bool,
-      horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(LARGER_SCREEN_SIZES)]),
+      horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(SCREEN_SIZES)]),
       horizontalAlignment: PropTypes.oneOf(FLEX_HORIZONTAL_ALIGNMENTS),
       iconTop: PropTypes.bool,
       nested: PropTypes.bool,
       simple: PropTypes.bool,
-      vertical: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(LARGER_SCREEN_SIZES)]),
+      vertical: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(SCREEN_SIZES)]),
     };
 
     render() {
