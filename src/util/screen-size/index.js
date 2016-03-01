@@ -1,14 +1,12 @@
 import { PropTypes } from 'react';
-import { CLASS_NAME_TYPES, SCREEN_SIZES, LARGER_SCREEN_SIZES } from '../constants';
+import { CLASS_NAME_TYPES, SCREEN_SIZES } from '../constants';
 
 function processScreenSizeClassNames(classNameMapping = [], callback) {
-  classNameMapping.forEach(({ baseClassName, basePropName, type, min, max, values, largeOnly }) => {
-    SCREEN_SIZES.forEach((size) => {
-      if (!largeOnly || LARGER_SCREEN_SIZES.includes(size)) {
-        callback({ baseClassName, basePropName, type, min, max, values, size });
-      }
-    });
-  });
+  classNameMapping.forEach(({ baseClassName, basePropName, type, min, max, values }) =>
+    SCREEN_SIZES.forEach((size) =>
+      callback({ baseClassName, basePropName, type, min, max, values, size })
+    )
+  );
 }
 
 export function createScreenSizeClassNames(classNameMapping) {

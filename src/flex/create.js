@@ -36,6 +36,7 @@ export default function create(styles) {
       return classNames;
     },
     defaultComponentClass: 'div',
+    mergeSingleChild: false,
   });
 
   const Child = createHigherOrderComponent({
@@ -54,6 +55,7 @@ export default function create(styles) {
       return classNames;
     },
     defaultComponentClass: 'div',
+    mergeSingleChild: false,
   });
 
   return { Parent, Child };

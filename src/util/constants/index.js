@@ -36,13 +36,11 @@ export const GRID_ROW_CLASS_NAMES = [
     baseClassName: 'collapse',
     basePropName: 'Collapse',
     type: CLASS_NAME_TYPES.BOOL,
-    largeOnly: false,
   },
   {
     baseClassName: 'uncollapse',
     basePropName: 'Uncollapse',
     type: CLASS_NAME_TYPES.BOOL,
-    largeOnly: false,
   },
   {
     baseClassName: 'up',
@@ -50,7 +48,6 @@ export const GRID_ROW_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 1,
     max: 8,
-    largeOnly: false,
   },
 ];
 export const GRID_COLUMN_CLASS_NAMES = [
@@ -60,7 +57,6 @@ export const GRID_COLUMN_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 1,
     max: 12,
-    largeOnly: false,
   },
   {
     baseClassName: 'offset',
@@ -68,19 +64,16 @@ export const GRID_COLUMN_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 0,
     max: 11,
-    largeOnly: false,
   },
   {
     baseClassName: 'centered',
     basePropName: 'Centered',
     type: CLASS_NAME_TYPES.BOOL,
-    largeOnly: false,
   },
   {
     baseClassName: 'uncentered',
     basePropName: 'Uncentered',
     type: CLASS_NAME_TYPES.BOOL,
-    largeOnly: false,
   },
   {
     baseClassName: 'push',
@@ -88,7 +81,6 @@ export const GRID_COLUMN_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 1,
     max: 11,
-    largeOnly: false,
   },
   {
     baseClassName: 'pull',
@@ -96,7 +88,6 @@ export const GRID_COLUMN_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 1,
     max: 11,
-    largeOnly: false,
   },
 ];
 
@@ -106,14 +97,12 @@ export const FLEX_PARENT_CLASS_NAMES = [
     basePropName: 'HorizontalAlignment',
     type: CLASS_NAME_TYPES.ENUM,
     values: FLEX_HORIZONTAL_ALIGNMENTS,
-    largeOnly: true,
   },
   {
     baseClassName: 'align',
     basePropName: 'VerticalAlignment',
     type: CLASS_NAME_TYPES.ENUM,
     values: FLEX_VERTICAL_ALIGNMENTS,
-    largeOnly: true,
   },
 ];
 export const FLEX_CHILD_CLASS_NAMES = [
@@ -122,7 +111,6 @@ export const FLEX_CHILD_CLASS_NAMES = [
     basePropName: 'VerticalAlignment',
     type: CLASS_NAME_TYPES.ENUM,
     values: FLEX_VERTICAL_ALIGNMENTS,
-    largeOnly: true,
   },
   {
     baseClassName: 'order',
@@ -130,27 +118,18 @@ export const FLEX_CHILD_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 1,
     max: 6,
-    largeOnly: false,
   },
 ];
 export const FLEX_GRID_ROW_CLASS_NAMES = [
   {
-    baseClassName: 'unstack',
-    basePropName: 'Unstack',
-    type: CLASS_NAME_TYPES.BOOL,
-    largeOnly: true,
-  },
-  {
     baseClassName: 'collapse',
     basePropName: 'Collapse',
     type: CLASS_NAME_TYPES.BOOL,
-    largeOnly: false,
   },
   {
     baseClassName: 'uncollapse',
     basePropName: 'Uncollapse',
     type: CLASS_NAME_TYPES.BOOL,
-    largeOnly: false,
   },
   {
     baseClassName: 'up',
@@ -158,7 +137,6 @@ export const FLEX_GRID_ROW_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 1,
     max: 8,
-    largeOnly: false,
   },
 ];
 export const FLEX_GRID_COLUMN_CLASS_NAMES = [
@@ -168,13 +146,6 @@ export const FLEX_GRID_COLUMN_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 1,
     max: 12,
-    largeOnly: false,
-  },
-  {
-    baseClassName: 'expand',
-    basePropName: 'Expand',
-    type: CLASS_NAME_TYPES.BOOL,
-    largeOnly: true,
   },
   {
     baseClassName: 'offset',
@@ -182,6 +153,5 @@ export const FLEX_GRID_COLUMN_CLASS_NAMES = [
     type: CLASS_NAME_TYPES.RANGE,
     min: 0,
     max: 11,
-    largeOnly: false,
   },
 ];

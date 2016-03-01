@@ -33,7 +33,6 @@ export default function create(
         <FlexChild
           {...this.props}
           className={classNames}
-          componentClass="div"
           verticalAlignment={verticalAlignment || alignment}
         />
       );
@@ -57,7 +56,7 @@ export default function create(
       );
 
       return (
-        <FlexParent {...this.props} className={classNames} componentClass="div"/>
+        <FlexParent {...this.props} className={classNames}/>
       );
     }
   }

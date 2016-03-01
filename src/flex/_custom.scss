@@ -1,0 +1,27 @@
+// Remove when https://github.com/zurb/foundation-sites/issues/8265 is fixed
+@include -zf-each-breakpoint {
+  @for $i from 1 through 6 {
+    .#{$-zf-size}-order-#{$i} {
+      @include flex-order($i);
+    }
+  }
+}
+
+// Breakpoint based alignment
+@include -zf-each-breakpoint {
+  @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
+    .#{$-zf-size}-align-#{$hdir} {
+      @include flex-align($x: $hdir);
+    }
+  }
+
+  @each $vdir, $prop in $-zf-flex-align {
+    .#{$-zf-size}-align-#{$vdir} {
+      @include flex-align($y: $vdir);
+    }
+
+    .#{$-zf-size}-align-self-#{$vdir} {
+      @include flex-align-self($y: $vdir);
+    }
+  }
+}

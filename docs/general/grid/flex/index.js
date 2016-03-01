@@ -74,21 +74,21 @@ export default class FlexGridPage extends Component {
         </Row>
         <br/>
         <Row>
-          <Column largeExpand small={12} style={style}>One</Column>
-          <Column largeExpand small={12} style={style}>Two</Column>
-          <Column largeExpand small={12} style={style}>Three</Column>
-          <Column largeExpand small={12} style={style}>Four</Column>
-          <Column largeExpand small={12} style={style}>Five</Column>
-          <Column largeExpand small={12} style={style}>Six</Column>
+          <Column expand="large" small={12} style={style}>One</Column>
+          <Column expand="large" small={12} style={style}>Two</Column>
+          <Column expand="large" small={12} style={style}>Three</Column>
+          <Column expand="large" small={12} style={style}>Four</Column>
+          <Column expand="large" small={12} style={style}>Five</Column>
+          <Column expand="large" small={12} style={style}>Six</Column>
         </Row>
         <br/>
-        <Row mediumUnstack>
-          <Column style={style}>One</Column>
-          <Column style={style}>Two</Column>
-          <Column style={style}>Three</Column>
-          <Column style={style}>Four</Column>
-          <Column style={style}>Five</Column>
-          <Column style={style}>Six</Column>
+        <Row unstack="medium">
+          <Column small={12} style={style}>One</Column>
+          <Column small={12} style={style}>Two</Column>
+          <Column small={12} style={style}>Three</Column>
+          <Column small={12} style={style}>Four</Column>
+          <Column small={12} style={style}>Five</Column>
+          <Column small={12} style={style}>Six</Column>
         </Row>
         <br/>
         <Row>
@@ -113,14 +113,11 @@ export default class FlexGridPage extends Component {
         </Row>
         <br/>
         <Row
-          horizontalAlignment="justify"
-          mediumHorizontalAlignment="center"
-          largeHorizontalAlignment="right"
+          smallHorizontalAlignment="center"
+          largeHorizontalAlignment="justify"
         >
           <Column small={4} style={style}>Aligned to</Column>
-          <Column small={4} style={style}>
-            the edges on small, center on medium, the right on large
-          </Column>
+          <Column small={4} style={style}>the center on small, the edges on large</Column>
         </Row>
         <br/>
         <Row verticalAlignment="middle">
@@ -141,9 +138,34 @@ export default class FlexGridPage extends Component {
             sunt dolore tempore amet cupiditate.
           </Column>
         </Row>
+        <br/>
+        <Row smallVerticalAlignment="top" largeVerticalAlignment="bottom">
+          <Column style={style}>I'm at the top on small, at the bottom on large!</Column>
+          <Column style={style}>
+            I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Quis facere ducimus earum minus, inventore, ratione
+            doloremque deserunt neque perspiciatis accusamus explicabo soluta, quod provident
+            distinctio aliquam omnis? Labore, ullam possimus.
+          </Column>
+        </Row>
+        <br/>
         <Row>
           <Column style={style} verticalAlignment="bottom">Align bottom.</Column>
           <Column style={style} verticalAlignment="middle">Align middle.</Column>
+          <Column style={style} verticalAlignment="top">
+            Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum
+            cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit
+            molestiae quaerat, consequuntur porro temporibus. Nisi, ex?
+          </Column>
+        </Row>
+        <br/>
+        <Row>
+          <Column style={style} smallVerticalAlignment="bottom" largeVerticalAlignment="middle">
+            Align bottom on small, middle on large
+          </Column>
+          <Column style={style} smallVerticalAlignment="middle" largeVerticalAlignment="bottom">
+            Align middle on small, bottom on large
+          </Column>
           <Column style={style} verticalAlignment="top">
             Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum
             cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit
