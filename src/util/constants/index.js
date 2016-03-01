@@ -1,3 +1,5 @@
+import keyMirrorArray from '../key-mirror-array';
+
 export const SCREEN_SIZE_SMALL = 'small';
 export const SCREEN_SIZE_MEDIUM = 'medium';
 export const SCREEN_SIZES = [SCREEN_SIZE_SMALL, SCREEN_SIZE_MEDIUM, 'large', 'xlarge', 'xxlarge'];
@@ -26,21 +28,15 @@ export const [, ...FLEX_HORIZONTAL_ALIGNMENTS_INTERNAL] = FLEX_HORIZONTAL_ALIGNM
 export const MEDIA_OBJECT_SECTION_ALIGNMENTS = ['middle', 'bottom'];
 export const FLEX_VERTICAL_ALIGNMENTS = ['top', ...MEDIA_OBJECT_SECTION_ALIGNMENTS, 'stretch'];
 
-export const CLASS_NAME_TYPES = {
-  BOOL: 'BOOL',
-  RANGE: 'RANGE',
-  ENUM: 'ENUM',
-};
+export const CLASS_NAME_TYPES = keyMirrorArray(['BOOL', 'RANGE', 'ENUM']);
+export const COLLAPSE_MODES = ['collapse', 'uncollapse'];
+export const CENTERED_MODES = ['centered', 'uncentered'];
 export const GRID_ROW_CLASS_NAMES = [
   {
-    baseClassName: 'collapse',
+    baseClassName: '',
     basePropName: 'Collapse',
-    type: CLASS_NAME_TYPES.BOOL,
-  },
-  {
-    baseClassName: 'uncollapse',
-    basePropName: 'Uncollapse',
-    type: CLASS_NAME_TYPES.BOOL,
+    type: CLASS_NAME_TYPES.ENUM,
+    values: COLLAPSE_MODES,
   },
   {
     baseClassName: 'up',
@@ -66,14 +62,10 @@ export const GRID_COLUMN_CLASS_NAMES = [
     max: 11,
   },
   {
-    baseClassName: 'centered',
+    baseClassName: '',
     basePropName: 'Centered',
-    type: CLASS_NAME_TYPES.BOOL,
-  },
-  {
-    baseClassName: 'uncentered',
-    basePropName: 'Uncentered',
-    type: CLASS_NAME_TYPES.BOOL,
+    type: CLASS_NAME_TYPES.ENUM,
+    values: CENTERED_MODES,
   },
   {
     baseClassName: 'push',
@@ -122,14 +114,10 @@ export const FLEX_CHILD_CLASS_NAMES = [
 ];
 export const FLEX_GRID_ROW_CLASS_NAMES = [
   {
-    baseClassName: 'collapse',
+    baseClassName: '',
     basePropName: 'Collapse',
-    type: CLASS_NAME_TYPES.BOOL,
-  },
-  {
-    baseClassName: 'uncollapse',
-    basePropName: 'Uncollapse',
-    type: CLASS_NAME_TYPES.BOOL,
+    type: CLASS_NAME_TYPES.ENUM,
+    values: COLLAPSE_MODES,
   },
   {
     baseClassName: 'up',

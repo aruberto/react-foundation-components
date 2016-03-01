@@ -4,7 +4,7 @@ import { Row, Column } from '../../../src/grid';
 import { ShowForScreenSize, ShowOnlyForScreenSize } from '../../../src/visibility';
 
 const style = { borderStyle: 'solid' };
-const rowStyle = { border: 'solid 1px #c6c6c6', whiteSpace: 'nowrap' };
+const rowStyle = { border: 'solid 1px #c6c6c6' };
 const styleOdd = { background: '#eee' };
 const styleEven = { background: '#e1e1e1' };
 
@@ -39,57 +39,57 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
         <pre>
           <code>
 {
-`<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 1</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 2</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 3</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 4</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 5</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 6</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 7</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 8</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 9</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 10</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 11</Column>
-<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>Column 12</Column>s`
+`<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>1</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>2</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>3</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>4</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>5</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>6</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>7</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>8</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>9</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>10</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>11</Column>
+<Column small={12} medium={6} large={4} xlarge={2} xxlarge={1}>12</Column>s`
 }
           </code>
         </pre>
         <Row style={rowStyle}>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleOdd}>
-            Column 1
+            1
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleEven}>
-            Column 2
+            2
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleOdd}>
-            Column 3
+            3
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleEven}>
-            Column 4
+            4
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleOdd}>
-            Column 5
+            5
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleEven}>
-            Column 6
+            6
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleOdd}>
-            Column 7
+            7
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleEven}>
-            Column 8
+            8
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleOdd}>
-            Column 9
+            9
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleEven}>
-            Column 10
+            10
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleOdd}>
-            Column 11
+            11
           </Column>
           <Column small={12} medium={6} large={4} xlarge={2} xxlarge={1} style={styleEven}>
-            Column 12
+            12
           </Column>
         </Row>
         <h2>Fluid Row</h2>
@@ -258,7 +258,12 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
           your row element. Example shows no gutter at small media size and then adds the gutter to
           columns at medium.
         </p>
-        <Row style={rowStyle} smallCollapse mediumUncollapse largeCollapse>
+        <Row
+          style={rowStyle}
+          smallCollapse="collapse"
+          mediumCollapse="uncollapse"
+          largeCollapse="collapse"
+        >
           <Column small={6} style={styleEven}>
             <ShowOnlyForScreenSize size="small">
               On a small screen, I have no gutters!
@@ -284,16 +289,18 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
         </Row>
         <br/>
         <Row style={rowStyle}>
-          <Column small={3} smallCentered style={style}>3 centered</Column>
+          <Column small={3} smallCentered="centered" style={style}>3 centered</Column>
         </Row>
         <Row style={rowStyle}>
-          <Column largeCentered small={6} style={style}>6 centered large</Column>
+          <Column largeCentered="centered" small={6} style={style}>6 centered large</Column>
         </Row>
         <Row style={rowStyle}>
-          <Column largeUncentered small={9} smallCentered style={style}>9 centered small</Column>
+          <Column largeCentered="uncentered" small={9} smallCentered="centered" style={style}>
+            9 centered small
+          </Column>
         </Row>
         <Row style={rowStyle}>
-          <Column small={11} smallCentered style={style}>11 centered</Column>
+          <Column small={11} smallCentered="centered" style={style}>11 centered</Column>
         </Row>
         <br/>
         <Row style={rowStyle}>

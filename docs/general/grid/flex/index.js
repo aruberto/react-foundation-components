@@ -182,10 +182,10 @@ export default class FlexGridPage extends Component {
           </Column>
         </Row>
         <br/>
-        <Row largeCollapse mediumUncollapse>
+        <Row smallCollapse="collapse" mediumCollapse="uncollapse" largeCollapse="collapse">
           <Column small={6} style={style}>
             <ShowOnlyForScreenSize size="small">
-              On a small screen, I have gutters!
+              On a small screen, I have no gutters!
             </ShowOnlyForScreenSize>
             <ShowOnlyForScreenSize size="medium">
               On a medium screen, I have gutters!
@@ -196,7 +196,7 @@ export default class FlexGridPage extends Component {
           </Column>
           <Column small={6} style={style}>
             <ShowOnlyForScreenSize size="small">
-              On a small screen, I have gutters!
+              On a small screen, I have no gutters!
             </ShowOnlyForScreenSize>
             <ShowOnlyForScreenSize size="medium">
               On a medium screen, I have gutters!
