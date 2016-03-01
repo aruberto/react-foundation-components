@@ -1,19 +1,11 @@
 import { PropTypes } from 'react';
-import { SCREEN_SIZES, LARGER_SCREEN_SIZES } from '../constants';
+import { CLASS_NAME_TYPES, SCREEN_SIZES, LARGER_SCREEN_SIZES } from '../constants';
 
-function processScreenSizeClassNames(classNameMapping = {}, callback) {
-  Object.keys(classNameMapping).forEach((baseClassName) => {
-    const { basePropName, range, rangeMin, rangeMax, skipSmall } = classNameMapping[baseClassName];
+function processScreenSizeClassNames(classNameMapping = [], callback) {
+  classNameMapping.forEach(({ baseClassName, basePropName, type, min, max, values, largeOnly }) => {
     SCREEN_SIZES.forEach((size) => {
-      if (!skipSmall || LARGER_SCREEN_SIZES.includes(size)) {
-        callback({
-          baseClassName,
-          basePropName,
-          range,
-          rangeMin,
-          rangeMax,
-          size,
-        });
+      if (!largeOnly || LARGER_SCREEN_SIZES.includes(size)) {
+        callback({ baseClassName, basePropName, type, min, max, values, size });
       }
     });
   });
@@ -24,13 +16,15 @@ export function createScreenSizeClassNames(classNameMapping) {
 
   processScreenSizeClassNames(
     classNameMapping,
-    ({ baseClassName, range, rangeMin, rangeMax, size }) => {
+    ({ baseClassName, type, min, max, values, size }) => {
       const className = size + (baseClassName ? `-${baseClassName}` : '');
 
-      if (range) {
-        for (let column = rangeMin; column <= rangeMax; column++) {
-          classNames.push(`${className}-${column}`);
+      if (type === CLASS_NAME_TYPES.RANGE) {
+        for (let i = min; i <= max; i++) {
+          classNames.push(`${className}-${i}`);
         }
+      } else if (type === CLASS_NAME_TYPES.ENUM) {
+        values.forEach((value) => classNames.push(`${className}-${value}`));
       } else {
         classNames.push(className);
       }
@@ -45,8 +39,15 @@ export function createScreenSizePropTypes(classNameMapping) {
 
   processScreenSizeClassNames(
     classNameMapping,
-    ({ basePropName, range, size }) => {
-      propTypes[`${size}${basePropName}`] = range ? PropTypes.number : PropTypes.bool;
+    ({ basePropName, type, values, size }) => {
+      let propType = PropTypes.bool;
+      if (type === CLASS_NAME_TYPES.RANGE) {
+        propType = PropTypes.number;
+      } else if (type === CLASS_NAME_TYPES.ENUM) {
+        propType = PropTypes.oneOf(values);
+      }
+
+      propTypes[`${size}${basePropName}`] = propType;
     }
   );
 
@@ -58,15 +59,19 @@ export function createScreenSizeClassNamesFromProps(classNameMapping, props = {}
 
   processScreenSizeClassNames(
     classNameMapping,
-    ({ baseClassName, basePropName, range, rangeMin, rangeMax, size }) => {
+    ({ baseClassName, basePropName, type, min, max, values, size }) => {
       const propName = `${size}${basePropName}`;
       const propValue = props[propName];
       const className = size + (baseClassName ? `-${baseClassName}` : '');
 
-      if (range) {
+      if (type === CLASS_NAME_TYPES.RANGE) {
         if (styles[`${className}-${propValue}`]) {
           classNames[styles[`${className}-${propValue}`]] =
-            Number.isInteger(propValue) && propValue >= rangeMin && propValue <= rangeMax;
+            Number.isInteger(propValue) && propValue >= min && propValue <= max;
+        }
+      } else if (type === CLASS_NAME_TYPES.ENUM) {
+        if (styles[`${className}-${propValue}`]) {
+          classNames[styles[`${className}-${propValue}`]] = values.includes(propValue);
         }
       } else if (styles[className]) {
         classNames[styles[className]] = propValue;

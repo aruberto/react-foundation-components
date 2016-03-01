@@ -11,3 +11,26 @@
     }
   }
 }
+
+// Allow alignment based on
+@include -zf-each-breakpoint {
+  @if $-zf-size != small {
+    // Horizontal alignment using justify-content
+    @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
+      .#{$-zf-size}-align-#{$hdir} {
+        @include flex-align($x: $hdir);
+      }
+    }
+
+    // Vertical alignment using align-items and align-self
+    @each $vdir, $prop in $-zf-flex-align {
+      .#{$-zf-size}-align-#{$vdir} {
+        @include flex-align($y: $vdir);
+      }
+
+      .#{$-zf-size}-align-self-#{$vdir} {
+        @include flex-align-self($y: $vdir);
+      }
+    }
+  }
+}

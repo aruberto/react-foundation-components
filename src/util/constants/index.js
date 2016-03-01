@@ -26,117 +26,162 @@ export const [, ...FLEX_HORIZONTAL_ALIGNMENTS_INTERNAL] = FLEX_HORIZONTAL_ALIGNM
 export const MEDIA_OBJECT_SECTION_ALIGNMENTS = ['middle', 'bottom'];
 export const FLEX_VERTICAL_ALIGNMENTS = ['top', ...MEDIA_OBJECT_SECTION_ALIGNMENTS, 'stretch'];
 
-export const GRID_ROW_CLASS_NAMES = {
-  collapse: {
-    basePropName: 'Collapse',
-    range: false,
-    skipSmall: false,
-  },
-  uncollapse: {
-    basePropName: 'Uncollapse',
-    range: false,
-    skipSmall: false,
-  },
-  up: {
-    basePropName: 'Up',
-    range: true,
-    rangeMin: 1,
-    rangeMax: 8,
-    skipSmall: false,
-  },
+export const CLASS_NAME_TYPES = {
+  BOOL: 'BOOL',
+  RANGE: 'RANGE',
+  ENUM: 'ENUM',
 };
-export const GRID_COLUMN_CLASS_NAMES = {
-  '': {
+export const GRID_ROW_CLASS_NAMES = [
+  {
+    baseClassName: 'collapse',
+    basePropName: 'Collapse',
+    type: CLASS_NAME_TYPES.BOOL,
+    largeOnly: false,
+  },
+  {
+    baseClassName: 'uncollapse',
+    basePropName: 'Uncollapse',
+    type: CLASS_NAME_TYPES.BOOL,
+    largeOnly: false,
+  },
+  {
+    baseClassName: 'up',
+    basePropName: 'Up',
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 1,
+    max: 8,
+    largeOnly: false,
+  },
+];
+export const GRID_COLUMN_CLASS_NAMES = [
+  {
+    baseClassName: '',
     basePropName: '',
-    range: true,
-    rangeMin: 1,
-    rangeMax: 12,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 1,
+    max: 12,
+    largeOnly: false,
   },
-  offset: {
+  {
+    baseClassName: 'offset',
     basePropName: 'Offset',
-    range: true,
-    rangeMin: 0,
-    rangeMax: 11,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 0,
+    max: 11,
+    largeOnly: false,
   },
-  centered: {
+  {
+    baseClassName: 'centered',
     basePropName: 'Centered',
-    range: false,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.BOOL,
+    largeOnly: false,
   },
-  uncentered: {
+  {
+    baseClassName: 'uncentered',
     basePropName: 'Uncentered',
-    range: false,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.BOOL,
+    largeOnly: false,
   },
-  push: {
+  {
+    baseClassName: 'push',
     basePropName: 'Push',
-    range: true,
-    rangeMin: 1,
-    rangeMax: 11,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 1,
+    max: 11,
+    largeOnly: false,
   },
-  pull: {
+  {
+    baseClassName: 'pull',
     basePropName: 'Pull',
-    range: true,
-    rangeMin: 1,
-    rangeMax: 11,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 1,
+    max: 11,
+    largeOnly: false,
   },
-};
+];
 
-export const FLEX_CHILD_CLASS_NAMES = {
-  order: {
+export const FLEX_PARENT_CLASS_NAMES = [
+  {
+    baseClassName: 'align',
+    basePropName: 'HorizontalAlignment',
+    type: CLASS_NAME_TYPES.ENUM,
+    values: FLEX_HORIZONTAL_ALIGNMENTS,
+    largeOnly: true,
+  },
+  {
+    baseClassName: 'align',
+    basePropName: 'VerticalAlignment',
+    type: CLASS_NAME_TYPES.ENUM,
+    values: FLEX_VERTICAL_ALIGNMENTS,
+    largeOnly: true,
+  },
+];
+export const FLEX_CHILD_CLASS_NAMES = [
+  {
+    baseClassName: 'align-self',
+    basePropName: 'VerticalAlignment',
+    type: CLASS_NAME_TYPES.ENUM,
+    values: FLEX_VERTICAL_ALIGNMENTS,
+    largeOnly: true,
+  },
+  {
+    baseClassName: 'order',
     basePropName: 'Order',
-    range: true,
-    rangeMin: 1,
-    rangeMax: 6,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 1,
+    max: 6,
+    largeOnly: false,
   },
-};
-export const FLEX_GRID_ROW_CLASS_NAMES = {
-  unstack: {
+];
+export const FLEX_GRID_ROW_CLASS_NAMES = [
+  {
+    baseClassName: 'unstack',
     basePropName: 'Unstack',
-    range: false,
-    skipSmall: true,
+    type: CLASS_NAME_TYPES.BOOL,
+    largeOnly: true,
   },
-  collapse: {
+  {
+    baseClassName: 'collapse',
     basePropName: 'Collapse',
-    range: false,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.BOOL,
+    largeOnly: false,
   },
-  uncollapse: {
+  {
+    baseClassName: 'uncollapse',
     basePropName: 'Uncollapse',
-    range: false,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.BOOL,
+    largeOnly: false,
   },
-  up: {
+  {
+    baseClassName: 'up',
     basePropName: 'Up',
-    range: true,
-    rangeMin: 1,
-    rangeMax: 8,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 1,
+    max: 8,
+    largeOnly: false,
   },
-};
-export const FLEX_GRID_COLUMN_CLASS_NAMES = {
-  '': {
+];
+export const FLEX_GRID_COLUMN_CLASS_NAMES = [
+  {
+    baseClassName: '',
     basePropName: '',
-    range: true,
-    rangeMin: 1,
-    rangeMax: 12,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 1,
+    max: 12,
+    largeOnly: false,
   },
-  expand: {
+  {
+    baseClassName: 'expand',
     basePropName: 'Expand',
-    range: false,
-    skipSmall: true,
+    type: CLASS_NAME_TYPES.BOOL,
+    largeOnly: true,
   },
-  offset: {
+  {
+    baseClassName: 'offset',
     basePropName: 'Offset',
-    range: true,
-    rangeMin: 0,
-    rangeMax: 11,
-    skipSmall: false,
+    type: CLASS_NAME_TYPES.RANGE,
+    min: 0,
+    max: 11,
+    largeOnly: false,
   },
-};
+];

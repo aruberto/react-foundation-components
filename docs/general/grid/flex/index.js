@@ -112,6 +112,17 @@ export default class FlexGridPage extends Component {
           <Column small={4} style={style}>the space around</Column>
         </Row>
         <br/>
+        <Row
+          horizontalAlignment="justify"
+          mediumHorizontalAlignment="center"
+          largeHorizontalAlignment="right"
+        >
+          <Column small={4} style={style}>Aligned to</Column>
+          <Column small={4} style={style}>
+            the edges on small, center on medium, the right on large
+          </Column>
+        </Row>
+        <br/>
         <Row verticalAlignment="middle">
           <Column style={style}>I'm in the middle!</Column>
           <Column style={style}>
