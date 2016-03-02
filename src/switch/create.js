@@ -5,7 +5,6 @@ import isNil from 'lodash/isNil';
 import isBlank from 'underscore.string/isBlank';
 
 import { COMPONENT_SIZES } from '../util/constants';
-import createHigherOrderComponent from '../util/create-higher-order-component';
 import DefaultComponent from '../util/default-component';
 
 export default function create(
@@ -13,37 +12,36 @@ export default function create(
   ShowOnlyForScreenReader = DefaultComponent,
   HideOnlyForScreenReader = DefaultComponent
 ) {
-  const SwitchCheckedLabelBase = createHigherOrderComponent({
-    displayName: 'SwitchCheckedLabelBase',
-    mapPropsToClassNames: () => styles['switch-active'],
-  });
+  function createCheckedLabel(baseClassName) {
+    class SwitchCheckedLabel extends Component {
+      static propTypes = {
+        className: PropTypes.string,
+      };
 
-  class SwitchCheckedLabel extends Component {
-    render() {
-      return (
-        <HideOnlyForScreenReader>
-          <SwitchCheckedLabelBase {...this.props}/>
-        </HideOnlyForScreenReader>
-      );
+      render() {
+        const { className } = this.props;
+        const classNames = cx(className, styles[baseClassName]);
+
+        return (
+          <HideOnlyForScreenReader {...this.props} className={classNames}/>
+        );
+      }
     }
+
+    return SwitchCheckedLabel;
   }
 
-  const SwitchUncheckedLabelBase = createHigherOrderComponent({
-    displayName: 'SwitchUncheckedLabelBase',
-    mapPropsToClassNames: () => styles['switch-inactive'],
-  });
+  const SwitchCheckedLabel = createCheckedLabel('switch-active');
+  SwitchCheckedLabel.displayName = 'SwitchCheckedLabel';
 
-  class SwitchUncheckedLabel extends Component {
+  const SwitchUncheckedLabel = createCheckedLabel('switch-inactive');
+  SwitchUncheckedLabel.displayName = 'SwitchUncheckedLabel';
+
+  class SwitchPadelLabel extends Component {
     render() {
-      return (
-        <HideOnlyForScreenReader>
-          <SwitchUncheckedLabelBase {...this.props}/>
-        </HideOnlyForScreenReader>
-      );
+      return <ShowOnlyForScreenReader {...this.props}/>;
     }
   }
-
-  const SwitchPadelLabel = ShowOnlyForScreenReader;
 
   class Switch extends Component {
     static propTypes = {
