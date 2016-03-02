@@ -1,3 +1,14 @@
+<a name="0.9.1"></a>
+## [0.9.1](https://github.com/aruberto/react-foundation-components/compare/0.9.0...0.9.1) (2016-03-02)
+
+
+#### Miscellaneous
+
+* Added ToggleSwitch to main package entry and \_foundation.scss
+* Removed small-align-* since same as align-*
+* Added responsive alignment props to TextAlignment.
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/aruberto/react-foundation-components/compare/0.8.2...0.9.0) (2016-03-02)
 
