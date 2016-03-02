@@ -1,9 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, isValidElement, cloneElement } from 'react';
 import cx from 'classnames';
-import isBlank from 'underscore.string/isBlank';
 
 import { OVERLAY_POSITIONS, OVERLAY_POSITIONS_INTERNAL } from '../util/constants';
-import createHigherOrderComponent from '../util/create-higher-order-component';
 import OverlayTrigger from '../util/overlay-trigger';
 
 export default function create(styles, Transition) {
@@ -33,25 +31,6 @@ export default function create(styles, Transition) {
     }
   }
 
-  const HasTooltip = createHigherOrderComponent({
-    displayName: 'HasTooltipBase',
-    mapPropsToClassNames: ({ tooltipIndicator }) => ({
-      [styles['has-tip']]: tooltipIndicator,
-    }),
-    mapPropsToProps: ({ tooltipId, ...restProps }) => {
-      const props = {
-        ...restProps,
-        'aria-haspopup': true,
-      };
-
-      if (!isBlank(tooltipId)) {
-        props['aria-describedby'] = tooltipId;
-      }
-
-      return props;
-    },
-  });
-
   class LinkWithTooltip extends Component {
     static propTypes = {
       children: PropTypes.node,
@@ -78,10 +57,29 @@ export default function create(styles, Transition) {
         children,
         tooltipClassName,
         tooltipContent,
+        tooltipIndicator,
         tooltipId,
         tooltipPosition,
         tooltipStyle,
       } = this.props;
+      const childProps = {
+        'aria-haspopup': true,
+        'aria-describedby': tooltipId,
+      };
+      const childClassNames = {
+        [styles['has-tip']]: tooltipIndicator,
+      };
+      let newChild = null;
+
+      if (isValidElement(children)) {
+        newChild = cloneElement(children, {
+          ...childProps,
+          className: cx(children.props.className, childClassNames),
+        });
+      } else {
+        newChild = <span {...childProps} className={cx(childClassNames)}>{children}</span>;
+      }
+
       const tooltip = (
         <Tooltip
           className={tooltipClassName}
@@ -95,11 +93,11 @@ export default function create(styles, Transition) {
 
       return (
         <OverlayTrigger {...this.props} overlay={tooltip} position={tooltipPosition}>
-          <HasTooltip {...this.props}>{children}</HasTooltip>
+          {newChild}
         </OverlayTrigger>
       );
     }
   }
 
-  return { Tooltip, HasTooltip, LinkWithTooltip };
+  return { Tooltip, LinkWithTooltip };
 }

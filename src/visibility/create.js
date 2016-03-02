@@ -1,10 +1,10 @@
 import { PropTypes } from 'react';
 
 import { SCREEN_SIZES, LARGER_SCREEN_SIZES, SCREEN_ORIENTATIONS } from '../util/constants';
-import createHigherOrderComponent from '../util/create-higher-order-component';
+import createWrapperComponent from '../util/create-wrapper-component';
 
 export default function create(styles) {
-  const ShowForScreenSize = createHigherOrderComponent({
+  const ShowForScreenSize = createWrapperComponent({
     displayName: 'ShowForScreenSize',
     propTypes: {
       size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
@@ -14,7 +14,7 @@ export default function create(styles) {
     }),
   });
 
-  const ShowOnlyForScreenSize = createHigherOrderComponent({
+  const ShowOnlyForScreenSize = createWrapperComponent({
     displayName: 'ShowOnlyForScreenSize',
     propTypes: {
       size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
@@ -24,7 +24,7 @@ export default function create(styles) {
     }),
   });
 
-  const HideForScreenSize = createHigherOrderComponent({
+  const HideForScreenSize = createWrapperComponent({
     displayName: 'HideForScreenSize',
     propTypes: {
       size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
@@ -35,7 +35,7 @@ export default function create(styles) {
     }),
   });
 
-  const HideOnlyForScreenSize = createHigherOrderComponent({
+  const HideOnlyForScreenSize = createWrapperComponent({
     displayName: 'HideOnlyForScreenSize',
     propTypes: {
       size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
@@ -45,21 +45,21 @@ export default function create(styles) {
     }),
   });
 
-  const Hide = createHigherOrderComponent({
+  const Hide = createWrapperComponent({
     displayName: 'Hide',
     mapPropsToClassNames: () => ({
       [styles.hide]: true,
     }),
   });
 
-  const Invisible = createHigherOrderComponent({
+  const Invisible = createWrapperComponent({
     displayName: 'Invisible',
     mapPropsToClassNames: () => ({
       [styles.invisible]: true,
     }),
   });
 
-  const ShowForScreenOrientation = createHigherOrderComponent({
+  const ShowForScreenOrientation = createWrapperComponent({
     displayName: 'ShowForScreenOrientation',
     propTypes: {
       orientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
@@ -69,7 +69,7 @@ export default function create(styles) {
     }),
   });
 
-  const HideForScreenOrientation = createHigherOrderComponent({
+  const HideForScreenOrientation = createWrapperComponent({
     displayName: 'HideForScreenOrientation',
     propTypes: {
       orientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
@@ -79,14 +79,14 @@ export default function create(styles) {
     }),
   });
 
-  const ShowOnlyForScreenReader = createHigherOrderComponent({
+  const ShowOnlyForScreenReader = createWrapperComponent({
     displayName: 'ShowOnlyForScreenReader',
     mapPropsToClassNames: () => ({
       [styles['show-for-sr']]: true,
     }),
   });
 
-  const HideOnlyForScreenReader = createHigherOrderComponent({
+  const HideOnlyForScreenReader = createWrapperComponent({
     displayName: 'HideOnlyForScreenReader',
     mapPropsToProps: (props) => ({
       ...props,
@@ -94,7 +94,7 @@ export default function create(styles) {
     }),
   });
 
-  const ShowOnlyOnFocus = createHigherOrderComponent({
+  const ShowOnlyOnFocus = createWrapperComponent({
     displayName: 'ShowOnlyOnFocus',
     mapPropsToClassNames: () => ({
       [styles['show-on-focus']]: true,

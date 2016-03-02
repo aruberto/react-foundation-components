@@ -1,24 +1,23 @@
-import createHigherOrderComponent from '../util/create-higher-order-component';
+import createWrapperComponent from '../util/create-wrapper-component';
 
 export default function create(styles) {
-  const Subheader = createHigherOrderComponent({
+  const Subheader = createWrapperComponent({
     displayName: 'Subheader',
     mapPropsToClassNames: () => styles.subheader,
   });
 
-  const Lead = createHigherOrderComponent({
+  const Lead = createWrapperComponent({
     displayName: 'Lead',
     mapPropsToClassNames: () => styles.lead,
   });
 
-  const UnbulletedList = createHigherOrderComponent({
+  const UnbulletedList = createWrapperComponent({
     displayName: 'UnbulletedList',
     mapPropsToClassNames: () => styles['no-bullet'],
     defaultComponentClass: 'ul',
-    mergeSingleChild: false,
   });
 
-  const Statistic = createHigherOrderComponent({
+  const Statistic = createWrapperComponent({
     displayName: 'Statistic',
     mapPropsToClassNames: () => styles.stat,
   });

@@ -7,7 +7,7 @@ import {
   FLEX_PARENT_CLASS_NAMES,
   FLEX_CHILD_CLASS_NAMES,
 } from '../util/constants';
-import createHigherOrderComponent from '../util/create-higher-order-component';
+import createWrapperComponent from '../util/create-wrapper-component';
 import {
   createScreenSizePropTypes,
   createScreenSizeClassNamesFromProps,
@@ -17,7 +17,7 @@ const parentPropTypes = createScreenSizePropTypes(FLEX_PARENT_CLASS_NAMES);
 const childPropTypes = createScreenSizePropTypes(FLEX_CHILD_CLASS_NAMES);
 
 export default function create(styles) {
-  const Parent = createHigherOrderComponent({
+  const Parent = createWrapperComponent({
     displayName: 'FlexParent',
     propTypes: {
       ...parentPropTypes,
@@ -35,11 +35,11 @@ export default function create(styles) {
 
       return classNames;
     },
+    mapPropsToStyle: () => ({ display: 'flex' }),
     defaultComponentClass: 'div',
-    mergeSingleChild: false,
   });
 
-  const Child = createHigherOrderComponent({
+  const Child = createWrapperComponent({
     displayName: 'FlexChild',
     propTypes: {
       ...childPropTypes,
@@ -55,7 +55,6 @@ export default function create(styles) {
       return classNames;
     },
     defaultComponentClass: 'div',
-    mergeSingleChild: false,
   });
 
   return { Parent, Child };

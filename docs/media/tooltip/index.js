@@ -64,53 +64,42 @@ import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/global
           <code>
 {
 `<LinkWithTooltip tooltipContent="I am a bottom tooltip!">
-  I have a <strong>bottom</strong> tooltip!
+  <span tabIndex="1">I have a <strong>bottom</strong> tooltip!</span>
 </LinkWithTooltip>
 <LinkWithTooltip tooltipContent="I am also a bottom tooltip!" tooltipPosition="bottom">
-  I also have a <strong>bottom</strong> tooltip!
+  <span tabIndex="1">I also have a <strong>bottom</strong> tooltip!</span>
 </LinkWithTooltip>
 <LinkWithTooltip tooltipContent="I am a top tooltip!" tooltipPosition="top">
-  I have a <strong>top</strong> tooltip!
+  <span tabIndex="1">I have a <strong>top</strong> tooltip!</span>
 </LinkWithTooltip>
 <LinkWithTooltip tooltipContent="I am a left tooltip!" tooltipPosition="left">
-  I have a <strong>left</strong> tooltip!
+  <span tabIndex="1">I have a <strong>left</strong> tooltip!</span>
 </LinkWithTooltip>
 <LinkWithTooltip tooltipContent="I am a right tooltip!" tooltipPosition="right">
-  I have a <strong>right</strong> tooltip!
+  <span tabIndex="1">I have a <strong>right</strong> tooltip!</span>
 </LinkWithTooltip>`
 }
           </code>
         </pre>
         <p>
-          <LinkWithTooltip tabIndex="1" tooltipContent="I am a bottom tooltip!">
-            I have a <strong>bottom</strong> tooltip!
+          <LinkWithTooltip tooltipContent="I am a bottom tooltip!">
+            <span tabIndex="1">I have a <strong>bottom</strong> tooltip!</span>
           </LinkWithTooltip>
           &nbsp;&nbsp;&nbsp;
-          <LinkWithTooltip
-            tabIndex="1"
-            tooltipContent="I am also a bottom tooltip!" tooltipPosition="bottom"
-          >
-            I also have a <strong>bottom</strong> tooltip!
+          <LinkWithTooltip tooltipContent="I am also a bottom tooltip!" tooltipPosition="bottom">
+            <span tabIndex="1">I also have a <strong>bottom</strong> tooltip!</span>
           </LinkWithTooltip>
           &nbsp;&nbsp;&nbsp;
-          <LinkWithTooltip tabIndex="1" tooltipContent="I am a top tooltip!" tooltipPosition="top">
-            I have a <strong>top</strong> tooltip!
+          <LinkWithTooltip tooltipContent="I am a top tooltip!" tooltipPosition="top">
+            <span tabIndex="1">I have a <strong>top</strong> tooltip!</span>
           </LinkWithTooltip>
           &nbsp;&nbsp;&nbsp;
-          <LinkWithTooltip
-            tabIndex="1"
-            tooltipContent="I am a left tooltip!"
-            tooltipPosition="left"
-          >
-            I have a <strong>left</strong> tooltip!
+          <LinkWithTooltip tooltipContent="I am a left tooltip!" tooltipPosition="left">
+            <span tabIndex="1">I have a <strong>left</strong> tooltip!</span>
           </LinkWithTooltip>
           &nbsp;&nbsp;&nbsp;
-          <LinkWithTooltip
-            tabIndex="1"
-            tooltipContent="I am a right tooltip!"
-            tooltipPosition="right"
-          >
-            I have a <strong>right</strong> tooltip!
+          <LinkWithTooltip tooltipContent="I am a right tooltip!" tooltipPosition="right">
+            <span tabIndex="1">I have a <strong>right</strong> tooltip!</span>
           </LinkWithTooltip>
         </p>
         <p>
@@ -121,26 +110,26 @@ import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/global
           <code>
 {
 `<LinkWithTooltip tooltipContent="I am a warning label tooltip!">
-  <Label color="warning">Warning With Underline!</Label>
+  <Label color="warning" tabIndex="1">
+    Warning With Underline!
+  </Label>
 </LinkWithTooltip>
 <LinkWithTooltip tooltipContent="I am a warning label tooltip!" tooltipIndicator={false}>
-  <Label color="warning">Warning With No Underline!</Label>
+  <Label color="warning" tabIndex="1">
+    Warning With No Underline!
+  </Label>
 </LinkWithTooltip>`
 }
           </code>
         </pre>
         <p>
-          <LinkWithTooltip tabIndex="1" tooltipContent="I am a warning label tooltip!">
-            <Label color="warning" style={{ marginLeft: '100px' }}>
+          <LinkWithTooltip tooltipContent="I am a warning label tooltip!">
+            <Label color="warning" tabIndex="1" style={{ marginLeft: '100px' }}>
               Warning With Underline!
             </Label>
           </LinkWithTooltip>
-          <LinkWithTooltip
-            tabIndex="1"
-            tooltipContent="I am a warning label tooltip!"
-            tooltipIndicator={false}
-          >
-            <Label color="warning" style={{ marginLeft: '100px' }}>
+          <LinkWithTooltip tooltipContent="I am a warning label tooltip!" tooltipIndicator={false}>
+            <Label color="warning" tabIndex="1" style={{ marginLeft: '100px' }}>
               Warning With No Underline!
             </Label>
           </LinkWithTooltip>
@@ -155,25 +144,23 @@ import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/global
           <code>
 {
 `<LinkWithTooltip
-  tabIndex="1"
-  tooltipContent="I am a long tooltip! My text keeps going on and on and on and on, when I'll
-           finish who knows! I also have an id for accessibility!"
+  tooltipContent="I am a long tooltip! My text keeps going on and on and on and on, when
+                  I'll finish who knows! I also have an id for accessibility!"
   tooltipId="myTooltip"
   tooltipPosition="top"
 >
-  I have an <strong>accessible</strong> tooltip!
+  <span tabIndex="1">I have an <strong>accessible</strong> tooltip!</span>
 </LinkWithTooltip>`
 }
           </code>
         </pre>
         <LinkWithTooltip
-          tabIndex="1"
           tooltipContent="I am a long tooltip! My text keeps going on and on and on and on, when
                           I'll finish who knows! I also have an id for accessibility!"
           tooltipId="myTooltip"
           tooltipPosition="top"
         >
-          I have an <strong>accessible</strong> tooltip!
+          <span tabIndex="1">I have an <strong>accessible</strong> tooltip!</span>
         </LinkWithTooltip>
       </div>
     );

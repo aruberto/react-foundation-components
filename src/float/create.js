@@ -1,10 +1,10 @@
 import { PropTypes } from 'react';
 
 import { FLOAT_POSITIONS } from '../util/constants';
-import createHigherOrderComponent from '../util/create-higher-order-component';
+import createWrapperComponent from '../util/create-wrapper-component';
 
 export default function create(styles) {
-  const Float = createHigherOrderComponent({
+  const Float = createWrapperComponent({
     displayName: 'Float',
     propTypes: {
       position: PropTypes.oneOf(FLOAT_POSITIONS).isRequired,
@@ -12,13 +12,13 @@ export default function create(styles) {
     mapPropsToClassNames: ({ position }) => ({
       [styles[`float-${position}`]]: FLOAT_POSITIONS.includes(position),
     }),
+    defaultComponentClass: 'div',
   });
 
-  const ClearFix = createHigherOrderComponent({
+  const ClearFix = createWrapperComponent({
     displayName: 'ClearFix',
     mapPropsToClassNames: () => styles.clearfix,
     defaultComponentClass: 'div',
-    mergeSingleChild: false,
   });
 
   return { Float, ClearFix };

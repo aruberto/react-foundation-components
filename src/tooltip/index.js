@@ -7,4 +7,4 @@ Tooltip.Has = HasTooltip;
 Tooltip.LinkWith = LinkWithTooltip;
 
 export default Tooltip;
-export { Tooltip, HasTooltip, LinkWithTooltip };
+export { Tooltip, LinkWithTooltip };

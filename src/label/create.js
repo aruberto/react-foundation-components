@@ -1,10 +1,10 @@
 import { PropTypes } from 'react';
 
 import { COMPONENT_COLORS, COMPONENT_ALTERNATIVE_COLORS } from '../util/constants';
-import createHigherOrderComponent from '../util/create-higher-order-component';
+import createWrapperComponent from '../util/create-wrapper-component';
 
 export default function create(styles) {
-  const Label = createHigherOrderComponent({
+  const Label = createWrapperComponent({
     displayName: 'Label',
     propTypes: {
       color: PropTypes.oneOf(COMPONENT_COLORS),
@@ -13,7 +13,6 @@ export default function create(styles) {
       [styles.label]: true,
       [styles[color]]: COMPONENT_ALTERNATIVE_COLORS.includes(color),
     }),
-    mergeSingleChild: false,
   });
 
   return { Label };

@@ -28,12 +28,12 @@ export {
   SwitchPadelLabel,
 } from './switch';
 
-export { Menu, MenuItem, MenuText } from './menu';
+export { Menu, MenuItem } from './menu';
 export { TopBar, TopBarContent, TopBarItem, TopBarTitle } from './top-bar';
 
 export { Accordion, AccordionItem } from './accordion';
 export { Callout } from './callout';
-export { Dropdown, HasDropdown, LinkWithDropdown } from './dropdown';
+export { Dropdown, LinkWithDropdown } from './dropdown';
 export { MediaObject, MediaObjectSection } from './media-object';
 export { MenuIcon } from './menu-icon';
 export { OffCanvas, OffCanvasContent, OffCanvasContainer } from './off-canvas';
@@ -47,7 +47,7 @@ export { FlexVideo } from './flex-video';
 export { Label } from './label';
 export { ProgressBar } from './progress-bar';
 export { Thumbnail } from './thumbnail';
-export { Tooltip, HasTooltip, LinkWithTooltip } from './tooltip';
+export { Tooltip, LinkWithTooltip } from './tooltip';
 
 export { Fade } from './fade';
 export { Collapse } from './collapse';

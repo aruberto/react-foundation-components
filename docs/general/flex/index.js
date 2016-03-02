@@ -2,50 +2,43 @@ import React, { Component } from 'react';
 
 import { FlexParent, FlexChild } from '../../../src/flex';
 
-const parentStyle = {
-  display: '-webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex',
-};
 const style = { minWidth: '250px', borderStyle: 'solid' };
 
 export default class FlexPage extends Component {
   render() {
     return (
       <div>
-        <FlexParent style={parentStyle}>
+        <FlexParent>
           <FlexChild style={style}>Aligned to</FlexChild>
           <FlexChild style={style}>the left</FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent horizontalAlignment="right" style={parentStyle}>
+        <FlexParent horizontalAlignment="right">
           <FlexChild style={style}>Aligned to</FlexChild>
           <FlexChild style={style}>the right</FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent horizontalAlignment="center" style={parentStyle}>
+        <FlexParent horizontalAlignment="center">
           <FlexChild style={style}>Aligned to</FlexChild>
           <FlexChild style={style}>the center</FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent horizontalAlignment="justify" style={parentStyle}>
+        <FlexParent horizontalAlignment="justify">
           <FlexChild style={style}>Aligned to</FlexChild>
           <FlexChild style={style}>the edges</FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent horizontalAlignment="spaced" style={parentStyle}>
+        <FlexParent horizontalAlignment="spaced">
           <FlexChild style={style}>Aligned to</FlexChild>
           <FlexChild style={style}>the space around</FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent
-          smallHorizontalAlignment="center"
-          largeHorizontalAlignment="justify"
-          style={parentStyle}
-        >
+        <FlexParent smallHorizontalAlignment="center" largeHorizontalAlignment="justify">
           <FlexChild style={style}>Aligned to</FlexChild>
           <FlexChild style={style}>the center on small, the edges on large</FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent verticalAlignment="top" style={parentStyle}>
+        <FlexParent verticalAlignment="top">
           <FlexChild style={style}>I'm at the top!</FlexChild>
           <FlexChild style={style}>
             I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet,
@@ -55,7 +48,7 @@ export default class FlexPage extends Component {
           </FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent verticalAlignment="middle" style={parentStyle}>
+        <FlexParent verticalAlignment="middle">
           <FlexChild style={style}>I'm in the middle!</FlexChild>
           <FlexChild style={style}>
             I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet,
@@ -65,7 +58,7 @@ export default class FlexPage extends Component {
           </FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent verticalAlignment="bottom" style={parentStyle}>
+        <FlexParent verticalAlignment="bottom">
           <FlexChild style={style}>I'm at the bottom!</FlexChild>
           <FlexChild style={style}>
             I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet,
@@ -75,7 +68,7 @@ export default class FlexPage extends Component {
           </FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent verticalAlignment="stretch" style={parentStyle}>
+        <FlexParent verticalAlignment="stretch">
           <FlexChild style={style}>These colums have the same height.</FlexChild>
           <FlexChild style={style}>
             That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit
@@ -85,11 +78,7 @@ export default class FlexPage extends Component {
           </FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent
-          smallVerticalAlignment="top"
-          largeVerticalAlignment="bottom"
-          style={parentStyle}
-        >
+        <FlexParent smallVerticalAlignment="top" largeVerticalAlignment="bottom">
           <FlexChild style={style}>I'm at the top on small, at the bottom on large!</FlexChild>
           <FlexChild style={style}>
             I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet,
@@ -99,7 +88,7 @@ export default class FlexPage extends Component {
           </FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent style={parentStyle}>
+        <FlexParent>
           <FlexChild verticalAlignment="bottom" style={style}>Align bottom</FlexChild>
           <FlexChild verticalAlignment="middle" style={style}>Align middle</FlexChild>
           <FlexChild verticalAlignment="top" style={style}>
@@ -109,7 +98,7 @@ export default class FlexPage extends Component {
           </FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent style={parentStyle}>
+        <FlexParent>
           <FlexChild smallVerticalAlignment="bottom" largeVerticalAlignment="middle" style={style}>
             Align bottom on small, middle on large
           </FlexChild>
@@ -123,7 +112,7 @@ export default class FlexPage extends Component {
           </FlexChild>
         </FlexParent>
         <br/>
-        <FlexParent style={parentStyle}>
+        <FlexParent>
           <FlexChild smallOrder={2} mediumOrder={1} style={style}>
             This column will come second on small, and first on medium and larger.
           </FlexChild>

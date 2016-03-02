@@ -1,10 +1,10 @@
 import { PropTypes } from 'react';
 
 import { TEXT_ALIGNMENTS } from '../util/constants';
-import createHigherOrderComponent from '../util/create-higher-order-component';
+import createWrapperComponent from '../util/create-wrapper-component';
 
 export default function create(styles) {
-  const TextAlignment = createHigherOrderComponent({
+  const TextAlignment = createWrapperComponent({
     displayName: 'TextAlignment',
     propTypes: {
       alignment: PropTypes.oneOf(TEXT_ALIGNMENTS).isRequired,

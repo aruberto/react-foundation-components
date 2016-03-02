@@ -9,7 +9,6 @@ import {
   FLEX_HORIZONTAL_ALIGNMENTS,
 } from '../util/constants';
 import DefaultComponent from '../util/default-component';
-import createHigherOrderComponent from '../util/create-higher-order-component';
 
 export default function create(
   styles,
@@ -87,13 +86,6 @@ export default function create(
     }
   }
 
-  const MenuText = createHigherOrderComponent({
-    displayName: 'MenuText',
-    mapPropsToClassNames: () => ({
-      [styles['menu-text']]: true,
-    }),
-  });
-
   class MenuItem extends Component {
     static propTypes = {
       active: PropTypes.bool,
@@ -108,18 +100,13 @@ export default function create(
         className,
         {
           [styles.active]: active,
+          [styles['menu-text']]: text,
         }
       );
 
-      const content = <FlexChild {...this.props} className={classNames} componentClass="li"/>;
-
-      if (text) {
-        return <MenuText>{content}</MenuText>;
-      }
-
-      return content;
+      return <FlexChild {...this.props} className={classNames} componentClass="li"/>;
     }
   }
 
-  return { Menu, MenuItem, MenuText };
+  return { Menu, MenuItem };
 }

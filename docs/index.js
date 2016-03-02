@@ -14,7 +14,7 @@ import {
   TitleBarTitle,
   TitleBarMenuIcon,
 } from '../src/title-bar/flex';
-import { Menu, MenuItem, MenuText } from '../src/menu/flex';
+import { Menu, MenuItem } from '../src/menu/flex';
 import { HideForScreenSize } from '../src/visibility';
 
 import GridPage from './general/grid';
@@ -77,7 +77,7 @@ class HomePage extends Component {
         <OffCanvas position="left" revealForSize="large">
           <Menu vertical>
             <MenuItem>
-              <MenuText>General</MenuText>
+              <MenuItem text>General</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/general/grid">Grid</Link>
@@ -97,7 +97,7 @@ class HomePage extends Component {
               </Menu>
             </MenuItem>
             <MenuItem>
-              <MenuText>Typography</MenuText>
+              <MenuItem text>Typography</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/typography/base">Base Typography</Link>
@@ -111,7 +111,7 @@ class HomePage extends Component {
               </Menu>
             </MenuItem>
             <MenuItem>
-              <MenuText>Controls</MenuText>
+              <MenuItem text>Controls</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/controls/button">Button</Link>
@@ -131,7 +131,7 @@ class HomePage extends Component {
               </Menu>
             </MenuItem>
             <MenuItem>
-              <MenuText>Navigation</MenuText>
+              <MenuItem text>Navigation</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/navigation/menu">Menu</Link>
@@ -142,7 +142,7 @@ class HomePage extends Component {
               </Menu>
             </MenuItem>
             <MenuItem>
-              <MenuText>Containers</MenuText>
+              <MenuItem text>Containers</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/containers/accordion">Accordion</Link>
@@ -171,7 +171,7 @@ class HomePage extends Component {
               </Menu>
             </MenuItem>
             <MenuItem>
-              <MenuText>Media</MenuText>
+              <MenuItem text>Media</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/media/badge">Badge</Link>

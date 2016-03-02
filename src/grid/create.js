@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 
 import { GRID_ROW_CLASS_NAMES, GRID_COLUMN_CLASS_NAMES } from '../util/constants';
-import createHigherOrderComponent from '../util/create-higher-order-component';
+import createWrapperComponent from '../util/create-wrapper-component';
 import {
   createScreenSizePropTypes,
   createScreenSizeClassNamesFromProps,
@@ -15,7 +15,7 @@ rowPropTypes.expanded = PropTypes.bool;
 columnPropTypes.end = PropTypes.bool;
 
 export default function create(styles) {
-  const Row = createHigherOrderComponent({
+  const Row = createWrapperComponent({
     displayName: 'Row',
     propTypes: rowPropTypes,
     mapPropsToClassNames: (props) => {
@@ -30,10 +30,9 @@ export default function create(styles) {
       return classNames;
     },
     defaultComponentClass: 'div',
-    mergeSingleChild: false,
   });
 
-  const Column = createHigherOrderComponent({
+  const Column = createWrapperComponent({
     displayName: 'Column',
     propTypes: columnPropTypes,
     mapPropsToClassNames: (props) => {
@@ -47,7 +46,6 @@ export default function create(styles) {
       return classNames;
     },
     defaultComponentClass: 'div',
-    mergeSingleChild: false,
   });
 
   return { Row, Column };
