@@ -49,5 +49,7 @@ export { ProgressBar } from './progress-bar';
 export { Thumbnail } from './thumbnail';
 export { Tooltip, LinkWithTooltip } from './tooltip';
 
+export { ToggleSwitch, ToggleSwitchItem } from './toggle-switch';
+
 export { Fade } from './fade';
 export { Collapse } from './collapse';
