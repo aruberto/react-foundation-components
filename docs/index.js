@@ -29,7 +29,6 @@ import ButtonPage from './controls/button';
 import ButtonGroupPage from './controls/button-group';
 import CloseButtonPage from './controls/close-button';
 import SwitchPage from './controls/switch';
-import ToggleSwitchPage from './controls/toggle-switch';
 import MenuPage from './navigation/menu';
 import TopBarPage from './navigation/top-bar';
 import AccordionPage from './containers/accordion';
@@ -46,6 +45,7 @@ import LabelPage from './media/label';
 import ProgressBarPage from './media/progress-bar';
 import ThumbnailPage from './media/thumbnail';
 import TooltipPage from './media/tooltip';
+import ToggleSwitchPage from './controls/toggle-switch';
 
 class HomePage extends Component {
   static propTypes = {
@@ -76,8 +76,8 @@ class HomePage extends Component {
       <OffCanvasContainer open={open}>
         <OffCanvas position="left" revealForSize="large">
           <Menu vertical>
+            <MenuItem text>General</MenuItem>
             <MenuItem>
-              <MenuItem text>General</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/general/grid">Grid</Link>
@@ -96,8 +96,8 @@ class HomePage extends Component {
                 </MenuItem>
               </Menu>
             </MenuItem>
+            <MenuItem text>Typography</MenuItem>
             <MenuItem>
-              <MenuItem text>Typography</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/typography/base">Base Typography</Link>
@@ -110,8 +110,8 @@ class HomePage extends Component {
                 </MenuItem>
               </Menu>
             </MenuItem>
+            <MenuItem text>Controls</MenuItem>
             <MenuItem>
-              <MenuItem text>Controls</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/controls/button">Button</Link>
@@ -125,13 +125,10 @@ class HomePage extends Component {
                 <MenuItem>
                   <Link to="/controls/switch">Switch</Link>
                 </MenuItem>
-                <MenuItem>
-                  <Link to="/controls/toggle-switch">Toggle Switch</Link>
-                </MenuItem>
               </Menu>
             </MenuItem>
+            <MenuItem text>Navigation</MenuItem>
             <MenuItem>
-              <MenuItem text>Navigation</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/navigation/menu">Menu</Link>
@@ -141,8 +138,8 @@ class HomePage extends Component {
                 </MenuItem>
               </Menu>
             </MenuItem>
+            <MenuItem text>Containers</MenuItem>
             <MenuItem>
-              <MenuItem text>Containers</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/containers/accordion">Accordion</Link>
@@ -170,8 +167,8 @@ class HomePage extends Component {
                 </MenuItem>
               </Menu>
             </MenuItem>
+            <MenuItem text>Media</MenuItem>
             <MenuItem>
-              <MenuItem text>Media</MenuItem>
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/media/badge">Badge</Link>
@@ -191,11 +188,13 @@ class HomePage extends Component {
                 <MenuItem>
                   <Link to="/media/tooltip">Tooltip</Link>
                 </MenuItem>
+              </Menu>
+            </MenuItem>
+            <MenuItem text>Custom</MenuItem>
+            <MenuItem>
+              <Menu nested vertical>
                 <MenuItem>
-                  <Link to="/containers/table">Table</Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link to="/containers/tabs">Tabs</Link>
+                  <Link to="/custom/toggle-switch">Toggle Switch</Link>
                 </MenuItem>
               </Menu>
             </MenuItem>
@@ -235,7 +234,6 @@ class Demo extends Component {
           <Route component={ButtonGroupPage} path="/controls/button-group"/>
           <Route component={CloseButtonPage} path="/controls/close-button"/>
           <Route component={SwitchPage} path="/controls/switch"/>
-          <Route component={ToggleSwitchPage} path="/controls/toggle-switch"/>
           <Route component={MenuPage} path="/navigation/menu"/>
           <Route component={TopBarPage} path="/navigation/top-bar"/>
           <Route component={AccordionPage} path="/containers/accordion"/>
@@ -252,6 +250,7 @@ class Demo extends Component {
           <Route component={ProgressBarPage} path="/media/progress-bar"/>
           <Route component={ThumbnailPage} path="/media/thumbnail"/>
           <Route component={TooltipPage} path="/media/tooltip"/>
+          <Route component={ToggleSwitchPage} path="/custom/toggle-switch"/>
         </Route>
       </Router>
     );
