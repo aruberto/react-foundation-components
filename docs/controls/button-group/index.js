@@ -19,7 +19,7 @@ export default class ButtonGroupPage extends Component {
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { Button } from '../../../src/button';
+import { Button } from 'react-foundation-components/lib/button';
 import { ButtonGroup } from 'react-foundation-components/lib/button-group';
 
 or

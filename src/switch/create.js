@@ -140,17 +140,8 @@ export default function create(
     static propTypes = {
       activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       children: PropTypes.node,
-      onChange: PropTypes.func,
       onSelect: PropTypes.func,
       size: PropTypes.oneOf(COMPONENT_SIZES),
-    };
-
-    handleChange = (...args) => {
-      const { onChange } = this.props;
-
-      if (onChange) {
-        onChange(...args);
-      }
     };
 
     handleToggle = (...args) => {
@@ -167,7 +158,6 @@ export default function create(
         if (isValidElement(child) && !isBlank(child.props.eventKey)) {
           return cloneElement(child, {
             checked: child.props.eventKey === activeKey,
-            onChange: this.handleChange,
             onToggle: this.handleToggle,
             size,
           });

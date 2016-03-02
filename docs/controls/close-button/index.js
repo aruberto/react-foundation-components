@@ -17,7 +17,7 @@ export default class CloseButtonPage extends Component {
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { CloseButton } from '../../../src/close-button';
+import { CloseButton } from 'react-foundation-components/lib/close-button';
 
 or
 

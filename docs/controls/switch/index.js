@@ -47,7 +47,7 @@ import {
   SwitchCheckedLabel,
   SwitchUncheckedLabel,
   SwitchPadelLabel
-} from '../../../src/switch';
+} from 'react-foundation-components/lib/switch';
 
 or
 
@@ -154,7 +154,7 @@ render() {
         <h2>Radio Switch</h2>
         <p>
           RadioSwitch component is a container for Switches. Switches contained in a RadioSwitch
-          must set a unique <code>eventKey</code> prop so that RadioSwitch can tell what switch
+          must set a unique <code>eventKey</code> prop so that RadioSwitch knows what switch
           is currently selected.
         </p>
         <p>

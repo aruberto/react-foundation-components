@@ -29,6 +29,7 @@ import ButtonPage from './controls/button';
 import ButtonGroupPage from './controls/button-group';
 import CloseButtonPage from './controls/close-button';
 import SwitchPage from './controls/switch';
+import ToggleSwitchPage from './controls/toggle-switch';
 import MenuPage from './navigation/menu';
 import TopBarPage from './navigation/top-bar';
 import AccordionPage from './containers/accordion';
@@ -124,6 +125,9 @@ class HomePage extends Component {
                 <MenuItem>
                   <Link to="/controls/switch">Switch</Link>
                 </MenuItem>
+                <MenuItem>
+                  <Link to="/controls/toggle-switch">Toggle Switch</Link>
+                </MenuItem>
               </Menu>
             </MenuItem>
             <MenuItem>
@@ -195,7 +199,7 @@ class HomePage extends Component {
                 </MenuItem>
               </Menu>
             </MenuItem>
-          </Menu>  
+          </Menu>
         </OffCanvas>
         <OffCanvasContent onContentBlockerClick={this.handleClose}>
           <TitleBar>
@@ -231,6 +235,7 @@ class Demo extends Component {
           <Route component={ButtonGroupPage} path="/controls/button-group"/>
           <Route component={CloseButtonPage} path="/controls/close-button"/>
           <Route component={SwitchPage} path="/controls/switch"/>
+          <Route component={ToggleSwitchPage} path="/controls/toggle-switch"/>
           <Route component={MenuPage} path="/navigation/menu"/>
           <Route component={TopBarPage} path="/navigation/top-bar"/>
           <Route component={AccordionPage} path="/containers/accordion"/>

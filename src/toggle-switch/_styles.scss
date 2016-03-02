@@ -1,0 +1,35 @@
+@import '../common';
+
+.switch-toggle {
+  @include clearfix;
+
+  padding: 0;
+  position: relative;
+
+  .switch-toggle-input {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+  }
+
+  .switch-toggle-label {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0 .5rem;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .switch-toggle-paddle {
+    height: 100%;
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    transition: left .2s ease-out;
+    width: 0;
+    z-index: 1;
+  }
+}
