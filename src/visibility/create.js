@@ -7,41 +7,41 @@ export default function create(styles) {
   const ShowForScreenSize = createWrapperComponent({
     displayName: 'ShowForScreenSize',
     propTypes: {
-      size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
+      screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
     },
-    mapPropsToClassNames: ({ size }) => ({
-      [styles[`show-for-${size}`]]: LARGER_SCREEN_SIZES.includes(size),
+    mapPropsToClassNames: ({ screenSize }) => ({
+      [styles[`show-for-${screenSize}`]]: LARGER_SCREEN_SIZES.includes(screenSize),
     }),
   });
 
   const ShowOnlyForScreenSize = createWrapperComponent({
     displayName: 'ShowOnlyForScreenSize',
     propTypes: {
-      size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
+      screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
     },
-    mapPropsToClassNames: ({ size }) => ({
-      [styles[`show-for-${size}-only`]]: SCREEN_SIZES.includes(size),
+    mapPropsToClassNames: ({ screenSize }) => ({
+      [styles[`show-for-${screenSize}-only`]]: SCREEN_SIZES.includes(screenSize),
     }),
   });
 
   const HideForScreenSize = createWrapperComponent({
     displayName: 'HideForScreenSize',
     propTypes: {
-      size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
+      screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
     },
-    mapPropsToClassNames: ({ size }) => ({
-      [styles.hide]: !LARGER_SCREEN_SIZES.includes(size) && SCREEN_SIZES.includes(size),
-      [styles[`hide-for-${size}`]]: LARGER_SCREEN_SIZES.includes(size),
+    mapPropsToClassNames: ({ screenSize }) => ({
+      [styles.hide]: !LARGER_SCREEN_SIZES.includes(screenSize) && SCREEN_SIZES.includes(screenSize),
+      [styles[`hide-for-${screenSize}`]]: LARGER_SCREEN_SIZES.includes(screenSize),
     }),
   });
 
   const HideOnlyForScreenSize = createWrapperComponent({
     displayName: 'HideOnlyForScreenSize',
     propTypes: {
-      size: PropTypes.oneOf(SCREEN_SIZES).isRequired,
+      screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
     },
-    mapPropsToClassNames: ({ size }) => ({
-      [styles[`hide-for-${size}-only`]]: SCREEN_SIZES.includes(size),
+    mapPropsToClassNames: ({ screenSize }) => ({
+      [styles[`hide-for-${screenSize}-only`]]: SCREEN_SIZES.includes(screenSize),
     }),
   });
 
@@ -62,20 +62,20 @@ export default function create(styles) {
   const ShowForScreenOrientation = createWrapperComponent({
     displayName: 'ShowForScreenOrientation',
     propTypes: {
-      orientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
+      screenOrientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
     },
-    mapPropsToClassNames: ({ orientation }) => ({
-      [styles[`show-for-${orientation}`]]: SCREEN_ORIENTATIONS.includes(orientation),
+    mapPropsToClassNames: ({ screenOrientation }) => ({
+      [styles[`show-for-${screenOrientation}`]]: SCREEN_ORIENTATIONS.includes(screenOrientation),
     }),
   });
 
   const HideForScreenOrientation = createWrapperComponent({
     displayName: 'HideForScreenOrientation',
     propTypes: {
-      orientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
+      screenOrientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
     },
-    mapPropsToClassNames: ({ orientation }) => ({
-      [styles[`hide-for-${orientation}`]]: SCREEN_ORIENTATIONS.includes(orientation),
+    mapPropsToClassNames: ({ screenOrientation }) => ({
+      [styles[`hide-for-${screenOrientation}`]]: SCREEN_ORIENTATIONS.includes(screenOrientation),
     }),
   });
 

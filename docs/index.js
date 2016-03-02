@@ -74,7 +74,7 @@ class HomePage extends Component {
 
     return (
       <OffCanvasContainer open={open}>
-        <OffCanvas position="left" revealForSize="large">
+        <OffCanvas position="left" revealFor="large">
           <Menu vertical>
             <MenuItem text>General</MenuItem>
             <MenuItem>
@@ -203,9 +203,12 @@ class HomePage extends Component {
         <OffCanvasContent onContentBlockerClick={this.handleClose}>
           <TitleBar>
             <TitleBarItem position="left">
-              <HideForScreenSize size="large">
-                <TitleBarMenuIcon onClick={this.handleToggle} open={leftNavOpen}/>
-              </HideForScreenSize>
+              <HideForScreenSize
+                screenSize="large"
+                componentClass={TitleBarMenuIcon}
+                onClick={this.handleToggle}
+                open={open === 'left'}
+              />
               <TitleBarTitle>React Foundation Components</TitleBarTitle>
             </TitleBarItem>
           </TitleBar>

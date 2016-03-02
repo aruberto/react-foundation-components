@@ -8,17 +8,17 @@ export default function create(styles) {
     static propTypes = {
       className: PropTypes.string,
       position: PropTypes.oneOf(OFF_CANVAS_POSITIONS),
-      revealForSize: PropTypes.oneOf(LARGER_SCREEN_SIZES),
+      revealFor: PropTypes.oneOf(LARGER_SCREEN_SIZES),
     };
 
     render() {
-      const { className, position, revealForSize } = this.props;
+      const { className, position, revealFor } = this.props;
       const classNames = cx(
         className,
         styles['off-canvas'],
         {
           [styles[`position-${position}`]]: OFF_CANVAS_POSITIONS.includes(position),
-          [styles[`reveal-for-${revealForSize}`]]: LARGER_SCREEN_SIZES.includes(revealForSize),
+          [styles[`reveal-for-${revealFor}`]]: LARGER_SCREEN_SIZES.includes(revealFor),
         }
       );
 

@@ -46,38 +46,50 @@ export default class OffCanvasPage extends Component {
 
     return (
       <OffCanvasContainer open={open}>
-        <OffCanvas position="left" revealForSize="large" style={{ position: 'absolute' }}>
+        <OffCanvas position="left" revealFor="large" style={{ position: 'absolute' }}>
           Left Sidebar
         </OffCanvas>
-        <OffCanvas position="right" revealForSize="xxlarge" style={{ position: 'absolute' }}>
+        <OffCanvas position="right" revealFor="xxlarge" style={{ position: 'absolute' }}>
           Right Sidebar
         </OffCanvas>
         <OffCanvasContent onContentBlockerClick={this.handleClose}>
           <TitleBar>
             <TitleBarItem position="left">
-              <HideForScreenSize size="large">
-                <TitleBarMenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
-              </HideForScreenSize>
+              <HideForScreenSize
+                screenSize="large"
+                componentClass={TitleBarMenuIcon}
+                onClick={this.handleToggleLeft}
+                open={open === 'left'}
+              />
               <TitleBarTitle>Foundation</TitleBarTitle>
             </TitleBarItem>
             <TitleBarItem position="right">
-              <HideForScreenSize size="xxlarge">
-                <TitleBarMenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
-              </HideForScreenSize>
+              <HideForScreenSize
+                screenSize="xxlarge"
+                componentClass={TitleBarMenuIcon}
+                onClick={this.handleToggleRight}
+                open={open === 'right'}
+              />
             </TitleBarItem>
           </TitleBar>
           <br/>
           <FlexTitleBar>
             <FlexTitleBarItem position="left">
-              <HideForScreenSize size="large">
-                <FlexTitleBarMenuIcon onClick={this.handleToggleLeft} open={open === 'left'}/>
-              </HideForScreenSize>
+              <HideForScreenSize
+                screenSize="large"
+                componentClass={FlexTitleBarMenuIcon}
+                onClick={this.handleToggleLeft}
+                open={open === 'left'}
+              />
               <FlexTitleBarTitle>Foundation</FlexTitleBarTitle>
             </FlexTitleBarItem>
             <FlexTitleBarItem position="right">
-              <HideForScreenSize size="xxlarge">
-                <FlexTitleBarMenuIcon onClick={this.handleToggleRight} open={open === 'right'}/>
-              </HideForScreenSize>
+              <HideForScreenSize
+                screenSize="xxlarge"
+                componentClass={FlexTitleBarMenuIcon}
+                onClick={this.handleToggleRight}
+                open={open === 'right'}
+              />
             </FlexTitleBarItem>
           </FlexTitleBar>
           <br/>

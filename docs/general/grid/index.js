@@ -265,24 +265,24 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
           largeCollapse="collapse"
         >
           <Column small={6} style={styleEven}>
-            <ShowOnlyForScreenSize size="small">
+            <ShowOnlyForScreenSize screenSize="small">
               On a small screen, I have no gutters!
             </ShowOnlyForScreenSize>
-            <ShowOnlyForScreenSize size="medium">
+            <ShowOnlyForScreenSize screenSize="medium">
               On a medium screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowForScreenSize size="large">
+            <ShowForScreenSize screenSize="large">
               On a large screen, I have no gutters!
             </ShowForScreenSize>
           </Column>
           <Column small={6} style={styleOdd}>
-            <ShowOnlyForScreenSize size="small">
+            <ShowOnlyForScreenSize screenSize="small">
               On a small screen, I have no gutters!
             </ShowOnlyForScreenSize>
-            <ShowOnlyForScreenSize size="medium">
+            <ShowOnlyForScreenSize screenSize="medium">
               On a medium screen, I have gutters!
             </ShowOnlyForScreenSize>
-            <ShowForScreenSize size="large">
+            <ShowForScreenSize screenSize="large">
               On a large screen, I have no gutters!
             </ShowForScreenSize>
           </Column>

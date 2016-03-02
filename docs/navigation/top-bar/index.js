@@ -76,14 +76,14 @@ export default class TopBarPage extends Component {
         <TopBar stack="medium">
           <TopBarTitle>
             <Menu>
-              <HideForScreenSize size="large" componentClass={MenuItem}>
+              <HideForScreenSize screenSize="large" componentClass={MenuItem}>
                 <MenuIcon dark onClick={this.handleToggle}/>
               </HideForScreenSize>
               <MenuItem text>Site Title</MenuItem>
             </Menu>
           </TopBarTitle>
           <ShowForScreenSize
-            size={this.state.show ? 'small' : 'large'}
+            screenSize={this.state.show ? 'small' : 'large'}
             componentClass={TopBarContent}
           >
             <TopBarItem position="left">
@@ -151,14 +151,14 @@ export default class TopBarPage extends Component {
         <FlexTopBar stack="medium">
           <FlexTopBarTitle>
             <FlexMenu>
-              <HideForScreenSize size="large" componentClass={FlexMenuItem}>
+              <HideForScreenSize screenSize="large" componentClass={FlexMenuItem}>
                 <MenuIcon dark onClick={this.handleToggle}/>
               </HideForScreenSize>
               <FlexMenuItem text>Site Title</FlexMenuItem>
             </FlexMenu>
           </FlexTopBarTitle>
           <ShowForScreenSize
-            size={this.state.show ? 'small' : 'large'}
+            screenSize={this.state.show ? 'small' : 'large'}
             componentClass={FlexTopBarContent}
           >
             <FlexTopBarItem position="left">
