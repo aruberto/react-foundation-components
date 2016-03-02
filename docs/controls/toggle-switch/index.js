@@ -20,7 +20,7 @@ export default class ToggleSwitchPage extends Component {
       <div>
         <h1>Toggle Switch</h1>
         <p>
-          Now you can tell your users to flip the switch or switch off.
+          Toggle between a set of options.
         </p>
         <h2>Basics</h2>
         <p>Importing the ToggleSwitch components:</p>
@@ -41,9 +41,11 @@ import {
           </code>
         </pre>
         <p>
-          ToggleSwitch component is a component to select from a list of items. The ToggleSwitchItem
-          component contained in a ToggleSwitch must set a unique <code>eventKey</code> prop so that
-          ToggleSwitch knows what ToggleSwitchItem is currently selected.
+          ToggleSwitch component is a component to toggle between a list of items. It is based
+          on <a href="https://ghinda.net/css-toggle-switch/foundation.html">css-toggle-switch</a>.
+          The ToggleSwitchItem components contained in a ToggleSwitch must set a
+          unique <code>eventKey</code> prop so that ToggleSwitch knows what ToggleSwitchItem is
+          currently selected.
         </p>
         <p>
           By default, ToggleSwitch is an uncontrolled input initially set to have nothing selected.
