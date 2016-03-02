@@ -45,7 +45,7 @@ import LabelPage from './media/label';
 import ProgressBarPage from './media/progress-bar';
 import ThumbnailPage from './media/thumbnail';
 import TooltipPage from './media/tooltip';
-import ToggleSwitchPage from './controls/toggle-switch';
+import ToggleSwitchPage from './custom/toggle-switch';
 
 class HomePage extends Component {
   static propTypes = {

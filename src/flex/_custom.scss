@@ -9,19 +9,21 @@
 
 // Breakpoint based alignment
 @include -zf-each-breakpoint {
-  @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
-    .#{$-zf-size}-align-#{$hdir} {
-      @include flex-align($x: $hdir);
-    }
-  }
-
-  @each $vdir, $prop in $-zf-flex-align {
-    .#{$-zf-size}-align-#{$vdir} {
-      @include flex-align($y: $vdir);
+  @if $-zf-size != small {
+    @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
+      .#{$-zf-size}-align-#{$hdir} {
+        @include flex-align($x: $hdir);
+      }
     }
 
-    .#{$-zf-size}-align-self-#{$vdir} {
-      @include flex-align-self($y: $vdir);
+    @each $vdir, $prop in $-zf-flex-align {
+      .#{$-zf-size}-align-#{$vdir} {
+        @include flex-align($y: $vdir);
+      }
+
+      .#{$-zf-size}-align-self-#{$vdir} {
+        @include flex-align-self($y: $vdir);
+      }
     }
   }
 }

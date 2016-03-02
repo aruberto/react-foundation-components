@@ -7,44 +7,34 @@ import {
   createScreenSizeClassNamesFromProps,
 } from '../util/screen-size';
 
-const rowPropTypes = createScreenSizePropTypes(GRID_ROW_CLASS_NAMES);
-const columnPropTypes = createScreenSizePropTypes(GRID_COLUMN_CLASS_NAMES);
-
-rowPropTypes.collapse = PropTypes.bool;
-rowPropTypes.expanded = PropTypes.bool;
-columnPropTypes.end = PropTypes.bool;
-
 export default function create(styles) {
   const Row = createWrapperComponent({
     displayName: 'Row',
-    propTypes: rowPropTypes,
-    mapPropsToClassNames: (props) => {
-      const { collapse, expanded } = props;
-      const classNames =
-        createScreenSizeClassNamesFromProps(GRID_ROW_CLASS_NAMES, props, styles);
-
-      classNames[styles.row] = true;
-      classNames[styles.collapse] = collapse;
-      classNames[styles.expanded] = expanded;
-
-      return classNames;
+    propTypes: {
+      ...createScreenSizePropTypes(GRID_ROW_CLASS_NAMES),
+      collapse: PropTypes.bool,
+      expanded: PropTypes.bool,
     },
+    mapPropsToClassNames: ({ collapse, expanded, ...props }) => ({
+      ...createScreenSizeClassNamesFromProps(GRID_ROW_CLASS_NAMES, props, styles),
+      [styles.row]: true,
+      [styles.collapse]: collapse,
+      [styles.expanded]: expanded,
+    }),
     defaultComponentClass: 'div',
   });
 
   const Column = createWrapperComponent({
     displayName: 'Column',
-    propTypes: columnPropTypes,
-    mapPropsToClassNames: (props) => {
-      const { end } = props;
-      const classNames =
-        createScreenSizeClassNamesFromProps(GRID_COLUMN_CLASS_NAMES, props, styles);
-
-      classNames[styles.column] = true;
-      classNames[styles.end] = end;
-
-      return classNames;
+    propTypes: {
+      ...createScreenSizePropTypes(GRID_COLUMN_CLASS_NAMES),
+      end: PropTypes.bool,
     },
+    mapPropsToClassNames: ({ end, ...props }) => ({
+      ...createScreenSizeClassNamesFromProps(GRID_COLUMN_CLASS_NAMES, props, styles),
+      [styles.column]: true,
+      [styles.end]: end,
+    }),
     defaultComponentClass: 'div',
   });
 

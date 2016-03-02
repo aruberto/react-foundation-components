@@ -13,24 +13,19 @@ import {
 } from '../../util/screen-size';
 import DefaultComponent from '../../util/default-component';
 
-const rowPropTypes = createScreenSizePropTypes(FLEX_GRID_ROW_CLASS_NAMES);
-rowPropTypes.className = PropTypes.string;
-rowPropTypes.collapse = PropTypes.bool;
-rowPropTypes.expanded = PropTypes.bool;
-rowPropTypes.unstack = PropTypes.oneOf(SCREEN_SIZES);
-
-const columnPropTypes = createScreenSizePropTypes(FLEX_GRID_COLUMN_CLASS_NAMES);
-columnPropTypes.className = PropTypes.string;
-columnPropTypes.shrink = PropTypes.bool;
-columnPropTypes.expand = PropTypes.oneOf(SCREEN_SIZES);
-
 export default function create(
   styles,
   FlexParent = DefaultComponent,
   FlexChild = DefaultComponent,
 ) {
   class Row extends Component {
-    static propTypes = rowPropTypes;
+    static propTypes = {
+      ...createScreenSizePropTypes(FLEX_GRID_ROW_CLASS_NAMES),
+      className: PropTypes.string,
+      collapse: PropTypes.bool,
+      expanded: PropTypes.bool,
+      unstack: PropTypes.oneOf(SCREEN_SIZES),
+    };
 
     render() {
       const { className, collapse, expanded, unstack } = this.props;
@@ -51,7 +46,12 @@ export default function create(
   }
 
   class Column extends Component {
-    static propTypes = columnPropTypes;
+    static propTypes = {
+      ...createScreenSizePropTypes(FLEX_GRID_COLUMN_CLASS_NAMES),
+      className: PropTypes.string,
+      shrink: PropTypes.bool,
+      expand: PropTypes.oneOf(SCREEN_SIZES),
+    };
 
     render() {
       const { className, expand, shrink } = this.props;

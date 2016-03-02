@@ -112,10 +112,7 @@ export default class FlexGridPage extends Component {
           <Column small={4} style={style}>the space around</Column>
         </Row>
         <br/>
-        <Row
-          smallHorizontalAlignment="center"
-          largeHorizontalAlignment="justify"
-        >
+        <Row horizontalAlignment="center" largeHorizontalAlignment="justify">
           <Column small={4} style={style}>Aligned to</Column>
           <Column small={4} style={style}>the center on small, the edges on large</Column>
         </Row>
@@ -139,7 +136,7 @@ export default class FlexGridPage extends Component {
           </Column>
         </Row>
         <br/>
-        <Row smallVerticalAlignment="top" largeVerticalAlignment="bottom">
+        <Row verticalAlignment="top" largeVerticalAlignment="bottom">
           <Column style={style}>I'm at the top on small, at the bottom on large!</Column>
           <Column style={style}>
             I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet,
@@ -160,10 +157,10 @@ export default class FlexGridPage extends Component {
         </Row>
         <br/>
         <Row>
-          <Column style={style} smallVerticalAlignment="bottom" largeVerticalAlignment="middle">
+          <Column style={style} verticalAlignment="bottom" largeVerticalAlignment="middle">
             Align bottom on small, middle on large
           </Column>
-          <Column style={style} smallVerticalAlignment="middle" largeVerticalAlignment="bottom">
+          <Column style={style} verticalAlignment="middle" largeVerticalAlignment="bottom">
             Align middle on small, bottom on large
           </Column>
           <Column style={style} verticalAlignment="top">

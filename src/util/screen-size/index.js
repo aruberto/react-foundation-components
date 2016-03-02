@@ -1,11 +1,25 @@
 import { PropTypes } from 'react';
-import { CLASS_NAME_TYPES, SCREEN_SIZES } from '../constants';
+import decapitalize from 'underscore.string/decapitalize';
+
+import { CLASS_NAME_TYPES, SCREEN_SIZES, SCREEN_SIZE_SMALL } from '../constants';
 
 function processScreenSizeClassNames(classNameMapping = [], callback) {
-  classNameMapping.forEach(({ baseClassName, basePropName, type, min, max, values }) =>
-    SCREEN_SIZES.forEach((size) =>
-      callback({ baseClassName, basePropName, type, min, max, values, size })
-    )
+  classNameMapping.forEach(
+    ({ baseClassName, basePropName, type, min, max, values, flattenSmall }) =>
+      SCREEN_SIZES.forEach((size) => {
+        let className = '';
+        let propName = '';
+
+        if (flattenSmall && size === SCREEN_SIZE_SMALL) {
+          className = baseClassName;
+          propName = decapitalize(basePropName);
+        } else {
+          className = size + (baseClassName ? `-${baseClassName}` : '');
+          propName = `${size}${basePropName}`;
+        }
+
+        callback({ className, propName, type, min, max, values });
+      })
   );
 }
 
@@ -14,9 +28,7 @@ export function createScreenSizeClassNames(classNameMapping) {
 
   processScreenSizeClassNames(
     classNameMapping,
-    ({ baseClassName, type, min, max, values, size }) => {
-      const className = size + (baseClassName ? `-${baseClassName}` : '');
-
+    ({ className, type, min, max, values }) => {
       if (type === CLASS_NAME_TYPES.RANGE) {
         for (let i = min; i <= max; i++) {
           classNames.push(`${className}-${i}`);
@@ -37,7 +49,7 @@ export function createScreenSizePropTypes(classNameMapping) {
 
   processScreenSizeClassNames(
     classNameMapping,
-    ({ basePropName, type, values, size }) => {
+    ({ propName, type, values }) => {
       let propType = PropTypes.bool;
       if (type === CLASS_NAME_TYPES.RANGE) {
         propType = PropTypes.number;
@@ -45,7 +57,7 @@ export function createScreenSizePropTypes(classNameMapping) {
         propType = PropTypes.oneOf(values);
       }
 
-      propTypes[`${size}${basePropName}`] = propType;
+      propTypes[propName] = propType;
     }
   );
 
@@ -57,10 +69,8 @@ export function createScreenSizeClassNamesFromProps(classNameMapping, props = {}
 
   processScreenSizeClassNames(
     classNameMapping,
-    ({ baseClassName, basePropName, type, min, max, values, size }) => {
-      const propName = `${size}${basePropName}`;
+    ({ className, propName, type, min, max, values }) => {
       const propValue = props[propName];
-      const className = size + (baseClassName ? `-${baseClassName}` : '');
 
       if (type === CLASS_NAME_TYPES.RANGE) {
         if (styles[`${className}-${propValue}`]) {

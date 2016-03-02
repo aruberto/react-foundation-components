@@ -31,6 +31,15 @@ export const FLEX_VERTICAL_ALIGNMENTS = ['top', ...MEDIA_OBJECT_SECTION_ALIGNMEN
 export const CLASS_NAME_TYPES = keyMirrorArray(['BOOL', 'RANGE', 'ENUM']);
 export const COLLAPSE_MODES = ['collapse', 'uncollapse'];
 export const CENTERED_MODES = ['centered', 'uncentered'];
+export const TEXT_ALIGNMENT_CLASS_NAMES = [
+  {
+    baseClassName: 'text',
+    basePropName: 'Alignment',
+    type: CLASS_NAME_TYPES.ENUM,
+    values: TEXT_ALIGNMENTS,
+    flattenSmall: true,
+  },
+];
 export const GRID_ROW_CLASS_NAMES = [
   {
     baseClassName: '',
@@ -89,12 +98,14 @@ export const FLEX_PARENT_CLASS_NAMES = [
     basePropName: 'HorizontalAlignment',
     type: CLASS_NAME_TYPES.ENUM,
     values: FLEX_HORIZONTAL_ALIGNMENTS,
+    flattenSmall: true,
   },
   {
     baseClassName: 'align',
     basePropName: 'VerticalAlignment',
     type: CLASS_NAME_TYPES.ENUM,
     values: FLEX_VERTICAL_ALIGNMENTS,
+    flattenSmall: true,
   },
 ];
 export const FLEX_CHILD_CLASS_NAMES = [
@@ -103,6 +114,7 @@ export const FLEX_CHILD_CLASS_NAMES = [
     basePropName: 'VerticalAlignment',
     type: CLASS_NAME_TYPES.ENUM,
     values: FLEX_VERTICAL_ALIGNMENTS,
+    flattenSmall: true,
   },
   {
     baseClassName: 'order',
