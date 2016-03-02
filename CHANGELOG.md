@@ -1,3 +1,29 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/aruberto/react-foundation-components/compare/0.8.2...0.9.0) (2016-03-02)
+
+
+#### Miscellaneous
+
+* Added ToggleSwitch component. This is based on https://ghinda.net/css-toggle-switch/foundation.html. Since this is not part of Foundation, this component will not work if using Foundation CSS from CDN. Need to use CSS Modules or import https://github.com/aruberto/react-foundation-components/blob/master/src/toggle-switch/_styles.scss manually.
+* Added Flex Responsive Alignments. You can use props like largeHorizontalAlignment="right" to position Flex Children based on screen size. Since this is not part of Foundation, this component will not work if using Foundation CSS from CDN. Need to use CSS Modules or import https://github.com/aruberto/react-foundation-components/blob/master/src/flex/_custom.scss manually.
+
+
+### BREAKING CHANGES
+
+* Higher order components like ShowForScreenSize used to apply classes on it's child. The problem is that there was no guarantee that the child even used className prop. Therefore now these components always wrap in a span by default. You can use the componentClass prop to override this. Example to create a Button only visible on large screens simply declare it as
+```
+<ShowForScreenSize screenSize="large" componentClass={Button} onClick={this.handleClick}>
+  Button Label
+</ShowForScreenSize>
+```
+* Prop name changes
+ * OffCanvas - revealForSize => revealFor
+ * Visibility Components - size => screenSize, orientaion => screenOrientation
+* FlexParent now sets display: flex so you don't have to.
+* Grid / Flex Grid props centered and collapse have changed.
+  * [size]Collapse="collapse" to collapse and [size]Collapse="uncollapse" to uncollapse.
+  * [size]Centered="centered" to center and [size]Centered="uncentered" to uncenter.
+
 <a name="0.8.2"></a>
 ## [0.8.2](https://github.com/aruberto/react-foundation-components/compare/0.8.1...0.8.2) (2016-02-29)
 
