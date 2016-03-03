@@ -1,3 +1,11 @@
+<a name="0.9.2"></a>
+## [0.9.2](https://github.com/aruberto/react-foundation-components/compare/0.9.1...0.9.2) (2016-03-03)
+
+
+#### Miscellaneous
+* Added FormField Component.
+
+
 <a name="0.9.1"></a>
 ## [0.9.1](https://github.com/aruberto/react-foundation-components/compare/0.9.0...0.9.1) (2016-03-02)
 
