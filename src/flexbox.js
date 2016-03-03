@@ -6,7 +6,7 @@ export {
   FormFieldError,
   FormFieldGroup,
   FormFieldRight,
-} from './forms';
+} from './forms/flex';
 export { Float, ClearFix } from './float';
 export { FlexParent, FlexChild } from './flex';
 
