@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
-import { FormField, FormFieldInput, FormFieldLabel, FormFieldError } from '../../../src/forms';
+import {
+  FormField,
+  FormFieldInput,
+  FormFieldLabel,
+  FormFieldError,
+  FormFieldRight,
+} from '../../../src/forms';
+import { Button } from '../../../src/button';
 
 export default class FormsPage extends Component {
   render() {
@@ -28,6 +35,12 @@ export default class FormsPage extends Component {
         </FormField>
         <br/>
         <FormField>
+          <FormFieldInput type="checkbox" defaultChecked/>
+          <FormFieldLabel>Number</FormFieldLabel>
+          <FormFieldError>number error</FormFieldError>
+        </FormField>
+        <br/>
+        <FormField>
           <FormFieldLabel>Number</FormFieldLabel>
           <FormFieldInput type="number" defaultValue="12"/>
           <FormFieldError>number error</FormFieldError>
@@ -106,6 +119,18 @@ export default class FormsPage extends Component {
           <FormFieldLabel>Static</FormFieldLabel>
           <FormFieldInput type="static">XYZ</FormFieldInput>
           <FormFieldError>static error</FormFieldError>
+        </FormField>
+        <br/>
+        <FormField group>
+          <FormFieldLabel>Text</FormFieldLabel>
+          <FormFieldInput defaultValue="XYZ"/>
+          <FormFieldRight><Button>Click</Button></FormFieldRight>
+        </FormField>
+        <br/>
+        <FormField group error>
+          <FormFieldLabel>Text</FormFieldLabel>
+          <FormFieldInput defaultValue="XYZ"/>
+          <FormFieldRight><Button>Click</Button></FormFieldRight>
         </FormField>
         <br/>
       </div>
