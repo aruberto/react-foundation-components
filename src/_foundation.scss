@@ -4,15 +4,16 @@
 @import './typography-helpers/styles';
 @import './text-alignment/styles';
 
-@import './float/styles';
-@import './visibility/styles';
-
 @if $global-flexbox {
   @import './flex/styles';
   @import './grid/flex/styles';
 } @else {
   @import './grid/styles';
 }
+
+@import './forms/styles';
+@import './float/styles';
+@import './visibility/styles';
 
 @import './button/styles';
 @import './button-group/styles';

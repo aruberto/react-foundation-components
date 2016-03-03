@@ -8,6 +8,14 @@ import {
   FormFieldGroup,
   FormFieldRight,
 } from '../../../src/forms';
+import {
+  FormField as FlexFormField,
+  FormFieldInput as FlexFormFieldInput,
+  FormFieldLabel as FlexFormFieldLabel,
+  FormFieldError as FlexFormFieldError,
+  FormFieldGroup as FlexFormFieldGroup,
+  FormFieldRight as FlexFormFieldRight,
+} from '../../../src/forms/flex';
 import { Button } from '../../../src/button';
 
 export default class FormsPage extends Component {
@@ -139,6 +147,36 @@ export default class FormsPage extends Component {
           </FormFieldGroup>
           <FormFieldError>text error</FormFieldError>
         </FormField>
+        <br/>
+        <FlexFormField>
+          <FlexFormFieldLabel>Text</FlexFormFieldLabel>
+          <FlexFormFieldInput defaultValue="XYZ"/>
+          <FlexFormFieldError>text error</FlexFormFieldError>
+        </FlexFormField>
+        <br/>
+        <FlexFormField error>
+          <FlexFormFieldLabel>Text</FlexFormFieldLabel>
+          <FlexFormFieldInput defaultValue="XYZ"/>
+          <FlexFormFieldError>text error</FlexFormFieldError>
+        </FlexFormField>
+        <br/>
+        <FlexFormField>
+          <FlexFormFieldGroup>
+            <FlexFormFieldLabel>Text</FlexFormFieldLabel>
+            <FlexFormFieldInput defaultValue="XYZ"/>
+            <FlexFormFieldRight><Button>Click</Button></FlexFormFieldRight>
+          </FlexFormFieldGroup>
+          <FlexFormFieldError>text error</FlexFormFieldError>
+        </FlexFormField>
+        <br/>
+        <FlexFormField error>
+          <FlexFormFieldGroup>
+            <FlexFormFieldLabel>Text</FlexFormFieldLabel>
+            <FlexFormFieldInput defaultValue="XYZ"/>
+            <FlexFormFieldRight><Button>Click</Button></FlexFormFieldRight>
+          </FlexFormFieldGroup>
+          <FlexFormFieldError>text error</FlexFormFieldError>
+        </FlexFormField>
         <br/>
       </div>
     );
