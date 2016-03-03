@@ -23,6 +23,7 @@ import VisibilityPage from './general/visibility';
 import FloatPage from './general/float';
 import FlexPage from './general/flex';
 import BaseTypographyPage from './typography/base';
+import PrintPage from './typography/print';
 import TypographyHelpersPage from './typography/helpers';
 import TextAlignmentPage from './typography/text-alignment';
 import ButtonPage from './controls/button';
@@ -101,6 +102,9 @@ class HomePage extends Component {
               <Menu nested vertical>
                 <MenuItem>
                   <Link to="/typography/base">Base Typography</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/typography/print">Print</Link>
                 </MenuItem>
                 <MenuItem>
                   <Link to="/typography/helpers">Typography Helpers</Link>
@@ -231,6 +235,7 @@ class Demo extends Component {
           <Route component={FloatPage} path="/general/float"/>
           <Route component={FlexPage} path="/general/flex"/>
           <Route component={BaseTypographyPage} path="/typography/base"/>
+          <Route component={PrintPage} path="/typography/print"/>
           <Route component={TypographyHelpersPage} path="/typography/helpers"/>
           <Route component={TextAlignmentPage} path="/typography/text-alignment"/>
           <Route component={ButtonPage} path="/controls/button"/>

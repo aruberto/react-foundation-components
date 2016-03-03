@@ -14,6 +14,7 @@ export {
 } from './visibility';
 export { Float, ClearFix } from './float';
 
+export { ShowOnlyForPrint, HideOnlyForPrint } from './print';
 export { Subheader, Lead, UnbulletedList, Statistic } from './typography-helpers';
 export { TextAlignment } from './text-alignment';
 
