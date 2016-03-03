@@ -19,6 +19,7 @@ import { HideForScreenSize } from '../src/visibility';
 
 import GridPage from './general/grid';
 import FlexGridPage from './general/grid/flex';
+import FormsPage from './general/forms';
 import VisibilityPage from './general/visibility';
 import FloatPage from './general/float';
 import FlexPage from './general/flex';
@@ -85,6 +86,9 @@ class HomePage extends Component {
                 </MenuItem>
                 <MenuItem>
                   <Link to="/general/grid/flex">Flex Grid</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/general/forms">Forms</Link>
                 </MenuItem>
                 <MenuItem>
                   <Link to="/general/visibility">Visibility</Link>
@@ -231,6 +235,7 @@ class Demo extends Component {
         <Route component={HomePage} path="/">
           <Route component={GridPage} path="/general/grid"/>
           <Route component={FlexGridPage} path="/general/grid/flex"/>
+          <Route component={FormsPage} path="/general/forms"/>
           <Route component={VisibilityPage} path="/general/visibility"/>
           <Route component={FloatPage} path="/general/float"/>
           <Route component={FlexPage} path="/general/flex"/>

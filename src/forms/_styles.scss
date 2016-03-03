@@ -1,0 +1,8 @@
+@import '../common';
+@import '~foundation-sites/scss/components/button';
+@import '~foundation-sites/scss/forms/forms';
+
+.form-field {
+  @include foundation-forms;
+  @include foundation-range-input;
+}
