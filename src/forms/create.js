@@ -122,6 +122,37 @@ export default function create(styles, TextAlignment = DefaultComponent) {
     }
   }
 
+  class FormFieldGroup extends Component {
+    static propTypes = {
+      children: PropTypes.node,
+      className: PropTypes.string,
+      error: PropTypes.bool,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    };
+
+    render() {
+      const { children, className, error, id } = this.props;
+      const classNames = cx(className, styles['input-group']);
+      const newChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child, {
+            error: error || child.props.error,
+            group: true,
+            formFieldId: id,
+          });
+        }
+
+        return child;
+      });
+
+      return (
+        <div {...this.props} className={classNames} id={isBlank(id) ? null : `${id}Group`}>
+          {newChildren}
+        </div>
+      );
+    }
+  }
+
   class FormFieldRight extends Component {
     static propTypes = {
       formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -148,20 +179,16 @@ export default function create(styles, TextAlignment = DefaultComponent) {
       children: PropTypes.node,
       className: PropTypes.string,
       error: PropTypes.bool,
-      group: PropTypes.bool,
-      groupClassName: PropTypes.string,
-      groupStyle: PropTypes.object,
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     };
 
     render() {
-      const { children, className, error, group, groupClassName, groupStyle, id } = this.props;
+      const { children, className, error, id } = this.props;
       const classNames = cx(className, styles['form-field']);
-      let content = Children.map(children, (child) => {
+      const newChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
           return cloneElement(child, {
             error: error || child.props.error,
-            group,
             formFieldId: id,
           });
         }
@@ -169,21 +196,20 @@ export default function create(styles, TextAlignment = DefaultComponent) {
         return child;
       });
 
-      if (group) {
-        content = (
-          <div className={cx(groupClassName, styles['input-group'])} style={groupStyle}>
-            {content}
-          </div>
-        );
-      }
-
       return (
         <div {...this.props} className={classNames} id={isBlank(id) ? null : `${id}Container`}>
-          {content}
+          {newChildren}
         </div>
       );
     }
   }
 
-  return { FormField, FormFieldInput, FormFieldLabel, FormFieldError, FormFieldRight };
+  return {
+    FormField,
+    FormFieldInput,
+    FormFieldLabel,
+    FormFieldError,
+    FormFieldGroup,
+    FormFieldRight,
+  };
 }

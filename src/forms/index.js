@@ -7,12 +7,21 @@ const {
   FormFieldInput,
   FormFieldLabel,
   FormFieldError,
+  FormFieldGroup,
   FormFieldRight,
 } = create(styles, TextAlignment);
 FormField.Input = FormFieldInput;
 FormField.Label = FormFieldLabel;
 FormField.Error = FormFieldError;
+FormField.Group = FormFieldGroup;
 FormField.Right = FormFieldRight;
 
 export default FormField;
-export { FormField, FormFieldInput, FormFieldLabel, FormFieldError, FormFieldRight };
+export {
+  FormField,
+  FormFieldInput,
+  FormFieldLabel,
+  FormFieldError,
+  FormFieldGroup,
+  FormFieldRight,
+};

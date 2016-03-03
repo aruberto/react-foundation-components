@@ -5,6 +5,7 @@ import {
   FormFieldInput,
   FormFieldLabel,
   FormFieldError,
+  FormFieldGroup,
   FormFieldRight,
 } from '../../../src/forms';
 import { Button } from '../../../src/button';
@@ -121,16 +122,22 @@ export default class FormsPage extends Component {
           <FormFieldError>static error</FormFieldError>
         </FormField>
         <br/>
-        <FormField group>
-          <FormFieldLabel>Text</FormFieldLabel>
-          <FormFieldInput defaultValue="XYZ"/>
-          <FormFieldRight><Button>Click</Button></FormFieldRight>
+        <FormField>
+          <FormFieldGroup>
+            <FormFieldLabel>Text</FormFieldLabel>
+            <FormFieldInput defaultValue="XYZ"/>
+            <FormFieldRight><Button>Click</Button></FormFieldRight>
+          </FormFieldGroup>
+          <FormFieldError>text error</FormFieldError>
         </FormField>
         <br/>
-        <FormField group error>
-          <FormFieldLabel>Text</FormFieldLabel>
-          <FormFieldInput defaultValue="XYZ"/>
-          <FormFieldRight><Button>Click</Button></FormFieldRight>
+        <FormField error>
+          <FormFieldGroup>
+            <FormFieldLabel>Text</FormFieldLabel>
+            <FormFieldInput defaultValue="XYZ"/>
+            <FormFieldRight><Button>Click</Button></FormFieldRight>
+          </FormFieldGroup>
+          <FormFieldError>text error</FormFieldError>
         </FormField>
         <br/>
       </div>
