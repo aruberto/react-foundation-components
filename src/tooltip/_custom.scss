@@ -6,12 +6,12 @@
   }
 
   &.left {
-    margin-left: -$tooltip-pip-width;
     margin-top: 0;
+    margin-left: -$tooltip-pip-width;
   }
 
   &.right {
-    margin-left: $tooltip-pip-width;
     margin-top: 0;
+    margin-left: $tooltip-pip-width;
   }
 }

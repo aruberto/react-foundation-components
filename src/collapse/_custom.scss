@@ -15,8 +15,8 @@
 }
 
 .collapsing {
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
   transition-duration: .35s;
   transition-timing-function: ease;
 
@@ -26,7 +26,7 @@
   }
 
   &.width {
-    transition-property: width, visibility;
     width: 0;
+    transition-property: width, visibility;
   }
 }

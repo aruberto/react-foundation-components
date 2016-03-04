@@ -3,20 +3,20 @@ $color-background: #f4f5f6 !default
 @import '../src/typography';
 
 code {
-  background: $color-background;
-  border-radius: .4rem;
-  font-size: 86%;
   margin: 0 .2rem 1rem;
+  border-radius: .4rem;
+  background: $color-background;
   padding: .2rem .5rem;
   white-space: nowrap;
+  font-size: 86%;
 }
 
 pre {
   font-family: 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Monaco', monospace;
 
   & > code {
-    border-radius: 0;
     display: block;
+    border-radius: 0;
     padding: 1rem 1.5rem;
     white-space: pre;
   }
