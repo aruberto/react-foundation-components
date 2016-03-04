@@ -4,7 +4,12 @@ import isBlank from 'underscore.string/isBlank';
 
 import DefaultComponent from '../util/default-component';
 
-export default function create(styles, TextAlignment = DefaultComponent) {
+export default function create(
+  styles,
+  TextAlignment = DefaultComponent,
+  Row = DefaultComponent,
+  Column = DefaultComponent
+) {
   class FormFieldInput extends Component {
     static propTypes = {
       className: PropTypes.string,
@@ -127,18 +132,19 @@ export default function create(styles, TextAlignment = DefaultComponent) {
       children: PropTypes.node,
       className: PropTypes.string,
       error: PropTypes.bool,
+      formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     };
 
     render() {
-      const { children, className, error, id } = this.props;
+      const { children, className, error, formFieldId, id } = this.props;
       const classNames = cx(className, styles['input-group']);
       const newChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
           return cloneElement(child, {
             error: error || child.props.error,
             group: true,
-            formFieldId: id,
+            formFieldId,
           });
         }
 
@@ -146,7 +152,11 @@ export default function create(styles, TextAlignment = DefaultComponent) {
       });
 
       return (
-        <div {...this.props} className={classNames} id={isBlank(id) ? null : `${id}Group`}>
+        <div
+          {...this.props}
+          className={classNames}
+          id={isBlank(formFieldId) ? id : `${formFieldId}Group`}
+        >
           {newChildren}
         </div>
       );
@@ -155,21 +165,64 @@ export default function create(styles, TextAlignment = DefaultComponent) {
 
   class FormFieldRight extends Component {
     static propTypes = {
+      children: PropTypes.node,
+      error: PropTypes.bool,
       formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       group: PropTypes.bool,
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     };
 
     render() {
-      const { formFieldId, group, id } = this.props;
+      const { children, error, formFieldId, group, id } = this.props;
       const classNames = cx({ [styles['input-group-button']]: group });
+      const newChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child, {
+            error: error || child.props.error,
+            group: true,
+            formFieldId,
+          });
+        }
+
+        return child;
+      });
 
       return (
         <div
           {...this.props}
           className={classNames}
           id={isBlank(formFieldId) ? id : `${formFieldId}Right`}
-        />
+        >
+          {newChildren}
+        </div>
+      );
+    }
+  }
+
+  class FormFieldColumn extends Component {
+    static propTypes = {
+      children: PropTypes.node,
+      error: PropTypes.bool,
+      formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    };
+
+    render() {
+      const { children, error, formFieldId } = this.props;
+      const newChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child, {
+            error: error || child.props.error,
+            formFieldId,
+          });
+        }
+
+        return child;
+      });
+
+      return (
+        <Column {...this.props}>
+          {newChildren}
+        </Column>
       );
     }
   }
@@ -180,10 +233,12 @@ export default function create(styles, TextAlignment = DefaultComponent) {
       className: PropTypes.string,
       error: PropTypes.bool,
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      row: PropTypes.bool,
     };
 
     render() {
-      const { children, className, error, id } = this.props;
+      const { children, className, error, id, row } = this.props;
+      const ComponentClass = row ? Row : 'div';
       const classNames = cx(className, styles['form-field']);
       const newChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
@@ -197,9 +252,13 @@ export default function create(styles, TextAlignment = DefaultComponent) {
       });
 
       return (
-        <div {...this.props} className={classNames} id={isBlank(id) ? null : `${id}Container`}>
+        <ComponentClass
+          {...this.props}
+          className={classNames}
+          id={isBlank(id) ? null : `${id}Container`}
+        >
           {newChildren}
-        </div>
+        </ComponentClass>
       );
     }
   }
@@ -211,5 +270,6 @@ export default function create(styles, TextAlignment = DefaultComponent) {
     FormFieldError,
     FormFieldGroup,
     FormFieldRight,
+    FormFieldColumn,
   };
 }

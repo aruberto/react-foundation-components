@@ -7,6 +7,7 @@ import {
   FormFieldError,
   FormFieldGroup,
   FormFieldRight,
+  FormFieldColumn,
 } from '../../../src/forms';
 import {
   FormField as FlexFormField,
@@ -15,8 +16,11 @@ import {
   FormFieldError as FlexFormFieldError,
   FormFieldGroup as FlexFormFieldGroup,
   FormFieldRight as FlexFormFieldRight,
+  FormFieldColumn as FlexFormFieldColumn,
 } from '../../../src/forms/flex';
 import { Button } from '../../../src/button';
+import { Row, Column } from '../../../src/grid';
+import { Row as FlexRow, Column as FlexColumn } from '../../../src/grid/flex';
 
 export default class FormsPage extends Component {
   render() {
@@ -148,6 +152,58 @@ export default class FormsPage extends Component {
           <FormFieldError>text error</FormFieldError>
         </FormField>
         <br/>
+        <FormField row>
+          <FormFieldColumn small={12} medium={1}>
+            <FormFieldLabel mediumAlignment="right" middle>Text</FormFieldLabel>
+          </FormFieldColumn>
+          <FormFieldColumn small={12} medium={11}>
+            <FormFieldInput defaultValue="XYZ"/>
+          </FormFieldColumn>
+          <FormFieldColumn small={12}>
+            <FormFieldError>text error</FormFieldError>
+          </FormFieldColumn>
+        </FormField>
+        <FormField row error>
+          <FormFieldColumn small={12} medium={1}>
+            <FormFieldLabel mediumAlignment="right" middle>Text</FormFieldLabel>
+          </FormFieldColumn>
+          <FormFieldColumn small={12} medium={11}>
+            <FormFieldInput defaultValue="XYZ"/>
+          </FormFieldColumn>
+          <FormFieldColumn small={12}>
+            <FormFieldError>text error</FormFieldError>
+          </FormFieldColumn>
+        </FormField>
+        <br/>
+        <Row>
+          <Column small={12} medium={6}>
+            <FormField row>
+              <FormFieldColumn small={12} medium={2}>
+                <FormFieldLabel mediumAlignment="right" middle>Text</FormFieldLabel>
+              </FormFieldColumn>
+              <FormFieldColumn small={12} medium={10}>
+                <FormFieldInput defaultValue="XYZ"/>
+              </FormFieldColumn>
+              <FormFieldColumn small={12}>
+                <FormFieldError>text error</FormFieldError>
+              </FormFieldColumn>
+            </FormField>
+          </Column>
+          <Column small={12} medium={6}>
+            <FormField row error>
+              <FormFieldColumn small={12} medium={2}>
+                <FormFieldLabel mediumAlignment="right" middle>Text</FormFieldLabel>
+              </FormFieldColumn>
+              <FormFieldColumn small={12} medium={10}>
+                <FormFieldInput defaultValue="XYZ"/>
+              </FormFieldColumn>
+              <FormFieldColumn small={12}>
+                <FormFieldError>text error</FormFieldError>
+              </FormFieldColumn>
+            </FormField>
+          </Column>
+        </Row>
+        <br/>
         <FlexFormField>
           <FlexFormFieldLabel>Text</FlexFormFieldLabel>
           <FlexFormFieldInput defaultValue="XYZ"/>
@@ -178,6 +234,57 @@ export default class FormsPage extends Component {
           <FlexFormFieldError>text error</FlexFormFieldError>
         </FlexFormField>
         <br/>
+        <FlexFormField row>
+          <FlexFormFieldColumn small={12} medium={1}>
+            <FlexFormFieldLabel mediumAlignment="right" middle>Text</FlexFormFieldLabel>
+          </FlexFormFieldColumn>
+          <FlexFormFieldColumn small={12} medium={11}>
+            <FlexFormFieldInput defaultValue="XYZ"/>
+          </FlexFormFieldColumn>
+          <FlexFormFieldColumn small={12}>
+            <FlexFormFieldError>text error</FlexFormFieldError>
+          </FlexFormFieldColumn>
+        </FlexFormField>
+        <FlexFormField row error>
+          <FlexFormFieldColumn small={12} medium={1}>
+            <FlexFormFieldLabel mediumAlignment="right" middle>Text</FlexFormFieldLabel>
+          </FlexFormFieldColumn>
+          <FlexFormFieldColumn small={12} medium={11}>
+            <FlexFormFieldInput defaultValue="XYZ"/>
+          </FlexFormFieldColumn>
+          <FlexFormFieldColumn small={12}>
+            <FlexFormFieldError>text error</FlexFormFieldError>
+          </FlexFormFieldColumn>
+        </FlexFormField>
+        <br/>
+        <FlexRow>
+          <FlexColumn small={12} medium={6}>
+            <FlexFormField row>
+              <FlexFormFieldColumn small={12} medium={2}>
+                <FlexFormFieldLabel mediumAlignment="right" middle>Text</FlexFormFieldLabel>
+              </FlexFormFieldColumn>
+              <FlexFormFieldColumn small={12} medium={10}>
+                <FlexFormFieldInput defaultValue="XYZ"/>
+              </FlexFormFieldColumn>
+              <FlexFormFieldColumn small={12}>
+                <FlexFormFieldError>text error</FlexFormFieldError>
+              </FlexFormFieldColumn>
+            </FlexFormField>
+          </FlexColumn>
+          <FlexColumn small={12} medium={6}>
+            <FlexFormField row error>
+              <FlexFormFieldColumn small={12} medium={2}>
+                <FlexFormFieldLabel mediumAlignment="right" middle>Text</FlexFormFieldLabel>
+              </FlexFormFieldColumn>
+              <FlexFormFieldColumn small={12} medium={10}>
+                <FlexFormFieldInput defaultValue="XYZ"/>
+              </FlexFormFieldColumn>
+              <FlexFormFieldColumn small={12}>
+                <FlexFormFieldError>text error</FlexFormFieldError>
+              </FlexFormFieldColumn>
+            </FlexFormField>
+          </FlexColumn>
+        </FlexRow>
       </div>
     );
   }
