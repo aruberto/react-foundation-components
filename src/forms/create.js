@@ -1,6 +1,7 @@
 import React, { Component, PropTypes, Children, isValidElement, cloneElement } from 'react';
 import cx from 'classnames';
 import isBlank from 'underscore.string/isBlank';
+import elementType from 'react-prop-types/lib/elementType';
 
 import DefaultComponent from '../util/default-component';
 
@@ -10,12 +11,11 @@ export default function create(
   Row = DefaultComponent,
   Column = DefaultComponent
 ) {
-  class FormFieldInput extends Component {
+  class Input extends Component {
     static propTypes = {
       className: PropTypes.string,
       error: PropTypes.bool,
       formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      group: PropTypes.bool,
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       type: PropTypes.string,
     };
@@ -25,13 +25,12 @@ export default function create(
     };
 
     render() {
-      const { className, error, formFieldId, group, id, type } = this.props;
+      const { className, error, formFieldId, id, type } = this.props;
       const classNames =
         cx(
           className,
           {
             [styles['is-invalid-input']]: error,
-            [styles['input-group-field']]: group,
           }
         );
       const restProps = {
@@ -58,29 +57,26 @@ export default function create(
     }
   }
 
-  class FormFieldLabel extends Component {
+  class Label extends Component {
     static propTypes = {
       className: PropTypes.string,
       middle: PropTypes.bool,
       error: PropTypes.bool,
       formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      group: PropTypes.bool,
       htmlFor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     };
 
     render() {
-      const { className, middle, error, formFieldId, group, htmlFor, id } = this.props;
+      const { className, middle, error, formFieldId, htmlFor, id } = this.props;
       const classNames =
         cx(
           className,
           {
             [styles.middle]: middle,
             [styles['is-invalid-label']]: error,
-            [styles['input-group-label']]: group,
           }
         );
-
       return (
         <TextAlignment
           {...this.props}
@@ -93,7 +89,7 @@ export default function create(
     }
   }
 
-  class FormFieldError extends Component {
+  class Error extends Component {
     static propTypes = {
       className: PropTypes.string,
       error: PropTypes.bool,
@@ -104,126 +100,76 @@ export default function create(
     render() {
       const { className, error, formFieldId, id } = this.props;
 
-      if (error) {
-        const classNames =
-          cx(
-            className,
-            {
-              [styles['form-error']]: true,
-              [styles['is-visible']]: true,
-            }
-          );
+      const classNames =
+        cx(
+          className,
+          {
+            [styles['form-error']]: true,
+            [styles['is-visible']]: error,
+          }
+        );
 
+      return (
+        <span
+          {...this.props}
+          className={classNames}
+          id={isBlank(formFieldId) ? id : `${formFieldId}Error`}
+        />
+      );
+    }
+  }
+
+  class ColumnWrapper extends Component {
+    static propTypes = {
+      column: PropTypes.bool,
+      columnClassName: PropTypes.string,
+      columnStyle: PropTypes.object,
+      componentClass: elementType,
+    };
+
+    static defaultProps = {
+      componentClass: 'span',
+    }
+
+    render() {
+      const { column, columnClassName, columnStyle, componentClass: ComponentClass } = this.props;
+
+      const content = <ComponentClass {...this.props}/>;
+
+      if (column) {
         return (
-          <label
+          <Column
             {...this.props}
-            className={classNames}
-            id={isBlank(formFieldId) ? id : `${formFieldId}Error`}
-          />
+            className={columnClassName}
+            style={columnStyle}
+            componentClass={null}
+            id={null}
+            type={null}
+          >
+            {content}
+          </Column>
         );
       }
 
-      return null;
+      return content;
     }
   }
 
-  class FormFieldGroup extends Component {
-    static propTypes = {
-      children: PropTypes.node,
-      className: PropTypes.string,
-      error: PropTypes.bool,
-      formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    };
-
+  class FormFieldInput extends Component {
     render() {
-      const { children, className, error, formFieldId, id } = this.props;
-      const classNames = cx(className, styles['input-group']);
-      const newChildren = Children.map(children, (child) => {
-        if (isValidElement(child)) {
-          return cloneElement(child, {
-            error: error || child.props.error,
-            group: true,
-            formFieldId,
-          });
-        }
-
-        return child;
-      });
-
-      return (
-        <div
-          {...this.props}
-          className={classNames}
-          id={isBlank(formFieldId) ? id : `${formFieldId}Group`}
-        >
-          {newChildren}
-        </div>
-      );
+      return <ColumnWrapper {...this.props} componentClass={Input}/>;
     }
   }
 
-  class FormFieldRight extends Component {
-    static propTypes = {
-      children: PropTypes.node,
-      error: PropTypes.bool,
-      formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      group: PropTypes.bool,
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    };
-
+  class FormFieldLabel extends Component {
     render() {
-      const { children, error, formFieldId, group, id } = this.props;
-      const classNames = cx({ [styles['input-group-button']]: group });
-      const newChildren = Children.map(children, (child) => {
-        if (isValidElement(child)) {
-          return cloneElement(child, {
-            error: error || child.props.error,
-            group: true,
-            formFieldId,
-          });
-        }
-
-        return child;
-      });
-
-      return (
-        <div
-          {...this.props}
-          className={classNames}
-          id={isBlank(formFieldId) ? id : `${formFieldId}Right`}
-        >
-          {newChildren}
-        </div>
-      );
+      return <ColumnWrapper {...this.props} componentClass={Label}/>;
     }
   }
 
-  class FormFieldColumn extends Component {
-    static propTypes = {
-      children: PropTypes.node,
-      error: PropTypes.bool,
-      formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    };
-
+  class FormFieldError extends Component {
     render() {
-      const { children, error, formFieldId } = this.props;
-      const newChildren = Children.map(children, (child) => {
-        if (isValidElement(child)) {
-          return cloneElement(child, {
-            error: error || child.props.error,
-            formFieldId,
-          });
-        }
-
-        return child;
-      });
-
-      return (
-        <Column {...this.props}>
-          {newChildren}
-        </Column>
-      );
+      return <ColumnWrapper {...this.props} componentClass={Error}/>;
     }
   }
 
@@ -233,18 +179,19 @@ export default function create(
       className: PropTypes.string,
       error: PropTypes.bool,
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      row: PropTypes.bool,
+      grid: PropTypes.bool,
     };
 
     render() {
-      const { children, className, error, id, row } = this.props;
-      const ComponentClass = row ? Row : 'div';
+      const { children, className, error, id, grid } = this.props;
+      const ComponentClass = grid ? Row : 'div';
       const classNames = cx(className, styles['form-field']);
       const newChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
           return cloneElement(child, {
-            error: error || child.props.error,
+            error,
             formFieldId: id,
+            column: grid,
           });
         }
 
@@ -268,8 +215,5 @@ export default function create(
     FormFieldInput,
     FormFieldLabel,
     FormFieldError,
-    FormFieldGroup,
-    FormFieldRight,
-    FormFieldColumn,
   };
 }
