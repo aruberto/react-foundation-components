@@ -241,5 +241,7 @@ export default function create(styles, Collapse = DefaultComponent) {
     }
   }
 
+  Accordion.Item = AccordionItem;
+
   return { Accordion, AccordionItem };
 }

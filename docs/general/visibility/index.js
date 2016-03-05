@@ -9,9 +9,9 @@ import {
   Invisible,
   ShowForScreenOrientation,
   HideForScreenOrientation,
-  ShowOnlyForScreenReader,
-  HideOnlyForScreenReader,
-  ShowOnlyOnFocus,
+  ShowForScreenReader,
+  HideForScreenReader,
+  ShowOnFocus,
 } from '../../../src/visibility';
 
 export default class VisibilityPage extends Component {
@@ -116,18 +116,18 @@ export default class VisibilityPage extends Component {
           You are <em>not</em> in portrait orientation.
         </HideForScreenOrientation>
         <br/>
-        <ShowOnlyForScreenReader>
+        <ShowForScreenReader>
           This text can only be read by a screen reader.
-        </ShowOnlyForScreenReader>
+        </ShowForScreenReader>
         There's a line of text above this one, you just can't see it.
         <br/>
-        <HideOnlyForScreenReader>
+        <HideForScreenReader>
           This text can be seen, but won't be read by a screen reader.
-        </HideOnlyForScreenReader>
+        </HideForScreenReader>
         <br/>
-        <ShowOnlyOnFocus>
+        <ShowOnFocus>
           <a href="#mainContent">Skip to Content</a>
-        </ShowOnlyOnFocus>
+        </ShowOnFocus>
         <header id="header" role="banner"/>
         <main id="mainContent" role="main" tabIndex="0"/>
       </div>

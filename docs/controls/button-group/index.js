@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Button } from '../../../src/button';
 import { ButtonGroup } from '../../../src/button-group';
 import { ButtonGroup as FlexButtonGroup } from '../../../src/button-group/flex';
-import { ShowOnlyForScreenReader } from '../../../src/visibility';
+import { ShowForScreenReader } from '../../../src/visibility';
 
 export default class ButtonGroupPage extends Component {
   render() {
@@ -239,7 +239,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
         <p>
           To create a Button with only an arrow, set the <code>dropdown</code> and
           <code>dropdownArrowOnly</code> props on the Button. Note that the button still needs a
-          label for screen readers, which can be embedded inside a ShowOnlyForScreenReader
+          label for screen readers, which can be embedded inside a ShowForScreenReader
           component. In the example below, an assistive device will read the arrow button as
           "Show Menu".
         </p>
@@ -249,7 +249,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
 `<ButtonGroup>
   <Button>Primary Action</Button>
   <Button dropdown dropdownArrowOnly>
-    <ShowOnlyForScreenReader>Show Menu</ShowOnlyForScreenReader>
+    <ShowForScreenReader>Show Menu</ShowForScreenReader>
   </Button>
 </ButtonGroup>`
 }
@@ -258,7 +258,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
         <ButtonGroup>
           <Button>Primary Action</Button>
           <Button dropdown dropdownArrowOnly>
-            <ShowOnlyForScreenReader>Show Menu</ShowOnlyForScreenReader>
+            <ShowForScreenReader>Show Menu</ShowForScreenReader>
           </Button>
         </ButtonGroup>
         <hr/>

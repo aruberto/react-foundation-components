@@ -78,5 +78,9 @@ export default function create(styles, MenuIcon = DefaultComponent) {
     }
   }
 
+  TitleBar.Item = TitleBarItem;
+  TitleBar.Title = TitleBarTitle;
+  TitleBar.MenuIcon = TitleBarMenuIcon;
+
   return { TitleBar, TitleBarItem, TitleBarTitle, TitleBarMenuIcon };
 }

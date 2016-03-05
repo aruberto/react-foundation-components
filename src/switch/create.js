@@ -9,8 +9,8 @@ import DefaultComponent from '../util/default-component';
 
 export default function create(
   styles,
-  ShowOnlyForScreenReader = DefaultComponent,
-  HideOnlyForScreenReader = DefaultComponent
+  ShowForScreenReader = DefaultComponent,
+  HideForScreenReader = DefaultComponent
 ) {
   function createCheckedLabel(baseClassName) {
     class SwitchCheckedLabel extends Component {
@@ -23,7 +23,7 @@ export default function create(
         const classNames = cx(className, styles[baseClassName]);
 
         return (
-          <HideOnlyForScreenReader {...this.props} className={classNames}/>
+          <HideForScreenReader {...this.props} className={classNames}/>
         );
       }
     }
@@ -39,7 +39,7 @@ export default function create(
 
   class SwitchPadelLabel extends Component {
     render() {
-      return <ShowOnlyForScreenReader {...this.props}/>;
+      return <ShowForScreenReader {...this.props}/>;
     }
   }
 
@@ -172,6 +172,11 @@ export default function create(
 
   const RadioSwitch = uncontrollable(RadioSwitchControlled, { activeKey: 'onSelect' });
   RadioSwitch.displayName = 'RadioSwitch';
+
+  Switch.Radio = RadioSwitch;
+  Switch.CheckedLabel = SwitchCheckedLabel;
+  Switch.UncheckedLabel = SwitchUncheckedLabel;
+  Switch.PadelLabel = SwitchPadelLabel;
 
   return { Switch, RadioSwitch, SwitchCheckedLabel, SwitchUncheckedLabel, SwitchPadelLabel };
 }

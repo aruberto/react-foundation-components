@@ -9,7 +9,7 @@ import {
 } from '../util/screen-size';
 
 export default function create(styles) {
-  const Parent = createWrapperComponent({
+  const FlexParent = createWrapperComponent({
     displayName: 'FlexParent',
     propTypes: createScreenSizePropTypes(FLEX_PARENT_CLASS_NAMES),
     mapPropsToClassNames:
@@ -18,7 +18,7 @@ export default function create(styles) {
     defaultComponentClass: 'div',
   });
 
-  const Child = createWrapperComponent({
+  const FlexChild = createWrapperComponent({
     displayName: 'FlexChild',
     propTypes: createScreenSizePropTypes(FLEX_CHILD_CLASS_NAMES),
     mapPropsToClassNames:
@@ -26,5 +26,10 @@ export default function create(styles) {
     defaultComponentClass: 'div',
   });
 
-  return { Parent, Child };
+  const Flex = {
+    Parent: FlexParent,
+    Child: FlexChild,
+  };
+
+  return { Flex, FlexParent, FlexChild };
 }

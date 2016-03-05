@@ -38,5 +38,7 @@ export default function create(styles) {
     defaultComponentClass: 'div',
   });
 
-  return { Row, Column };
+  const Grid = { Row, Column };
+
+  return { Grid, Row, Column };
 }

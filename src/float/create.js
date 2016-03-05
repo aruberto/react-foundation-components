@@ -21,5 +21,7 @@ export default function create(styles) {
     defaultComponentClass: 'div',
   });
 
+  Float.ClearFix = ClearFix;
+
   return { Float, ClearFix };
 }

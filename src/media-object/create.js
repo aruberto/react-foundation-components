@@ -61,5 +61,7 @@ export default function create(
     }
   }
 
+  MediaObject.Section = MediaObjectSection;
+
   return { MediaObject, MediaObjectSection };
 }

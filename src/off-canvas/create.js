@@ -109,5 +109,8 @@ export default function create(styles) {
     }
   }
 
+  OffCanvas.Content = OffCanvasContent;
+  OffCanvas.Container = OffCanvasContainer;
+
   return { OffCanvas, OffCanvasContent, OffCanvasContainer };
 }

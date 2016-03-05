@@ -1,8 +1,8 @@
 import styles from './_styles.scss';
 import create from './create';
-import { HideOnlyForScreenReader } from '../visibility';
+import { HideForScreenReader } from '../visibility';
 
-const { CloseButton } = create(styles, HideOnlyForScreenReader);
+const { CloseButton } = create(styles, HideForScreenReader);
 
 export default CloseButton;
 export { CloseButton };

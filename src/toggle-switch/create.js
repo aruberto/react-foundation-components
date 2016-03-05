@@ -172,5 +172,7 @@ export default function create(
   const ToggleSwitch = uncontrollable(ToggleSwitchControlled, { activeKey: 'onSelect' });
   ToggleSwitch.displayName = 'ToggleSwitch';
 
+  ToggleSwitch.Item = ToggleSwitchItem;
+
   return { ToggleSwitch, ToggleSwitchItem };
 }

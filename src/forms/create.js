@@ -291,6 +291,12 @@ export default function create(
     }
   }
 
+  FormField.Input = FormFieldInput;
+  FormField.Label = FormFieldLabel;
+  FormField.Error = FormFieldError;
+  FormField.Inline = FormFieldInline;
+  FormField.Button = FormFieldButton;
+
   return {
     FormField,
     FormFieldInput,

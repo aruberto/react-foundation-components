@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import DefaultComponent from '../util/default-component';
 
-export default function create(styles, HideOnlyForScreenReader = DefaultComponent) {
+export default function create(styles, HideForScreenReader = DefaultComponent) {
   class CloseButton extends Component {
     static propTypes = {
       className: PropTypes.string,
@@ -15,7 +15,7 @@ export default function create(styles, HideOnlyForScreenReader = DefaultComponen
 
       return (
         <button {...this.props} className={classNames} type="button">
-          <HideOnlyForScreenReader>&times;</HideOnlyForScreenReader>
+          <HideForScreenReader>&times;</HideForScreenReader>
         </button>
       );
     }

@@ -69,5 +69,7 @@ export default function create(
     }
   }
 
-  return { Row, Column };
+  const Grid = { Row, Column };
+
+  return { Grid, Row, Column };
 }

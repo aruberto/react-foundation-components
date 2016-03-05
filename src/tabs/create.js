@@ -192,6 +192,12 @@ export default function create(styles) {
   }
 
   const Tabs = uncontrollable(TabsControlled, { activeKey: 'onSelect' });
+  Tabs.displayName = 'Tabs';
+
+  Tab.Title = TabTitle;
+  Tabs.Tab = Tab;
+  Tabs.Header = TabsHeader;
+  Tabs.Content = TabsContent;
 
   return { Tabs, TabsHeader, TabsContent, Tab, TabTitle };
 }

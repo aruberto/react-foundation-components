@@ -79,29 +79,29 @@ export default function create(styles) {
     }),
   });
 
-  const ShowOnlyForScreenReader = createWrapperComponent({
-    displayName: 'ShowOnlyForScreenReader',
+  const ShowForScreenReader = createWrapperComponent({
+    displayName: 'ShowForScreenReader',
     mapPropsToClassNames: () => ({
       [styles['show-for-sr']]: true,
     }),
   });
 
-  const HideOnlyForScreenReader = createWrapperComponent({
-    displayName: 'HideOnlyForScreenReader',
+  const HideForScreenReader = createWrapperComponent({
+    displayName: 'HideForScreenReader',
     mapPropsToProps: (props) => ({
       ...props,
       'aria-hidden': true,
     }),
   });
 
-  const ShowOnlyOnFocus = createWrapperComponent({
-    displayName: 'ShowOnlyOnFocus',
+  const ShowOnFocus = createWrapperComponent({
+    displayName: 'ShowOnFocus',
     mapPropsToClassNames: () => ({
       [styles['show-on-focus']]: true,
     }),
   });
 
-  return {
+  const Visibility = {
     ShowForScreenSize,
     ShowOnlyForScreenSize,
     HideForScreenSize,
@@ -110,8 +110,23 @@ export default function create(styles) {
     Invisible,
     ShowForScreenOrientation,
     HideForScreenOrientation,
-    ShowOnlyForScreenReader,
-    HideOnlyForScreenReader,
-    ShowOnlyOnFocus,
+    ShowForScreenReader,
+    HideForScreenReader,
+    ShowOnFocus,
+  };
+
+  return {
+    Visibility,
+    ShowForScreenSize,
+    ShowOnlyForScreenSize,
+    HideForScreenSize,
+    HideOnlyForScreenSize,
+    Hide,
+    Invisible,
+    ShowForScreenOrientation,
+    HideForScreenOrientation,
+    ShowForScreenReader,
+    HideForScreenReader,
+    ShowOnFocus,
   };
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Button } from '../../../src/button';
-import { ShowOnlyForScreenReader, HideOnlyForScreenReader } from '../../../src/visibility';
+import { ShowForScreenReader, HideForScreenReader } from '../../../src/visibility';
 
 export default class ButtonPage extends Component {
   render() {
@@ -203,23 +203,23 @@ import { Button } from 'react-foundation-components/lib/global/button';`
         <p>
           Make sure that the text of the Button is descriptive. If for some reason, your button
           contains no readable text (for example, just a symbol or icon), add text wrapped in the
-          ShowOnlyForScreenReader component to the Button component to clarify it's purpose. The
-          symbol or icon should be wrapped in a HideOnlyForScreenReader component to prevent screen
+          ShowForScreenReader component to the Button component to clarify it's purpose. The
+          symbol or icon should be wrapped in a HideForScreenReader component to prevent screen
           readers from trying to pronounce the symbol.
         </p>
         <pre>
           <code>
 {
 `<Button>
-  <ShowOnlyForScreenReader>Close</ShowOnlyForScreenReader>
-  <HideOnlyForScreenReader>&times;</HideOnlyForScreenReader>
+  <ShowForScreenReader>Close</ShowForScreenReader>
+  <HideForScreenReader>&times;</HideForScreenReader>
 </Button>`
 }
           </code>
         </pre>
         <Button>
-          <ShowOnlyForScreenReader>Close</ShowOnlyForScreenReader>
-          <HideOnlyForScreenReader>&times;</HideOnlyForScreenReader>
+          <ShowForScreenReader>Close</ShowForScreenReader>
+          <HideForScreenReader>&times;</HideForScreenReader>
         </Button>
       </div>
     );

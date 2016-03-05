@@ -100,5 +100,7 @@ export default function create(styles, Transition) {
     }
   }
 
+  Dropdown.LinkWith = LinkWithDropdown;
+
   return { Dropdown, LinkWithDropdown };
 }

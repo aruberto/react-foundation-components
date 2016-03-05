@@ -1,6 +1,6 @@
 import styles from './_styles.scss';
 import create from './create';
-import { ShowOnlyForScreenReader, HideOnlyForScreenReader } from '../visibility';
+import { ShowForScreenReader, HideForScreenReader } from '../visibility';
 
 const {
   Switch,
@@ -8,11 +8,7 @@ const {
   SwitchCheckedLabel,
   SwitchUncheckedLabel,
   SwitchPadelLabel,
-} = create(styles, ShowOnlyForScreenReader, HideOnlyForScreenReader);
-Switch.Radio = RadioSwitch;
-Switch.CheckedLabel = SwitchCheckedLabel;
-Switch.UncheckedLabel = SwitchUncheckedLabel;
-Switch.PadelLabel = SwitchPadelLabel;
+} = create(styles, ShowForScreenReader, HideForScreenReader);
 
 export default Switch;
 export { Switch, RadioSwitch, SwitchCheckedLabel, SwitchUncheckedLabel, SwitchPadelLabel };

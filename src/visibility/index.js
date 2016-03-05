@@ -1,8 +1,8 @@
 import styles from './_styles.scss';
 import create from './create';
 
-const Visibility = create(styles);
 const {
+  Visibility,
   ShowForScreenSize,
   ShowOnlyForScreenSize,
   HideForScreenSize,
@@ -11,10 +11,10 @@ const {
   Invisible,
   ShowForScreenOrientation,
   HideForScreenOrientation,
-  ShowOnlyForScreenReader,
-  HideOnlyForScreenReader,
-  ShowOnlyOnFocus,
-} = Visibility;
+  ShowForScreenReader,
+  HideForScreenReader,
+  ShowOnFocus,
+} = create(styles);
 
 export default Visibility;
 export {
@@ -26,7 +26,7 @@ export {
   Invisible,
   ShowForScreenOrientation,
   HideForScreenOrientation,
-  ShowOnlyForScreenReader,
-  HideOnlyForScreenReader,
-  ShowOnlyOnFocus,
+  ShowForScreenReader,
+  HideForScreenReader,
+  ShowOnFocus,
 };

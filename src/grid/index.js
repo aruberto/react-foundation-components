@@ -1,8 +1,7 @@
 import styles from './_styles.scss';
 import create from './create';
 
-const Grid = create(styles);
-const { Row, Column } = Grid;
+const { Grid, Row, Column } = create(styles);
 
 export default Grid;
-export { Row, Column };
+export { Grid, Row, Column };

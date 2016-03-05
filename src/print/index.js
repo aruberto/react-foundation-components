@@ -1,8 +1,7 @@
 import styles from './_styles.scss';
 import create from './create';
 
-const Print = create(styles);
-const { ShowOnlyForPrint, HideOnlyForPrint } = Print;
+const { Print, ShowForPrint, HideForPrint } = create(styles);
 
 export default Print;
-export { ShowOnlyForPrint, HideOnlyForPrint };
+export { ShowForPrint, HideForPrint };

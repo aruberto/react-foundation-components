@@ -1,16 +1,30 @@
-export { Row, Column } from './grid/flex';
+export { Grid, Row, Column } from './grid/flex';
 export {
   FormField,
   FormFieldInput,
   FormFieldLabel,
   FormFieldError,
-  FormFieldGroup,
-  FormFieldRight,
+  FormFieldInline,
+  FormFieldButton,
 } from './forms/flex';
+export {
+  Visibility,
+  ShowForScreenSize,
+  ShowOnlyForScreenSize,
+  HideForScreenSize,
+  HideOnlyForScreenSize,
+  Hide,
+  Invisible,
+  ShowForScreenOrientation,
+  HideForScreenOrientation,
+  ShowForScreenReader,
+  HideForScreenReader,
+  ShowOnFocus,
+} from './visibility';
 export { Float, ClearFix } from './float';
-export { FlexParent, FlexChild } from './flex';
+export { Flex, FlexParent, FlexChild } from './flex';
 
-export { ShowOnlyForPrint, HideOnlyForPrint } from './print';
+export { Print, ShowForPrint, HideForPrint } from './print';
 export { Subheader, Lead, UnbulletedList, Statistic } from './typography-helpers';
 export { TextAlignment } from './text-alignment';
 

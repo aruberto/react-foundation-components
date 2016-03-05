@@ -99,5 +99,7 @@ export default function create(styles, Transition) {
     }
   }
 
+  Tooltip.LinkWith = LinkWithTooltip;
+
   return { Tooltip, LinkWithTooltip };
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Badge } from '../../../src/badge';
-import { ShowOnlyForScreenReader } from '../../../src/visibility';
+import { ShowForScreenReader } from '../../../src/visibility';
 
 export default class BadgePage extends Component {
   render() {
@@ -72,7 +72,7 @@ import { Badge } from 'react-foundation-components/lib/global/badge';`
           together, give the badge an <code>id</code>, and reference that <code>id</code> in an
           <code>aria-describedby</code> attribute on the main element. The Badge content itself
           might need more context for users that use screen readers. You can add extra text inside
-          the badge by wrapping the text with the ShowOnlyForScreenReader component.
+          the badge by wrapping the text with the ShowForScreenReader component.
         </p>
         <pre>
           <code>
@@ -80,7 +80,7 @@ import { Badge } from 'react-foundation-components/lib/global/badge';`
 `<label aria-describedby="messageCount">Unread Messages</label>
 <Badge id="messageCount">
   12
-  <ShowOnlyForScreenReader>Unread Messages</ShowOnlyForScreenReader>
+  <ShowForScreenReader>Unread Messages</ShowForScreenReader>
 </Badge>`
 }
           </code>
@@ -89,7 +89,7 @@ import { Badge } from 'react-foundation-components/lib/global/badge';`
           <label aria-describedby="messageCount">Unread Messages</label>
           <Badge id="messageCount">
             12
-            <ShowOnlyForScreenReader>Unread Messages</ShowOnlyForScreenReader>
+            <ShowForScreenReader>Unread Messages</ShowForScreenReader>
           </Badge>
         </p>
       </div>

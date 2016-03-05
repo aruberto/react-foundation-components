@@ -1,11 +1,7 @@
 import styles from './_styles.scss';
 import create from './create';
 
-const Flex = create(styles);
-const {
-  Parent: FlexParent,
-  Child: FlexChild,
-} = Flex;
+const { Flex, FlexParent, FlexChild } = create(styles);
 
 export default Flex;
-export { FlexParent, FlexChild };
+export { Flex, FlexParent, FlexChild };

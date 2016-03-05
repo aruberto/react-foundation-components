@@ -1,19 +1,24 @@
 import createWrapperComponent from '../util/create-wrapper-component';
 
 export default function create(styles) {
-  const ShowOnlyForPrint = createWrapperComponent({
+  const ShowForPrint = createWrapperComponent({
     displayName: 'ShowOnlyForPrint',
     mapPropsToClassNames: () => ({
       [styles['show-for-print']]: true,
     }),
   });
 
-  const HideOnlyForPrint = createWrapperComponent({
+  const HideForPrint = createWrapperComponent({
     displayName: 'HideOnlyForPrint',
     mapPropsToClassNames: () => ({
       [styles['hide-for-print']]: true,
     }),
   });
 
-  return { ShowOnlyForPrint, HideOnlyForPrint };
+  const Print = {
+    ShowFor: ShowForPrint,
+    HideFor: HideForPrint,
+  };
+
+  return { Print, ShowForPrint, HideForPrint };
 }

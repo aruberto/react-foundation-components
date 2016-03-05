@@ -108,5 +108,7 @@ export default function create(
     }
   }
 
+  Menu.Item = MenuItem;
+
   return { Menu, MenuItem };
 }

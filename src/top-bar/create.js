@@ -73,5 +73,9 @@ export default function create(styles) {
     }
   }
 
+  TopBar.Content = TopBarContent;
+  TopBar.Item = TopBarItem;
+  TopBar.Title = TopBarTitle;
+
   return { TopBar, TopBarContent, TopBarItem, TopBarTitle };
 }

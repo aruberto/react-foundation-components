@@ -1,13 +1,14 @@
-export { Row, Column } from './grid';
+export { Grid, Row, Column } from './grid';
 export {
   FormField,
   FormFieldInput,
   FormFieldLabel,
   FormFieldError,
-  FormFieldGroup,
-  FormFieldRight,
+  FormFieldInline,
+  FormFieldButton,
 } from './forms';
 export {
+  Visibility,
   ShowForScreenSize,
   ShowOnlyForScreenSize,
   HideForScreenSize,
@@ -16,13 +17,13 @@ export {
   Invisible,
   ShowForScreenOrientation,
   HideForScreenOrientation,
-  ShowOnlyForScreenReader,
-  HideOnlyForScreenReader,
-  ShowOnlyOnFocus,
+  ShowForScreenReader,
+  HideForScreenReader,
+  ShowOnFocus,
 } from './visibility';
 export { Float, ClearFix } from './float';
 
-export { ShowOnlyForPrint, HideOnlyForPrint } from './print';
+export { Print, ShowForPrint, HideForPrint } from './print';
 export { Subheader, Lead, UnbulletedList, Statistic } from './typography-helpers';
 export { TextAlignment } from './text-alignment';
 

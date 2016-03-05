@@ -22,5 +22,7 @@ export default function create(styles) {
     mapPropsToClassNames: () => styles.stat,
   });
 
-  return { Subheader, Lead, UnbulletedList, Statistic };
+  const TypographyHelpers = { Subheader, Lead, UnbulletedList, Statistic };
+
+  return { TypographyHelpers, Subheader, Lead, UnbulletedList, Statistic };
 }
