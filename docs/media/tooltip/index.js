@@ -5,9 +5,8 @@ import { Label } from '../../../src/label';
 
 const tooltipStyle = {
   position: 'relative',
-  top: '20px',
   left: '50px',
-  marginBottom: '25px',
+  marginBottom: '30px',
 };
 
 export default class TooltipPage extends Component {
@@ -18,6 +17,7 @@ export default class TooltipPage extends Component {
         <p>
           Tooltips are used for displaying extended information for a term or action on a page.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the Tooltip component:</p>
         <pre>
@@ -134,6 +134,7 @@ import { Tooltip, LinkWithTooltip } from 'react-foundation-components/lib/global
             </Label>
           </LinkWithTooltip>
         </p>
+        <hr/>
         <h2>Accessibility</h2>
         <p>
           If the <code>tooltipId</code> prop is set, the LinkWithTooltip

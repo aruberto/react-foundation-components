@@ -20,6 +20,7 @@ export default class ProgressBarPage extends Component {
         <p>
           Show your progress.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the ProgressBar component:</p>
         <pre>
@@ -58,6 +59,7 @@ import { ProgressBar } from 'react-foundation-components/lib/global/progress-bar
         <ProgressBar value={75}/>
         <ProgressBar value={100}/>
         <ProgressBar max={200} min={50} value={100}/>
+        <hr/>
         <h2>Coloring</h2>
         <p>
           Give a Badge additional meaning by setting the <code>color</code> prop. Possible values
@@ -79,6 +81,7 @@ import { ProgressBar } from 'react-foundation-components/lib/global/progress-bar
         <ProgressBar color="success" value={60}/>
         <ProgressBar color="warning" value={80}/>
         <ProgressBar color="alert" value={100}/>
+        <hr/>
         <h2>With Text</h2>
         <p>
           You can add text inside the meter of a progress bar by providing

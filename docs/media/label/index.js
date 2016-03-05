@@ -10,6 +10,7 @@ export default class LabelPage extends Component {
         <p>
           Labels are useful to call out certain sections or to attach metadata.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the Label component:</p>
         <pre>
@@ -35,6 +36,7 @@ import { Label } from 'react-foundation-components/lib/global/label';`
         <p>
           <Label>Default Label</Label>
         </p>
+        <hr/>
         <h2>Coloring</h2>
         <p>
           Give a Label additional meaning by setting the <code>color</code> prop. Possible values
@@ -62,6 +64,7 @@ import { Label } from 'react-foundation-components/lib/global/label';`
           &nbsp;
           <Label color="warning">Warning Label</Label>
         </p>
+        <hr/>
         <h2>Accessibility</h2>
         <p>
           A Label will typically be describing another element on the page. To bind the two elements

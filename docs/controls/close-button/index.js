@@ -11,6 +11,7 @@ export default class CloseButtonPage extends Component {
         <p>
           The close button can be used anywhere you need something to go away on click.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the CloseButton component:</p>
         <pre>

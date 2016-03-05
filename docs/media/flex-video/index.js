@@ -11,6 +11,7 @@ export default class FlexVideoPage extends Component {
           Wrap embedded videos from YouTube, Vimeo, and others in a flex video container to ensure
           they maintain the correct aspect ratio regardless of screen size.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the FlexVideo component:</p>
         <pre>

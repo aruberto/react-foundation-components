@@ -22,6 +22,7 @@ export default class ToggleSwitchPage extends Component {
         <p>
           Toggle between a set of options.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the ToggleSwitch components:</p>
         <pre>
@@ -128,6 +129,7 @@ render() {
           <ToggleSwitchItem eventKey="4">Month</ToggleSwitchItem>
           <ToggleSwitchItem eventKey="5">Year</ToggleSwitchItem>
         </ToggleSwitch>
+        <hr/>
         <h2>Coloring</h2>
         <p>
           Give a ToggleSwitch additional meaning by setting the <code>color</code>

@@ -35,6 +35,7 @@ export default class SwitchPage extends Component {
         <p>
           Now you can tell your users to flip the switch or switch off.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the Switch components:</p>
         <pre>
@@ -105,6 +106,7 @@ render() {
           </code>
         </pre>
         <Switch checked={checked} onToggle={this.handleToggle}/>
+        <hr/>
         <h2>Sizing</h2>
         <p>
           Set the <code>size</code> prop to change switch size and shape. Possible values are tiny,
@@ -124,6 +126,7 @@ render() {
         <Switch size="small"/>
         <Switch/>
         <Switch size="large"/>
+        <hr/>
         <h2>Accessibility</h2>
         <p>
           Provide an <code>id</code> so the Switch populates the for attribute of the Switch
@@ -151,6 +154,7 @@ render() {
           <SwitchCheckedLabel>Yes</SwitchCheckedLabel>
           <SwitchUncheckedLabel>No</SwitchUncheckedLabel>
         </Switch>
+        <hr/>
         <h2>Radio Switch</h2>
         <p>
           RadioSwitch component is a container for Switches. Switches contained in a RadioSwitch
@@ -226,6 +230,7 @@ render() {
           <Switch eventKey="2"/>
           <Switch eventKey="3"/>
         </RadioSwitch>
+        <hr/>
         <h2>Sizing</h2>
         <p>
           Set the <code>size</code> prop to change size and shape of all child switches. Possible

@@ -13,20 +13,29 @@ export default class ButtonGroupPage extends Component {
         <p>
           Button Groups are containers for related action items.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the ButtonGroup component:</p>
         <pre>
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { Button } from 'react-foundation-components/lib/button';
 import { ButtonGroup } from 'react-foundation-components/lib/button-group';
 
 or
 
 // Import with global scoped class names
-import { Button } from 'react-foundation-components/lib/global/button';
-import { ButtonGroup } from 'react-foundation-components/lib/global/button-group';`
+import { ButtonGroup } from 'react-foundation-components/lib/global/button-group';
+
+or
+
+// Import Flexbox version with local scoped class names (via CSS Modules)
+import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group/flex';
+
+or
+
+// Import Flexbox version with global scoped class names
+import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group/flex';`
 }
           </code>
         </pre>
@@ -50,6 +59,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/button-group
           <Button>Two</Button>
           <Button>Three</Button>
         </ButtonGroup>
+        <hr/>
         <h2>Sizing</h2>
         <p>
           Set the <code>size</code> prop to change all child button size and shape. Possible values
@@ -101,6 +111,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/button-group
           <Button>Button</Button>
           <Button>Group</Button>
         </ButtonGroup>
+        <hr/>
         <h2>Coloring</h2>
         <p>
           Buttons within a button group can be colored individually by setting
@@ -140,6 +151,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/button-group
           <Button>Faster</Button>
           <Button>Stronger</Button>
         </ButtonGroup>
+        <hr/>
         <h2>Even-width Group</h2>
         <p>
           Set the <code>expanded</code> prop to make the ButtonGroup take up entire width of its
@@ -162,6 +174,8 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/button-group
           <Button>Button</Button>
           <Button>Group</Button>
         </ButtonGroup>
+        <br/>
+        <hr/>
         <h2>Stacking</h2>
         <p>
           A ButtonGroup can be made to stack vertically by setting the <code>stack</code> prop. A
@@ -217,6 +231,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/button-group
           <Button>You</Button>
           <Button>Go</Button>
         </ButtonGroup>
+        <hr/>
         <h2>Split Buttons</h2>
         <p>
           To build a split button, just create a ButtonGroup with two Buttons.
@@ -246,21 +261,11 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/button-group
             <ShowOnlyForScreenReader>Show Menu</ShowOnlyForScreenReader>
           </Button>
         </ButtonGroup>
+        <hr/>
         <h2>Flexbox</h2>
         <p>
-          If using local scoped class names with CSS Modules, you can also simulateously import a
-          Flexbox based version of the ButtonGroup component. This is not possible using global
-          scoped class names since the class names conflict. The Flexbox based ButtonGroup component
-          can be used exactly like float based ButtonGroup component.
+          The Flexbox version of the ButtonGroup works same as float based version.
         </p>
-        <pre>
-          <code>
-{
-`// Import with local scoped class names (via CSS Modules)
-import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group/flex';`
-}
-          </code>
-        </pre>
         <pre>
           <code>
 {

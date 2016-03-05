@@ -11,6 +11,7 @@ export default class ButtonPage extends Component {
         <p>
           Buttons are convenient tools when you need more traditional actions.
         </p>
+        <hr/>
         <h2>Basics</h2>
         <p>Importing the Button component:</p>
         <pre>
@@ -50,6 +51,7 @@ import { Button } from 'react-foundation-components/lib/global/button';`
           &nbsp;
           <Button color="alert">Delete</Button>
         </p>
+        <hr/>
         <h2>Sizing</h2>
         <p>
           Set the <code>size</code> prop to change button size and shape. Possible values are tiny,
@@ -90,6 +92,7 @@ import { Button } from 'react-foundation-components/lib/global/button';`
           <Button expanded>Such Expand</Button>
           <Button expanded size="tiny">Wow, Small Expand</Button>
         </p>
+        <hr/>
         <h2>Coloring</h2>
         <p>
           Give a button additional meaning by setting the <code>color</code> prop. Possible values
@@ -142,6 +145,7 @@ import { Button } from 'react-foundation-components/lib/global/button';`
           &nbsp;
           <Button color="warning" disabled>Warning Color</Button>
         </p>
+        <hr/>
         <h2>Hollow Style</h2>
         <p>
           Set the <code>hollow</code> prop to give the button a hollow style.
@@ -168,6 +172,7 @@ import { Button } from 'react-foundation-components/lib/global/button';`
           &nbsp;
           <Button color="warning" hollow>Warning Color</Button>
         </p>
+        <hr/>
         <h2>Dropdown Arrows</h2>
         <p>
           Set the <code>dropdown</code> prop to add a dropdown arrow to your button.
@@ -193,6 +198,7 @@ import { Button } from 'react-foundation-components/lib/global/button';`
           <Button dropdown size="large">Dropdown Button</Button>
           <Button dropdown expanded>Dropdown Button</Button>
         </p>
+        <hr/>
         <h2>Accessibility</h2>
         <p>
           Make sure that the text of the Button is descriptive. If for some reason, your button
