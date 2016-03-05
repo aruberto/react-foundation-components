@@ -9,14 +9,16 @@ export default function create(
   styles,
   TextAlignment = DefaultComponent,
   Row = DefaultComponent,
-  Column = DefaultComponent
+  Column = DefaultComponent,
+  Button = DefaultComponent,
 ) {
-  class Input extends Component {
+  class FormFieldInputBase extends Component {
     static propTypes = {
       className: PropTypes.string,
       error: PropTypes.bool,
       formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      inline: PropTypes.bool,
       type: PropTypes.string,
     };
 
@@ -25,12 +27,13 @@ export default function create(
     };
 
     render() {
-      const { className, error, formFieldId, id, type } = this.props;
+      const { className, error, formFieldId, id, inline, type } = this.props;
       const classNames =
         cx(
           className,
           {
             [styles['is-invalid-input']]: error,
+            [styles['input-group-field']]: inline,
           }
         );
       const restProps = {
@@ -57,7 +60,7 @@ export default function create(
     }
   }
 
-  class Label extends Component {
+  class FormFieldLabelBase extends Component {
     static propTypes = {
       className: PropTypes.string,
       middle: PropTypes.bool,
@@ -65,18 +68,21 @@ export default function create(
       formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       htmlFor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      inline: PropTypes.bool,
     };
 
     render() {
-      const { className, middle, error, formFieldId, htmlFor, id } = this.props;
+      const { className, middle, error, formFieldId, htmlFor, id, inline } = this.props;
       const classNames =
         cx(
           className,
           {
             [styles.middle]: middle,
             [styles['is-invalid-label']]: error,
+            [styles['input-group-label']]: inline,
           }
         );
+
       return (
         <TextAlignment
           {...this.props}
@@ -89,7 +95,7 @@ export default function create(
     }
   }
 
-  class Error extends Component {
+  class FormFieldErrorBase extends Component {
     static propTypes = {
       className: PropTypes.string,
       error: PropTypes.bool,
@@ -116,6 +122,69 @@ export default function create(
           id={isBlank(formFieldId) ? id : `${formFieldId}Error`}
         />
       );
+    }
+  }
+
+  class FormFieldInlineBase extends Component {
+    static propTypes = {
+      children: PropTypes.node,
+      className: PropTypes.string,
+      error: PropTypes.bool,
+      formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    };
+
+    render() {
+      const { children, className, error, formFieldId, id } = this.props;
+      const classNames = cx(className, styles['input-group']);
+      const newChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child, {
+            error,
+            inline: true,
+            formFieldId,
+          });
+        }
+
+        return child;
+      });
+
+      return (
+        <div
+          {...this.props}
+          className={classNames}
+          id={isBlank(formFieldId) ? id : `${formFieldId}Group`}
+        >
+          {newChildren}
+        </div>
+      );
+    }
+  }
+
+  class FormFieldButtonBase extends Component {
+    static propTypes = {
+      containerClassName: PropTypes.string,
+      containerStyle: PropTypes.object,
+      formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      inline: PropTypes.bool,
+    };
+
+    render() {
+      const { containerClassName, containerStyle, formFieldId, id, inline } = this.props;
+      const content =
+        <Button {...this.props} id={isBlank(formFieldId) ? id : `${formFieldId}Button`}/>;
+
+      if (inline) {
+        const containerClassNames = cx(containerClassName, styles['input-group-button']);
+        return (
+          <div className={containerClassNames} style={containerStyle}>
+            {content}
+          </div>
+        );
+      }
+
+      return content;
     }
   }
 
@@ -157,19 +226,31 @@ export default function create(
 
   class FormFieldInput extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={Input}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldInputBase}/>;
     }
   }
 
   class FormFieldLabel extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={Label}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldLabelBase}/>;
     }
   }
 
   class FormFieldError extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={Error}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldErrorBase}/>;
+    }
+  }
+
+  class FormFieldInline extends Component {
+    render() {
+      return <ColumnWrapper {...this.props} componentClass={FormFieldInlineBase}/>;
+    }
+  }
+
+  class FormFieldButton extends Component {
+    render() {
+      return <ColumnWrapper {...this.props} componentClass={FormFieldButtonBase}/>;
     }
   }
 
@@ -215,5 +296,7 @@ export default function create(
     FormFieldInput,
     FormFieldLabel,
     FormFieldError,
+    FormFieldInline,
+    FormFieldButton,
   };
 }

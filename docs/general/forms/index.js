@@ -5,14 +5,17 @@ import {
   FormFieldInput,
   FormFieldLabel,
   FormFieldError,
+  FormFieldInline,
+  FormFieldButton,
 } from '../../../src/forms';
 import {
   FormField as FlexFormField,
   FormFieldInput as FlexFormFieldInput,
   FormFieldLabel as FlexFormFieldLabel,
   FormFieldError as FlexFormFieldError,
+  FormFieldInline as FlexFormFieldInline,
+  FormFieldButton as FlexFormFieldButton,
 } from '../../../src/forms/flex';
-import { Button } from '../../../src/button';
 import { Row, Column } from '../../../src/grid';
 import { Row as FlexRow, Column as FlexColumn } from '../../../src/grid/flex';
 
@@ -41,7 +44,7 @@ export default class FormsPage extends Component {
           <FormFieldError>select error</FormFieldError>
         </FormField>
         <br/>
-        <FormField>
+        <FormField id="checkboxFormField">
           <FormFieldInput type="checkbox" defaultChecked/>
           <FormFieldLabel>Number</FormFieldLabel>
           <FormFieldError>number error</FormFieldError>
@@ -160,6 +163,26 @@ export default class FormsPage extends Component {
           </Column>
         </Row>
         <br/>
+        <FormField>
+          <FormFieldLabel>Text</FormFieldLabel>
+          <FormFieldInline>
+            <FormFieldLabel>Inline Text</FormFieldLabel>
+            <FormFieldInput defaultValue="XYZ"/>
+            <FormFieldButton>Click</FormFieldButton>
+          </FormFieldInline>
+          <FormFieldError>text error</FormFieldError>
+        </FormField>
+        <br/>
+        <FormField error>
+          <FormFieldLabel>Text</FormFieldLabel>
+          <FormFieldInline>
+            <FormFieldLabel>Inline Text</FormFieldLabel>
+            <FormFieldInput defaultValue="XYZ"/>
+            <FormFieldButton>Click</FormFieldButton>
+          </FormFieldInline>
+          <FormFieldError>text error</FormFieldError>
+        </FormField>
+        <br/>
         <FlexFormField>
           <FlexFormFieldLabel>Text</FlexFormFieldLabel>
           <FlexFormFieldInput defaultValue="XYZ"/>
@@ -215,6 +238,26 @@ export default class FormsPage extends Component {
             </FlexFormField>
           </FlexColumn>
         </FlexRow>
+        <br/>
+        <FlexFormField>
+          <FlexFormFieldLabel>Text</FlexFormFieldLabel>
+          <FlexFormFieldInline>
+            <FlexFormFieldLabel>Inline Text</FlexFormFieldLabel>
+            <FlexFormFieldInput defaultValue="XYZ"/>
+            <FlexFormFieldButton>Click</FlexFormFieldButton>
+          </FlexFormFieldInline>
+          <FlexFormFieldError>text error</FlexFormFieldError>
+        </FlexFormField>
+        <br/>
+        <FlexFormField error>
+          <FlexFormFieldLabel>Text</FlexFormFieldLabel>
+          <FlexFormFieldInline>
+            <FlexFormFieldLabel>Inline Text</FlexFormFieldLabel>
+            <FlexFormFieldInput defaultValue="XYZ"/>
+            <FlexFormFieldButton>Click</FlexFormFieldButton>
+          </FlexFormFieldInline>
+          <FlexFormFieldError>text error</FlexFormFieldError>
+        </FlexFormField>
       </div>
     );
   }
