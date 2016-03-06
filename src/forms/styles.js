@@ -1,4 +1,5 @@
 import keyMirrorArray from '../util/key-mirror-array';
+import { LARGER_SCREEN_SIZES } from '../util/constants';
 
 const styles = [
   'form-field',
@@ -12,6 +13,7 @@ const styles = [
   'input-group-field',
   'input-group-label',
   'input-group-button',
-];
+]
+  .concat(LARGER_SCREEN_SIZES.map((size) => `${size}-middle`));
 
 export default keyMirrorArray(styles);

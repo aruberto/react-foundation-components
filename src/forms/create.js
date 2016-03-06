@@ -3,6 +3,7 @@ import cx from 'classnames';
 import isBlank from 'underscore.string/isBlank';
 import elementType from 'react-prop-types/lib/elementType';
 
+import { SCREEN_SIZES, LARGER_SCREEN_SIZES } from '../util/constants';
 import DefaultComponent from '../util/default-component';
 
 export default function create(
@@ -63,7 +64,7 @@ export default function create(
   class FormFieldLabelBase extends Component {
     static propTypes = {
       className: PropTypes.string,
-      middle: PropTypes.bool,
+      middle: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(SCREEN_SIZES)]),
       error: PropTypes.bool,
       formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       htmlFor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -73,11 +74,13 @@ export default function create(
 
     render() {
       const { className, middle, error, formFieldId, htmlFor, id, inline } = this.props;
+
       const classNames =
         cx(
           className,
           {
-            [styles.middle]: middle,
+            [styles.middle]: middle && !LARGER_SCREEN_SIZES.includes(middle),
+            [styles[`${middle}-middle`]]: LARGER_SCREEN_SIZES.includes(middle),
             [styles['is-invalid-label']]: error,
             [styles['input-group-label']]: inline,
           }

@@ -1,8 +1,8 @@
 import keyMirrorArray from '../key-mirror-array';
 
 export const SCREEN_SIZE_SMALL = 'small';
-export const SCREEN_SIZE_MEDIUM = 'medium';
-export const SCREEN_SIZES = [SCREEN_SIZE_SMALL, SCREEN_SIZE_MEDIUM, 'large', 'xlarge', 'xxlarge'];
+export const BUTTON_GROUP_STACK_SCREEN_SIZES = [SCREEN_SIZE_SMALL, 'medium'];
+export const SCREEN_SIZES = [...BUTTON_GROUP_STACK_SCREEN_SIZES, 'large', 'xlarge', 'xxlarge'];
 export const [, ...LARGER_SCREEN_SIZES] = SCREEN_SIZES;
 
 export const SCREEN_ORIENTATIONS = ['landscape', 'portrait'];

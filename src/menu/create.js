@@ -53,7 +53,6 @@ export default function create(
             && alignment !== CENTER_POSITION
             && MENU_ALIGNMENTS.includes(alignment),
           [styles.expanded]: expanded,
-          [styles.horizontal]: horizontal && !LARGER_SCREEN_SIZES.includes(horizontal),
           [styles[`${horizontal}-horizontal`]]: LARGER_SCREEN_SIZES.includes(horizontal),
           [styles['icon-top']]: iconTop,
           [styles.nested]: nested,

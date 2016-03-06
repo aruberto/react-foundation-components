@@ -4,11 +4,8 @@ import cx from 'classnames';
 import {
   COMPONENT_SIZES,
   COMPONENT_COLORS,
-  SCREEN_SIZE_SMALL,
-  SCREEN_SIZE_MEDIUM,
+  BUTTON_GROUP_STACK_SCREEN_SIZES,
 } from '../util/constants';
-
-const STACK_SCREEN_SIZES = [SCREEN_SIZE_SMALL, SCREEN_SIZE_MEDIUM];
 
 export default function create(styles) {
   class ButtonGroup extends Component {
@@ -18,7 +15,8 @@ export default function create(styles) {
       color: PropTypes.oneOf(COMPONENT_COLORS),
       expanded: PropTypes.bool,
       size: PropTypes.oneOf(COMPONENT_SIZES),
-      stack: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(STACK_SCREEN_SIZES)]),
+      stack:
+        PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(BUTTON_GROUP_STACK_SCREEN_SIZES)]),
     };
 
     render() {
@@ -30,8 +28,8 @@ export default function create(styles) {
           [styles[color]]: COMPONENT_COLORS.includes(color),
           [styles.expanded]: expanded,
           [styles[size]]: COMPONENT_SIZES.includes(size),
-          [styles.stacked]: stack && !STACK_SCREEN_SIZES.includes(stack),
-          [styles[`stacked-for-${stack}`]]: STACK_SCREEN_SIZES.includes(stack),
+          [styles.stacked]: stack && !BUTTON_GROUP_STACK_SCREEN_SIZES.includes(stack),
+          [styles[`stacked-for-${stack}`]]: BUTTON_GROUP_STACK_SCREEN_SIZES.includes(stack),
         }
       );
       const newChildren = Children.map(

@@ -259,7 +259,9 @@ render() {
 `<Row>
   <Column small={12} medium={6}>
     <FormField grid error={this.state.error}>
-      <FormFieldLabel mediumAlignment="right" middle small={12} medium={2}>Field 1</FormFieldLabel>
+      <FormFieldLabel mediumAlignment="right" middle="medium" small={12} medium={2}>
+        Field 1
+      </FormFieldLabel>
       <FormFieldInput small={12} medium={10}/>
       <FormFieldError small={12} medium={10} mediumOffset={2}>Field 1 Error</FormFieldError>
       <FormFieldHelp small={12} medium={10} mediumOffset={2}>Field 1 Help</FormFieldHelp>
@@ -267,7 +269,9 @@ render() {
   </Column>
   <Column small={12} medium={6}>
     <FormField grid error={this.state.error}>
-      <FormFieldLabel mediumAlignment="right" middle small={12} medium={2}>Field 2</FormFieldLabel>
+      <FormFieldLabel mediumAlignment="right" middle="medium" small={12} medium={2}>
+        Field 2
+      </FormFieldLabel>
       <FormFieldInput small={12} medium={10}/>
       <FormFieldError small={12} medium={10} mediumOffset={2}>Field 2 Error</FormFieldError>
       <FormFieldHelp small={12} medium={10} mediumOffset={2}>Field 2 Help</FormFieldHelp>
@@ -281,7 +285,7 @@ render() {
         <Row>
           <Column small={12} medium={6}>
             <FormField grid error={this.state.error}>
-              <FormFieldLabel mediumAlignment="right" middle small={12} medium={2}>
+              <FormFieldLabel mediumAlignment="right" middle="medium" small={12} medium={2}>
                 Field 1
               </FormFieldLabel>
               <FormFieldInput small={12} medium={10}/>
@@ -291,7 +295,7 @@ render() {
           </Column>
           <Column small={12} medium={6}>
             <FormField grid error={this.state.error}>
-              <FormFieldLabel mediumAlignment="right" middle small={12} medium={2}>
+              <FormFieldLabel mediumAlignment="right" middle="medium" small={12} medium={2}>
                 Field 2
               </FormFieldLabel>
               <FormFieldInput small={12} medium={10}/>
