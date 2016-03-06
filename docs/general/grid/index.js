@@ -4,7 +4,7 @@ import { Row, Column } from '../../../src/grid';
 import { ShowForScreenSize, ShowOnlyForScreenSize } from '../../../src/visibility';
 import { Thumbnail } from '../../../src/thumbnail';
 
-const rowStyle = { border: 'solid 1px #c6c6c6', margin: '0.5rem 0' };
+const rowStyle = { border: 'solid 1px #c6c6c6', marginTop: '0.5rem', marginBottom: '0.5rem' };
 const styleOdd = { background: '#eee' };
 const styleEven = { background: '#e1e1e1' };
 
@@ -100,7 +100,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
         <h2>Fluid Row</h2>
         <p>
           Normally, a row is always 1200 pixels wide. Make a row completely fluid by setting
-          the <code>expanded</code> prop. These props accept a number between 0 and 11.
+          the <code>expanded</code> prop.
         </p>
         <pre>
           <code>
@@ -164,7 +164,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
         <p>
           Move blocks up to 11 columns to the right by using the <code>smallOffset</code>
           , <code>mediumOffset</code>, <code>largeOffset</code>, <code>xlargeOffset</code>
-          and <code>xxlargeOffset</code> props.
+          and <code>xxlargeOffset</code> props. These props accept a number between 0 and 1.
         </p>
         <pre>
           <code>

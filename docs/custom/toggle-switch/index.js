@@ -24,6 +24,13 @@ export default class ToggleSwitchPage extends Component {
         </p>
         <hr/>
         <h2>Basics</h2>
+        <p>
+          <strong>
+            This is a custom feature implemented in this library and will not work with stock
+            Foundation stylesheet. Must use CSS Modules or import Foundation stylesheet from this
+            library.
+          </strong>
+        </p>
         <p>Importing the ToggleSwitch components:</p>
         <pre>
           <code>
