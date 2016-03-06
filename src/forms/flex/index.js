@@ -9,6 +9,7 @@ const {
   FormFieldInput,
   FormFieldLabel,
   FormFieldError,
+  FormFieldHelp,
   FormFieldInline,
   FormFieldButton,
 } = create(styles, TextAlignment, Row, Column, Button);
@@ -19,6 +20,7 @@ export {
   FormFieldInput,
   FormFieldLabel,
   FormFieldError,
+  FormFieldHelp,
   FormFieldInline,
   FormFieldButton,
 };

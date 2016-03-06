@@ -5,10 +5,11 @@
 .form-field {
   @include foundation-form-text;
   @include foundation-form-checkbox;
-  @include foundation-range-input;
   @include foundation-form-label;
   @include foundation-form-helptext;
   @include foundation-form-prepostfix;
   @include foundation-form-select;
   @include foundation-form-error;
+
+  @import './custom';
 }

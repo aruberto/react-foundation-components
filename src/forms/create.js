@@ -109,8 +109,8 @@ export default function create(
       const classNames =
         cx(
           className,
+          styles['form-error'],
           {
-            [styles['form-error']]: true,
             [styles['is-visible']]: error,
           }
         );
@@ -120,6 +120,27 @@ export default function create(
           {...this.props}
           className={classNames}
           id={isBlank(formFieldId) ? id : `${formFieldId}Error`}
+        />
+      );
+    }
+  }
+
+  class FormFieldHelpBase extends Component {
+    static propTypes = {
+      className: PropTypes.string,
+      formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    };
+
+    render() {
+      const { className, formFieldId, id } = this.props;
+      const classNames = cx(className, styles['help-text']);
+
+      return (
+        <p
+          {...this.props}
+          className={classNames}
+          id={isBlank(formFieldId) ? id : `${formFieldId}Help`}
         />
       );
     }
@@ -242,6 +263,12 @@ export default function create(
     }
   }
 
+  class FormFieldHelp extends Component {
+    render() {
+      return <ColumnWrapper {...this.props} componentClass={FormFieldHelpBase}/>;
+    }
+  }
+
   class FormFieldInline extends Component {
     render() {
       return <ColumnWrapper {...this.props} componentClass={FormFieldInlineBase}/>;
@@ -293,6 +320,7 @@ export default function create(
 
   FormField.Input = FormFieldInput;
   FormField.Label = FormFieldLabel;
+  FormField.Help = FormFieldHelp;
   FormField.Error = FormFieldError;
   FormField.Inline = FormFieldInline;
   FormField.Button = FormFieldButton;
@@ -302,6 +330,7 @@ export default function create(
     FormFieldInput,
     FormFieldLabel,
     FormFieldError,
+    FormFieldHelp,
     FormFieldInline,
     FormFieldButton,
   };

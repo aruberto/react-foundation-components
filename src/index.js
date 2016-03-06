@@ -4,6 +4,7 @@ export {
   FormFieldInput,
   FormFieldLabel,
   FormFieldError,
+  FormFieldHelp,
   FormFieldInline,
   FormFieldButton,
 } from './forms';

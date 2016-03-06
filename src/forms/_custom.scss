@@ -1,0 +1,9 @@
+@include -zf-each-breakpoint {
+  @if $-zf-size != 'small' {
+    label {
+      &.#{$-zf-size}-middle {
+        @include form-label-middle;
+      }
+    }
+  }
+}

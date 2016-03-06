@@ -6,6 +6,8 @@ const styles = [
   'is-invalid-label',
   'form-error',
   'is-visible',
+  'help-text',
+  'middle',
   'input-group',
   'input-group-field',
   'input-group-label',
