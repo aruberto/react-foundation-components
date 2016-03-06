@@ -23,9 +23,8 @@ export const OVERLAY_POSITIONS = [...OVERLAY_POSITIONS_INTERNAL, 'bottom'];
 export const FLOAT_POSITIONS = [...OFF_CANVAS_POSITIONS, CENTER_POSITION];
 export const TEXT_ALIGNMENTS = [...FLOAT_POSITIONS, 'justify'];
 export const MENU_ALIGNMENTS = [...FLOAT_POSITIONS];
-export const FLEX_HORIZONTAL_ALIGNMENTS = [...TEXT_ALIGNMENTS, 'spaced'];
-export const [, ...FLEX_HORIZONTAL_ALIGNMENTS_INTERNAL] = FLEX_HORIZONTAL_ALIGNMENTS;
 export const MEDIA_OBJECT_SECTION_ALIGNMENTS = ['middle', 'bottom'];
+export const FLEX_HORIZONTAL_ALIGNMENTS = [...TEXT_ALIGNMENTS, 'spaced'];
 export const FLEX_VERTICAL_ALIGNMENTS = ['top', ...MEDIA_OBJECT_SECTION_ALIGNMENTS, 'stretch'];
 
 export const CLASS_NAME_TYPES = keyMirrorArray(['BOOL', 'RANGE', 'ENUM']);
@@ -92,30 +91,8 @@ export const GRID_COLUMN_CLASS_NAMES = [
   },
 ];
 
-export const FLEX_PARENT_CLASS_NAMES = [
-  {
-    baseClassName: 'align',
-    basePropName: 'HorizontalAlignment',
-    type: CLASS_NAME_TYPES.ENUM,
-    values: FLEX_HORIZONTAL_ALIGNMENTS,
-    flattenSmall: true,
-  },
-  {
-    baseClassName: 'align',
-    basePropName: 'VerticalAlignment',
-    type: CLASS_NAME_TYPES.ENUM,
-    values: FLEX_VERTICAL_ALIGNMENTS,
-    flattenSmall: true,
-  },
-];
+export const FLEX_PARENT_CLASS_NAMES = [];
 export const FLEX_CHILD_CLASS_NAMES = [
-  {
-    baseClassName: 'align-self',
-    basePropName: 'VerticalAlignment',
-    type: CLASS_NAME_TYPES.ENUM,
-    values: FLEX_VERTICAL_ALIGNMENTS,
-    flattenSmall: true,
-  },
   {
     baseClassName: 'order',
     basePropName: 'Order',
