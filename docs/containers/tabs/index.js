@@ -3,13 +3,9 @@ import React, { Component } from 'react';
 import { Tabs, Tab } from '../../../src/tabs';
 
 export default class TabPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeKey: '1',
-    };
-  }
+  state = {
+    activeKey: '1',
+  };
 
   handleSelect = (activeKey) => this.setState({ activeKey });
 

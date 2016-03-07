@@ -3,14 +3,10 @@ import React, { Component } from 'react';
 import { Accordion, AccordionItem } from '../../../src/accordion';
 
 export default class AccordionPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeKey: '1',
-      activeKeys: ['1', '3'],
-    };
-  }
+  state = {
+    activeKey: '1',
+    activeKeys: ['1', '3'],
+  };
 
   handleSingleSelect = (nextActiveKey) => {
     const { activeKey: prevActiveKey } = this.state;

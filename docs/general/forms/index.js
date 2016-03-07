@@ -22,14 +22,10 @@ import { Row, Column } from '../../../src/grid';
 import { Button } from '../../../src/button';
 
 export default class FormsPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      text: 'Controlled Default Value',
-      error: false,
-    };
-  }
+  state = {
+    text: 'Controlled Default Value',
+    error: false,
+  };
 
   handleTextChange = (event) => this.setState({ text: event.target.value });
 
@@ -133,14 +129,7 @@ import {
         <pre>
           <code>
             {
-`constructor(props) {
-  super(props);
-
-  this.state = {
-    text: 'Controlled Default Value',
-    error: false,
-  };
-}
+`state = { text: 'Controlled Default Value', error: false };
 
 handleTextChange = (event) => this.setState({ text: event.target.value });
 

@@ -20,13 +20,9 @@ import {
 import { HideForScreenSize } from '../../../src/visibility';
 
 export default class OffCanvasPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      open: null,
-    };
-  }
+  state = {
+    open: null,
+  };
 
   handleClose = () => this.setState({ open: null });
 

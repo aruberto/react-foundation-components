@@ -9,20 +9,12 @@ import {
 } from '../../../src/switch';
 
 export default class SwitchPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      checked: false,
-      activeKey: null,
-    };
-  }
-
-  handleToggle = () => {
-    const { checked } = this.state;
-
-    this.setState({ checked: !checked });
+  state = {
+    checked: false,
+    activeKey: null,
   };
+
+  handleToggle = () => this.setState({ checked: !this.state.checked });
 
   handleSelect = (activeKey) => this.setState({ activeKey });
 
@@ -91,11 +83,7 @@ import {
         <pre>
           <code>
 {
-`constructor(props) {
-  super(props);
-
-  this.state = { checked: false };
-}
+`state = { checked: false };
 
 handleToggle = () => this.setState({ checked: !this.state.checked });
 
@@ -205,11 +193,7 @@ render() {
         <pre>
           <code>
 {
-`constructor(props) {
-  super(props);
-
-  this.state = { activeKey: null };
-}
+`state = { activeKey: null };
 
 handleSelect = (activeKey) => this.setState({ activeKey });
 

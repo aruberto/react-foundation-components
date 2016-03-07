@@ -54,13 +54,9 @@ class HomePage extends Component {
     children: PropTypes.node,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      leftNavOpen: false,
-    };
-  }
+  state = {
+    leftNavOpen: false,
+  };
 
   handleClose = () => this.setState({ leftNavOpen: false });
 

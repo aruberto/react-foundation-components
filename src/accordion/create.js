@@ -98,6 +98,53 @@ export default function create(styles, Collapse = DefaultComponent) {
   const AccordionItem = uncontrollable(AccordionItemControlled, { active: 'onToggle' });
   AccordionItem.displayName = 'AccordionItem';
 
+  function getActiveKeyFromProps(props) {
+    const { allowAllClosed, children, defaultActiveKey, multiExpand } = props;
+    let activeKey = null;
+
+    if (multiExpand) {
+      if (Array.isArray(defaultActiveKey)) {
+        activeKey = defaultActiveKey;
+      } else if (isBlank(defaultActiveKey)) {
+        activeKey = [];
+      } else {
+        activeKey = [defaultActiveKey];
+      }
+    } else if (Array.isArray(defaultActiveKey)) {
+      if (defaultActiveKey.length > 0) {
+        activeKey = defaultActiveKey[0];
+      } else {
+        activeKey = null;
+      }
+    } else if (isBlank(defaultActiveKey)) {
+      activeKey = null;
+    } else {
+      activeKey = defaultActiveKey;
+    }
+
+    if (!allowAllClosed && ((multiExpand && activeKey.length === 0) || isNil(activeKey))) {
+      let firstChildEventKey = null;
+
+      Children.forEach(children, (child) => {
+        if (isNil(firstChildEventKey)
+            && isValidElement(child)
+            && !isBlank(child.props.eventKey)) {
+          firstChildEventKey = child.props.eventKey;
+        }
+      });
+
+      if (!isBlank(firstChildEventKey)) {
+        if (multiExpand) {
+          activeKey = [firstChildEventKey];
+        } else {
+          activeKey = firstChildEventKey;
+        }
+      }
+    }
+
+    return activeKey;
+  }
+
   class Accordion extends Component {
     static propTypes = {
       activeKey: PropTypes.oneOfType([
@@ -117,54 +164,7 @@ export default function create(styles, Collapse = DefaultComponent) {
       onSelect: PropTypes.func,
     };
 
-    constructor(props) {
-      super(props);
-
-      const { allowAllClosed, children, defaultActiveKey, multiExpand } = props;
-      let activeKey = null;
-
-      if (multiExpand) {
-        if (Array.isArray(defaultActiveKey)) {
-          activeKey = defaultActiveKey;
-        } else if (isBlank(defaultActiveKey)) {
-          activeKey = [];
-        } else {
-          activeKey = [defaultActiveKey];
-        }
-      } else if (Array.isArray(defaultActiveKey)) {
-        if (defaultActiveKey.length > 0) {
-          activeKey = defaultActiveKey[0];
-        } else {
-          activeKey = null;
-        }
-      } else if (isBlank(defaultActiveKey)) {
-        activeKey = null;
-      } else {
-        activeKey = defaultActiveKey;
-      }
-
-      if (!allowAllClosed && ((multiExpand && activeKey.length === 0) || isNil(activeKey))) {
-        let firstChildEventKey = null;
-
-        Children.forEach(children, (child) => {
-          if (isNil(firstChildEventKey)
-              && isValidElement(child)
-              && !isBlank(child.props.eventKey)) {
-            firstChildEventKey = child.props.eventKey;
-          }
-        });
-
-        if (!isBlank(firstChildEventKey)) {
-          if (multiExpand) {
-            activeKey = [firstChildEventKey];
-          } else {
-            activeKey = firstChildEventKey;
-          }
-        }
-      }
-
-      this.state = { activeKey };
-    }
+    state = { activeKey: getActiveKeyFromProps(this.props) };
 
     shouldComponentUpdate() {
       return !this._isChanging;

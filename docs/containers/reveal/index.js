@@ -5,19 +5,15 @@ import { Button } from '../../../src/button';
 import { CloseButton } from '../../../src/close-button';
 
 export default class RevealPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showBasic: false,
-      showTiny: false,
-      showSmall: false,
-      showLarge: false,
-      showFull: false,
-      showNested1: false,
-      showNested2: false,
-    };
-  }
+  state = {
+    showBasic: false,
+    showTiny: false,
+    showSmall: false,
+    showLarge: false,
+    showFull: false,
+    showNested1: false,
+    showNested2: false,
+  };
 
   handleShowHide = (type, show) => this.setState({ [`show${type}`]: show });
 

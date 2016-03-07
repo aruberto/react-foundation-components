@@ -14,13 +14,9 @@ import { MenuIcon } from '../../../src/menu-icon';
 import { ShowForScreenSize, HideForScreenSize } from '../../../src/visibility';
 
 export default class TopBarPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      show: false,
-    };
-  }
+  state = {
+    show: false,
+  };
 
   handleToggle = () => this.setState({ show: !this.state.show });
 

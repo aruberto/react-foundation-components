@@ -38,15 +38,9 @@ export default class OverlayTrigger extends Component {
     triggerHover: PropTypes.bool,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      show: false,
-    };
-    this._clicked = false;
-    this._lastRootClose = new Date();
-  }
+  state = {
+    show: false,
+  };
 
   componentDidMount() {
     this._mountNode = document.createElement('div');
@@ -67,6 +61,10 @@ export default class OverlayTrigger extends Component {
   setTargetRef = (ref) => this._targetRef = ref;
 
   getTargetRefDOMNode = () => findDOMNode(this._targetRef);
+
+  _clicked = false;
+
+  _lastRootClose = new Date();
 
   handleShow = () => this.setState({ show: true });
 

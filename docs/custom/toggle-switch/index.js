@@ -3,13 +3,9 @@ import React, { Component } from 'react';
 import { ToggleSwitch, ToggleSwitchItem } from '../../../src/toggle-switch';
 
 export default class ToggleSwitchPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeKey: '3',
-    };
-  }
+  state = {
+    activeKey: '3',
+  };
 
   handleSelect = (activeKey) => this.setState({ activeKey });
 
@@ -107,11 +103,7 @@ import {
         <pre>
           <code>
 {
-`constructor(props) {
-  super(props);
-
-  this.state = { activeKey: '3' };
-}
+`state = { activeKey: '3' };
 
 handleSelect = (activeKey) => this.setState({ activeKey });
 

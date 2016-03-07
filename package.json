@@ -84,7 +84,7 @@
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",
     "react-transform-catch-errors": "^1.0.2",
-    "react-transform-hmr": "^1.0.2",
+    "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.2.2",
     "release-it": "^2.3.1",
     "rimraf": "^2.5.2",
