@@ -1,3 +1,11 @@
+<a name="0.9.3"></a>
+## [0.9.3](https://github.com/aruberto/react-foundation-components/compare/0.9.2...0.9.3) (2016-03-07)
+
+
+#### Miscellaneous
+* Support grid and inline layout in FormField.
+
+
 <a name="0.9.2"></a>
 ## [0.9.2](https://github.com/aruberto/react-foundation-components/compare/0.9.1...0.9.2) (2016-03-03)
 
