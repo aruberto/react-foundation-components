@@ -13,7 +13,7 @@ export default class FloatPage extends Component {
           Helpful positioning components.
         </p>
         <h2>Basics</h2>
-        <p>Importing the Form components:</p>
+        <p>Importing the Float components:</p>
         <pre>
           <code>
 {

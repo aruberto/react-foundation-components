@@ -24,7 +24,7 @@ export default class VisibilityPage extends Component {
           users see depending on their browsing environment.
         </p>
         <h2>Basics</h2>
-        <p>Importing the Form components:</p>
+        <p>Importing the Visibility components:</p>
         <pre>
           <code>
 {
