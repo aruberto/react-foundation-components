@@ -63,7 +63,7 @@ export default function create(styles) {
       }
 
       return (
-        <button {...this.props} className={classNames}/>
+        <button {...this.props} className={classNames} />
       );
     }
   }

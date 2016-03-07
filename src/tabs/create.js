@@ -48,7 +48,7 @@ export default function create(styles) {
       const classNames = cx(className, styles['tabs-content']);
 
       return (
-        <div {...this.props} className={classNames}/>
+        <div {...this.props} className={classNames} />
       );
     }
   }

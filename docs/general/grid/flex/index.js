@@ -16,7 +16,7 @@ export default class FlexGridPage extends Component {
           Create powerful multi-device layouts quickly and easily with a Flexbox based 12-column
           grid.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the Flex Grid component:</p>
         <pre>
@@ -115,7 +115,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
           <Column small={2} style={styleOdd}>2 Columns</Column>
           <Column small={10} style={styleEven}>10 Columns</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Nesting</h2>
         <p>
           You can nest the grids indefinitely, though at a certain point it will get absurd.
@@ -158,7 +158,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
           </Column>
           <Column small={4} style={styleEven}>4</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Advanced Sizing</h2>
         <p>
           If no sizing prop is set on the Column, it will expand to fill the leftover space. This
@@ -198,7 +198,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
           <Column shrink style={styleOdd}>Shrink!</Column>
           <Column style={styleEven}>Expand!</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Responsive Adjustments</h2>
         <p>
           Columns in a flex grid will not wrap if not given an explicit size, this is what allows
@@ -232,7 +232,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
           <Column small={12} expand="large" style={styleOdd}>Five</Column>
           <Column small={12} expand="large" style={styleEven}>Six</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Automatic Stacking</h2>
         <p>
           There is a shorthand for the above behavior. Simply set the
@@ -262,7 +262,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
           <Column style={styleOdd}>Five</Column>
           <Column style={styleEven}>Six</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Horizontal Alignment</h2>
         <p>
           By default, all columns align to the left but this can be overridden by setting the
@@ -314,7 +314,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
           <Column small={4} style={styleOdd}>Aligned to</Column>
           <Column small={4} style={styleEven}>the space around</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Vertical Alignment</h2>
         <p>
           By default, all columns stretch to be equal height but this can be overridden by setting
@@ -430,7 +430,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
             molestiae quaerat, consequuntur porro temporibus. Nisi, ex?
           </Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Collapse/Uncollapse Rows</h2>
         <p>
           Set the <code>collapse</code> prop to remove column gutters (padding).
@@ -519,7 +519,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
             </ShowForScreenSize>
           </Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Offsets</h2>
         <p>
           Move blocks up to 11 columns to the right by using the <code>smallOffset</code>
@@ -564,7 +564,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
           <Column small={1} style={styleOdd}>1</Column>
           <Column small={8} smallOffset={3} style={styleEven}>8, offset 3</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Source Ordering</h2>
         <p>
           Set the
@@ -596,7 +596,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
             This column will come first on small, and second on medium and larger.
           </Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Block Grids</h2>
         <p>
           To define column widths at the row-level, instead of the individual column level, set the

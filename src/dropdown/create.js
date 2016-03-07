@@ -33,7 +33,7 @@ export default function create(styles, Transition) {
       );
 
       return (
-        <div {...this.props} className={classNames}/>
+        <div {...this.props} className={classNames} />
       );
     }
   }

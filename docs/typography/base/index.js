@@ -24,7 +24,7 @@ export default class BaseTypographyPage extends Component {
             Learn more about Foundation's global colors.
           </a>
         </p>
-        <hr/>
+        <hr />
         <ul>
           <li>List item with a much longer description or more content.</li>
           <li>List item</li>
@@ -75,7 +75,7 @@ export default class BaseTypographyPage extends Component {
         </p>
         Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
         <p>Press <kbd>Cmd+Q</kbd> (or <kbd>Ctrl+Q</kbd> on Windows) to play Half-Life 3.</p>
-        <img alt="Buy now" src="assets/img/buy-now.jpg"/>
+        <img alt="Buy now" src="assets/img/buy-now.jpg" />
       </div>
     );
   }

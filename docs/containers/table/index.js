@@ -40,7 +40,7 @@ export default class TablePage extends Component {
             </tr>
           </tbody>
         </Table>
-        <br/>
+        <br />
         <Table hover>
           <thead>
             <tr>
@@ -75,7 +75,7 @@ export default class TablePage extends Component {
             </tr>
           </tbody>
         </Table>
-        <br/>
+        <br />
         <Table stack>
           <thead>
             <tr>
@@ -106,7 +106,7 @@ export default class TablePage extends Component {
             </tr>
           </tbody>
         </Table>
-        <br/>
+        <br />
         <Table scroll>
           <thead>
             <tr>

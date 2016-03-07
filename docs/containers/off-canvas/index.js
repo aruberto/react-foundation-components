@@ -68,7 +68,7 @@ export default class OffCanvasPage extends Component {
               />
             </TitleBarItem>
           </TitleBar>
-          <br/>
+          <br />
           <FlexTitleBar>
             <FlexTitleBarItem position="left">
               <HideForScreenSize
@@ -88,7 +88,7 @@ export default class OffCanvasPage extends Component {
               />
             </FlexTitleBarItem>
           </FlexTitleBar>
-          <br/>
+          <br />
           <div style={{ margin: '0 auto', width: '100px' }}>Main Content</div>
         </OffCanvasContent>
       </OffCanvasContainer>

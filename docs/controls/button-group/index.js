@@ -13,7 +13,7 @@ export default class ButtonGroupPage extends Component {
         <p>
           Button Groups are containers for related action items.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the ButtonGroup component:</p>
         <pre>
@@ -59,7 +59,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
           <Button>Two</Button>
           <Button>Three</Button>
         </ButtonGroup>
-        <hr/>
+        <hr />
         <h2>Sizing</h2>
         <p>
           Set the <code>size</code> prop to change all child button size and shape. Possible values
@@ -111,7 +111,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
           <Button>Button</Button>
           <Button>Group</Button>
         </ButtonGroup>
-        <hr/>
+        <hr />
         <h2>Coloring</h2>
         <p>
           Buttons within a button group can be colored individually by setting
@@ -151,7 +151,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
           <Button>Faster</Button>
           <Button>Stronger</Button>
         </ButtonGroup>
-        <hr/>
+        <hr />
         <h2>Even-width Group</h2>
         <p>
           Set the <code>expanded</code> prop to make the ButtonGroup take up entire width of its
@@ -174,8 +174,8 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
           <Button>Button</Button>
           <Button>Group</Button>
         </ButtonGroup>
-        <br/>
-        <hr/>
+        <br />
+        <hr />
         <h2>Stacking</h2>
         <p>
           A ButtonGroup can be made to stack vertically by setting the <code>stack</code> prop. A
@@ -231,7 +231,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
           <Button>You</Button>
           <Button>Go</Button>
         </ButtonGroup>
-        <hr/>
+        <hr />
         <h2>Split Buttons</h2>
         <p>
           To build a split button, just create a ButtonGroup with two Buttons.
@@ -261,7 +261,7 @@ import { ButtonGroup } from 'react-foundation-components/lib/controls/button-gro
             <ShowForScreenReader>Show Menu</ShowForScreenReader>
           </Button>
         </ButtonGroup>
-        <hr/>
+        <hr />
         <h2>Flexbox</h2>
         <p>
           The Flexbox version of the ButtonGroup works same as float based version.

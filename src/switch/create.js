@@ -23,7 +23,7 @@ export default function create(
         const classNames = cx(className, styles[baseClassName]);
 
         return (
-          <HideForScreenReader {...this.props} className={classNames}/>
+          <HideForScreenReader {...this.props} className={classNames} />
         );
       }
     }
@@ -39,7 +39,7 @@ export default function create(
 
   class SwitchPadelLabel extends Component {
     render() {
-      return <ShowForScreenReader {...this.props}/>;
+      return <ShowForScreenReader {...this.props} />;
     }
   }
 
@@ -59,7 +59,9 @@ export default function create(
       size: PropTypes.oneOf(COMPONENT_SIZES),
     };
 
-    setInputRef = (inputRef) => this._inputRef = inputRef;
+    setInputRef = (inputRef) => {
+      this._inputRef = inputRef;
+    };
 
     handleLabelClick = (...args) => {
       const { checked, eventKey, id, onChange, onToggle } = this.props;

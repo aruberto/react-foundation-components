@@ -33,7 +33,7 @@ export default function createWrapperComponent({
       const props = mapPropsToProps(restProps);
 
       return (
-        <ComponentClass {...props} className={classNames} style={style}/>
+        <ComponentClass {...props} className={classNames} style={style} />
       );
     }
   }

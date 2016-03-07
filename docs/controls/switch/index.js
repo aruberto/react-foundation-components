@@ -27,7 +27,7 @@ export default class SwitchPage extends Component {
         <p>
           Now you can tell your users to flip the switch or switch off.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the Switch components:</p>
         <pre>
@@ -69,13 +69,13 @@ import {
         <pre>
           <code>
 {
-`<Switch/>
-<Switch defaultChecked/>`
+`<Switch />
+<Switch defaultChecked />`
 }
           </code>
         </pre>
-        <Switch/>
-        <Switch defaultChecked/>
+        <Switch />
+        <Switch defaultChecked />
         <p>
           Use the <code>checked</code> and <code>onToggle</code> props to create a controlled
           component.
@@ -88,13 +88,13 @@ import {
 handleToggle = () => this.setState({ checked: !this.state.checked });
 
 render() {
-  return <Switch checked={this.state.checked} onToggle={this.handleToggle}/>;
+  return <Switch checked={this.state.checked} onToggle={this.handleToggle} />;
 }`
 }
           </code>
         </pre>
-        <Switch checked={checked} onToggle={this.handleToggle}/>
-        <hr/>
+        <Switch checked={checked} onToggle={this.handleToggle} />
+        <hr />
         <h2>Sizing</h2>
         <p>
           Set the <code>size</code> prop to change switch size and shape. Possible values are tiny,
@@ -103,18 +103,18 @@ render() {
         <pre>
           <code>
 {
-`<Switch size="tiny"/>
-<Switch size="small"/>
-<Switch/>
-<Switch size="large"/>`
+`<Switch size="tiny" />
+<Switch size="small" />
+<Switch />
+<Switch size="large" />`
 }
           </code>
         </pre>
-        <Switch size="tiny"/>
-        <Switch size="small"/>
-        <Switch/>
-        <Switch size="large"/>
-        <hr/>
+        <Switch size="tiny" />
+        <Switch size="small" />
+        <Switch />
+        <Switch size="large" />
+        <hr />
         <h2>Accessibility</h2>
         <p>
           Provide an <code>id</code> so the Switch populates the for attribute of the Switch
@@ -142,7 +142,7 @@ render() {
           <SwitchCheckedLabel>Yes</SwitchCheckedLabel>
           <SwitchUncheckedLabel>No</SwitchUncheckedLabel>
         </Switch>
-        <hr/>
+        <hr />
         <h2>Radio Switch</h2>
         <p>
           RadioSwitch component is a container for Switches. Switches contained in a RadioSwitch
@@ -158,33 +158,33 @@ render() {
           <code>
 {
 `<RadioSwitch>
-  <Switch eventKey="1"/>
-  <Switch eventKey="2"/>
-  <Switch eventKey="3"/>
+  <Switch eventKey="1" />
+  <Switch eventKey="2" />
+  <Switch eventKey="3" />
 </RadioSwitch>`
 }
           </code>
         </pre>
         <RadioSwitch>
-          <Switch eventKey="1"/>
-          <Switch eventKey="2"/>
-          <Switch eventKey="3"/>
+          <Switch eventKey="1" />
+          <Switch eventKey="2" />
+          <Switch eventKey="3" />
         </RadioSwitch>
         <pre>
           <code>
 {
 `<RadioSwitch defaultActiveKey="2">
-  <Switch eventKey="1"/>
-  <Switch eventKey="2"/>
-  <Switch eventKey="3"/>
+  <Switch eventKey="1" />
+  <Switch eventKey="2" />
+  <Switch eventKey="3" />
 </RadioSwitch>`
 }
           </code>
         </pre>
         <RadioSwitch defaultActiveKey="2">
-          <Switch eventKey="1"/>
-          <Switch eventKey="2"/>
-          <Switch eventKey="3"/>
+          <Switch eventKey="1" />
+          <Switch eventKey="2" />
+          <Switch eventKey="3" />
         </RadioSwitch>
         <p>
           Use the <code>activeKey</code> and <code>onSelect</code> props to create a controlled
@@ -200,9 +200,9 @@ handleSelect = (activeKey) => this.setState({ activeKey });
 render() {
   return (
     <RadioSwitch activeKey={this.state.activeKey} onSelect={this.handleSelect}>
-      <Switch eventKey="1"/>
-      <Switch eventKey="2"/>
-      <Switch eventKey="3"/>
+      <Switch eventKey="1" />
+      <Switch eventKey="2" />
+      <Switch eventKey="3" />
     </RadioSwitch>
   );
 }`
@@ -210,11 +210,11 @@ render() {
           </code>
         </pre>
         <RadioSwitch activeKey={activeKey} onSelect={this.handleSelect}>
-          <Switch eventKey="1"/>
-          <Switch eventKey="2"/>
-          <Switch eventKey="3"/>
+          <Switch eventKey="1" />
+          <Switch eventKey="2" />
+          <Switch eventKey="3" />
         </RadioSwitch>
-        <hr/>
+        <hr />
         <h2>Sizing</h2>
         <p>
           Set the <code>size</code> prop to change size and shape of all child switches. Possible
@@ -224,39 +224,39 @@ render() {
           <code>
 {
 `<RadioSwitch size="tiny">
-  <Switch eventKey="1"/>
-  <Switch eventKey="2"/>
+  <Switch eventKey="1" />
+  <Switch eventKey="2" />
 </RadioSwitch>
 <RadioSwitch size="small">
-  <Switch eventKey="1"/>
-  <Switch eventKey="2"/>
+  <Switch eventKey="1" />
+  <Switch eventKey="2" />
 </RadioSwitch>
 <RadioSwitch>
-  <Switch eventKey="1"/>
-  <Switch eventKey="2"/>
+  <Switch eventKey="1" />
+  <Switch eventKey="2" />
 </RadioSwitch>
 <RadioSwitch size="large">
-  <Switch eventKey="1"/>
-  <Switch eventKey="2"/>
+  <Switch eventKey="1" />
+  <Switch eventKey="2" />
 </RadioSwitch>`
 }
           </code>
         </pre>
         <RadioSwitch size="tiny">
-          <Switch eventKey="1"/>
-          <Switch eventKey="2"/>
+          <Switch eventKey="1" />
+          <Switch eventKey="2" />
         </RadioSwitch>
         <RadioSwitch size="small">
-          <Switch eventKey="1"/>
-          <Switch eventKey="2"/>
+          <Switch eventKey="1" />
+          <Switch eventKey="2" />
         </RadioSwitch>
         <RadioSwitch>
-          <Switch eventKey="1"/>
-          <Switch eventKey="2"/>
+          <Switch eventKey="1" />
+          <Switch eventKey="2" />
         </RadioSwitch>
         <RadioSwitch size="large">
-          <Switch eventKey="1"/>
-          <Switch eventKey="2"/>
+          <Switch eventKey="1" />
+          <Switch eventKey="2" />
         </RadioSwitch>
       </div>
     );

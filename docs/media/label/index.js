@@ -10,7 +10,7 @@ export default class LabelPage extends Component {
         <p>
           Labels are useful to call out certain sections or to attach metadata.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the Label component:</p>
         <pre>
@@ -29,14 +29,14 @@ import { Label } from 'react-foundation-components/lib/global/label';`
         <pre>
           <code>
 {
-`<Label>Default Label</Label>`
+'<Label>Default Label</Label>'
 }
           </code>
         </pre>
         <p>
           <Label>Default Label</Label>
         </p>
-        <hr/>
+        <hr />
         <h2>Coloring</h2>
         <p>
           Give a Label additional meaning by setting the <code>color</code> prop. Possible values
@@ -64,7 +64,7 @@ import { Label } from 'react-foundation-components/lib/global/label';`
           &nbsp;
           <Label color="warning">Warning Label</Label>
         </p>
-        <hr/>
+        <hr />
         <h2>Accessibility</h2>
         <p>
           A Label will typically be describing another element on the page. To bind the two elements
@@ -86,7 +86,7 @@ import { Label } from 'react-foundation-components/lib/global/label';`
           <span aria-describedby="emailLabel">
             Re: re: re: you won't believe what's in this email!
           </span>
-          <br/>
+          <br />
           <Label id="emailLabel">High Priority</Label>
         </p>
         <p>
@@ -108,7 +108,7 @@ import { Label } from 'react-foundation-components/lib/global/label';`
           <span aria-describedby="emailLabel1 emailLabel2">
             Re: re: re: you won't believe what's in this email!
           </span>
-          <br/>
+          <br />
           <Label id="emailLabel1">High Priority</Label>
           &nbsp;
           <Label id="emailLabel2">Unread</Label>

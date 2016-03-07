@@ -85,7 +85,7 @@ import { FlexParent, FlexChild } from 'react-foundation-components/lib/global/fl
           <FlexChild small={4} style={styleOdd}>Aligned to</FlexChild>
           <FlexChild small={4} style={styleEven}>the space around</FlexChild>
         </FlexParent>
-        <hr/>
+        <hr />
         <h2>Vertical Alignment</h2>
         <p>
           By default, all flex children stretch to be equal height but this can be overridden by
@@ -201,7 +201,7 @@ import { FlexParent, FlexChild } from 'react-foundation-components/lib/global/fl
             molestiae quaerat, consequuntur porro temporibus. Nisi, ex?
           </FlexChild>
         </FlexParent>
-        <hr/>
+        <hr />
         <h2>Source Ordering</h2>
         <p>
           Set the

@@ -23,7 +23,7 @@ export default function create(styles) {
       );
 
       return (
-        <div {...this.props} className={classNames}/>
+        <div {...this.props} className={classNames} />
       );
     }
   }

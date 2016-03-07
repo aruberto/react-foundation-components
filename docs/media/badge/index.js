@@ -11,7 +11,7 @@ export default class BadgePage extends Component {
         <p>
           The badge is a basic component that displays a number.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the Badge component:</p>
         <pre>
@@ -30,14 +30,14 @@ import { Badge } from 'react-foundation-components/lib/global/badge';`
         <pre>
           <code>
 {
-`<Badge>1</Badge>`
+'<Badge>1</Badge>'
 }
           </code>
         </pre>
         <p>
           <Badge>1</Badge>
         </p>
-        <hr/>
+        <hr />
         <h2>Coloring</h2>
         <p>
           Give a Badge additional meaning by setting the <code>color</code> prop. Possible values
@@ -65,7 +65,7 @@ import { Badge } from 'react-foundation-components/lib/global/badge';`
           &nbsp;
           <Badge color="warning">B</Badge>
         </p>
-        <hr/>
+        <hr />
         <h2>Accessibility</h2>
         <p>
           A Badge will typically be describing another element on the page. To bind the two elements

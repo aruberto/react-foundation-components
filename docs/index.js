@@ -216,7 +216,7 @@ class HomePage extends Component {
               <TitleBarTitle>React Foundation Components</TitleBarTitle>
             </TitleBarItem>
           </TitleBar>
-          <br/>
+          <br />
           {this.props.children}
         </OffCanvasContent>
       </OffCanvasContainer>
@@ -229,41 +229,41 @@ class Demo extends Component {
     return (
       <Router history={hashHistory}>
         <Route component={HomePage} path="/">
-          <Route component={GridPage} path="/general/grid"/>
-          <Route component={FlexGridPage} path="/general/grid/flex"/>
-          <Route component={FormsPage} path="/general/forms"/>
-          <Route component={VisibilityPage} path="/general/visibility"/>
-          <Route component={FloatPage} path="/general/float"/>
-          <Route component={FlexPage} path="/general/flex"/>
-          <Route component={BaseTypographyPage} path="/typography/base"/>
-          <Route component={PrintPage} path="/typography/print"/>
-          <Route component={TypographyHelpersPage} path="/typography/helpers"/>
-          <Route component={TextAlignmentPage} path="/typography/text-alignment"/>
-          <Route component={ButtonPage} path="/controls/button"/>
-          <Route component={ButtonGroupPage} path="/controls/button-group"/>
-          <Route component={CloseButtonPage} path="/controls/close-button"/>
-          <Route component={SwitchPage} path="/controls/switch"/>
-          <Route component={MenuPage} path="/navigation/menu"/>
-          <Route component={TopBarPage} path="/navigation/top-bar"/>
-          <Route component={AccordionPage} path="/containers/accordion"/>
-          <Route component={CalloutPage} path="/containers/callout"/>
-          <Route component={DropdownPage} path="/containers/dropdown"/>
-          <Route component={MediaObjectPage} path="/containers/media-object"/>
-          <Route component={OffCanvasPage} path="/containers/off-canvas"/>
-          <Route component={RevealPage} path="/containers/reveal"/>
-          <Route component={TablePage} path="/containers/table"/>
-          <Route component={TabsPage} path="/containers/tabs"/>
-          <Route component={BadgePage} path="/media/badge"/>
-          <Route component={FlexVideoPage} path="/media/flex-video"/>
-          <Route component={LabelPage} path="/media/label"/>
-          <Route component={ProgressBarPage} path="/media/progress-bar"/>
-          <Route component={ThumbnailPage} path="/media/thumbnail"/>
-          <Route component={TooltipPage} path="/media/tooltip"/>
-          <Route component={ToggleSwitchPage} path="/custom/toggle-switch"/>
+          <Route component={GridPage} path="/general/grid" />
+          <Route component={FlexGridPage} path="/general/grid/flex" />
+          <Route component={FormsPage} path="/general/forms" />
+          <Route component={VisibilityPage} path="/general/visibility" />
+          <Route component={FloatPage} path="/general/float" />
+          <Route component={FlexPage} path="/general/flex" />
+          <Route component={BaseTypographyPage} path="/typography/base" />
+          <Route component={PrintPage} path="/typography/print" />
+          <Route component={TypographyHelpersPage} path="/typography/helpers" />
+          <Route component={TextAlignmentPage} path="/typography/text-alignment" />
+          <Route component={ButtonPage} path="/controls/button" />
+          <Route component={ButtonGroupPage} path="/controls/button-group" />
+          <Route component={CloseButtonPage} path="/controls/close-button" />
+          <Route component={SwitchPage} path="/controls/switch" />
+          <Route component={MenuPage} path="/navigation/menu" />
+          <Route component={TopBarPage} path="/navigation/top-bar" />
+          <Route component={AccordionPage} path="/containers/accordion" />
+          <Route component={CalloutPage} path="/containers/callout" />
+          <Route component={DropdownPage} path="/containers/dropdown" />
+          <Route component={MediaObjectPage} path="/containers/media-object" />
+          <Route component={OffCanvasPage} path="/containers/off-canvas" />
+          <Route component={RevealPage} path="/containers/reveal" />
+          <Route component={TablePage} path="/containers/table" />
+          <Route component={TabsPage} path="/containers/tabs" />
+          <Route component={BadgePage} path="/media/badge" />
+          <Route component={FlexVideoPage} path="/media/flex-video" />
+          <Route component={LabelPage} path="/media/label" />
+          <Route component={ProgressBarPage} path="/media/progress-bar" />
+          <Route component={ThumbnailPage} path="/media/thumbnail" />
+          <Route component={TooltipPage} path="/media/tooltip" />
+          <Route component={ToggleSwitchPage} path="/custom/toggle-switch" />
         </Route>
       </Router>
     );
   }
 }
 
-ReactDOM.render(<Demo/>, document.getElementById('app'));
+ReactDOM.render(<Demo />, document.getElementById('app'));

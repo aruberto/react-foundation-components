@@ -19,7 +19,7 @@ export default function create(styles) {
         }
       );
 
-      return <div {...this.props} className={classNames}/>;
+      return <div {...this.props} className={classNames} />;
     }
   }
 
@@ -32,7 +32,7 @@ export default function create(styles) {
       const { className } = this.props;
       const classNames = cx(className, styles['top-bar-content']);
 
-      return <div {...this.props} className={classNames}/>;
+      return <div {...this.props} className={classNames} />;
     }
   }
 
@@ -45,7 +45,7 @@ export default function create(styles) {
       const { className } = this.props;
       const classNames = cx(className, styles['top-bar-title']);
 
-      return <div {...this.props} className={classNames}/>;
+      return <div {...this.props} className={classNames} />;
     }
   }
 
@@ -69,7 +69,7 @@ export default function create(styles) {
         }
       );
 
-      return <div {...this.props} className={classNames}/>;
+      return <div {...this.props} className={classNames} />;
     }
   }
 

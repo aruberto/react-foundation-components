@@ -48,7 +48,7 @@ export default class AccordionPage extends Component {
             Panel 5. Lorem ipsum dolor.
           </AccordionItem>
         </Accordion>
-        <br/>
+        <br />
         <h4>Controlled Multi Select</h4>
         <Accordion activeKey={activeKeys} onSelect={this.handleMultiSelect}>
           <AccordionItem eventKey="1" title="Accordion 1">
@@ -67,7 +67,7 @@ export default class AccordionPage extends Component {
             Panel 5. Lorem ipsum dolor.
           </AccordionItem>
         </Accordion>
-        <br/>
+        <br />
         <h4>Uncontrolled Single Select</h4>
         <Accordion>
           <AccordionItem eventKey="1" title="Accordion 1">
@@ -86,7 +86,7 @@ export default class AccordionPage extends Component {
             Panel 5. Lorem ipsum dolor.
           </AccordionItem>
         </Accordion>
-        <br/>
+        <br />
         <h4>Uncontrolled Single Select With Default 3</h4>
         <Accordion defaultActiveKey="3">
           <AccordionItem eventKey="1" title="Accordion 1">
@@ -105,7 +105,7 @@ export default class AccordionPage extends Component {
             Panel 5. Lorem ipsum dolor.
           </AccordionItem>
         </Accordion>
-        <br/>
+        <br />
         <h4>Uncontrolled Single Select Allowing All Closed</h4>
         <Accordion allowAllClosed>
           <AccordionItem eventKey="1" title="Accordion 1">
@@ -124,7 +124,7 @@ export default class AccordionPage extends Component {
             Panel 5. Lorem ipsum dolor.
           </AccordionItem>
         </Accordion>
-        <br/>
+        <br />
         <h4>Uncontrolled Multi Select</h4>
         <Accordion multiExpand>
           <AccordionItem eventKey="1" title="Accordion 1">
@@ -143,7 +143,7 @@ export default class AccordionPage extends Component {
             Panel 5. Lorem ipsum dolor.
           </AccordionItem>
         </Accordion>
-        <br/>
+        <br />
         <h4>Uncontrolled Multi Select With 2 And 4 Defaults</h4>
         <Accordion defaultActiveKey={['2', '4']} multiExpand>
           <AccordionItem eventKey="1" title="Accordion 1">
@@ -162,7 +162,7 @@ export default class AccordionPage extends Component {
             Panel 5. Lorem ipsum dolor.
           </AccordionItem>
         </Accordion>
-        <br/>
+        <br />
         <h4>Uncontrolled Multi Select Allowing All Closed</h4>
         <Accordion allowAllClosed multiExpand>
           <AccordionItem eventKey="1" title="Accordion 1">
@@ -181,7 +181,7 @@ export default class AccordionPage extends Component {
             Panel 5. Lorem ipsum dolor.
           </AccordionItem>
         </Accordion>
-        <br/>
+        <br />
       </div>
     );
   }

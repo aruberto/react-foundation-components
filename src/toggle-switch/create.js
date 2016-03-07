@@ -27,7 +27,9 @@ export default function create(
       onToggle: PropTypes.func,
     };
 
-    setInputRef = (inputRef) => this._inputRef = inputRef;
+    setInputRef = (inputRef) => {
+      this._inputRef = inputRef;
+    };
 
     handleLabelClick = (...args) => {
       const { checked, eventKey, id, onChange, onToggle } = this.props;

@@ -57,7 +57,7 @@ export default function create(
           ComponentClass = 'input';
       }
 
-      return <ComponentClass {...this.props} {...restProps}/>;
+      return <ComponentClass {...this.props} {...restProps} />;
     }
   }
 
@@ -197,7 +197,7 @@ export default function create(
     render() {
       const { containerClassName, containerStyle, formFieldId, id, inline } = this.props;
       const content =
-        <Button {...this.props} id={isBlank(formFieldId) ? id : `${formFieldId}Button`}/>;
+        <Button {...this.props} id={isBlank(formFieldId) ? id : `${formFieldId}Button`} />;
 
       if (inline) {
         const containerClassNames = cx(containerClassName, styles['input-group-button']);
@@ -227,7 +227,7 @@ export default function create(
     render() {
       const { column, columnClassName, columnStyle, componentClass: ComponentClass } = this.props;
 
-      const content = <ComponentClass {...this.props}/>;
+      const content = <ComponentClass {...this.props} />;
 
       if (column) {
         return (
@@ -250,37 +250,37 @@ export default function create(
 
   class FormFieldInput extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={FormFieldInputBase}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldInputBase} />;
     }
   }
 
   class FormFieldLabel extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={FormFieldLabelBase}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldLabelBase} />;
     }
   }
 
   class FormFieldError extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={FormFieldErrorBase}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldErrorBase} />;
     }
   }
 
   class FormFieldHelp extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={FormFieldHelpBase}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldHelpBase} />;
     }
   }
 
   class FormFieldInline extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={FormFieldInlineBase}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldInlineBase} />;
     }
   }
 
   class FormFieldButton extends Component {
     render() {
-      return <ColumnWrapper {...this.props} componentClass={FormFieldButtonBase}/>;
+      return <ColumnWrapper {...this.props} componentClass={FormFieldButtonBase} />;
     }
   }
 

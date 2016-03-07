@@ -11,7 +11,7 @@ export default class CloseButtonPage extends Component {
         <p>
           The close button can be used anywhere you need something to go away on click.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the CloseButton component:</p>
         <pre>
@@ -34,17 +34,16 @@ import { CloseButton } from 'react-foundation-components/lib/global/close-button
           <code>
 {
 `<Callout>
-  <CloseButton aria-label="Close Alert"/>
+  <CloseButton aria-label="Close Alert" />
   <p>Look at this close button!</p>
 </Callout>`
 }
           </code>
         </pre>
         <Callout>
-          <CloseButton aria-label="Close Alert"/>
+          <CloseButton aria-label="Close Alert" />
           <p>Look at this close button!</p>
         </Callout>
-        <br/>
       </div>
     );
   }

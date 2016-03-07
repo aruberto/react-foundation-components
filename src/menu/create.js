@@ -103,7 +103,7 @@ export default function create(
         }
       );
 
-      return <FlexChild {...this.props} className={classNames} componentClass="li"/>;
+      return <FlexChild {...this.props} className={classNames} componentClass="li" />;
     }
   }
 

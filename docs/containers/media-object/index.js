@@ -12,7 +12,7 @@ export default class MediaObjectPage extends Component {
       <div>
         <MediaObject>
           <MediaObjectSection>
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-1.jpg"/>
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-1.jpg" />
           </MediaObjectSection>
           <MediaObjectSection>
             <h4>Dreams feel real while we're in them.</h4>
@@ -23,10 +23,10 @@ export default class MediaObjectPage extends Component {
             </p>
           </MediaObjectSection>
         </MediaObject>
-        <br/>
+        <br />
         <MediaObject>
           <MediaObjectSection alignment="middle">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg"/>
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg" />
           </MediaObjectSection>
           <MediaObjectSection>
             <h4>Why is it so important to dream?</h4>
@@ -43,13 +43,13 @@ export default class MediaObjectPage extends Component {
             </p>
           </MediaObjectSection>
           <MediaObjectSection alignment="bottom">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg"/>
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg" />
           </MediaObjectSection>
         </MediaObject>
-        <br/>
+        <br />
         <MediaObject stackForSmall>
           <MediaObjectSection>
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-1.jpg"/>
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-1.jpg" />
           </MediaObjectSection>
           <MediaObjectSection>
             <h4>I Can Stack.</h4>
@@ -59,10 +59,10 @@ export default class MediaObjectPage extends Component {
             </p>
           </MediaObjectSection>
         </MediaObject>
-        <br/>
+        <br />
         <FlexMediaObject>
           <FlexMediaObjectSection alignment="middle">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg"/>
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg" />
           </FlexMediaObjectSection>
           <FlexMediaObjectSection main>
             <h4>Why is it so important to dream?</h4>
@@ -79,7 +79,7 @@ export default class MediaObjectPage extends Component {
             </p>
           </FlexMediaObjectSection>
           <FlexMediaObjectSection alignment="bottom">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg"/>
+            <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg" />
           </FlexMediaObjectSection>
         </FlexMediaObject>
       </div>

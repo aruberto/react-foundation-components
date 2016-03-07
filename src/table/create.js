@@ -43,7 +43,7 @@ export default function create(styles) {
       return (
         <div className={containerClassNames} style={containerStyle}>
           <div className={scrollContainerClassNames} style={scrollContainerStyle}>
-            <table {...this.props} className={classNames}/>
+            <table {...this.props} className={classNames} />
           </div>
         </div>
       );

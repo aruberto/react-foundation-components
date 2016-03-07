@@ -16,7 +16,7 @@ export default class FloatGridPage extends Component {
         <p>
           Create powerful multi-device layouts quickly and easily with the default 12-column grid.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the Grid component:</p>
         <pre>
@@ -96,7 +96,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
             12
           </Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Fluid Row</h2>
         <p>
           Normally, a row is always 1200 pixels wide. Make a row completely fluid by setting
@@ -116,7 +116,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
           <Column small={2} style={styleOdd}>2 Columns</Column>
           <Column small={10} style={styleEven}>10 Columns</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Nesting</h2>
         <p>
           You can nest the grids indefinitely, though at a certain point it will get absurd.
@@ -159,7 +159,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
           </Column>
           <Column small={4} style={styleEven}>4</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Offsets</h2>
         <p>
           Move blocks up to 11 columns to the right by using the <code>smallOffset</code>
@@ -204,7 +204,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
           <Column small={1} style={styleOdd}>1</Column>
           <Column small={8} smallOffset={3} style={styleEven}>8, offset 3</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Incomplete Rows</h2>
         <p>
           In order to work around different browser rounding behaviors, Foundation will float the
@@ -238,7 +238,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
           <Column small={3} style={styleEven}>3</Column>
           <Column end small={3} style={styleOdd}>3 end</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Collapse/Uncollapse Rows</h2>
         <p>
           Set the <code>collapse</code> prop to remove column gutters (padding).
@@ -327,7 +327,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
             </ShowForScreenSize>
           </Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Centered Columns</h2>
         <p>
           Center columns by setting the <code>smallCentered</code>, <code>mediumCentered</code>
@@ -366,7 +366,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
         <Row style={rowStyle}>
           <Column small={11} smallCentered="centered" style={styleOdd}>11 centered</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Source Ordering</h2>
         <p>
           Set the source ordering props
@@ -425,7 +425,7 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
           <Column medium={6} mediumPush={6} style={styleOdd}>6</Column>
           <Column medium={6} mediumPull={6} style={styleEven}>6, last</Column>
         </Row>
-        <hr/>
+        <hr />
         <h2>Block Grids</h2>
         <p>
           Set
@@ -437,23 +437,23 @@ import { Row, Column } from 'react-foundation-components/lib/global/grid';`
           <code>
 {
 `<Row largeUp={4} mediumUp={2} smallUp={1}>
-  <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-  <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-  <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-  <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-  <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-  <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
+  <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+  <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+  <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+  <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+  <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+  <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
 </Row>`
 }
           </code>
         </pre>
         <Row largeUp={4} mediumUp={2} smallUp={1}>
-          <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-          <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-          <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-          <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-          <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
-          <Column><Thumbnail alt="" src="http://placehold.it/300x300"/></Column>
+          <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+          <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+          <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+          <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+          <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
+          <Column><Thumbnail alt="" src="http://placehold.it/300x300" /></Column>
         </Row>
       </div>
     );

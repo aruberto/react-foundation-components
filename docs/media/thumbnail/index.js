@@ -10,7 +10,7 @@ export default class ThumbnailPage extends Component {
         <p>
           A reduced size image.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the Thumbnail component:</p>
         <pre>

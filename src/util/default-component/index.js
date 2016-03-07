@@ -13,6 +13,6 @@ export default class DefaultComponent extends Component {
   render() {
     const { componentClass: ComponentClass } = this.props;
 
-    return <ComponentClass {...this.props}/>;
+    return <ComponentClass {...this.props} />;
   }
 }

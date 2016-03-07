@@ -23,7 +23,7 @@ export default function create(styles) {
 
       return (
         <div className={classNames} style={containerStyle}>
-          <iframe {...this.props}/>
+          <iframe {...this.props} />
         </div>
       );
     }

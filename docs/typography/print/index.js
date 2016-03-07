@@ -7,7 +7,7 @@ export default class PrintPage extends Component {
     return (
       <div>
         <ShowForPrint>You can see me when printing!</ShowForPrint>
-        <br/>
+        <br />
         <HideForPrint>You can not see me when printing!</HideForPrint>
       </div>
     );

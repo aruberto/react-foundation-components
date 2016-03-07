@@ -65,52 +65,52 @@ export default class RevealPage extends Component {
       <div>
         <Button onClick={this.handleShowBasic}>Click me for a Modal</Button>
         <Reveal onHide={this.handleHideBasic} show={showBasic}>
-          <CloseButton onClick={this.handleHideBasic}/>
+          <CloseButton onClick={this.handleHideBasic} />
           <h1>Awesome. I Have It.</h1>
           <p>Your couch. It is mine.</p>
           <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
         </Reveal>
-        <br/>
+        <br />
         <Button onClick={this.handleShowTiny}>Click me for a Tiny Modal</Button>
         <Reveal onHide={this.handleHideTiny} show={showTiny} size="tiny">
-          <CloseButton onClick={this.handleHideTiny}/>
+          <CloseButton onClick={this.handleHideTiny} />
           <p>OH I'M SO TIIINY</p>
         </Reveal>
-        <br/>
+        <br />
         <Button onClick={this.handleShowSmall}>Click me for a Small Modal</Button>
         <Reveal onHide={this.handleHideSmall} show={showSmall} size="small">
-          <CloseButton onClick={this.handleHideSmall}/>
+          <CloseButton onClick={this.handleHideSmall} />
           <p>I may be small, but I've got a big heart!</p>
         </Reveal>
-        <br/>
+        <br />
         <Button onClick={this.handleShowLarge}>Click me for a Large Modal</Button>
         <Reveal onHide={this.handleHideLarge} show={showLarge} size="large">
-          <CloseButton onClick={this.handleHideLarge}/>
+          <CloseButton onClick={this.handleHideLarge} />
           <p>I'm big, like bear!</p>
         </Reveal>
-        <br/>
+        <br />
         <Button onClick={this.handleShowFull}>Click me for a Full Screen Modal</Button>
         <Reveal onHide={this.handleHideFull} show={showFull} size="full">
-          <CloseButton onClick={this.handleHideFull}/>
+          <CloseButton onClick={this.handleHideFull} />
           <p>OH I'M SO FUUUUL</p>
-          <img alt="Intropsective Cage" src="http://placekitten.com/1920/1280"/>
+          <img alt="Intropsective Cage" src="http://placekitten.com/1920/1280" />
         </Reveal>
-        <br/>
+        <br />
         <Button onClick={this.handleShowNested1}>Click me for a Modal</Button>
         <Reveal onHide={this.handleHideNested1} show={showNested1}>
-          <CloseButton onClick={this.handleHideNested1}/>
+          <CloseButton onClick={this.handleHideNested1} />
           <h1>Awesome!</h1>
           <p>I have another modal inside of me!</p>
           <Button onClick={this.handleShowNested2}>Click me for another Modal</Button>
         </Reveal>
         <Reveal onHide={this.handleHideNested2} show={showNested2}>
-          <CloseButton onClick={this.handleHideNested2}/>
+          <CloseButton onClick={this.handleHideNested2} />
           <h2>ANOTHER MODAL!!!</h2>
         </Reveal>
-        <br/>
+        <br />
         <Button onClick={this.handleShowNoOverlay}>Click me for an overlay-lacking Modal</Button>
         <Reveal onHide={this.handleHideNoOverlay} overlay={false} show={showNoOverlay}>
-          <CloseButton onClick={this.handleHideNoOverlay}/>
+          <CloseButton onClick={this.handleHideNoOverlay} />
           <p>I feel so free!</p>
         </Reveal>
       </div>

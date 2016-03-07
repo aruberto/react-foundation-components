@@ -140,37 +140,37 @@ render() {
     <Button onClick={this.handleToggleError}>Toggle Error</Button>
     <FormField error={this.state.error}>
       <FormFieldLabel>Uncontrolled Text</FormFieldLabel>
-      <FormFieldInput defaultValue="Uncontrolled Default Value"/>
+      <FormFieldInput defaultValue="Uncontrolled Default Value" />
       <FormFieldError>Uncontrolled Text Error</FormFieldError>
       <FormFieldHelp>Uncontrolled Text Help</FormFieldHelp>
     </FormField>
     <FormField error={this.state.error}>
       <FormFieldLabel>Controlled Text</FormFieldLabel>
-      <FormFieldInput value={this.state.text} onChange={this.handleTextChange}/>
+      <FormFieldInput value={this.state.text} onChange={this.handleTextChange} />
       <FormFieldError>Controlled Text Error</FormFieldError>
       <FormFieldHelp>Controlled Text Help</FormFieldHelp>
     </FormField>
     <FormField error={this.state.error}>
       <FormFieldLabel>Number</FormFieldLabel>
-      <FormFieldInput type="number" defaultValue="12"/>
+      <FormFieldInput type="number" defaultValue="12" />
       <FormFieldError>Number Error</FormFieldError>
       <FormFieldHelp>Number Help</FormFieldHelp>
     </FormField>
     <FormField error={this.state.error}>
-      <FormFieldInput type="checkbox" defaultChecked/>
+      <FormFieldInput type="checkbox" defaultChecked />
       <FormFieldLabel>Does not have id, cicking this label does not work :(</FormFieldLabel>
       <FormFieldError>Checkbox Error</FormFieldError>
       <FormFieldHelp>Checkbox Help</FormFieldHelp>
     </FormField>
     <FormField id="checkboxFormField" error={this.state.error}>
-      <FormFieldInput type="checkbox" defaultChecked/>
+      <FormFieldInput type="checkbox" defaultChecked />
       <FormFieldLabel>Has id, clicking this label works :)</FormFieldLabel>
       <FormFieldError>Checkbox Error</FormFieldError>
       <FormFieldHelp>Checkbox Help</FormFieldHelp>
     </FormField>
     <FormField error={this.state.error}>
       <FormFieldLabel>Multiline Text</FormFieldLabel>
-      <FormFieldInput type="textarea" defaultValue="Multiline Text"/>
+      <FormFieldInput type="textarea" defaultValue="Multiline Text" />
       <FormFieldError>Multiline Text Error</FormFieldError>
       <FormFieldHelp>Multiline Text Help</FormFieldHelp>
     </FormField>
@@ -192,37 +192,37 @@ render() {
         <Button onClick={this.handleToggleError}>Toggle Error</Button>
         <FormField error={this.state.error}>
           <FormFieldLabel>Uncontrolled Text</FormFieldLabel>
-          <FormFieldInput defaultValue="Uncontrolled Default Value"/>
+          <FormFieldInput defaultValue="Uncontrolled Default Value" />
           <FormFieldError>Uncontrolled Text Error</FormFieldError>
           <FormFieldHelp>Uncontrolled Text Help</FormFieldHelp>
         </FormField>
         <FormField error={this.state.error}>
           <FormFieldLabel>Controlled Text</FormFieldLabel>
-          <FormFieldInput value={this.state.text} onChange={this.handleTextChange}/>
+          <FormFieldInput value={this.state.text} onChange={this.handleTextChange} />
           <FormFieldError>Controlled Text Error</FormFieldError>
           <FormFieldHelp>Controlled Text Help</FormFieldHelp>
         </FormField>
         <FormField error={this.state.error}>
           <FormFieldLabel>Number</FormFieldLabel>
-          <FormFieldInput type="number" defaultValue="12"/>
+          <FormFieldInput type="number" defaultValue="12" />
           <FormFieldError>Number Error</FormFieldError>
           <FormFieldHelp>Number Help</FormFieldHelp>
         </FormField>
         <FormField error={this.state.error}>
-          <FormFieldInput type="checkbox" defaultChecked/>
+          <FormFieldInput type="checkbox" defaultChecked />
           <FormFieldLabel>Does not have id, cicking this label does not work :(</FormFieldLabel>
           <FormFieldError>Checkbox Error</FormFieldError>
           <FormFieldHelp>Checkbox Help</FormFieldHelp>
         </FormField>
         <FormField id="checkboxFormField" error={this.state.error}>
-          <FormFieldInput type="checkbox" defaultChecked/>
+          <FormFieldInput type="checkbox" defaultChecked />
           <FormFieldLabel>Has id, clicking this label works :)</FormFieldLabel>
           <FormFieldError>Checkbox Error</FormFieldError>
           <FormFieldHelp>Checkbox Help</FormFieldHelp>
         </FormField>
         <FormField error={this.state.error}>
           <FormFieldLabel>Multiline Text</FormFieldLabel>
-          <FormFieldInput type="textarea" defaultValue="Multiline Text"/>
+          <FormFieldInput type="textarea" defaultValue="Multiline Text" />
           <FormFieldError>Multiline Text Error</FormFieldError>
           <FormFieldHelp>Multiline Text Help</FormFieldHelp>
         </FormField>
@@ -236,7 +236,7 @@ render() {
           <FormFieldError>Select Error</FormFieldError>
           <FormFieldHelp>Select Help</FormFieldHelp>
         </FormField>
-        <hr/>
+        <hr />
         <h2>Advanced Layout</h2>
         <p>
           By default, all items in a FormField stack. Set the <code>grid</code> prop on FormField
@@ -251,7 +251,7 @@ render() {
       <FormFieldLabel mediumAlignment="right" middle="medium" small={12} medium={2}>
         Field 1
       </FormFieldLabel>
-      <FormFieldInput small={12} medium={10}/>
+      <FormFieldInput small={12} medium={10} />
       <FormFieldError small={12} medium={10} mediumOffset={2}>Field 1 Error</FormFieldError>
       <FormFieldHelp small={12} medium={10} mediumOffset={2}>Field 1 Help</FormFieldHelp>
     </FormField>
@@ -261,7 +261,7 @@ render() {
       <FormFieldLabel mediumAlignment="right" middle="medium" small={12} medium={2}>
         Field 2
       </FormFieldLabel>
-      <FormFieldInput small={12} medium={10}/>
+      <FormFieldInput small={12} medium={10} />
       <FormFieldError small={12} medium={10} mediumOffset={2}>Field 2 Error</FormFieldError>
       <FormFieldHelp small={12} medium={10} mediumOffset={2}>Field 2 Help</FormFieldHelp>
     </FormField>
@@ -270,14 +270,13 @@ render() {
             }
           </code>
         </pre>
-        <br/>
         <Row>
           <Column small={12} medium={6}>
             <FormField grid error={this.state.error}>
               <FormFieldLabel mediumAlignment="right" middle="medium" small={12} medium={2}>
                 Field 1
               </FormFieldLabel>
-              <FormFieldInput small={12} medium={10}/>
+              <FormFieldInput small={12} medium={10} />
               <FormFieldError small={12} medium={10} mediumOffset={2}>Field 1 Error</FormFieldError>
               <FormFieldHelp small={12} medium={10} mediumOffset={2}>Field 1 Help</FormFieldHelp>
             </FormField>
@@ -287,7 +286,7 @@ render() {
               <FormFieldLabel mediumAlignment="right" middle="medium" small={12} medium={2}>
                 Field 2
               </FormFieldLabel>
-              <FormFieldInput small={12} medium={10}/>
+              <FormFieldInput small={12} medium={10} />
               <FormFieldError small={12} medium={10} mediumOffset={2}>Field 2 Error</FormFieldError>
               <FormFieldHelp small={12} medium={10} mediumOffset={2}>Field 2 Help</FormFieldHelp>
             </FormField>
@@ -305,7 +304,7 @@ render() {
   <FormFieldLabel>Inline Label</FormFieldLabel>
   <FormFieldInline>
     <FormFieldLabel>$</FormFieldLabel>
-    <FormFieldInput type="number"/>
+    <FormFieldInput type="number" />
     <FormFieldButton>Submit</FormFieldButton>
   </FormFieldInline>
   <FormFieldError>Inline Error</FormFieldError>
@@ -318,13 +317,13 @@ render() {
           <FormFieldLabel>Inline Label</FormFieldLabel>
           <FormFieldInline>
             <FormFieldLabel>$</FormFieldLabel>
-            <FormFieldInput type="number"/>
+            <FormFieldInput type="number" />
             <FormFieldButton>Submit</FormFieldButton>
           </FormFieldInline>
           <FormFieldError>Inline Error</FormFieldError>
           <FormFieldHelp>Inline Help</FormFieldHelp>
         </FormField>
-        <hr/>
+        <hr />
         <h2>Flexbox</h2>
         <p>
           The Flexbox version of the Form components work same as float based version. Flexbox is
@@ -337,7 +336,7 @@ render() {
   <FormFieldLabel>Flexbox Label</FormFieldLabel>
   <FormFieldInline>
     <FormFieldLabel>$</FormFieldLabel>
-    <FormFieldInput type="number"/>
+    <FormFieldInput type="number" />
     <FormFieldButton>Submit</FormFieldButton>
   </FormFieldInline>
   <FormFieldError>Flexbox Error</FormFieldError>
@@ -350,7 +349,7 @@ render() {
           <FlexFormFieldLabel>Flexbox Label</FlexFormFieldLabel>
           <FlexFormFieldInline>
             <FlexFormFieldLabel>$</FlexFormFieldLabel>
-            <FlexFormFieldInput type="number"/>
+            <FlexFormFieldInput type="number" />
             <FlexFormFieldButton>Submit</FlexFormFieldButton>
           </FlexFormFieldInline>
           <FlexFormFieldError>Flexbox Error</FlexFormFieldError>

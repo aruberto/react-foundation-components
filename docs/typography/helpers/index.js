@@ -13,10 +13,10 @@ export default class TypographyHelpersPage extends Component {
         <Subheader><h4>h4 subheader</h4></Subheader>
         <Subheader><h5>h5 subheader</h5></Subheader>
         <Subheader><h6>h6 subheader</h6></Subheader>
-        <br/>
+        <br />
         <Lead>What are your cats <em>really</em> dreaming about while they sleep?</Lead>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <UnbulletedList>
           <li>List item with a much longer description or more content.</li>
           <li>List item</li>
@@ -31,7 +31,7 @@ export default class TypographyHelpersPage extends Component {
           <li>List item</li>
           <li>List item</li>
         </UnbulletedList>
-        <br/>
+        <br />
         Days without merge conflict<Statistic>128</Statistic>
       </div>
     );

@@ -44,7 +44,7 @@ import { Float, ClearFix } from 'react-foundation-components/lib/global/float';`
   </Float>
 </ClearFix>
 <Float position="center" style={{ width: '400px' }}>
-  <img src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg"/>
+  <img src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg" />
 </Float>`
             }
           </code>
@@ -58,8 +58,13 @@ import { Float, ClearFix } from 'react-foundation-components/lib/global/float';`
           </Float>
         </ClearFix>
         <Float position="center" style={{ width: '400px' }}>
-          <img src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg"/>
+          <img src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg" />
         </Float>
+        <Float
+          position="center"
+          componentClass="img"
+          src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg"
+        />
       </div>
     );
   }

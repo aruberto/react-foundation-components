@@ -62,7 +62,7 @@ import {
 }
           </code>
         </pre>
-        <hr/>
+        <hr />
         <h2>Show by Screen Size</h2>
         <p>
           Use the ShowForScreenSize component to show a piece of content when users screen is at a
@@ -166,7 +166,7 @@ import {
             You are <em>definitely</em> on an extra extra large screen.
           </ShowOnlyForScreenSize>
         </p>
-        <hr/>
+        <hr />
         <h2>Hide by Screen Size</h2>
         <p>
           Use the HideForScreenSize component to hide a piece of content when users screen is at a
@@ -296,7 +296,7 @@ import {
             Can sort of touch this.
           </Invisible>
         </p>
-        <hr/>
+        <hr />
         <h2>Orientation Detection</h2>
         <p>
           Use the ShowForScreenOrientation and/or HideForScreenOrientation component to show/hide a
@@ -342,7 +342,7 @@ import {
             You are <em>not</em> in portrait orientation.
           </HideForScreenOrientation>
         </p>
-        <hr/>
+        <hr />
         <h2>Accessibility</h2>
         <p>
           Use the ShowForScreenReader component to visually hide content while still allowing
@@ -373,7 +373,7 @@ There's a line of text above this one, you just can't see it.
             This text can be seen, but won't be read by a screen reader.
           </HideForScreenReader>
         </p>
-        <hr/>
+        <hr />
         <h2>Focus</h2>
         <p>
           Use the ShowOnFocus component to hide content except when it is focused.

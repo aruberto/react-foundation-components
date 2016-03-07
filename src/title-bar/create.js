@@ -21,7 +21,7 @@ export default function create(styles, MenuIcon = DefaultComponent) {
       );
 
       return (
-        <div {...this.props} className={classNames}/>
+        <div {...this.props} className={classNames} />
       );
     }
   }
@@ -36,7 +36,7 @@ export default function create(styles, MenuIcon = DefaultComponent) {
       const classNames = cx(className, styles['title-bar-title']);
 
       return (
-        <span {...this.props} className={classNames}/>
+        <span {...this.props} className={classNames} />
       );
     }
   }
@@ -58,7 +58,7 @@ export default function create(styles, MenuIcon = DefaultComponent) {
       );
 
       return (
-        <MenuIcon {...this.props} className={classNames}/>
+        <MenuIcon {...this.props} className={classNames} />
       );
     }
   }
@@ -73,7 +73,7 @@ export default function create(styles, MenuIcon = DefaultComponent) {
       const classNames = cx(className, styles['title-bar']);
 
       return (
-        <div {...this.props} className={classNames}/>
+        <div {...this.props} className={classNames} />
       );
     }
   }

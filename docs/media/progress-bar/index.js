@@ -20,7 +20,7 @@ export default class ProgressBarPage extends Component {
         <p>
           Show your progress.
         </p>
-        <hr/>
+        <hr />
         <h2>Basics</h2>
         <p>Importing the ProgressBar component:</p>
         <pre>
@@ -45,21 +45,21 @@ import { ProgressBar } from 'react-foundation-components/lib/global/progress-bar
           <code>
 {
 `<ProgressBar/>
-<ProgressBar value={25}/>
-<ProgressBar value={50}/>
-<ProgressBar value={75}/>
-<ProgressBar value={100}/>
-<ProgressBar max={200} min={50} value={100}/>`
+<ProgressBar value={25} />
+<ProgressBar value={50} />
+<ProgressBar value={75} />
+<ProgressBar value={100} />
+<ProgressBar max={200} min={50} value={100} />`
 }
           </code>
         </pre>
-        <ProgressBar/>
-        <ProgressBar value={25}/>
-        <ProgressBar value={50}/>
-        <ProgressBar value={75}/>
-        <ProgressBar value={100}/>
-        <ProgressBar max={200} min={50} value={100}/>
-        <hr/>
+        <ProgressBar />
+        <ProgressBar value={25} />
+        <ProgressBar value={50} />
+        <ProgressBar value={75} />
+        <ProgressBar value={100} />
+        <ProgressBar max={200} min={50} value={100} />
+        <hr />
         <h2>Coloring</h2>
         <p>
           Give a Badge additional meaning by setting the <code>color</code> prop. Possible values
@@ -68,20 +68,20 @@ import { ProgressBar } from 'react-foundation-components/lib/global/progress-bar
         <pre>
           <code>
         {
-`<ProgressBar color="primary" value={20}/>
-<ProgressBar color="secondary" value={40}/>
-<ProgressBar color="success" value={60}/>
-<ProgressBar color="warning" value={80}/>
-<ProgressBar color="alert" value={100}/>`
+`<ProgressBar color="primary" value={20} />
+<ProgressBar color="secondary" value={40} />
+<ProgressBar color="success" value={60} />
+<ProgressBar color="warning" value={80} />
+<ProgressBar color="alert" value={100} />`
         }
           </code>
         </pre>
-        <ProgressBar color="primary" value={20}/>
-        <ProgressBar color="secondary" value={40}/>
-        <ProgressBar color="success" value={60}/>
-        <ProgressBar color="warning" value={80}/>
-        <ProgressBar color="alert" value={100}/>
-        <hr/>
+        <ProgressBar color="primary" value={20} />
+        <ProgressBar color="secondary" value={40} />
+        <ProgressBar color="success" value={60} />
+        <ProgressBar color="warning" value={80} />
+        <ProgressBar color="alert" value={100} />
+        <hr />
         <h2>With Text</h2>
         <p>
           You can add text inside the meter of a progress bar by providing
@@ -107,8 +107,8 @@ function percentFormatter(percent) {
         }
           </code>
         </pre>
-        <ProgressBar labelFormatter={complexFormatter} value={50}/>
-        <ProgressBar labelFormatter={percentFormatter} max={200} min={50} value={150}/>
+        <ProgressBar labelFormatter={complexFormatter} value={50} />
+        <ProgressBar labelFormatter={percentFormatter} max={200} min={50} value={150} />
       </div>
     );
   }

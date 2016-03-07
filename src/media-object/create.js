@@ -56,7 +56,7 @@ export default function create(
       );
 
       return (
-        <FlexParent {...this.props} className={classNames}/>
+        <FlexParent {...this.props} className={classNames} />
       );
     }
   }

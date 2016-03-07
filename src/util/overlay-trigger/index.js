@@ -17,7 +17,7 @@ function mouseOverOut(event, callback) {
   const related = event.relatedTarget || event.nativeEvent.toElement;
 
   if (!related || related !== target && !domContains(target, related)) {
-    return callback(event);
+    callback(event);
   }
 }
 
@@ -58,7 +58,9 @@ export default class OverlayTrigger extends Component {
     this._mountNode = null;
   }
 
-  setTargetRef = (ref) => this._targetRef = ref;
+  setTargetRef = (ref) => {
+    this._targetRef = ref;
+  };
 
   getTargetRefDOMNode = () => findDOMNode(this._targetRef);
 
