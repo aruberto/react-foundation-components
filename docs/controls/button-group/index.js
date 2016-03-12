@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Button } from '../../../src/button';
 import { ButtonGroup } from '../../../src/button-group';
-import { ButtonGroup as FlexButtonGroup } from '../../../src/button-group/flex';
+import { ButtonGroup as FlexButtonGroup } from '../../../lib/button-group-flex';
 import { ShowForScreenReader } from '../../../src/visibility';
 
 export default class ButtonGroupPage extends Component {
@@ -30,12 +30,12 @@ import { ButtonGroup } from 'react-foundation-components/lib/global/button-group
 or
 
 // Import Flexbox version with local scoped class names (via CSS Modules)
-import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group/flex';
+import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group-flex';
 
 or
 
 // Import Flexbox version with global scoped class names
-import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group/flex';`
+import { ButtonGroup } from 'react-foundation-components/lib/controls/button-group-flex';`
 }
           </code>
         </pre>

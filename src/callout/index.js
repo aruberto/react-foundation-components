@@ -1,7 +1,37 @@
-import styles from './_styles.scss';
-import create from './create';
+import React, { Component, PropTypes } from 'react';
+import cx from 'classnames';
+import cxBinder from 'classnames/bind';
 
-const { Callout } = create(styles);
+import { CALLOUT_SIZES, COMPONENT_COLORS } from '../util/constants';
+import styles from './_styles.scss';
+
+const cxStyles = cxBinder.bind(styles);
+
+export class Callout extends Component {
+  static propTypes = {
+    className: PropTypes.string,
+    color: PropTypes.oneOf(COMPONENT_COLORS),
+    size: PropTypes.oneOf(CALLOUT_SIZES),
+  };
+
+  render() {
+    const { className, color, size } = this.props;
+    const classNames =
+      cx(
+        className,
+        cxStyles(
+          'callout',
+          {
+            [color]: COMPONENT_COLORS.includes(color),
+            [size]: CALLOUT_SIZES.includes(size),
+          }
+        )
+      );
+
+    return (
+      <div {...this.props} className={classNames} />
+    );
+  }
+}
 
 export default Callout;
-export { Callout };

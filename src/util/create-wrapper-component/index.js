@@ -1,15 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
+import cxBinder from 'classnames/bind';
 import elementType from 'react-prop-types/lib/elementType';
 
 export default function createWrapperComponent({
   displayName = 'Wrapper',
+  styles = {},
   propTypes = {},
   mapPropsToClassNames = () => ({}),
   mapPropsToStyle = () => ({}),
   mapPropsToProps = (props) => props,
   defaultComponentClass = 'span',
 } = {}) {
+  const cxStyles = cxBinder.bind(styles);
+
   class Wrapper extends Component {
     static displayName = displayName;
 
@@ -28,7 +32,7 @@ export default function createWrapperComponent({
         ...restProps,
       } = this.props;
       const ComponentClass = maybeComponentClass || defaultComponentClass;
-      const classNames = cx(baseClassName, mapPropsToClassNames(restProps));
+      const classNames = cx(baseClassName, cxStyles(mapPropsToClassNames(restProps)));
       const style = { ...baseStyle, ...mapPropsToStyle(restProps) };
       const props = mapPropsToProps(restProps);
 
