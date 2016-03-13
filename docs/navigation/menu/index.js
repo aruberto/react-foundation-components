@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Menu, MenuItem } from '../../../src/menu';
-import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../src/menu/flex';
+import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../lib/menu-flex';
 
 const iconStyle = {
   fontStyle: 'normal',
@@ -17,13 +17,13 @@ export default class MenuPage extends Component {
           <MenuItem><a href="#">Three</a></MenuItem>
           <MenuItem><a href="#">Four</a></MenuItem>
         </Menu>
-        <Menu alignment="right">
+        <Menu horizontalAlignment="right">
           <MenuItem><a href="#">One</a></MenuItem>
           <MenuItem><a href="#">Two</a></MenuItem>
           <MenuItem><a href="#">Three</a></MenuItem>
           <MenuItem><a href="#">Four</a></MenuItem>
         </Menu>
-        <Menu alignment="center">
+        <Menu horizontalAlignment="center">
           <MenuItem><a href="#">One</a></MenuItem>
           <MenuItem><a href="#">Two</a></MenuItem>
           <MenuItem><a href="#">Three</a></MenuItem>
@@ -105,13 +105,13 @@ export default class MenuPage extends Component {
           <FlexMenuItem><a href="#">Three</a></FlexMenuItem>
           <FlexMenuItem><a href="#">Four</a></FlexMenuItem>
         </FlexMenu>
-        <FlexMenu alignment="right">
+        <FlexMenu horizontalAlignment="right">
           <FlexMenuItem><a href="#">One</a></FlexMenuItem>
           <FlexMenuItem><a href="#">Two</a></FlexMenuItem>
           <FlexMenuItem><a href="#">Three</a></FlexMenuItem>
           <FlexMenuItem><a href="#">Four</a></FlexMenuItem>
         </FlexMenu>
-        <FlexMenu alignment="center">
+        <FlexMenu horizontalAlignment="center">
           <FlexMenuItem><a href="#">One</a></FlexMenuItem>
           <FlexMenuItem><a href="#">Two</a></FlexMenuItem>
           <FlexMenuItem><a href="#">Three</a></FlexMenuItem>

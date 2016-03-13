@@ -10,17 +10,14 @@ const createFlexSccsContent = (component) =>
 
 @import '../${component}/styles';
 `;
-
-const FLEX_COMPONENTS_TO_CLONE = [
+const FLEX_COMPONENTS = [
   'button-group',
   'forms',
-];
-const FLEX_COMPONENTS = [
-  ...FLEX_COMPONENTS_TO_CLONE,
-  'grid',
+  'media-object',
+  'menu',
 ];
 
-FLEX_COMPONENTS_TO_CLONE.forEach((component) => {
+FLEX_COMPONENTS.forEach((component) => {
   const directoryPath = path.join(__dirname, 'lib', component);
   const indexPath = path.join(directoryPath, 'index.js');
   const scssPath = path.join(directoryPath, '_styles.scss');
@@ -42,6 +39,10 @@ FLEX_COMPONENTS_TO_CLONE.forEach((component) => {
   FLEX_COMPONENTS.forEach((dependency) => {
     flexIndexContent = flexIndexContent.replace(`'../${dependency}'`, `'../${dependency}-flex'`);
   });
+
+  flexIndexContent = flexIndexContent.replace('\'../grid\'', '\'../grid-flex\'');
+  flexIndexContent = flexIndexContent.replace('\'../flex-mock\'', '\'../flex\'');
+  flexIndexContent = flexIndexContent.replace('IS_FLEX_MODE = false', 'IS_FLEX_MODE = true');
 
   fs.ensureDirSync(flexDirectoryPath);
   fs.writeFileSync(flexIndexPath, flexIndexContent.value(), 'utf8');

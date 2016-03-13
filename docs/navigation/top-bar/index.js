@@ -8,7 +8,7 @@ import {
   TopBarTitle as FlexTopBarTitle,
 } from '../../../src/top-bar/flex';
 import { Menu, MenuItem } from '../../../src/menu';
-import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../src/menu/flex';
+import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../lib/menu-flex';
 import { Button } from '../../../src/button';
 import { MenuIcon } from '../../../src/menu-icon';
 import { ShowForScreenSize, HideForScreenSize } from '../../../src/visibility';

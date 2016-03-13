@@ -14,7 +14,7 @@ import {
   TitleBarTitle,
   TitleBarMenuIcon,
 } from '../src/title-bar/flex';
-import { Menu, MenuItem } from '../src/menu/flex';
+import { Menu, MenuItem } from '../lib/menu-flex';
 import { HideForScreenSize } from '../src/visibility';
 
 import GridPage from './general/grid';

@@ -4,7 +4,7 @@ import { MediaObjectSection, MediaObject } from '../../../src/media-object';
 import {
   MediaObjectSection as FlexMediaObjectSection,
   MediaObject as FlexMediaObject,
-} from '../../../src/media-object/flex';
+} from '../../../lib/media-object-flex';
 
 export default class MediaObjectPage extends Component {
   render() {
@@ -25,7 +25,7 @@ export default class MediaObjectPage extends Component {
         </MediaObject>
         <br />
         <MediaObject>
-          <MediaObjectSection alignment="middle">
+          <MediaObjectSection verticalAlignment="middle">
             <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg" />
           </MediaObjectSection>
           <MediaObjectSection>
@@ -42,7 +42,7 @@ export default class MediaObjectPage extends Component {
               sticks; right in there somewhere.
             </p>
           </MediaObjectSection>
-          <MediaObjectSection alignment="bottom">
+          <MediaObjectSection verticalAlignment="bottom">
             <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg" />
           </MediaObjectSection>
         </MediaObject>
@@ -61,7 +61,7 @@ export default class MediaObjectPage extends Component {
         </MediaObject>
         <br />
         <FlexMediaObject>
-          <FlexMediaObjectSection alignment="middle">
+          <FlexMediaObjectSection verticalAlignment="middle">
             <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-2.jpg" />
           </FlexMediaObjectSection>
           <FlexMediaObjectSection main>
@@ -78,7 +78,7 @@ export default class MediaObjectPage extends Component {
               sticks; right in there somewhere.
             </p>
           </FlexMediaObjectSection>
-          <FlexMediaObjectSection alignment="bottom">
+          <FlexMediaObjectSection verticalAlignment="bottom">
             <img src="http://foundation.zurb.com/sites/docs/assets/img/avatar-3.jpg" />
           </FlexMediaObjectSection>
         </FlexMediaObject>
