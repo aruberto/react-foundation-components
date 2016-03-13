@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Row, Column } from '../../../../src/grid/flex';
-import { ShowForScreenSize, ShowOnlyForScreenSize } from '../../../../src/visibility';
+import { Row, Column } from '../../../src/grid-flex';
+import { ShowForScreenSize, ShowOnlyForScreenSize } from '../../../src/visibility';
 
 const rowStyle = { border: 'solid 1px #c6c6c6', marginTop: '0.5rem', marginBottom: '0.5rem' };
 const styleOdd = { background: '#eee' };

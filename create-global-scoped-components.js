@@ -1,4 +1,4 @@
-/* eslint-disable no-console, prefer-arrow-callback, prefer-template */
+/* eslint-disable no-console, prefer-arrow-callback */
 
 const path = require('path');
 const fs = require('fs-extra');
@@ -29,7 +29,7 @@ const filter = through2.obj(function componentDirectoryFilter(item, enc, next) {
   next();
 });
 
-fs.walk('.' + path.sep + 'lib')
+fs.walk(path.join(__dirname, 'lib'))
   .pipe(filter)
   .on('data', function processDirectory(item) {
     const globalPath =

@@ -64,7 +64,7 @@ export function createScreenSizePropTypes(classNameMapping) {
   return propTypes;
 }
 
-export function createScreenSizeClassNamesFromProps(classNameMapping, props = {}, styles = {}) {
+export function createScreenSizeClassNamesFromProps(classNameMapping, props = {}) {
   const classNames = {};
 
   processScreenSizeClassNames(
@@ -73,16 +73,12 @@ export function createScreenSizeClassNamesFromProps(classNameMapping, props = {}
       const propValue = props[propName];
 
       if (type === CLASS_NAME_TYPES.RANGE) {
-        if (styles[`${className}-${propValue}`]) {
-          classNames[styles[`${className}-${propValue}`]] =
-            Number.isInteger(propValue) && propValue >= min && propValue <= max;
-        }
+        classNames[`${className}-${propValue}`] =
+          Number.isInteger(propValue) && propValue >= min && propValue <= max;
       } else if (type === CLASS_NAME_TYPES.ENUM) {
-        if (styles[`${className}-${propValue}`]) {
-          classNames[styles[`${className}-${propValue}`]] = values.includes(propValue);
-        }
-      } else if (styles[className]) {
-        classNames[styles[className]] = propValue;
+        classNames[`${className}-${propValue}`] = values.includes(propValue);
+      } else {
+        classNames[className] = propValue;
       }
     }
   );

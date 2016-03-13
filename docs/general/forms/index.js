@@ -17,7 +17,7 @@ import {
   FormFieldHelp as FlexFormFieldHelp,
   FormFieldInline as FlexFormFieldInline,
   FormFieldButton as FlexFormFieldButton,
-} from '../../../src/forms/flex';
+} from '../../../lib/forms-flex';
 import { Row, Column } from '../../../src/grid';
 import { Button } from '../../../src/button';
 

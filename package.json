@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rimraf lib docs/lib",
     "lint": "eslint src && eslint docs && eslint examples && sass-lint --verbose",
-    "build": "npm run clean && babel --quiet src --out-dir lib && cpy \"**/*.scss\" ../lib --parents --cwd=src && node create-global-scoped-components.js",
+    "build": "npm run clean && babel --quiet src --out-dir lib && cpy \"**/*.scss\" ../lib --parents --cwd=src",
     "build-docs": "npm run clean && webpack --config docs/webpack.config.js",
     "start-docs": "node server.js docs/webpack.config.js --dev",
     "start-examples-css-modules": "npm run build && node server.js examples/css-modules/webpack.config.js",

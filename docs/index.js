@@ -18,7 +18,7 @@ import { Menu, MenuItem } from '../src/menu/flex';
 import { HideForScreenSize } from '../src/visibility';
 
 import GridPage from './general/grid';
-import FlexGridPage from './general/grid/flex';
+import FlexGridPage from './general/grid-flex';
 import FormsPage from './general/forms';
 import VisibilityPage from './general/visibility';
 import FloatPage from './general/float';
