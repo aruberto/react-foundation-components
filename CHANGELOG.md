@@ -1,3 +1,25 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/aruberto/react-foundation-components/compare/0.9.3...0.10.0) (2016-03-13)
+
+
+### BREAKING CHANGES
+* Project layout restructured to remove more than half the files under src. Key usage difference is when importing flex components. They are no longer a sub folder under non-flex version of the component. You'll need to replace the last '/' with a '-'. Example:
+
+Before:
+```
+import { ButtonGroup } from 'react-foundation-components/lib/button-group/flex';
+import { Row, Column } from 'react-foundation-components/lib/grid/flex';
+import { Menu, MenuItem } from 'react-foundation-components/lib/menu/flex';
+```
+
+Now:
+```
+import { ButtonGroup } from 'react-foundation-components/lib/button-group-flex';
+import { Row, Column } from 'react-foundation-components/lib/grid-flex';
+import { Menu, MenuItem } from 'react-foundation-components/lib/menu-flex';
+```
+
+
 <a name="0.9.3"></a>
 ## [0.9.3](https://github.com/aruberto/react-foundation-components/compare/0.9.2...0.9.3) (2016-03-07)
 
