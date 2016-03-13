@@ -1,0 +1,9 @@
+// Remove when https://github.com/zurb/foundation-sites/issues/7776 is fixed
+.off-canvas-wrapper {
+  height: 100%;
+}
+
+.off-canvas,
+.off-canvas-wrapper-inner {
+  min-height: 100%;
+}

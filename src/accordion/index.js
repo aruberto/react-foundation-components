@@ -5,7 +5,7 @@ import uncontrollable from 'uncontrollable/batching';
 import isNil from 'lodash/isNil';
 import isBlank from 'underscore.string/isBlank';
 
-import Collapse from '../collapse';
+import { Collapse } from '../collapse';
 import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
