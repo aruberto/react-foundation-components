@@ -43,6 +43,7 @@ fs.walk(path.join(__dirname, 'lib'))
       s(fs.readFileSync(item.path, 'utf8'))
         .replace('require(\'./_styles.scss\')', '{}')
         .replace('require(\'classnames/bind\')', 'require(\'classnames\')')
+        .replace('require(\'../util/', 'require(\'../../util/')
         .value();
 
     fs.ensureDirSync(path.dirname(globalPath));

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import { Button } from '../../lib/global/button';
-import { ButtonGroup } from '../../lib/global/button-group/flex';
+import { ButtonGroup } from '../../lib/global/button-group-flex';
 
 class App extends Component {
   render() {
@@ -25,7 +25,7 @@ class App extends Component {
           <Button>Click Me!</Button>
         </div>
         <div>
-          <h3>ButtonGroup <code>react-foundation-components/lib/global/button-group/flex</code></h3>
+          <h3>ButtonGroup <code>react-foundation-components/lib/global/button-group-flex</code></h3>
           <p>This ButtonGroup uses Flexbox layout</p>
           <ButtonGroup>
             <Button>A</Button>

@@ -5,7 +5,7 @@ import '../../lib/_typography.scss';
 
 import { Button } from '../../lib/button';
 import { ButtonGroup } from '../../lib/button-group';
-import { ButtonGroup as FlexButtonGroup } from '../../lib/button-group/flex';
+import { ButtonGroup as FlexButtonGroup } from '../../lib/button-group-flex';
 
 class App extends Component {
   render() {
@@ -40,7 +40,7 @@ class App extends Component {
         </div>
         <div>
           <h3>
-            Flexbox ButtonGroup <code>react-foundation-components/lib/button-group/flex</code>
+            Flexbox ButtonGroup <code>react-foundation-components/lib/button-group-flex</code>
           </h3>
           <p>
             Because CSS Modules creates class names that are scoped locally to the component,
