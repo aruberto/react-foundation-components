@@ -1,4 +1,4 @@
-/* eslint-disable no-console, prefer-arrow-callback */
+/* eslint-disable no-console */
 
 const path = require('path');
 const webpack = require('webpack');
@@ -19,7 +19,7 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-app.listen(3000, '0.0.0.0', function callback(err) {
+app.listen(3000, '0.0.0.0', (err) => {
   if (err) {
     console.error(err);
     return;
