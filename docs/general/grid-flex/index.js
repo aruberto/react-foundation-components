@@ -23,12 +23,12 @@ export default class FlexGridPage extends Component {
           <code>
 {
 `// Import with local scoped class names (via CSS Modules)
-import { Row, Column } from 'react-foundation-components/lib/grid/flex';
+import { Row, Column } from 'react-foundation-components/lib/grid-flex';
 
 or
 
 // Import with global scoped class names
-import { Row, Column } from 'react-foundation-components/lib/global/grid/flex';`
+import { Row, Column } from 'react-foundation-components/lib/global/grid-flex';`
 }
           </code>
         </pre>

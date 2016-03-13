@@ -11,7 +11,7 @@
     "lint": "eslint src && eslint docs && eslint examples && sass-lint --verbose",
     "build": "npm run clean && babel --quiet src --out-dir lib && cpy \"**/*.scss\" ../lib --parents --cwd=src && node create-flex-components.js && node create-global-scoped-components.js",
     "build-docs": "npm run clean && webpack --config docs/webpack.config.js",
-    "start-docs": "node server.js docs/webpack.config.js --dev",
+    "start-docs": "npm run build && node server.js docs/webpack.config.js --dev",
     "start-examples-css-modules": "npm run build && node server.js examples/css-modules/webpack.config.js",
     "start-examples-css-modules-custom": "npm run build && node server.js examples/css-modules-custom/webpack.config.js",
     "start-examples-global": "npm run build && node server.js examples/global/webpack.config.js",
