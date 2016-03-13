@@ -6,7 +6,7 @@ import {
   TopBarContent as FlexTopBarContent,
   TopBarItem as FlexTopBarItem,
   TopBarTitle as FlexTopBarTitle,
-} from '../../../src/top-bar/flex';
+} from '../../../lib/top-bar-flex';
 import { Menu, MenuItem } from '../../../src/menu';
 import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../lib/menu-flex';
 import { Button } from '../../../src/button';

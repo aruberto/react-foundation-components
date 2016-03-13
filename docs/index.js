@@ -13,7 +13,7 @@ import {
   TitleBarItem,
   TitleBarTitle,
   TitleBarMenuIcon,
-} from '../src/title-bar/flex';
+} from '../lib/title-bar-flex';
 import { Menu, MenuItem } from '../lib/menu-flex';
 import { HideForScreenSize } from '../src/visibility';
 

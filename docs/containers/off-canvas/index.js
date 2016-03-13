@@ -16,7 +16,7 @@ import {
   TitleBarItem as FlexTitleBarItem,
   TitleBarTitle as FlexTitleBarTitle,
   TitleBarMenuIcon as FlexTitleBarMenuIcon,
-} from '../../../src/title-bar/flex';
+} from '../../../lib/title-bar-flex';
 import { HideForScreenSize } from '../../../src/visibility';
 
 export default class OffCanvasPage extends Component {

@@ -15,6 +15,8 @@ const FLEX_COMPONENTS = [
   'forms',
   'media-object',
   'menu',
+  'title-bar',
+  'top-bar',
 ];
 
 FLEX_COMPONENTS.forEach((component) => {

@@ -1,7 +1,29 @@
+import createWrapperComponent from '../util/create-wrapper-component';
 import styles from './_styles.scss';
-import create from './create';
 
-const { TypographyHelpers, Subheader, Lead, UnbulletedList, Statistic } = create(styles);
+export const Subheader = createWrapperComponent({
+  displayName: 'Subheader',
+  styles,
+  mapPropsToClassNames: () => 'subheader',
+});
 
-export default TypographyHelpers;
-export { Subheader, Lead, UnbulletedList, Statistic };
+export const Lead = createWrapperComponent({
+  displayName: 'Lead',
+  styles,
+  mapPropsToClassNames: () => 'lead',
+});
+
+export const UnbulletedList = createWrapperComponent({
+  displayName: 'UnbulletedList',
+  styles,
+  mapPropsToClassNames: () => 'no-bullet',
+  defaultComponentClass: 'ul',
+});
+
+export const Statistic = createWrapperComponent({
+  displayName: 'Statistic',
+  styles,
+  mapPropsToClassNames: () => 'stat',
+});
+
+export default { Subheader, Lead, UnbulletedList, Statistic };

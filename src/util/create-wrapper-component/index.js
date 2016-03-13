@@ -34,7 +34,7 @@ export default function createWrapperComponent({
       const ComponentClass = maybeComponentClass || defaultComponentClass;
       const classNames = cx(baseClassName, cxStyles(mapPropsToClassNames(restProps)));
       const style = { ...baseStyle, ...mapPropsToStyle(restProps) };
-      const props = mapPropsToProps(restProps);
+      const props = { ...restProps, ...mapPropsToProps(restProps) };
 
       return (
         <ComponentClass {...props} className={classNames} style={style} />
