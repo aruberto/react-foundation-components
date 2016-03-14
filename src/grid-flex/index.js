@@ -73,4 +73,6 @@ export class Column extends Component {
   }
 }
 
-export default { Row, Column };
+export const Grid = { Row, Column };
+
+export default Grid;

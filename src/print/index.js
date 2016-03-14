@@ -13,4 +13,6 @@ export const HideForPrint = createWrapperComponent({
   mapPropsToClassNames: () => 'hide-for-print',
 });
 
-export default { ShowFor: ShowForPrint, HideFor: HideForPrint };
+export const Print = { ShowFor: ShowForPrint, HideFor: HideForPrint };
+
+export default Print;

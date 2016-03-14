@@ -4,4 +4,6 @@ export const FlexParent = DefaultComponent;
 
 export const FlexChild = DefaultComponent;
 
-export default { Parent: FlexParent, Child: FlexChild };
+export const Flex = { Parent: FlexParent, Child: FlexChild };
+
+export default Flex;

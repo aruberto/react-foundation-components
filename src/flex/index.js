@@ -46,4 +46,6 @@ export const FlexChild = createWrapperComponent({
   defaultComponentClass: 'div',
 });
 
-export default { Parent: FlexParent, Child: FlexChild };
+export const Flex = { Parent: FlexParent, Child: FlexChild };
+
+export default Flex;

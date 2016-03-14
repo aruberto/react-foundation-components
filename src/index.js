@@ -25,7 +25,13 @@ export {
 export { Float, ClearFix } from './float';
 
 export { Print, ShowForPrint, HideForPrint } from './print';
-export { Subheader, Lead, UnbulletedList, Statistic } from './typography-helpers';
+export {
+  TypographyHelpers,
+  Subheader,
+  Lead,
+  UnbulletedList,
+  Statistic,
+} from './typography-helpers';
 export { TextAlignment } from './text-alignment';
 
 export { Button } from './button';
@@ -50,7 +56,7 @@ export { MenuIcon } from './menu-icon';
 export { OffCanvas, OffCanvasContent, OffCanvasContainer } from './off-canvas';
 export { Reveal } from './reveal';
 export { Table } from './table';
-export { Tabs, TabsHeader, TabsContent, Tab, TabTitle } from './tabs';
+export { Tabs, Tab } from './tabs';
 export { TitleBar, TitleBarItem, TitleBarTitle, TitleBarMenuIcon } from './title-bar';
 
 export { Badge } from './badge';

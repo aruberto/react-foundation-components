@@ -5,6 +5,17 @@ const fs = require('fs-extra');
 const through2 = require('through2');
 const s = require('underscore.string');
 
+const libPath = path.join(__dirname, 'lib');
+const globalPath = path.join(libPath, 'global');
+const packageIndexPath = path.join(libPath, 'index.js');
+const packageFlexboxIndexPath = path.join(libPath, 'flexbox.js');
+const globalPackageIndexPath = path.join(globalPath, 'index.js');
+const globalPackageFlexboxIndexPath = path.join(globalPath, 'flexbox.js');
+
+fs.ensureDirSync(path.dirname(globalPath));
+fs.copySync(packageIndexPath, globalPackageIndexPath);
+fs.copySync(packageFlexboxIndexPath, globalPackageFlexboxIndexPath);
+
 const filter = through2.obj(function componentDirectoryFilter(item, enc, next) {
   if (item.stats.isFile()) {
     const fileName = path.basename(item.path);
@@ -27,10 +38,10 @@ const filter = through2.obj(function componentDirectoryFilter(item, enc, next) {
   next();
 });
 
-fs.walk(path.join(__dirname, 'lib'))
+fs.walk(libPath)
   .pipe(filter)
   .on('data', (item) => {
-    const globalPath =
+    const globalComponentPath =
       s(item.path)
         .reverse()
         .replace(
@@ -46,6 +57,6 @@ fs.walk(path.join(__dirname, 'lib'))
         .replace('require(\'../util/', 'require(\'../../util/')
         .value();
 
-    fs.ensureDirSync(path.dirname(globalPath));
-    fs.writeFileSync(globalPath, content, 'utf8');
+    fs.ensureDirSync(path.dirname(globalComponentPath));
+    fs.writeFileSync(globalComponentPath, content, 'utf8');
   });

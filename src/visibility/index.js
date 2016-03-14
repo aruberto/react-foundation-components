@@ -101,7 +101,7 @@ export const ShowOnFocus = createWrapperComponent({
   mapPropsToClassNames: () => 'show-on-focus',
 });
 
-export default {
+export const Visibility = {
   ShowForScreenSize,
   ShowOnlyForScreenSize,
   HideForScreenSize,
@@ -114,3 +114,5 @@ export default {
   HideForScreenReader,
   ShowOnFocus,
 };
+
+export default Visibility;

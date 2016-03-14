@@ -44,4 +44,6 @@ export const Column = createWrapperComponent({
   defaultComponentClass: 'div',
 });
 
-export default { Row, Column };
+export const Grid = { Row, Column };
+
+export default Grid;

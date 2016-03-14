@@ -26,4 +26,6 @@ export const Statistic = createWrapperComponent({
   mapPropsToClassNames: () => 'stat',
 });
 
-export default { Subheader, Lead, UnbulletedList, Statistic };
+export const TypographyHelpers = { Subheader, Lead, UnbulletedList, Statistic };
+
+export default TypographyHelpers;
