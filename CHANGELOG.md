@@ -1,3 +1,11 @@
+<a name="0.10.2"></a>
+## [0.10.2](https://github.com/aruberto/react-foundation-components/compare/0.10.1...0.10.2) (2016-03-14)
+
+
+#### Miscellaneous
+* Replaced use of Array.prototype.includes() with lodash/includes since babel-plugin-transform-runtime can't transform when it is used on instance variable.
+
+
 <a name="0.10.1"></a>
 ## [0.10.1](https://github.com/aruberto/react-foundation-components/compare/0.10.0...0.10.1) (2016-03-14)
 
