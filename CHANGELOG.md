@@ -1,3 +1,11 @@
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/aruberto/react-foundation-components/compare/0.10.0...0.10.1) (2016-03-14)
+
+
+#### Miscellaneous
+* Fix paths in main entry files.
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/aruberto/react-foundation-components/compare/0.9.3...0.10.0) (2016-03-13)
 
