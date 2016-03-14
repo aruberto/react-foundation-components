@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import { COMPONENT_SIZES, COMPONENT_COLORS } from '../util/constants';
 import styles from './_styles.scss';
@@ -45,13 +46,13 @@ export class Button extends Component {
         cxStyles(
           'button',
           {
-            [color]: COMPONENT_COLORS.includes(color),
+            [color]: includes(COMPONENT_COLORS, color),
             disabled,
             dropdown,
             'arrow-only': dropdown && dropdownArrowOnly,
             expanded,
             hollow,
-            [size]: COMPONENT_SIZES.includes(size),
+            [size]: includes(COMPONENT_SIZES, size),
           }
         )
       );

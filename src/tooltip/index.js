@@ -1,6 +1,7 @@
 import React, { Component, PropTypes, isValidElement, cloneElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import { OVERLAY_POSITIONS, OVERLAY_POSITIONS_INTERNAL } from '../util/constants';
 import OverlayTrigger from '../util/overlay-trigger';
@@ -27,7 +28,7 @@ export class Tooltip extends Component {
         cxStyles(
           'tooltip',
           {
-            [position]: OVERLAY_POSITIONS_INTERNAL.includes(position),
+            [position]: includes(OVERLAY_POSITIONS_INTERNAL, position),
           }
         )
       );

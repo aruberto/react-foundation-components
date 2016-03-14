@@ -2,6 +2,7 @@ import React, { Component, PropTypes, Children, cloneElement, isValidElement } f
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import uncontrollable from 'uncontrollable/batching';
+import includes from 'lodash/includes';
 import isNil from 'lodash/isNil';
 import isBlank from 'underscore.string/isBlank';
 
@@ -183,7 +184,7 @@ export class Accordion extends Component {
       let activeKey = null;
 
       if (multiExpand) {
-        if (prevActiveKey.includes(selectedKey)) {
+        if (includes(prevActiveKey, selectedKey)) {
           if (prevActiveKey.length > 1 || allowAllClosed) {
             activeKey = prevActiveKey.filter((item) => item !== selectedKey);
           } else {
@@ -221,7 +222,7 @@ export class Accordion extends Component {
         return cloneElement(child, {
           active:
             Array.isArray(activeKey)
-            ? activeKey.includes(child.props.eventKey)
+            ? includes(activeKey, child.props.eventKey)
             : activeKey === child.props.eventKey,
           onToggle: this.handleToggle,
         });

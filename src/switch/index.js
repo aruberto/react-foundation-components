@@ -2,6 +2,7 @@ import React, { Component, PropTypes, Children, cloneElement, isValidElement } f
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import uncontrollable from 'uncontrollable/batching';
+import includes from 'lodash/includes';
 import isNil from 'lodash/isNil';
 import isBlank from 'underscore.string/isBlank';
 
@@ -102,7 +103,7 @@ export class Switch extends Component {
       size,
     } = this.props;
     const containerClassNames =
-      cx(containerClassName, cxStyles('switch', { [size]: COMPONENT_SIZES.includes(size) }));
+      cx(containerClassName, cxStyles('switch', { [size]: includes(COMPONENT_SIZES, size) }));
     const classNames = cx(className, cxStyles('switch-input'));
     const paddleClassNames = cx(paddleClassName, cxStyles('switch-paddle'));
 

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import { CALLOUT_SIZES, COMPONENT_COLORS } from '../util/constants';
 import styles from './_styles.scss';
@@ -22,8 +23,8 @@ export class Callout extends Component {
         cxStyles(
           'callout',
           {
-            [color]: COMPONENT_COLORS.includes(color),
-            [size]: CALLOUT_SIZES.includes(size),
+            [color]: includes(COMPONENT_COLORS, color),
+            [size]: includes(CALLOUT_SIZES, size),
           }
         )
       );

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import {
   COMPONENT_SIZES,
@@ -30,11 +31,11 @@ export class ButtonGroup extends Component {
         cxStyles(
           'button-group',
           {
-            [color]: COMPONENT_COLORS.includes(color),
+            [color]: includes(COMPONENT_COLORS, color),
             expanded,
-            [size]: COMPONENT_SIZES.includes(size),
-            stacked: stack && !BUTTON_GROUP_STACK_SCREEN_SIZES.includes(stack),
-            [`stacked-for-${stack}`]: BUTTON_GROUP_STACK_SCREEN_SIZES.includes(stack),
+            [size]: includes(COMPONENT_SIZES, size),
+            stacked: stack && !includes(BUTTON_GROUP_STACK_SCREEN_SIZES, stack),
+            [`stacked-for-${stack}`]: includes(BUTTON_GROUP_STACK_SCREEN_SIZES, stack),
           }
         )
       );

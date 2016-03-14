@@ -1,6 +1,7 @@
 import React, { Component, PropTypes, isValidElement, cloneElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import {
   COMPONENT_SIZES,
@@ -32,8 +33,8 @@ export class Dropdown extends Component {
           'dropdown-pane',
           'is-open',
           {
-            [position]: OVERLAY_POSITIONS_INTERNAL.includes(position),
-            [size]: COMPONENT_SIZES.includes(size),
+            [position]: includes(OVERLAY_POSITIONS_INTERNAL, position),
+            [size]: includes(COMPONENT_SIZES, size),
           }
         )
       );

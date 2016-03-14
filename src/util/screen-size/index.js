@@ -1,4 +1,5 @@
 import { PropTypes } from 'react';
+import includes from 'lodash/includes';
 import decapitalize from 'underscore.string/decapitalize';
 
 import { CLASS_NAME_TYPES, SCREEN_SIZES, SCREEN_SIZE_SMALL } from '../constants';
@@ -76,7 +77,7 @@ export function createScreenSizeClassNamesFromProps(classNameMapping, props = {}
         classNames[`${className}-${propValue}`] =
           Number.isInteger(propValue) && propValue >= min && propValue <= max;
       } else if (type === CLASS_NAME_TYPES.ENUM) {
-        classNames[`${className}-${propValue}`] = values.includes(propValue);
+        classNames[`${className}-${propValue}`] = includes(values, propValue);
       } else {
         classNames[className] = propValue;
       }

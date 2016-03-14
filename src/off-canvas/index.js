@@ -1,6 +1,7 @@
 import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import { LARGER_SCREEN_SIZES, OFF_CANVAS_POSITIONS } from '../util/constants';
 import styles from './_styles.scss';
@@ -22,8 +23,8 @@ export class OffCanvas extends Component {
         cxStyles(
           'off-canvas',
           {
-            [`position-${position}`]: OFF_CANVAS_POSITIONS.includes(position),
-            [`reveal-for-${revealFor}`]: LARGER_SCREEN_SIZES.includes(revealFor),
+            [`position-${position}`]: includes(OFF_CANVAS_POSITIONS, position),
+            [`reveal-for-${revealFor}`]: includes(LARGER_SCREEN_SIZES, revealFor),
           }
         )
       );
@@ -85,7 +86,7 @@ export class OffCanvasContainer extends Component {
 
   render() {
     const { children, className, innerClassName, innerStyle, open } = this.props;
-    const openValid = OFF_CANVAS_POSITIONS.includes(open);
+    const openValid = includes(OFF_CANVAS_POSITIONS, open);
     const classNames = cx(className, cxStyles('off-canvas-wrapper'));
     const innerClassNames =
       cx(innerClassName, cxStyles('off-canvas-wrapper-inner', { [`is-open-${open}`]: openValid }));

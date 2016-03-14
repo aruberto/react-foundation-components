@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import { TITLE_BAR_POSITIONS } from '../util/constants';
 import { MenuIcon } from '../menu-icon';
@@ -21,7 +22,7 @@ export class TitleBarItem extends Component {
         className,
         cxStyles(
           {
-            [`title-bar-${position}`]: TITLE_BAR_POSITIONS.includes(position),
+            [`title-bar-${position}`]: includes(TITLE_BAR_POSITIONS, position),
           }
         )
       );

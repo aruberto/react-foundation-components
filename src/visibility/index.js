@@ -1,4 +1,5 @@
 import { PropTypes } from 'react';
+import includes from 'lodash/includes';
 
 import { SCREEN_SIZES, LARGER_SCREEN_SIZES, SCREEN_ORIENTATIONS } from '../util/constants';
 import createWrapperComponent from '../util/create-wrapper-component';
@@ -11,7 +12,7 @@ export const ShowForScreenSize = createWrapperComponent({
     screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
   },
   mapPropsToClassNames: ({ screenSize }) => ({
-    [`show-for-${screenSize}`]: LARGER_SCREEN_SIZES.includes(screenSize),
+    [`show-for-${screenSize}`]: includes(LARGER_SCREEN_SIZES, screenSize),
   }),
 });
 
@@ -22,7 +23,7 @@ export const ShowOnlyForScreenSize = createWrapperComponent({
     screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
   },
   mapPropsToClassNames: ({ screenSize }) => ({
-    [`show-for-${screenSize}-only`]: SCREEN_SIZES.includes(screenSize),
+    [`show-for-${screenSize}-only`]: includes(SCREEN_SIZES, screenSize),
   }),
 });
 
@@ -33,8 +34,8 @@ export const HideForScreenSize = createWrapperComponent({
     screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
   },
   mapPropsToClassNames: ({ screenSize }) => ({
-    hide: !LARGER_SCREEN_SIZES.includes(screenSize) && SCREEN_SIZES.includes(screenSize),
-    [`hide-for-${screenSize}`]: LARGER_SCREEN_SIZES.includes(screenSize),
+    hide: !includes(LARGER_SCREEN_SIZES, screenSize) && includes(SCREEN_SIZES, screenSize),
+    [`hide-for-${screenSize}`]: includes(LARGER_SCREEN_SIZES, screenSize),
   }),
 });
 
@@ -45,7 +46,7 @@ export const HideOnlyForScreenSize = createWrapperComponent({
     screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
   },
   mapPropsToClassNames: ({ screenSize }) => ({
-    [`hide-for-${screenSize}-only`]: SCREEN_SIZES.includes(screenSize),
+    [`hide-for-${screenSize}-only`]: includes(SCREEN_SIZES, screenSize),
   }),
 });
 
@@ -68,7 +69,7 @@ export const ShowForScreenOrientation = createWrapperComponent({
     screenOrientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
   },
   mapPropsToClassNames: ({ screenOrientation }) => ({
-    [`show-for-${screenOrientation}`]: SCREEN_ORIENTATIONS.includes(screenOrientation),
+    [`show-for-${screenOrientation}`]: includes(SCREEN_ORIENTATIONS, screenOrientation),
   }),
 });
 
@@ -79,7 +80,7 @@ export const HideForScreenOrientation = createWrapperComponent({
     screenOrientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
   },
   mapPropsToClassNames: ({ screenOrientation }) => ({
-    [`hide-for-${screenOrientation}`]: SCREEN_ORIENTATIONS.includes(screenOrientation),
+    [`hide-for-${screenOrientation}`]: includes(SCREEN_ORIENTATIONS, screenOrientation),
   }),
 });
 

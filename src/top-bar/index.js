@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import { SCREEN_SIZES, SCREEN_SIZE_SMALL, TOP_BAR_POSITIONS } from '../util/constants';
 import styles from './_styles.scss';
@@ -17,7 +18,7 @@ export class TopBarItem extends Component {
   render() {
     const { className, position } = this.props;
     const classNames =
-      cx(className, cxStyles({ [`top-bar-${position}`]: TOP_BAR_POSITIONS.includes(position) }));
+      cx(className, cxStyles({ [`top-bar-${position}`]: includes(TOP_BAR_POSITIONS, position) }));
 
     return <div {...this.props} className={classNames} />;
   }
@@ -67,7 +68,7 @@ export class TopBar extends Component {
         cxStyles(
           'top-bar',
           {
-            [`stacked-for-${stack}`]: SCREEN_SIZES.includes(stack),
+            [`stacked-for-${stack}`]: includes(SCREEN_SIZES, stack),
           }
         )
       );

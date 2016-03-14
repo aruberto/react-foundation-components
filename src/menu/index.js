@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import {
   SCREEN_SIZES,
@@ -52,14 +53,14 @@ export class Menu extends Component {
             [`align-${horizontalAlignment}`]:
               !IS_FLEX_MODE
               && horizontalAlignment !== CENTER_POSITION
-              && MENU_ALIGNMENTS.includes(horizontalAlignment),
+              && includes(MENU_ALIGNMENTS, horizontalAlignment),
             expanded,
-            [`${horizontal}-horizontal`]: LARGER_SCREEN_SIZES.includes(horizontal),
+            [`${horizontal}-horizontal`]: includes(LARGER_SCREEN_SIZES, horizontal),
             'icon-top': iconTop,
             nested,
             simple,
-            vertical: vertical && !LARGER_SCREEN_SIZES.includes(vertical),
-            [`${vertical}-vertical`]: LARGER_SCREEN_SIZES.includes(vertical),
+            vertical: vertical && !includes(LARGER_SCREEN_SIZES, vertical),
+            [`${vertical}-vertical`]: includes(LARGER_SCREEN_SIZES, vertical),
           }
         )
       );

@@ -1,4 +1,5 @@
 import { PropTypes } from 'react';
+import includes from 'lodash/includes';
 
 import { FLOAT_POSITIONS } from '../util/constants';
 import createWrapperComponent from '../util/create-wrapper-component';
@@ -11,7 +12,7 @@ export const Float = createWrapperComponent({
     position: PropTypes.oneOf(FLOAT_POSITIONS).isRequired,
   },
   mapPropsToClassNames: ({ position }) => ({
-    [`float-${position}`]: FLOAT_POSITIONS.includes(position),
+    [`float-${position}`]: includes(FLOAT_POSITIONS, position),
   }),
   defaultComponentClass: 'div',
 });

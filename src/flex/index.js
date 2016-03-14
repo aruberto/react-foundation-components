@@ -1,4 +1,5 @@
 import { PropTypes } from 'react';
+import includes from 'lodash/includes';
 
 import {
   FLEX_HORIZONTAL_ALIGNMENTS,
@@ -24,8 +25,8 @@ export const FlexParent = createWrapperComponent({
   mapPropsToClassNames:
     ({ horizontalAlignment, verticalAlignment, ...props }) => ({
       ...createScreenSizeClassNamesFromProps(FLEX_PARENT_CLASS_NAMES, props),
-      [`align-${horizontalAlignment}`]: FLEX_HORIZONTAL_ALIGNMENTS.includes(horizontalAlignment),
-      [`align-${verticalAlignment}`]: FLEX_VERTICAL_ALIGNMENTS.includes(verticalAlignment),
+      [`align-${horizontalAlignment}`]: includes(FLEX_HORIZONTAL_ALIGNMENTS, horizontalAlignment),
+      [`align-${verticalAlignment}`]: includes(FLEX_VERTICAL_ALIGNMENTS, verticalAlignment),
     }),
   mapPropsToStyle: () => ({ display: 'flex' }),
   defaultComponentClass: 'div',
@@ -41,7 +42,7 @@ export const FlexChild = createWrapperComponent({
   mapPropsToClassNames:
     ({ verticalAlignment, ...props }) => ({
       ...createScreenSizeClassNamesFromProps(FLEX_CHILD_CLASS_NAMES, props),
-      [`align-self-${verticalAlignment}`]: FLEX_VERTICAL_ALIGNMENTS.includes(verticalAlignment),
+      [`align-self-${verticalAlignment}`]: includes(FLEX_VERTICAL_ALIGNMENTS, verticalAlignment),
     }),
   defaultComponentClass: 'div',
 });

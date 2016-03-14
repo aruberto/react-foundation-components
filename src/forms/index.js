@@ -1,6 +1,7 @@
 import React, { Component, PropTypes, Children, isValidElement, cloneElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 import isBlank from 'underscore.string/isBlank';
 import elementType from 'react-prop-types/lib/elementType';
 
@@ -69,8 +70,8 @@ class FormFieldLabelBase extends Component {
         className,
         cxStyles(
           {
-            middle: middle && !LARGER_SCREEN_SIZES.includes(middle),
-            [`${middle}-middle`]: LARGER_SCREEN_SIZES.includes(middle),
+            middle: middle && !includes(LARGER_SCREEN_SIZES, middle),
+            [`${middle}-middle`]: includes(LARGER_SCREEN_SIZES, middle),
             'is-invalid-label': error,
             'input-group-label': inline,
           }

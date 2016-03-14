@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import { COMPONENT_COLORS } from '../util/constants';
 import styles from './_styles.scss';
@@ -47,7 +48,7 @@ export class ProgressBar extends Component {
   render() {
     const { className, color, max, meterClassName, meterStyle, min, value } = this.props;
     const classNames =
-      cx(className, cxStyles('progress', { [color]: COMPONENT_COLORS.includes(color) }));
+      cx(className, cxStyles('progress', { [color]: includes(COMPONENT_COLORS, color) }));
     const meterClassNames = cx(meterClassName, cxStyles('progress-meter'));
     const boundedValue = Math.min(Math.max(min, value), max);
     const percent = (boundedValue - min) / (max - min);

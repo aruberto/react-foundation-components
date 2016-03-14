@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import {
   SCREEN_SIZES,
@@ -37,7 +38,7 @@ export class Row extends Component {
           {
             collapse,
             expanded,
-            [`${unstack}-unstack`]: LARGER_SCREEN_SIZES.includes(unstack),
+            [`${unstack}-unstack`]: includes(LARGER_SCREEN_SIZES, unstack),
           }
         )
       );
@@ -63,7 +64,7 @@ export class Column extends Component {
           'column',
           createScreenSizeClassNamesFromProps(FLEX_GRID_COLUMN_CLASS_NAMES, this.props),
           {
-            [`${expand}-expand`]: LARGER_SCREEN_SIZES.includes(expand),
+            [`${expand}-expand`]: includes(LARGER_SCREEN_SIZES, expand),
             shrink,
           }
         )

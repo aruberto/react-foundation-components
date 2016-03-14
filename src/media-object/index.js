@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 
 import { MEDIA_OBJECT_SECTION_ALIGNMENTS, FLEX_VERTICAL_ALIGNMENTS } from '../util/constants';
 import { FlexParent, FlexChild } from '../flex-mock';
@@ -26,7 +27,7 @@ export class MediaObjectSection extends Component {
           'media-object-section',
           {
             [verticalAlignment]:
-              !IS_FLEX_MODE && MEDIA_OBJECT_SECTION_ALIGNMENTS.includes(verticalAlignment),
+              !IS_FLEX_MODE && includes(MEDIA_OBJECT_SECTION_ALIGNMENTS, verticalAlignment),
             'main-section': IS_FLEX_MODE && main,
           }
         )

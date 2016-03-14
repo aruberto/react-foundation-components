@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import includes from 'lodash/includes';
 import elementType from 'react-prop-types/lib/elementType';
 import Modal from 'react-overlays/lib/Modal';
 
@@ -42,7 +43,7 @@ export class Reveal extends Component {
       size,
     } = this.props;
     const revealClassNames =
-      cx(revealClassName, cxStyles('reveal', { [size]: MODAL_SIZES.includes(size) }));
+      cx(revealClassName, cxStyles('reveal', { [size]: includes(MODAL_SIZES, size) }));
     const overlayClassNames = cx(overlayClassName, cxStyles('reveal-overlay'));
     const containerStyleMerged = {
       ...containerStyle,
