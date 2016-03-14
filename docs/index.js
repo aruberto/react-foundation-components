@@ -49,6 +49,10 @@ import ThumbnailPage from './media/thumbnail';
 import TooltipPage from './media/tooltip';
 import ToggleSwitchPage from './custom/toggle-switch';
 
+function scrollToTop() {
+  document.getElementById('app-content').scrollTop = 0;
+}
+
 class HomePage extends Component {
   static propTypes = {
     children: PropTypes.node,
@@ -71,7 +75,7 @@ class HomePage extends Component {
     const open = leftNavOpen ? 'left' : null;
 
     return (
-      <OffCanvasContainer open={open}>
+      <OffCanvasContainer id="app-content" open={open}>
         <OffCanvas position="left" revealFor="large">
           <Menu vertical>
             <MenuItem text>General</MenuItem>
@@ -227,7 +231,7 @@ class HomePage extends Component {
 class Demo extends Component {
   render() {
     return (
-      <Router history={hashHistory}>
+      <Router history={hashHistory} onUpdate={scrollToTop}>
         <Route component={HomePage} path="/">
           <Route component={GridPage} path="/general/grid" />
           <Route component={FlexGridPage} path="/general/grid/flex" />
