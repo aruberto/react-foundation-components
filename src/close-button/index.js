@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 
@@ -7,21 +7,21 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-export class CloseButton extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
+export const CloseButton = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('close-button'));
 
-  render() {
-    const { className } = this.props;
-    const classNames = cx(className, cxStyles('close-button'));
+  return (
+    <button {...restProps} className={classNames} type="button">
+      <HideForScreenReader>&times;</HideForScreenReader>
+    </button>
+  );
+};
 
-    return (
-      <button {...this.props} className={classNames} type="button">
-        <HideForScreenReader>&times;</HideForScreenReader>
-      </button>
-    );
-  }
-}
+CloseButton.propTypes = {
+  className: PropTypes.string,
+};
 
 export default CloseButton;

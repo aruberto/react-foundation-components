@@ -7,30 +7,26 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-export class Fade extends React.Component {
-  static propTypes = {
-    className: PropTypes.string,
-    timeout: PropTypes.number,
-  };
+export const Fade = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('fade'));
 
-  static defaultProps = {
-    timeout: 150,
-  };
-
-  render() {
-    const { className, timeout } = this.props;
-    const classNames = cx(className, cxStyles('fade'));
-
-    return (
-      <Transition
-        {...this.props}
-        className={classNames}
-        enteredClassName={cxStyles('in')}
-        enteringClassName={cxStyles('in')}
-        timeout={timeout}
-      />
-    );
-  }
-}
+  return (
+    <Transition
+      {...restProps}
+      className={classNames}
+      enteredClassName={cxStyles('in')}
+      enteringClassName={cxStyles('in')}
+    />
+  );
+};
+Fade.propTypes = {
+  className: PropTypes.string,
+};
+Fade.defaultProps = {
+  timeout: 150,
+};
 
 export default Fade;

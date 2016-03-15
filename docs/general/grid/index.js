@@ -8,7 +8,7 @@ const rowStyle = { border: 'solid 1px #c6c6c6', marginTop: '0.5rem', marginBotto
 const styleOdd = { background: '#eee' };
 const styleEven = { background: '#e1e1e1' };
 
-export default class FloatGridPage extends Component {
+export default class GridPage extends Component {
   render() {
     return (
       <div>

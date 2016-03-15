@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes, Children, cloneElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import elementType from 'react-prop-types/lib/elementType';
@@ -13,34 +13,53 @@ export default function createWrapperComponent({
   defaultComponentClass = 'span',
 } = {}) {
   const cxStyles = cxBinder.bind(styles);
+  const Wrapper = ({
+    children,
+    className,
+    componentClass,
+    style,
+    noWrap,
+    ...restProps,
+  }) => {
+    const ComponentClass = componentClass || defaultComponentClass;
+    const mappedProps = mapPropsToProps(restProps);
+    const mappedClassNames = cxStyles(mapPropsToClassNames(restProps));
+    const mappedStyle = mapPropsToStyle(restProps);
 
-  class Wrapper extends Component {
-    static displayName = displayName;
+    if (noWrap) {
+      const child = Children.only(children);
+      const childProps = child.props ? child.props : {};
 
-    static propTypes = {
-      className: PropTypes.string,
-      componentClass: elementType,
-      style: PropTypes.object,
-      ...propTypes,
-    };
-
-    render() {
-      const {
-        className: baseClassName,
-        componentClass: maybeComponentClass,
-        style: baseStyle,
+      return cloneElement(child, {
         ...restProps,
-      } = this.props;
-      const ComponentClass = maybeComponentClass || defaultComponentClass;
-      const classNames = cx(baseClassName, cxStyles(mapPropsToClassNames(restProps)));
-      const style = { ...baseStyle, ...mapPropsToStyle(restProps) };
-      const props = { ...restProps, ...mapPropsToProps(restProps) };
-
-      return (
-        <ComponentClass {...props} className={classNames} style={style} />
-      );
+        ...childProps,
+        ...mappedProps,
+        className: cx(className, child.props.className, mappedClassNames),
+        style: { ...style, ...child.props.style, ...mappedStyle },
+      });
     }
-  }
+
+    return (
+      <ComponentClass
+        {...restProps}
+        {...mappedProps}
+        className={cx(className, mappedClassNames)}
+        style={{ ...style, ...mappedStyle }}
+      >
+        {children}
+      </ComponentClass>
+    );
+  };
+
+  Wrapper.displayName = displayName;
+  Wrapper.propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    componentClass: elementType,
+    style: PropTypes.object,
+    noWrap: PropTypes.bool,
+    ...propTypes,
+  };
 
   return Wrapper;
 }

@@ -58,11 +58,7 @@ export default class OverlayTrigger extends Component {
     this._mountNode = null;
   }
 
-  setTargetRef = (ref) => {
-    this._targetRef = ref;
-  };
-
-  getTargetRefDOMNode = () => findDOMNode(this._targetRef);
+  getOverlayTarget = () => findDOMNode(this);
 
   _clicked = false;
 
@@ -184,7 +180,7 @@ export default class OverlayTrigger extends Component {
         placement={position}
         rootClose
         show={show}
-        target={this.getTargetRefDOMNode}
+        target={this.getOverlayTarget}
         transition={transition}
       >
         {overlay}
@@ -204,7 +200,6 @@ export default class OverlayTrigger extends Component {
       onFocus: this.handleFocus,
       onMouseOut: this.handleMouseOut,
       onMouseOver: this.handleMouseOver,
-      ref: this.setTargetRef,
     };
     let newChild = null;
 

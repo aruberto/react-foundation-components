@@ -50,6 +50,7 @@
     "lodash": "^4.6.1",
     "react-overlays": "^0.6.0",
     "react-prop-types": "^0.3.0",
+    "recompose": "^0.15.0",
     "uncontrollable": "^3.2.1",
     "underscore.string": "^3.3.4"
   },

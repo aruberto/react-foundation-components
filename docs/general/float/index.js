@@ -43,11 +43,9 @@ import { Float, ClearFix } from 'react-foundation-components/lib/global/float';`
     <Button>Right</Button>
   </Float>
 </ClearFix>
-<Float
-  position="center"
-  componentClass="img"
-  src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg"
-/>`
+<Float position="center" noWrap>
+  <img src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg" />
+</Float>`
             }
           </code>
         </pre>
@@ -59,11 +57,9 @@ import { Float, ClearFix } from 'react-foundation-components/lib/global/float';`
             <Button>Right</Button>
           </Float>
         </ClearFix>
-        <Float
-          position="center"
-          componentClass="img"
-          src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg"
-        />
+        <Float position="center" noWrap>
+          <img src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg" />
+        </Float>
       </div>
     );
   }

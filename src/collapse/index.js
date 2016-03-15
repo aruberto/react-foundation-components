@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import { mapPropsOnChange } from 'recompose';
 import Transition from 'react-overlays/lib/Transition';
 import css from 'dom-helpers/style';
 import capitalize from 'underscore.string/capitalize';
@@ -13,111 +14,99 @@ const MARGINS = {
   width: ['marginLeft', 'marginRight'],
 };
 
-export class Collapse extends React.Component {
-  static propTypes = {
-    className: PropTypes.string,
-    dimension: PropTypes.oneOf(['height', 'width']),
-    onEnter: PropTypes.func,
-    onEntered: PropTypes.func,
-    onEntering: PropTypes.func,
-    onExit: PropTypes.func,
-    onExiting: PropTypes.func,
-    timeout: PropTypes.number,
-  };
+export const Collapse =
+  mapPropsOnChange(
+    ['onEnter', 'onEntered', 'onEntering', 'onExit', 'onExiting', 'dimension'],
+    ({ onEnter, onEntered, onEntering, onExit, onExiting, dimension, ...restProps }) => ({
+      ...restProps,
+      dimension,
+      onEnter(...args) {
+        const [elem] = args;
 
-  static defaultProps = {
-    dimension: 'height',
-    timeout: 350,
-  };
+        elem.style[dimension] = '0';
 
-  handleEnter = (...args) => {
-    const { dimension, onEnter } = this.props;
-    const [elem] = args;
+        if (onEnter) {
+          onEnter(...args);
+        }
+      },
+      onEntered(...args) {
+        const [elem] = args;
 
-    elem.style[dimension] = '0';
+        elem.style[dimension] = null;
 
-    if (onEnter) {
-      onEnter(...args);
-    }
-  };
+        if (onEntered) {
+          onEntered(...args);
+        }
+      },
+      onEntering(...args) {
+        const [elem] = args;
+        const size = elem[`scroll${capitalize(dimension)}`];
 
-  handleEntered = (...args) => {
-    const { dimension, onEntered } = this.props;
-    const [elem] = args;
+        elem.style[dimension] = `${size}px`;
 
-    elem.style[dimension] = null;
+        if (onEntering) {
+          onEntering(...args);
+        }
+      },
+      onExit(...args) {
+        const [elem] = args;
+        const baseValue = elem[`offset${capitalize(dimension)}`];
+        const margins = MARGINS[dimension];
+        const value =
+          baseValue
+          + Number.parseInt(css(elem, margins[0]), 10)
+          + Number.parseInt(css(elem, margins[1]), 10);
 
-    if (onEntered) {
-      onEntered(...args);
-    }
-  };
+        elem.style[dimension] = `${value}px`;
 
-  handleEntering = (...args) => {
-    const { dimension, onEntering } = this.props;
-    const [elem] = args;
-    const size = elem[`scroll${capitalize(dimension)}`];
+        if (onExit) {
+          onExit(...args);
+        }
+      },
+      onExiting(...args) {
+        function triggerBrowserReflow(node) {
+          return node.offsetHeight;
+        }
 
-    elem.style[dimension] = `${size}px`;
+        const [elem] = args;
 
-    if (onEntering) {
-      onEntering(...args);
-    }
-  };
+        triggerBrowserReflow(elem);
+        elem.style[dimension] = '0';
 
-  handleExit = (...args) => {
-    const { dimension, onExit } = this.props;
-    const [elem] = args;
-    const baseValue = elem[`offset${capitalize(dimension)}`];
-    const margins = MARGINS[dimension];
-    const value =
-      baseValue
-      + Number.parseInt(css(elem, margins[0]), 10)
-      + Number.parseInt(css(elem, margins[1]), 10);
+        if (onExiting) {
+          onExiting(...args);
+        }
+      },
+    }),
+    ({
+      className,
+      dimension,
+      ...restProps,
+    }) => {
+      const classNames = cx(className, cxStyles(dimension));
 
-    elem.style[dimension] = `${value}px`;
+      return (
+        <Transition
+          {...restProps}
+          className={classNames}
+          enteredClassName={cxStyles('collapsible', 'in')}
+          enteringClassName={cxStyles('collapsing')}
+          exitedClassName={cxStyles('collapsible')}
+          exitingClassName={cxStyles('collapsing')}
+        />
+      );
+    },
+  );
 
-    if (onExit) {
-      onExit(...args);
-    }
-  };
-
-  handleExiting = (...args) => {
-    function triggerBrowserReflow(node) {
-      return node.offsetHeight;
-    }
-
-    const { dimension, onExiting } = this.props;
-    const [elem] = args;
-
-    triggerBrowserReflow(elem);
-    elem.style[dimension] = '0';
-
-    if (onExiting) {
-      onExiting(...args);
-    }
-  };
-
-  render() {
-    const { className, dimension, timeout } = this.props;
-    const classNames = cx(className, cxStyles(dimension));
-
-    return (
-      <Transition
-        {...this.props}
-        className={classNames}
-        enteredClassName={cxStyles('collapsible', 'in')}
-        enteringClassName={cxStyles('collapsing')}
-        exitedClassName={cxStyles('collapsible')}
-        exitingClassName={cxStyles('collapsing')}
-        onEnter={this.handleEnter}
-        onEntered={this.handleEntered}
-        onEntering={this.handleEntering}
-        onExit={this.handleExit}
-        onExiting={this.handleExiting}
-        timeout={timeout}
-      />
-    );
-  }
-}
+Collapse.displayName = 'Collapse';
+Collapse.propTypes = {
+  className: PropTypes.string,
+  dimension: PropTypes.oneOf(['height', 'width']),
+  timeout: PropTypes.number,
+};
+Collapse.defaultProps = {
+  dimension: 'height',
+  timeout: 350,
+};
 
 export default Collapse;
