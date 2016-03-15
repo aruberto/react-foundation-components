@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
@@ -9,75 +9,69 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-export class TitleBarItem extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    position: PropTypes.oneOf(TITLE_BAR_POSITIONS).isRequired,
-  };
-
-  render() {
-    const { className, position } = this.props;
-    const classNames =
-      cx(
-        className,
-        cxStyles(
-          {
-            [`title-bar-${position}`]: includes(TITLE_BAR_POSITIONS, position),
-          }
-        )
-      );
-
-    return (
-      <div {...this.props} className={classNames} />
+export const TitleBarItem = ({
+  className,
+  position,
+  ...restProps,
+}) => {
+  const classNames =
+    cx(
+      className,
+      cxStyles(
+        {
+          [`title-bar-${position}`]: includes(TITLE_BAR_POSITIONS, position),
+        }
+      )
     );
-  }
-}
 
-export class TitleBarTitle extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
+  return <div {...restProps} className={classNames} />;
+};
 
-  render() {
-    const { className } = this.props;
-    const classNames = cx(className, cxStyles('title-bar-title'));
+TitleBarItem.propTypes = {
+  className: PropTypes.string,
+  position: PropTypes.oneOf(TITLE_BAR_POSITIONS).isRequired,
+};
 
-    return (
-      <span {...this.props} className={classNames} />
-    );
-  }
-}
+export const TitleBarTitle = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('title-bar-title'));
 
-export class TitleBarMenuIcon extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    dark: PropTypes.bool,
-  };
+  return <span {...restProps} className={classNames} />;
+};
 
-  render() {
-    const { className, dark } = this.props;
-    const classNames = cx(className, cxStyles('menu-icon', { dark }));
+TitleBarTitle.propTypes = {
+  className: PropTypes.string,
+};
 
-    return (
-      <MenuIcon {...this.props} className={classNames} />
-    );
-  }
-}
+export const TitleBarMenuIcon = ({
+  className,
+  dark,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('menu-icon', { dark }));
 
-export class TitleBar extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
+  return <MenuIcon {...restProps} className={classNames} />;
+};
 
-  render() {
-    const { className } = this.props;
-    const classNames = cx(className, cxStyles('title-bar'));
+TitleBarMenuIcon.propTypes = {
+  className: PropTypes.string,
+  dark: PropTypes.bool,
+};
 
-    return (
-      <div {...this.props} className={classNames} />
-    );
-  }
-}
+export const TitleBar = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('title-bar'));
+
+  return <div {...restProps} className={classNames} />;
+};
+
+TitleBar.propTypes = {
+  className: PropTypes.string,
+};
 
 TitleBar.Item = TitleBarItem;
 TitleBar.Title = TitleBarTitle;

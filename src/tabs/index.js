@@ -40,19 +40,6 @@ Tab.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-const TabsContent = ({
-  className,
-  ...restProps,
-}) => {
-  const classNames = cx(className, cxStyles('tabs-content'));
-
-  return <div {...restProps} className={classNames} />;
-};
-
-TabsContent.propTypes = {
-  className: PropTypes.string,
-};
-
 const TabTitle =
   mapPropsOnChange(
     ['eventKey', 'onSelect'],
@@ -107,43 +94,42 @@ TabTitle.propTypes = {
 };
 
 const TabsHeader = ({
-  activeKey,
-  children,
   className,
-  onSelect,
   vertical,
   ...restProps,
 }) => {
   const classNames = cx(className, cxStyles('tabs', { vertical }));
-  const clonedChildren = Children.map(children, (child) => {
-    if (isValidElement(child) && !isBlank(child.props.eventKey)) {
-      return cloneElement(child, {
-        active: activeKey === child.props.eventKey,
-        onSelect,
-      });
-    }
 
-    return child;
-  });
-
-  return <ul {...restProps} className={classNames}>{clonedChildren}</ul>;
+  return <div {...restProps} className={classNames} />;
 };
 
 TabsHeader.propTypes = {
-  activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  children: PropTypes.node,
   className: PropTypes.string,
-  onSelect: PropTypes.func,
   vertical: PropTypes.bool,
+};
+
+const TabsContent = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('tabs-content'));
+
+  return <div {...restProps} className={classNames} />;
+};
+
+TabsContent.propTypes = {
+  className: PropTypes.string,
 };
 
 const TabsControlled = ({
   activeKey,
   children,
-  containerClassName,
-  containerStyle,
   contentClassName,
   contentStyle,
+  headerClassName,
+  headerStyle,
+  onSelect,
+  vertical,
   ...restProps,
 }) => {
   const headerChildren = Children.map(children, (child) => {
@@ -156,7 +142,17 @@ const TabsControlled = ({
       id = `${tabId}Label`;
     }
 
-    return <TabTitle {...childProps} id={id} tabId={tabId}>{childProps.title}</TabTitle>;
+    return (
+      <TabTitle
+        {...childProps}
+        id={id}
+        tabId={tabId}
+        active={childProps.eventKey === activeKey}
+        onSelect={onSelect}
+      >
+        {childProps.title}
+      </TabTitle>
+    );
   });
   const contentChildren = Children.map(children, (child) => {
     if (isValidElement(child) && child.props && !isBlank(child.props.eventKey)) {
@@ -167,8 +163,8 @@ const TabsControlled = ({
   });
 
   return (
-    <div className={containerClassName} style={containerStyle}>
-      <TabsHeader {...restProps} activeKey={activeKey}>
+    <div {...restProps}>
+      <TabsHeader className={headerClassName} style={headerStyle} vertical={vertical}>
         {headerChildren}
       </TabsHeader>
       <TabsContent className={contentClassName} style={contentStyle}>
@@ -181,10 +177,12 @@ const TabsControlled = ({
 TabsControlled.propTypes = {
   activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   children: PropTypes.node,
-  containerClassName: PropTypes.string,
-  containerStyle: PropTypes.object,
   contentClassName: PropTypes.string,
   contentStyle: PropTypes.object,
+  headerClassName: PropTypes.string,
+  headerStyle: PropTypes.object,
+  onSelect: PropTypes.func,
+  vertical: PropTypes.bool,
 };
 
 export const Tabs = uncontrollable(TabsControlled, { activeKey: 'onSelect' });

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 
@@ -6,17 +6,17 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-export class Thumbnail extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
+export const Thumbnail = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('thumbnail'));
 
-  render() {
-    const { className } = this.props;
-    const classNames = cx(className, cxStyles('thumbnail'));
+  return <img {...restProps} className={classNames} />;
+};
 
-    return <img {...this.props} className={classNames} />;
-  }
-}
+Thumbnail.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Thumbnail;
