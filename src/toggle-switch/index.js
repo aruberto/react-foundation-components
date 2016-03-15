@@ -2,7 +2,6 @@ import React, { Component, PropTypes, Children, cloneElement, isValidElement } f
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import uncontrollable from 'uncontrollable/batching';
-import isNil from 'lodash/isNil';
 import isBlank from 'underscore.string/isBlank';
 
 import { COMPONENT_COLORS } from '../util/constants';
@@ -15,47 +14,21 @@ const cxStyles = cxBinder.bind(styles);
 
 export class ToggleSwitchItem extends Component {
   static propTypes = {
-    checked: PropTypes.bool,
     children: PropTypes.node,
     className: PropTypes.string,
-    containerClassName: PropTypes.string,
-    containerStyle: PropTypes.object,
     eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    labelClassName: PropTypes.string,
-    labelStyle: PropTypes.object,
-    onChange: PropTypes.func,
+    onClick: PropTypes.func,
     onToggle: PropTypes.func,
   };
 
-  setInputRef = (inputRef) => {
-    this._inputRef = inputRef;
-  };
-
   handleLabelClick = (...args) => {
-    const { checked, eventKey, id, onChange, onToggle } = this.props;
+    const { eventKey, onClick, onToggle } = this.props;
 
-    if (onChange) {
-      onChange(...args);
+    if (onClick) {
+      onClick(...args);
     }
 
-    if (isBlank(id)) {
-      if (isNil(checked)) {
-        this._inputRef.click();
-      } else if (onToggle) {
-        onToggle(eventKey);
-      }
-    }
-  };
-
-  handleInputChange = (...args) => {
-    const { eventKey, id, onChange, onToggle } = this.props;
-
-    if (onChange) {
-      onChange(...args);
-    }
-
-    if (!isBlank(id) && onToggle) {
+    if (onToggle) {
       onToggle(eventKey);
     }
   };
@@ -64,33 +37,12 @@ export class ToggleSwitchItem extends Component {
     const {
       children,
       className,
-      containerClassName,
-      containerStyle,
-      id,
-      labelClassName,
-      labelStyle,
     } = this.props;
-    const classNames = cx(className, cxStyles('switch-toggle-input'));
-    const labelClassNames = cx(labelClassName, cxStyles('switch-toggle-label'));
+    const classNames = cx(className, cxStyles('switch-toggle-item'));
 
     return (
-      <div className={containerClassName} style={containerStyle}>
-        <input
-          {...this.props}
-          children={null}
-          className={classNames}
-          onChange={this.handleInputChange}
-          ref={this.setInputRef}
-          type="checkbox"
-        />
-        <label
-          className={labelClassNames}
-          htmlFor={id}
-          onClick={this.handleLabelClick}
-          style={labelStyle}
-        >
-          {children}
-        </label>
+      <div {...this.props} className={classNames} onClick={this.handleLabelClick}>
+        {children}
       </div>
     );
   }
@@ -145,7 +97,7 @@ class ToggleSwitchControlled extends Component {
           return cloneElement(child, {
             checked,
             onToggle: this.handleToggle,
-            labelStyle: { ...child.props.labelStyle, width: `${width}%` },
+            style: { ...child.props.style, width: `${width}%` },
           });
         }
 
