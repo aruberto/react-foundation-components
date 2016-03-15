@@ -1,6 +1,7 @@
-import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
+import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 import isBlank from 'underscore.string/isBlank';
 
@@ -8,174 +9,183 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-export class Tab extends Component {
-  static propTypes = {
-    active: PropTypes.bool,
-    className: PropTypes.string,
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  };
+export const Tab = ({
+  active,
+  className,
+  id,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('tabs-panel', { 'is-active': active }));
+  let labelId = null;
 
-  render() {
-    const { active, className, id } = this.props;
-    const classNames = cx(className, cxStyles('tabs-panel', { 'is-active': active }));
-    let labelId = null;
-
-    if (!isBlank(id)) {
-      labelId = `${id}-label`;
-    }
-
-    return (
-      <div
-        {...this.props}
-        aria-hidden={!active}
-        aria-labelledby={labelId}
-        className={classNames}
-        role="tabpanel"
-      />
-    );
+  if (!isBlank(id)) {
+    labelId = `${id}Label`;
   }
-}
 
-class TabsContent extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
+  return (
+    <div
+      {...restProps}
+      aria-hidden={!active}
+      aria-labelledby={labelId}
+      className={classNames}
+      id={id}
+      role="tabpanel"
+    />
+  );
+};
 
-  render() {
-    const { className } = this.props;
-    const classNames = cx(className, cxStyles('tabs-content'));
+Tab.propTypes = {
+  active: PropTypes.bool,
+  className: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
-    return (
-      <div {...this.props} className={classNames} />
-    );
-  }
-}
+const TabsContent = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('tabs-content'));
 
-class TabTitle extends Component {
-  static propTypes = {
-    active: PropTypes.bool,
-    containerClassName: PropTypes.string,
-    containerStyle: PropTypes.object,
-    eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    onSelect: PropTypes.func,
-    panelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  };
+  return <div {...restProps} className={classNames} />;
+};
 
-  handleClick = (event) => {
-    const { eventKey, panelId, onSelect } = this.props;
+TabsContent.propTypes = {
+  className: PropTypes.string,
+};
 
-    if (isBlank(panelId)) {
-      event.preventDefault();
-    }
+const TabTitle =
+  mapPropsOnChange(
+    ['eventKey', 'onSelect'],
+    ({ eventKey, onSelect, ...restProps }) => ({
+      ...restProps,
+      onClick(...args) {
+        const [event] = args;
 
-    if (onSelect) {
-      onSelect(eventKey);
-    }
-  };
+        event.preventDefault();
 
-  render() {
-    const { active, containerClassName, containerStyle, panelId } = this.props;
-    const classNames = cx(containerClassName, cxStyles('tabs-title', { 'is-active': active }));
-    const href = `#${isBlank(panelId) ? '' : panelId}`;
-
-    return (
-      <li
-        className={classNames}
-        role="presentation"
-        style={containerStyle}
-      >
-        <a
-          {...this.props}
-          aria-controls={panelId}
-          aria-selected={active}
-          href={href}
-          onClick={this.handleClick}
-          role="tab"
-        />
-      </li>
-    );
-  }
-}
-
-class TabsHeader extends Component {
-  static propTypes = {
-    activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    children: PropTypes.node,
-    className: PropTypes.string,
-    onSelect: PropTypes.func,
-    vertical: PropTypes.bool,
-  };
-
-  render() {
-    const { activeKey, children, className, onSelect, vertical } = this.props;
-    const classNames = cx(className, cxStyles('tabs', { vertical }));
-    const newChildren = Children.map(children, (child) => {
-      if (isValidElement(child) && !isBlank(child.props.eventKey)) {
-        return cloneElement(child, {
-          active: activeKey === child.props.eventKey,
-          onSelect,
-        });
-      }
-
-      return child;
-    });
-
-    return (
-      <ul {...this.props} className={classNames}>
-        {newChildren}
-      </ul>
-    );
-  }
-}
-
-class TabsControlled extends Component {
-  static propTypes = {
-    activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    children: PropTypes.node,
-  };
-
-  render() {
-    const { activeKey, children } = this.props;
-    const headerChildren = Children.map(children, (child) => {
-      let id = null;
-      let panelId = null;
-
-      if (isValidElement(child) && !isBlank(child.props.id)) {
-        panelId = child.props.id;
-        id = `${panelId}-label`;
-      }
+        if (onSelect && !isBlank(eventKey)) {
+          onSelect(eventKey, ...args);
+        }
+      },
+    }),
+    ({
+      active,
+      containerClassName,
+      containerStyle,
+      onClick,
+      tabId,
+      ...restProps,
+    }) => {
+      const classNames = cx(containerClassName, cxStyles('tabs-title', { 'is-active': active }));
 
       return (
-        <TabTitle {...(child.props ? child.props : {})} id={id} panelId={panelId}>
-          {child.props ? child.props.title : null}
-        </TabTitle>
+        <li
+          className={classNames}
+          role="presentation"
+          style={containerStyle}
+        >
+          <a
+            {...restProps}
+            aria-controls={tabId}
+            aria-selected={active}
+            href={`#${isBlank(tabId) ? '' : tabId}`}
+            onClick={onClick}
+            role="tab"
+          />
+        </li>
       );
-    });
-    const contentChildren = Children.map(children, (child) => {
-      if (isValidElement(child) && !isBlank(child.props.eventKey)) {
-        return cloneElement(
-          child,
-          {
-            active: activeKey === child.props.eventKey,
-          }
-        );
-      }
+    }
+  );
 
-      return child;
-    });
+TabTitle.propTypes = {
+  active: PropTypes.bool,
+  containerClassName: PropTypes.string,
+  containerStyle: PropTypes.object,
+  eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onSelect: PropTypes.func,
+  tabId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
-    return (
-      <div>
-        <TabsHeader {...this.props}>
-          {headerChildren}
-        </TabsHeader>
-        <TabsContent>
-          {contentChildren}
-        </TabsContent>
-      </div>
-    );
-  }
-}
+const TabsHeader = ({
+  activeKey,
+  children,
+  className,
+  onSelect,
+  vertical,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('tabs', { vertical }));
+  const clonedChildren = Children.map(children, (child) => {
+    if (isValidElement(child) && !isBlank(child.props.eventKey)) {
+      return cloneElement(child, {
+        active: activeKey === child.props.eventKey,
+        onSelect,
+      });
+    }
+
+    return child;
+  });
+
+  return <ul {...restProps} className={classNames}>{clonedChildren}</ul>;
+};
+
+TabsHeader.propTypes = {
+  activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  children: PropTypes.node,
+  className: PropTypes.string,
+  onSelect: PropTypes.func,
+  vertical: PropTypes.bool,
+};
+
+const TabsControlled = ({
+  activeKey,
+  children,
+  containerClassName,
+  containerStyle,
+  contentClassName,
+  contentStyle,
+  ...restProps,
+}) => {
+  const headerChildren = Children.map(children, (child) => {
+    const childProps = child.props ? child.props : {};
+    let id = null;
+    let tabId = null;
+
+    if (!isBlank(childProps.id)) {
+      tabId = child.props.id;
+      id = `${tabId}Label`;
+    }
+
+    return <TabTitle {...childProps} id={id} tabId={tabId}>{childProps.title}</TabTitle>;
+  });
+  const contentChildren = Children.map(children, (child) => {
+    if (isValidElement(child) && child.props && !isBlank(child.props.eventKey)) {
+      return cloneElement(child, { active: activeKey === child.props.eventKey });
+    }
+
+    return child;
+  });
+
+  return (
+    <div className={containerClassName} style={containerStyle}>
+      <TabsHeader {...restProps} activeKey={activeKey}>
+        {headerChildren}
+      </TabsHeader>
+      <TabsContent className={contentClassName} style={contentStyle}>
+        {contentChildren}
+      </TabsContent>
+    </div>
+  );
+};
+
+TabsControlled.propTypes = {
+  activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  children: PropTypes.node,
+  containerClassName: PropTypes.string,
+  containerStyle: PropTypes.object,
+  contentClassName: PropTypes.string,
+  contentStyle: PropTypes.object,
+};
 
 export const Tabs = uncontrollable(TabsControlled, { activeKey: 'onSelect' });
 Tabs.displayName = 'Tabs';

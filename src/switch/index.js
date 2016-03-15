@@ -1,8 +1,10 @@
-import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
+import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 import includes from 'lodash/includes';
+import noop from 'lodash/noop';
 import isBlank from 'underscore.string/isBlank';
 
 import { COMPONENT_SIZES } from '../util/constants';
@@ -35,127 +37,128 @@ export const SwitchUncheckedLabel = createCheckedLabel('switch-inactive', 'Switc
 
 export const SwitchPadelLabel = (props) => <ShowForScreenReader {...props} />;
 
-class SwitchControlled extends Component {
-  static propTypes = {
-    checked: PropTypes.bool,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    containerClassName: PropTypes.string,
-    containerStyle: PropTypes.object,
-    eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    onChange: PropTypes.func,
-    onSelect: PropTypes.func,
-    onToggle: PropTypes.func,
-    paddleClassName: PropTypes.string,
-    paddleStyle: PropTypes.object,
-    size: PropTypes.oneOf(COMPONENT_SIZES),
-  };
+const SwitchControlled =
+  mapPropsOnChange(
+    ['checked', 'eventKey', 'onChange', 'onSelect', 'onToggle'],
+    ({ checked, eventKey, onChange, onSelect, onToggle, ...restProps }) => {
+      function onInputChange(...args) {
+        if (onChange) {
+          onChange(...args);
+        }
 
-  handleLabelClick = (...args) => {
-    const [event] = args;
+        if (onToggle) {
+          onToggle(!checked, ...args);
+        }
 
-    event.preventDefault();
+        if (onSelect && !isBlank(eventKey)) {
+          onSelect(eventKey, ...args);
+        }
+      }
 
-    this.handleInputChange(...args);
-  };
+      function onLabelClick(...args) {
+        const [event] = args;
 
-  handleInputChange = (...args) => {
-    const { checked, eventKey, onChange, onSelect, onToggle } = this.props;
+        event.preventDefault();
 
-    if (onChange) {
-      onChange(...args);
-    }
+        onInputChange(...args);
+      }
 
-    if (onToggle) {
-      onToggle(!checked);
-    }
-
-    if (onSelect && !isBlank(eventKey)) {
-      onSelect(eventKey);
-    }
-  };
-
-  render() {
-    const {
+      return {
+        ...restProps,
+        checked,
+        onInputChange,
+        onLabelClick,
+      };
+    },
+    ({
       children,
       className,
       containerClassName,
       containerStyle,
       id,
+      onInputChange,
+      onLabelClick,
       paddleClassName,
       paddleStyle,
       size,
-    } = this.props;
-    const containerClassNames =
-      cx(containerClassName, cxStyles('switch', { [size]: includes(COMPONENT_SIZES, size) }));
-    const classNames = cx(className, cxStyles('switch-input'));
-    const paddleClassNames = cx(paddleClassName, cxStyles('switch-paddle'));
+      ...restProps,
+    }) => {
+      const containerClassNames =
+        cx(containerClassName, cxStyles('switch', { [size]: includes(COMPONENT_SIZES, size) }));
+      const classNames = cx(className, cxStyles('switch-input'));
+      const paddleClassNames = cx(paddleClassName, cxStyles('switch-paddle'));
 
-    return (
-      <div className={containerClassNames} style={containerStyle}>
-        <input
-          {...this.props}
-          children={null}
-          className={classNames}
-          onChange={this.handleInputChange}
-          size={null}
-          type="checkbox"
-        />
-        <label
-          className={paddleClassNames}
-          htmlFor={id}
-          onClick={this.handleLabelClick}
-          style={paddleStyle}
-        >
-          {children}
-        </label>
-      </div>
-    );
-  }
-}
+      return (
+        <div className={containerClassNames} style={containerStyle}>
+          <input
+            {...restProps}
+            className={classNames}
+            id={id}
+            onChange={onInputChange}
+            type="checkbox"
+          />
+          <label
+            className={paddleClassNames}
+            htmlFor={id}
+            onClick={onLabelClick}
+            style={paddleStyle}
+          >
+            {children}
+          </label>
+        </div>
+      );
+    }
+  );
+
+SwitchControlled.displayName = 'SwitchControlled';
+SwitchControlled.propTypes = {
+  checked: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  containerClassName: PropTypes.string,
+  containerStyle: PropTypes.object,
+  eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChange: PropTypes.func,
+  onSelect: PropTypes.func,
+  onToggle: PropTypes.func,
+  paddleClassName: PropTypes.string,
+  paddleStyle: PropTypes.object,
+  size: PropTypes.oneOf(COMPONENT_SIZES),
+};
 
 export const Switch = uncontrollable(SwitchControlled, { checked: 'onToggle' });
 Switch.displayName = 'Switch';
 
-class RadioSwitchControlled extends Component {
-  static propTypes = {
-    activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    children: PropTypes.node,
-    onSelect: PropTypes.func,
-    size: PropTypes.oneOf(COMPONENT_SIZES),
-  };
-
-  handleSelect = (...args) => {
-    const { onSelect } = this.props;
-
-    if (onSelect) {
-      onSelect(...args);
+const RadioSwitchControlled = ({
+  activeKey,
+  children,
+  onSelect,
+  size,
+  ...restProps,
+}) => {
+  const clonedChildren = Children.map(children, (child) => {
+    if (isValidElement(child) && !isBlank(child.props.eventKey)) {
+      return cloneElement(child, {
+        checked: child.props.eventKey === activeKey,
+        onSelect,
+        onToggle: noop,
+        size,
+      });
     }
-  };
 
-  handleToggle = () => {};
+    return child;
+  });
 
-  render() {
-    const { activeKey, children, size } = this.props;
-    const newChildren = Children.map(children, (child) => {
-      if (isValidElement(child) && !isBlank(child.props.eventKey)) {
-        return cloneElement(child, {
-          checked: child.props.eventKey === activeKey,
-          onSelect: this.handleSelect,
-          onToggle: this.handleToggle,
-          size,
-        });
-      }
+  return <div {...restProps}>{clonedChildren}</div>;
+};
 
-      return child;
-    });
-
-    return (
-      <div {...this.props}>{newChildren}</div>
-    );
-  }
-}
+RadioSwitchControlled.propTypes = {
+  activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  children: PropTypes.node,
+  onSelect: PropTypes.func,
+  size: PropTypes.oneOf(COMPONENT_SIZES),
+};
 
 export const RadioSwitch = uncontrollable(RadioSwitchControlled, { activeKey: 'onSelect' });
 RadioSwitch.displayName = 'RadioSwitch';
