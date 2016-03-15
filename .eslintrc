@@ -1,8 +1,4 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
-  "rules": {
-    "react/no-multi-comp": 0,
-    "react/prefer-stateless-function": 0
-  }
+  "extends": "airbnb"
 }

@@ -158,7 +158,7 @@ render() {
     </FormField>
     <FormField error={this.state.error}>
       <FormFieldInput type="checkbox" defaultChecked />
-      <FormFieldLabel>Does not have id, cicking this label does not work :(</FormFieldLabel>
+      <FormFieldLabel>Does not have id, clicking this label does not work :(</FormFieldLabel>
       <FormFieldError>Checkbox Error</FormFieldError>
       <FormFieldHelp>Checkbox Help</FormFieldHelp>
     </FormField>

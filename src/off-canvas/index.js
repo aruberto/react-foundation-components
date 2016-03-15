@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
+import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
@@ -8,105 +8,102 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-export class OffCanvas extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    position: PropTypes.oneOf(OFF_CANVAS_POSITIONS),
-    revealFor: PropTypes.oneOf(LARGER_SCREEN_SIZES),
-  };
-
-  render() {
-    const { className, position, revealFor } = this.props;
-    const classNames =
-      cx(
-        className,
-        cxStyles(
-          'off-canvas',
-          {
-            [`position-${position}`]: includes(OFF_CANVAS_POSITIONS, position),
-            [`reveal-for-${revealFor}`]: includes(LARGER_SCREEN_SIZES, revealFor),
-          }
-        )
-      );
-
-    return <div {...this.props} className={classNames} />;
-  }
-}
-
-export class OffCanvasContent extends Component {
-  static propTypes = {
-    blocked: PropTypes.bool,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    contentBlockerClassName: PropTypes.string,
-    contentBlockerStyle: PropTypes.object,
-    onContentBlockerClick: PropTypes.func,
-  };
-
-  handleContentBlockerClick = () => {
-    const { onContentBlockerClick } = this.props;
-
-    if (onContentBlockerClick) {
-      onContentBlockerClick();
-    }
-  };
-
-  render() {
-    const {
-      blocked,
-      children,
+export const OffCanvas = ({
+  className,
+  position,
+  revealFor,
+  ...restProps,
+}) => {
+  const classNames =
+    cx(
       className,
-      contentBlockerClassName,
-      contentBlockerStyle,
-    } = this.props;
-    const classNames = cx(className, cxStyles('off-canvas-content'));
-    const contentBlockerClassNames = cx(contentBlockerClassName, cxStyles('js-off-canvas-exit'));
-
-    return (
-      <div {...this.props} className={classNames}>
-        {children}
-        <div
-          className={contentBlockerClassNames}
-          onClick={this.handleContentBlockerClick}
-          style={blocked ? { ...contentBlockerStyle, display: 'block' } : contentBlockerStyle}
-        />
-      </div>
+      cxStyles(
+        'off-canvas',
+        {
+          [`position-${position}`]: includes(OFF_CANVAS_POSITIONS, position),
+          [`reveal-for-${revealFor}`]: includes(LARGER_SCREEN_SIZES, revealFor),
+        }
+      )
     );
-  }
-}
 
-export class OffCanvasContainer extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    innerClassName: PropTypes.string,
-    innerStyle: PropTypes.object,
-    open: PropTypes.oneOf(OFF_CANVAS_POSITIONS),
-  };
+  return <div {...restProps} className={classNames} />;
+};
 
-  render() {
-    const { children, className, innerClassName, innerStyle, open } = this.props;
-    const openValid = includes(OFF_CANVAS_POSITIONS, open);
-    const classNames = cx(className, cxStyles('off-canvas-wrapper'));
-    const innerClassNames =
-      cx(innerClassName, cxStyles('off-canvas-wrapper-inner', { [`is-open-${open}`]: openValid }));
-    const newChildren = Children.map(children, (child) => {
-      if (isValidElement(child)) {
-        return cloneElement(child, { blocked: openValid });
-      }
+OffCanvas.propTypes = {
+  className: PropTypes.string,
+  position: PropTypes.oneOf(OFF_CANVAS_POSITIONS),
+  revealFor: PropTypes.oneOf(LARGER_SCREEN_SIZES),
+};
 
-      return child;
-    });
+export const OffCanvasContent = ({
+  blocked,
+  children,
+  className,
+  contentBlockerClassName,
+  contentBlockerStyle,
+  onContentBlockerClick,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('off-canvas-content'));
+  const contentBlockerClassNames = cx(contentBlockerClassName, cxStyles('js-off-canvas-exit'));
 
-    return (
-      <div {...this.props} className={classNames}>
-        <div className={innerClassNames} style={innerStyle}>
-          {newChildren}
-        </div>
+  return (
+    <div {...restProps} className={classNames}>
+      {children}
+      <div
+        className={contentBlockerClassNames}
+        onClick={onContentBlockerClick}
+        style={blocked ? { ...contentBlockerStyle, display: 'block' } : contentBlockerStyle}
+      />
+    </div>
+  );
+};
+
+OffCanvasContent.propTypes = {
+  blocked: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  contentBlockerClassName: PropTypes.string,
+  contentBlockerStyle: PropTypes.object,
+  onContentBlockerClick: PropTypes.func,
+};
+
+export const OffCanvasContainer = ({
+  children,
+  className,
+  innerClassName,
+  innerStyle,
+  open,
+  ...restProps,
+}) => {
+  const blocked = includes(OFF_CANVAS_POSITIONS, open);
+  const classNames = cx(className, cxStyles('off-canvas-wrapper'));
+  const innerClassNames =
+    cx(innerClassName, cxStyles('off-canvas-wrapper-inner', { [`is-open-${open}`]: blocked }));
+  const clonedChildren = Children.map(children, (child) => {
+    if (isValidElement(child)) {
+      return cloneElement(child, { blocked });
+    }
+
+    return child;
+  });
+
+  return (
+    <div {...restProps} className={classNames}>
+      <div className={innerClassNames} style={innerStyle}>
+        {clonedChildren}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+OffCanvasContainer.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  innerClassName: PropTypes.string,
+  innerStyle: PropTypes.object,
+  open: PropTypes.oneOf(OFF_CANVAS_POSITIONS),
+};
 
 OffCanvas.Content = OffCanvasContent;
 OffCanvas.Container = OffCanvasContainer;

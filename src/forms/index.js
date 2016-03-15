@@ -112,9 +112,13 @@ export const FormFieldLabel = ({
 
   return (
     <ColumnWrapper {...restProps}>
-      <TextAlignment {...restProps} noWrap>
-        <label {...restProps} className={classNames} htmlFor={labelForId} id={labelId} />
-      </TextAlignment>
+      <TextAlignment
+        {...restProps}
+        className={classNames}
+        componentClass="label"
+        htmlFor={labelForId}
+        id={labelId}
+      />
     </ColumnWrapper>
   );
 };

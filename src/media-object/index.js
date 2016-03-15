@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
@@ -10,54 +10,55 @@ import styles from './_styles.scss';
 const cxStyles = cxBinder.bind(styles);
 const IS_FLEX_MODE = false;
 
-export class MediaObjectSection extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    main: PropTypes.bool,
-    verticalAlignment:
-      PropTypes.oneOf(IS_FLEX_MODE ? FLEX_VERTICAL_ALIGNMENTS : MEDIA_OBJECT_SECTION_ALIGNMENTS),
-  };
-
-  render() {
-    const { className, main, verticalAlignment } = this.props;
-    const classNames =
-      cx(
-        className,
-        cxStyles(
-          'media-object-section',
-          {
-            [verticalAlignment]:
-              !IS_FLEX_MODE && includes(MEDIA_OBJECT_SECTION_ALIGNMENTS, verticalAlignment),
-            'main-section': IS_FLEX_MODE && main,
-          }
-        )
-      );
-
-    return (
-      <FlexChild
-        {...this.props}
-        className={classNames}
-      />
+export const MediaObjectSection = ({
+  className,
+  main,
+  verticalAlignment,
+  ...restProps,
+}) => {
+  const classNames =
+    cx(
+      className,
+      cxStyles(
+        'media-object-section',
+        {
+          [verticalAlignment]:
+            !IS_FLEX_MODE && includes(MEDIA_OBJECT_SECTION_ALIGNMENTS, verticalAlignment),
+          'main-section': IS_FLEX_MODE && main,
+        }
+      )
     );
-  }
-}
 
-export class MediaObject extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    stackForSmall: PropTypes.bool,
-  };
+  return (
+    <FlexChild
+      {...restProps}
+      className={classNames}
+      verticalAlignment={IS_FLEX_MODE ? verticalAlignment : null}
+    />
+  );
+};
 
-  render() {
-    const { className, stackForSmall } = this.props;
-    const classNames =
-      cx(className, cxStyles('media-object', { 'stack-for-small': stackForSmall }));
+MediaObjectSection.propTypes = {
+  className: PropTypes.string,
+  main: PropTypes.bool,
+  verticalAlignment:
+    PropTypes.oneOf(IS_FLEX_MODE ? FLEX_VERTICAL_ALIGNMENTS : MEDIA_OBJECT_SECTION_ALIGNMENTS),
+};
 
-    return (
-      <FlexParent {...this.props} className={classNames} />
-    );
-  }
-}
+export const MediaObject = ({
+  className,
+  stackForSmall,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('media-object', { 'stack-for-small': stackForSmall }));
+
+  return <FlexParent {...restProps} className={classNames} />;
+};
+
+MediaObject.propTypes = {
+  className: PropTypes.string,
+  stackForSmall: PropTypes.bool,
+};
 
 MediaObject.Section = MediaObjectSection;
 
