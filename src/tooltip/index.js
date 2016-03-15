@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, isValidElement, cloneElement } from 'react';
+import React, { PropTypes, isValidElement, cloneElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
@@ -10,100 +10,95 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-export class Tooltip extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    position: PropTypes.oneOf(OVERLAY_POSITIONS),
-  };
-
-  static defaultProps = {
-    position: 'bottom',
-  };
-
-  render() {
-    const { className, position } = this.props;
-    const classNames =
-      cx(
-        className,
-        cxStyles(
-          'tooltip',
-          {
-            [position]: includes(OVERLAY_POSITIONS_INTERNAL, position),
-          }
-        )
-      );
-
-    return (
-      <div {...this.props} className={classNames} role="tooltip" />
+export const Tooltip = ({
+  className,
+  position,
+  ...restProps,
+}) => {
+  const classNames =
+    cx(
+      className,
+      cxStyles(
+        'tooltip',
+        {
+          [position]: includes(OVERLAY_POSITIONS_INTERNAL, position),
+        }
+      )
     );
+
+  return <div {...restProps} className={classNames} role="tooltip" />;
+};
+
+Tooltip.propTypes = {
+  className: PropTypes.string,
+  position: PropTypes.oneOf(OVERLAY_POSITIONS),
+};
+Tooltip.defaultProps = {
+  position: 'bottom',
+};
+
+export const LinkWithTooltip = ({
+  children,
+  tooltipClassName,
+  tooltipContent,
+  tooltipIndicator,
+  tooltipId,
+  tooltipPosition,
+  tooltipStyle,
+  ...restProps,
+}) => {
+  const childProps = {
+    'aria-haspopup': true,
+    'aria-describedby': tooltipId,
+  };
+  const childClassNames = cxStyles({ 'has-tip': tooltipIndicator });
+  let clonedChild = null;
+
+  if (isValidElement(children)) {
+    clonedChild = cloneElement(children, {
+      ...childProps,
+      className: cx(children.props.className, childClassNames),
+    });
+  } else {
+    clonedChild = <span {...childProps} className={childClassNames}>{children}</span>;
   }
-}
 
-export class LinkWithTooltip extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    tooltipClassName: PropTypes.string,
-    tooltipContent: PropTypes.node,
-    tooltipIndicator: PropTypes.bool,
-    tooltipId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    tooltipPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
-    tooltipStyle: PropTypes.object,
-  };
+  const tooltip = (
+    <Tooltip
+      className={tooltipClassName}
+      id={tooltipId}
+      position={tooltipPosition}
+      style={tooltipStyle}
+    >
+      {tooltipContent}
+    </Tooltip>
+  );
 
-  static defaultProps = {
-    closeOnClickOutside: true,
-    tooltipIndicator: true,
-    tooltipPosition: 'bottom',
-    transition: Fade,
-    triggerClick: true,
-    triggerFocus: true,
-    triggerHover: true,
-  };
+  return (
+    <OverlayTrigger {...restProps} overlay={tooltip} position={tooltipPosition}>
+      {clonedChild}
+    </OverlayTrigger>
+  );
+};
 
-  render() {
-    const {
-      children,
-      tooltipClassName,
-      tooltipContent,
-      tooltipIndicator,
-      tooltipId,
-      tooltipPosition,
-      tooltipStyle,
-    } = this.props;
-    const childProps = {
-      'aria-haspopup': true,
-      'aria-describedby': tooltipId,
-    };
-    const childClassNames = cxStyles({ 'has-tip': tooltipIndicator });
-    let newChild = null;
-
-    if (isValidElement(children)) {
-      newChild = cloneElement(children, {
-        ...childProps,
-        className: cx(children.props.className, childClassNames),
-      });
-    } else {
-      newChild = <span {...childProps} className={childClassNames}>{children}</span>;
-    }
-
-    const tooltip = (
-      <Tooltip
-        className={tooltipClassName}
-        id={tooltipId}
-        position={tooltipPosition}
-        style={tooltipStyle}
-      >
-        {tooltipContent}
-      </Tooltip>
-    );
-
-    return (
-      <OverlayTrigger {...this.props} overlay={tooltip} position={tooltipPosition}>
-        {newChild}
-      </OverlayTrigger>
-    );
-  }
-}
+LinkWithTooltip.propTypes = {
+  children: PropTypes.node,
+  tooltipClassName: PropTypes.string,
+  tooltipContent: PropTypes.node,
+  tooltipIndicator: PropTypes.bool,
+  tooltipId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  tooltipPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
+  tooltipStyle: PropTypes.object,
+};
+LinkWithTooltip.defaultProps = {
+  closeOnClickOutside: true,
+  tooltipIndicator: true,
+  tooltipPosition: 'bottom',
+  transition: Fade,
+  triggerClick: true,
+  triggerFocus: true,
+  triggerHover: true,
+};
 
 Tooltip.LinkWith = LinkWithTooltip;
 

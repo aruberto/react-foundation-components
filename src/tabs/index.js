@@ -16,17 +16,12 @@ export const Tab = ({
   ...restProps,
 }) => {
   const classNames = cx(className, cxStyles('tabs-panel', { 'is-active': active }));
-  let labelId = null;
-
-  if (!isBlank(id)) {
-    labelId = `${id}Label`;
-  }
 
   return (
     <div
       {...restProps}
       aria-hidden={!active}
-      aria-labelledby={labelId}
+      aria-labelledby={isBlank(id) ? null : `${id}Label`}
       className={classNames}
       id={id}
       role="tabpanel"
@@ -133,29 +128,24 @@ const TabsControlled = ({
   ...restProps,
 }) => {
   const headerChildren = Children.map(children, (child) => {
-    const childProps = child.props ? child.props : {};
-    let id = null;
-    let tabId = null;
-
-    if (!isBlank(childProps.id)) {
-      tabId = child.props.id;
-      id = `${tabId}Label`;
+    if (isValidElement(child)) {
+      return (
+        <TabTitle
+          {...child.props}
+          active={child.props.eventKey === activeKey}
+          id={isBlank(child.props.id) ? null : `${child.props.id}Title`}
+          onSelect={onSelect}
+          tabId={child.props.id}
+        >
+          {child.props.title}
+        </TabTitle>
+      );
     }
 
-    return (
-      <TabTitle
-        {...childProps}
-        id={id}
-        tabId={tabId}
-        active={childProps.eventKey === activeKey}
-        onSelect={onSelect}
-      >
-        {childProps.title}
-      </TabTitle>
-    );
+    return null;
   });
   const contentChildren = Children.map(children, (child) => {
-    if (isValidElement(child) && child.props && !isBlank(child.props.eventKey)) {
+    if (isValidElement(child)) {
       return cloneElement(child, { active: activeKey === child.props.eventKey });
     }
 

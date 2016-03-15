@@ -5,7 +5,6 @@ import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 import includes from 'lodash/includes';
 import noop from 'lodash/noop';
-import isBlank from 'underscore.string/isBlank';
 
 import { COMPONENT_SIZES } from '../util/constants';
 import { ShowForScreenReader, HideForScreenReader } from '../visibility';
@@ -50,7 +49,7 @@ const SwitchControlled =
           onToggle(!checked, ...args);
         }
 
-        if (onSelect && !isBlank(eventKey)) {
+        if (onSelect) {
           onSelect(eventKey, ...args);
         }
       }
@@ -138,7 +137,7 @@ const RadioSwitchControlled = ({
   ...restProps,
 }) => {
   const clonedChildren = Children.map(children, (child) => {
-    if (isValidElement(child) && !isBlank(child.props.eventKey)) {
+    if (isValidElement(child)) {
       return cloneElement(child, {
         checked: child.props.eventKey === activeKey,
         onSelect,
