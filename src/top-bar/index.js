@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
@@ -9,73 +9,74 @@ import styles from './_styles.scss';
 const cxStyles = cxBinder.bind(styles);
 const IS_FLEX_MODE = false;
 
-export class TopBarItem extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    position: PropTypes.oneOf(TOP_BAR_POSITIONS).isRequired,
-  };
+export const TopBarItem = ({
+  className,
+  position,
+  ...restProps,
+}) => {
+  const classNames =
+    cx(className, cxStyles({ [`top-bar-${position}`]: includes(TOP_BAR_POSITIONS, position) }));
 
-  render() {
-    const { className, position } = this.props;
-    const classNames =
-      cx(className, cxStyles({ [`top-bar-${position}`]: includes(TOP_BAR_POSITIONS, position) }));
+  return <div {...restProps} className={classNames} />;
+};
 
-    return <div {...this.props} className={classNames} />;
-  }
-}
+TopBarItem.propTypes = {
+  className: PropTypes.string,
+  position: PropTypes.oneOf(TOP_BAR_POSITIONS).isRequired,
+};
 
-export class TopBarContent extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
+export const TopBarContent = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles({ 'top-bar-content': IS_FLEX_MODE }));
 
-  render() {
-    const { className } = this.props;
-    const classNames = cx(className, cxStyles({ 'top-bar-content': IS_FLEX_MODE }));
+  return <div {...restProps} className={classNames} />;
+};
 
-    return <div {...this.props} className={classNames} />;
-  }
-}
+TopBarContent.propTypes = {
+  className: PropTypes.string,
+};
 
-export class TopBarTitle extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
+export const TopBarTitle = ({
+  className,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('top-bar-title'));
 
-  render() {
-    const { className } = this.props;
-    const classNames = cx(className, cxStyles('top-bar-title'));
+  return <div {...restProps} className={classNames} />;
+};
 
-    return <div {...this.props} className={classNames} />;
-  }
-}
+TopBarTitle.propTypes = {
+  className: PropTypes.string,
+};
 
-export class TopBar extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    stack: PropTypes.oneOf(SCREEN_SIZES),
-  };
+export const TopBar = ({
+  className,
+  stack,
+  ...restProps,
+}) => {
+  const classNames =
+    cx(
+      className,
+      cxStyles(
+        'top-bar',
+        {
+          [`stacked-for-${stack}`]: includes(SCREEN_SIZES, stack),
+        }
+      )
+    );
 
-  static defaultProps = {
-    stack: SCREEN_SIZE_SMALL,
-  };
+  return <div {...restProps} className={classNames} />;
+};
 
-  render() {
-    const { className, stack } = this.props;
-    const classNames =
-      cx(
-        className,
-        cxStyles(
-          'top-bar',
-          {
-            [`stacked-for-${stack}`]: includes(SCREEN_SIZES, stack),
-          }
-        )
-      );
-
-    return <div {...this.props} className={classNames} />;
-  }
-}
+TopBar.propTypes = {
+  className: PropTypes.string,
+  stack: PropTypes.oneOf(SCREEN_SIZES),
+};
+TopBar.defaultProps = {
+  stack: SCREEN_SIZE_SMALL,
+};
 
 TopBar.Content = TopBarContent;
 TopBar.Item = TopBarItem;
