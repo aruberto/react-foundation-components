@@ -1,9 +1,11 @@
 import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
+import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 import includes from 'lodash/includes';
 import isNil from 'lodash/isNil';
+import noop from 'lodash/noop';
 import isBlank from 'underscore.string/isBlank';
 
 import { Collapse } from '../collapse';
@@ -11,87 +13,107 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-class AccordionItemControlled extends Component {
-  static propTypes = {
-    active: PropTypes.bool,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    contentClassName: PropTypes.string,
-    contentStyle: PropTypes.object,
-    eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    onToggle: PropTypes.func,
-    title: PropTypes.node,
-    titleClassName: PropTypes.string,
-    titleStyle: PropTypes.object,
-  };
+const AccordionItemControlled =
+  mapPropsOnChange(
+    ['active', 'eventKey', 'onClick', 'onSelect', 'onToggle'],
+    ({ active, eventKey, onClick, onSelect, onToggle, ...restProps }) => {
+      function onTitleClick(...args) {
+        const [event] = args;
 
-  handleTitleClick = (event) => {
-    const { eventKey, onToggle } = this.props;
+        event.preventDefault();
 
-    event.preventDefault();
+        if (onClick) {
+          onClick(...args);
+        }
 
-    if (onToggle) {
-      onToggle(eventKey);
-    }
-  };
+        if (onToggle) {
+          onToggle(!active, ...args);
+        }
 
-  render() {
-    const {
+        if (onSelect) {
+          onSelect(eventKey, ...args);
+        }
+      }
+
+      return {
+        ...restProps,
+        active,
+        onTitleClick,
+      };
+    },
+    ({
       active,
       children,
       className,
       contentClassName,
       contentStyle,
       id,
+      onTitleClick,
       title,
       titleClassName,
       titleStyle,
-    } = this.props;
-    const classNames = cx(className, cxStyles('accordion-item', { 'is-active': active }));
-    const titleClassNames = cx(titleClassName, cxStyles('accordion-title'));
-    const contentClassNames = cx(contentClassName, cxStyles('accordion-content'));
-    let labelId = null;
-    let contentId = null;
+      ...restProps,
+    }) => {
+      const classNames = cx(className, cxStyles('accordion-item', { 'is-active': active }));
+      const titleClassNames = cx(titleClassName, cxStyles('accordion-title'));
+      const contentClassNames = cx(contentClassName, cxStyles('accordion-content'));
+      let titleId = null;
+      let contentId = null;
 
-    if (!isBlank(id)) {
-      labelId = `${id}-label`;
-      contentId = `${id}-content`;
-    }
+      if (!isBlank(id)) {
+        titleId = `${id}Title`;
+        contentId = `${id}Content`;
+      }
 
-    return (
-      <li {...this.props} className={classNames}>
-        <a
-          aria-controls={contentId}
-          aria-expanded={active}
-          aria-selected={active}
-          className={titleClassNames}
-          href="#"
-          id={labelId}
-          onClick={this.handleTitleClick}
-          role="tab"
-          style={titleStyle}
-        >
-          {title}
-        </a>
-        <Collapse in={active}>
-          <div>
-            <div
-              aria-hidden={!active}
-              aria-labelledby={labelId}
-              className={contentClassNames}
-              id={contentId}
-              role="tabpanel"
-              style={{ ...contentStyle, display: 'block' }}
-            >
-              {children}
+      return (
+        <li {...restProps} className={classNames} id={id}>
+          <a
+            aria-controls={contentId}
+            aria-expanded={active}
+            aria-selected={active}
+            className={titleClassNames}
+            href="#"
+            id={titleId}
+            onClick={onTitleClick}
+            role="tab"
+            style={titleStyle}
+          >
+            {title}
+          </a>
+          <Collapse in={active}>
+            <div>
+              <div
+                aria-hidden={!active}
+                aria-labelledby={titleId}
+                className={contentClassNames}
+                id={contentId}
+                role="tabpanel"
+                style={{ ...contentStyle, display: 'block' }}
+              >
+                {children}
+              </div>
             </div>
-          </div>
-        </Collapse>
-      </li>
-    );
-  }
-}
+          </Collapse>
+        </li>
+      );
+    }
+  );
+
+AccordionItemControlled.propTypes = {
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  contentClassName: PropTypes.string,
+  contentStyle: PropTypes.object,
+  eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onClick: PropTypes.func,
+  onSelect: PropTypes.func,
+  onToggle: PropTypes.func,
+  title: PropTypes.node,
+  titleClassName: PropTypes.string,
+  titleStyle: PropTypes.object,
+};
 
 export const AccordionItem = uncontrollable(AccordionItemControlled, { active: 'onToggle' });
 AccordionItem.displayName = 'AccordionItem';
@@ -224,7 +246,8 @@ export class Accordion extends Component {
             Array.isArray(activeKey)
             ? includes(activeKey, child.props.eventKey)
             : activeKey === child.props.eventKey,
-          onToggle: this.handleToggle,
+          onSelect: this.handleToggle,
+          onToggle: noop,
         });
       }
 
