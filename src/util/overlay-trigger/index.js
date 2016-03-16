@@ -6,9 +6,9 @@ import {
     as renderSubtreeIntoContainer,
 } from 'react-dom';
 import elementType from 'react-prop-types/lib/elementType';
-import RootCloseWrapper from 'react-overlays/lib/RootCloseWrapper';
 import Overlay from 'react-overlays/lib/Overlay';
 import domContains from 'dom-helpers/query/contains';
+import debounce from 'lodash/debounce';
 
 import { OVERLAY_POSITIONS } from '../constants';
 
@@ -39,7 +39,9 @@ export default class OverlayTrigger extends Component {
   };
 
   state = {
-    show: false,
+    showClick: false,
+    showFocus: false,
+    showHover: false,
   };
 
   componentDidMount() {
@@ -60,54 +62,20 @@ export default class OverlayTrigger extends Component {
 
   getOverlayTarget = () => findDOMNode(this);
 
-  _clicked = false;
+  handleAnyClick = debounce((showClick) => {
+    const { showClick: showClickPrev } = this.state;
 
-  _lastRootClose = new Date();
-
-  handleShow = () => this.setState({ show: true });
-
-  handleHide = () => {
-    if (!this._clicked) {
-      this.setState({ show: false });
+    if (showClick !== showClickPrev) {
+      this.setState({ showClick });
     }
-  };
-
-  handleAnyClick = () => {
-    const { show } = this.state;
-
-    if (show) {
-      if (this._clicked) {
-        this._clicked = false;
-        this.handleHide();
-      } else {
-        this._clicked = true;
-      }
-    } else {
-      this._clicked = true;
-      this.handleShow();
-    }
-  };
-
-  handleRootClose = () => {
-    const { closeOnClickOutside } = this.props;
-
-    if (closeOnClickOutside) {
-      const now = new Date();
-      const diff = now - this._lastRootClose;
-
-      this._lastRootClose = now;
-
-      if (this._clicked && diff < 50) {
-        this.handleAnyClick();
-      }
-    }
-  };
+  }, 50);
 
   handleClick = (...args) => {
     const { onClick, triggerClick } = this.props;
+    const { showClick } = this.state;
 
     if (triggerClick) {
-      this.handleAnyClick();
+      this.handleAnyClick(!showClick);
 
       if (onClick) {
         onClick(...args);
@@ -115,11 +83,22 @@ export default class OverlayTrigger extends Component {
     }
   };
 
+  handleRootClose = () => {
+    const { showClick } = this.state;
+
+    if (showClick) {
+      this.handleAnyClick(false);
+    }
+  };
+
   handleBlur = (...args) => {
     const { onBlur, triggerFocus } = this.props;
+    const { showFocus } = this.state;
 
     if (triggerFocus) {
-      this.handleHide();
+      if (showFocus) {
+        this.setState({ showFocus: false });
+      }
 
       if (onBlur) {
         onBlur(...args);
@@ -129,9 +108,12 @@ export default class OverlayTrigger extends Component {
 
   handleFocus = (...args) => {
     const { onFocus, triggerFocus } = this.props;
+    const { showFocus } = this.state;
 
     if (triggerFocus) {
-      this.handleShow();
+      if (!showFocus) {
+        this.setState({ showFocus: true });
+      }
 
       if (onFocus) {
         onFocus(...args);
@@ -141,12 +123,15 @@ export default class OverlayTrigger extends Component {
 
   handleMouseOut = (...args) => {
     const { onMouseOut, triggerHover } = this.props;
+    const { showHover } = this.state;
 
     if (triggerHover) {
       const [event] = args;
 
       mouseOverOut(event, () => {
-        this.handleHide();
+        if (showHover) {
+          this.setState({ showHover: false });
+        }
 
         if (onMouseOut) {
           onMouseOut(...args);
@@ -157,11 +142,15 @@ export default class OverlayTrigger extends Component {
 
   handleMouseOver = (...args) => {
     const { onMouseOver, triggerHover } = this.props;
-    const [event] = args;
+    const { showHover } = this.state;
 
     if (triggerHover) {
+      const [event] = args;
+
       mouseOverOut(event, () => {
-        this.handleShow();
+        if (!showHover) {
+          this.setState({ showHover: true });
+        }
 
         if (onMouseOver) {
           onMouseOver(...args);
@@ -171,14 +160,15 @@ export default class OverlayTrigger extends Component {
   };
 
   createOverlay = () => {
-    const { overlay, position, transition } = this.props;
-    const { show } = this.state;
+    const { closeOnClickOutside, overlay, position, transition } = this.props;
+    const { showClick, showFocus, showHover } = this.state;
+    const show = showClick || showFocus || showHover;
 
     return (
       <Overlay
         onHide={this.handleRootClose}
         placement={position}
-        rootClose
+        rootClose={closeOnClickOutside}
         show={show}
         target={this.getOverlayTarget}
         transition={transition}
@@ -211,10 +201,6 @@ export default class OverlayTrigger extends Component {
 
     this._overlay = this.createOverlay();
 
-    return (
-      <RootCloseWrapper noWrap onRootClose={this.handleRootClose}>
-        {newChild}
-      </RootCloseWrapper>
-    );
+    return newChild;
   }
 }
