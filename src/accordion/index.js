@@ -1,10 +1,9 @@
-import React, { Component, PropTypes, Children, cloneElement, isValidElement } from 'react';
+import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 import includes from 'lodash/includes';
-import isNil from 'lodash/isNil';
 import noop from 'lodash/noop';
 import isBlank from 'underscore.string/isBlank';
 
@@ -118,149 +117,88 @@ AccordionItemControlled.propTypes = {
 export const AccordionItem = uncontrollable(AccordionItemControlled, { active: 'onToggle' });
 AccordionItem.displayName = 'AccordionItem';
 
-function getActiveKeyFromProps(props) {
-  const { allowAllClosed, children, defaultActiveKey, multiExpand } = props;
-  let activeKey = null;
+const AccordionControlled =
+  mapPropsOnChange(
+    ['activeKey', 'allowAllClosed', 'multiExpand', 'onSelect'],
+    ({
+      allowAllClosed,
+      children,
+      multiExpand,
+      activeKey: maybeActiveKey = multiExpand ? [] : null,
+      onSelect,
+      ...restProps,
+    }) => {
+      let activeKey = maybeActiveKey;
 
-  if (multiExpand) {
-    if (Array.isArray(defaultActiveKey)) {
-      activeKey = defaultActiveKey;
-    } else if (isBlank(defaultActiveKey)) {
-      activeKey = [];
-    } else {
-      activeKey = [defaultActiveKey];
-    }
-  } else if (Array.isArray(defaultActiveKey)) {
-    if (defaultActiveKey.length > 0) {
-      activeKey = defaultActiveKey[0];
-    } else {
-      activeKey = null;
-    }
-  } else if (isBlank(defaultActiveKey)) {
-    activeKey = null;
-  } else {
-    activeKey = defaultActiveKey;
-  }
+      if (!allowAllClosed && (multiExpand && activeKey.length === 0 || isBlank(activeKey))) {
+        const childArray =
+          Children.toArray(children)
+            .filter((child) => isValidElement(child) && !isBlank(child.props.eventKey));
 
-  if (!allowAllClosed && ((multiExpand && activeKey.length === 0) || isNil(activeKey))) {
-    let firstChildEventKey = null;
-
-    Children.forEach(children, (child) => {
-      if (isNil(firstChildEventKey)
-          && isValidElement(child)
-          && !isBlank(child.props.eventKey)) {
-        firstChildEventKey = child.props.eventKey;
+        if (childArray.length >= 1) {
+          const firstKey = childArray[0].props.eventKey;
+          activeKey = multiExpand ? [firstKey] : firstKey;
+        }
       }
-    });
 
-    if (!isBlank(firstChildEventKey)) {
-      if (multiExpand) {
-        activeKey = [firstChildEventKey];
-      } else {
-        activeKey = firstChildEventKey;
-      }
-    }
-  }
+      return {
+        ...restProps,
+        activeKey,
+        children,
+        multiExpand,
+        onSelect(eventKey, ...args) {
+          if (multiExpand) {
+            if (includes(activeKey, eventKey)) {
+              const filtered = activeKey.filter((item) => item !== eventKey);
 
-  return activeKey;
-}
-
-export class Accordion extends Component {
-  static propTypes = {
-    activeKey: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-    ]),
-    allowAllClosed: PropTypes.bool,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    defaultActiveKey: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-    ]),
-    multiExpand: PropTypes.bool,
-    onSelect: PropTypes.func,
-  };
-
-  state = { activeKey: getActiveKeyFromProps(this.props) };
-
-  shouldComponentUpdate() {
-    return !this._isChanging;
-  }
-
-  handleToggle = (...args) => {
-    const { allowAllClosed, multiExpand, onSelect } = this.props;
-    const { activeKey: prevActiveKey } = this.state;
-
-    if (onSelect) {
-      this._isChanging = true;
-      onSelect(...args);
-      this._isChanging = false;
-    }
-
-    const [selectedKey] = args;
-
-    if (!isBlank(selectedKey)) {
-      let activeKey = null;
-
-      if (multiExpand) {
-        if (includes(prevActiveKey, selectedKey)) {
-          if (prevActiveKey.length > 1 || allowAllClosed) {
-            activeKey = prevActiveKey.filter((item) => item !== selectedKey);
+              if (!allowAllClosed && filtered.length === 0) {
+                onSelect([eventKey], ...args);
+              } else {
+                onSelect(filtered, ...args);
+              }
+            } else {
+              onSelect([...activeKey, eventKey], ...args);
+            }
           } else {
-            activeKey = prevActiveKey;
+            if (allowAllClosed && activeKey === eventKey) {
+              onSelect(null, ...args);
+            } else {
+              onSelect(eventKey, ...args);
+            }
           }
-        } else {
-          activeKey = prevActiveKey.concat([selectedKey]);
+        },
+      };
+    },
+    ({
+      activeKey,
+      children,
+      className,
+      multiExpand,
+      onSelect,
+      ...restProps,
+    }) => {
+      const classNames = cx(className, cxStyles('accordion'));
+      const clonedChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child, {
+            active:
+              multiExpand
+              ? includes(activeKey, child.props.eventKey)
+              : activeKey === child.props.eventKey,
+            onSelect,
+            onToggle: noop,
+          });
         }
-      } else if (prevActiveKey === selectedKey) {
-        if (allowAllClosed) {
-          activeKey = null;
-        } else {
-          activeKey = selectedKey;
-        }
-      } else {
-        activeKey = selectedKey;
-      }
 
-      this.setState({ activeKey });
+        return child;
+      });
+
+      return <ul {...restProps} className={classNames} role="tablist">{clonedChildren}</ul>;
     }
-  };
+  );
 
-  render() {
-    const { activeKey: propActiveKey, children, className } = this.props;
-    const { activeKey: stateActiveKey } = this.state;
-    const classNames = cx(className, cxStyles('accordion'));
-    let activeKey = stateActiveKey;
-
-    if (Array.isArray(propActiveKey) || !isBlank(propActiveKey)) {
-      activeKey = propActiveKey;
-    }
-
-    const newChildren = Children.map(children, (child) => {
-      if (isValidElement(child) && !isBlank(child.props.eventKey)) {
-        return cloneElement(child, {
-          active:
-            Array.isArray(activeKey)
-            ? includes(activeKey, child.props.eventKey)
-            : activeKey === child.props.eventKey,
-          onSelect: this.handleToggle,
-          onToggle: noop,
-        });
-      }
-
-      return child;
-    });
-
-    return (
-      <ul {...this.props} className={classNames} role="tablist">
-        {newChildren}
-      </ul>
-    );
-  }
-}
+export const Accordion = uncontrollable(AccordionControlled, { activeKey: 'onSelect' });
+Accordion.displayName = 'Accordion';
 
 Accordion.Item = AccordionItem;
 

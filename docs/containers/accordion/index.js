@@ -8,22 +8,9 @@ export default class AccordionPage extends Component {
     activeKeys: ['1', '3'],
   };
 
-  handleSingleSelect = (nextActiveKey) => {
-    const { activeKey: prevActiveKey } = this.state;
-    const activeKey = nextActiveKey === prevActiveKey ? null : nextActiveKey;
+  handleSingleSelect = (activeKey) => this.setState({ activeKey });
 
-    this.setState({ activeKey });
-  };
-
-  handleMultiSelect = (nextActiveKey) => {
-    const { activeKeys: prevActiveKeys } = this.state;
-    const activeKeys =
-      prevActiveKeys.includes(nextActiveKey)
-      ? prevActiveKeys.filter((item) => item !== nextActiveKey)
-      : prevActiveKeys.concat([nextActiveKey]);
-
-    this.setState({ activeKeys });
-  };
+  handleMultiSelect = (activeKeys) => this.setState({ activeKeys });
 
   render() {
     const { activeKey, activeKeys } = this.state;
@@ -50,7 +37,7 @@ export default class AccordionPage extends Component {
         </Accordion>
         <br />
         <h4>Controlled Multi Select</h4>
-        <Accordion activeKey={activeKeys} onSelect={this.handleMultiSelect}>
+        <Accordion activeKey={activeKeys} onSelect={this.handleMultiSelect} multiExpand>
           <AccordionItem eventKey="1" title="Accordion 1">
             Panel 1. Lorem ipsum dolor.
           </AccordionItem>

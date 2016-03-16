@@ -74,7 +74,7 @@
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
-    "fs-extra": "^0.26.6",
+    "fs-extra": "^0.26.7",
     "html-webpack-plugin": "^2.10.0",
     "img-loader": "^1.2.2",
     "jsontosass-loader": "^0.1.8",
