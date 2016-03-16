@@ -197,6 +197,24 @@ const AccordionControlled =
     }
   );
 
+AccordionControlled.propTypes = {
+  activeKey: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  ]),
+  allowAllClosed: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  defaultActiveKey: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  ]),
+  multiExpand: PropTypes.bool,
+  onSelect: PropTypes.func,
+};
+
 export const Accordion = uncontrollable(AccordionControlled, { activeKey: 'onSelect' });
 Accordion.displayName = 'Accordion';
 
