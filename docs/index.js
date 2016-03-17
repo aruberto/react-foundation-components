@@ -33,6 +33,7 @@ import CloseButtonPage from './controls/close-button';
 import SwitchPage from './controls/switch';
 import MenuPage from './navigation/menu';
 import TopBarPage from './navigation/top-bar';
+import BreadcrumbPage from './navigation/breadcrumb';
 import AccordionPage from './containers/accordion';
 import CalloutPage from './containers/callout';
 import DropdownPage from './containers/dropdown';
@@ -144,6 +145,9 @@ class HomePage extends Component {
                 <MenuItem>
                   <Link to="/navigation/top-bar">Top Bar</Link>
                 </MenuItem>
+                <MenuItem>
+                  <Link to="/navigation/breadcrumb">Breadcrumb</Link>
+                </MenuItem>
               </Menu>
             </MenuItem>
             <MenuItem text>Containers</MenuItem>
@@ -228,46 +232,43 @@ class HomePage extends Component {
   }
 }
 
-class Demo extends Component {
-  render() {
-    return (
-      <Router history={hashHistory} onUpdate={scrollToTop}>
-        <Route component={HomePage} path="/">
-          <Route component={GridPage} path="/general/grid" />
-          <Route component={FlexGridPage} path="/general/grid/flex" />
-          <Route component={FormsPage} path="/general/forms" />
-          <Route component={VisibilityPage} path="/general/visibility" />
-          <Route component={FloatPage} path="/general/float" />
-          <Route component={FlexPage} path="/general/flex" />
-          <Route component={BaseTypographyPage} path="/typography/base" />
-          <Route component={PrintPage} path="/typography/print" />
-          <Route component={TypographyHelpersPage} path="/typography/helpers" />
-          <Route component={TextAlignmentPage} path="/typography/text-alignment" />
-          <Route component={ButtonPage} path="/controls/button" />
-          <Route component={ButtonGroupPage} path="/controls/button-group" />
-          <Route component={CloseButtonPage} path="/controls/close-button" />
-          <Route component={SwitchPage} path="/controls/switch" />
-          <Route component={MenuPage} path="/navigation/menu" />
-          <Route component={TopBarPage} path="/navigation/top-bar" />
-          <Route component={AccordionPage} path="/containers/accordion" />
-          <Route component={CalloutPage} path="/containers/callout" />
-          <Route component={DropdownPage} path="/containers/dropdown" />
-          <Route component={MediaObjectPage} path="/containers/media-object" />
-          <Route component={OffCanvasPage} path="/containers/off-canvas" />
-          <Route component={RevealPage} path="/containers/reveal" />
-          <Route component={TablePage} path="/containers/table" />
-          <Route component={TabsPage} path="/containers/tabs" />
-          <Route component={BadgePage} path="/media/badge" />
-          <Route component={FlexVideoPage} path="/media/flex-video" />
-          <Route component={LabelPage} path="/media/label" />
-          <Route component={ProgressBarPage} path="/media/progress-bar" />
-          <Route component={ThumbnailPage} path="/media/thumbnail" />
-          <Route component={TooltipPage} path="/media/tooltip" />
-          <Route component={ToggleSwitchPage} path="/custom/toggle-switch" />
-        </Route>
-      </Router>
-    );
-  }
-}
+const Demo = () => (
+  <Router history={hashHistory} onUpdate={scrollToTop}>
+    <Route component={HomePage} path="/">
+      <Route component={GridPage} path="/general/grid" />
+      <Route component={FlexGridPage} path="/general/grid/flex" />
+      <Route component={FormsPage} path="/general/forms" />
+      <Route component={VisibilityPage} path="/general/visibility" />
+      <Route component={FloatPage} path="/general/float" />
+      <Route component={FlexPage} path="/general/flex" />
+      <Route component={BaseTypographyPage} path="/typography/base" />
+      <Route component={PrintPage} path="/typography/print" />
+      <Route component={TypographyHelpersPage} path="/typography/helpers" />
+      <Route component={TextAlignmentPage} path="/typography/text-alignment" />
+      <Route component={ButtonPage} path="/controls/button" />
+      <Route component={ButtonGroupPage} path="/controls/button-group" />
+      <Route component={CloseButtonPage} path="/controls/close-button" />
+      <Route component={SwitchPage} path="/controls/switch" />
+      <Route component={MenuPage} path="/navigation/menu" />
+      <Route component={TopBarPage} path="/navigation/top-bar" />
+      <Route component={BreadcrumbPage} path="/navigation/breadcrumb" />
+      <Route component={AccordionPage} path="/containers/accordion" />
+      <Route component={CalloutPage} path="/containers/callout" />
+      <Route component={DropdownPage} path="/containers/dropdown" />
+      <Route component={MediaObjectPage} path="/containers/media-object" />
+      <Route component={OffCanvasPage} path="/containers/off-canvas" />
+      <Route component={RevealPage} path="/containers/reveal" />
+      <Route component={TablePage} path="/containers/table" />
+      <Route component={TabsPage} path="/containers/tabs" />
+      <Route component={BadgePage} path="/media/badge" />
+      <Route component={FlexVideoPage} path="/media/flex-video" />
+      <Route component={LabelPage} path="/media/label" />
+      <Route component={ProgressBarPage} path="/media/progress-bar" />
+      <Route component={ThumbnailPage} path="/media/thumbnail" />
+      <Route component={TooltipPage} path="/media/tooltip" />
+      <Route component={ToggleSwitchPage} path="/custom/toggle-switch" />
+    </Route>
+  </Router>
+);
 
 ReactDOM.render(<Demo />, document.getElementById('app'));
