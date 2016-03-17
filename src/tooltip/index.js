@@ -3,7 +3,11 @@ import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
 
-import { OVERLAY_POSITIONS, OVERLAY_POSITIONS_INTERNAL } from '../util/constants';
+import {
+  OVERLAY_POSITIONS,
+  OVERLAY_POSITIONS_INTERNAL,
+  OVERLAY_ALIGNMENTS,
+} from '../util/constants';
 import OverlayTrigger from '../util/overlay-trigger';
 import { Fade } from '../fade';
 import styles from './_styles.scss';
@@ -39,6 +43,7 @@ Tooltip.defaultProps = {
 
 export const LinkWithTooltip = ({
   children,
+  tooltipAlignment,
   tooltipClassName,
   tooltipContent,
   tooltipIndicator,
@@ -75,7 +80,12 @@ export const LinkWithTooltip = ({
   );
 
   return (
-    <OverlayTrigger {...restProps} overlay={tooltip} position={tooltipPosition}>
+    <OverlayTrigger
+      {...restProps}
+      alignment={tooltipAlignment}
+      overlay={tooltip}
+      position={tooltipPosition}
+    >
       {clonedChild}
     </OverlayTrigger>
   );
@@ -83,6 +93,7 @@ export const LinkWithTooltip = ({
 
 LinkWithTooltip.propTypes = {
   children: PropTypes.node,
+  tooltipAlignment: PropTypes.oneOf(OVERLAY_ALIGNMENTS),
   tooltipClassName: PropTypes.string,
   tooltipContent: PropTypes.node,
   tooltipIndicator: PropTypes.bool,

@@ -7,11 +7,18 @@ import {
   COMPONENT_SIZES,
   OVERLAY_POSITIONS,
   OVERLAY_POSITIONS_INTERNAL,
+  OVERLAY_ALIGNMENTS,
 } from '../util/constants';
 import OverlayTrigger from '../util/overlay-trigger';
 import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
+const DROPDOWN_ALIGNMENTS_FROM_POSITION = {
+  top: 'left',
+  bottom: 'left',
+  left: 'top',
+  right: 'top',
+};
 
 export const Dropdown = ({
   className,
@@ -50,6 +57,7 @@ export const LinkWithDropdown = ({
   dropdownContent,
   dropdownId,
   dropdownPosition,
+  dropdownAlignment = DROPDOWN_ALIGNMENTS_FROM_POSITION[dropdownPosition],
   dropdownSize,
   dropdownStyle,
   ...restProps,
@@ -82,7 +90,12 @@ export const LinkWithDropdown = ({
   );
 
   return (
-    <OverlayTrigger {...restProps} overlay={dropdown} position={dropdownPosition}>
+    <OverlayTrigger
+      {...restProps}
+      alignment={dropdownAlignment}
+      overlay={dropdown}
+      position={dropdownPosition}
+    >
       {clonedChild}
     </OverlayTrigger>
   );
@@ -90,6 +103,7 @@ export const LinkWithDropdown = ({
 
 LinkWithDropdown.propTypes = {
   children: PropTypes.node,
+  dropdownAlignment: PropTypes.oneOf(OVERLAY_ALIGNMENTS),
   dropdownClassName: PropTypes.string,
   dropdownContent: PropTypes.node,
   dropdownId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

@@ -6,25 +6,102 @@ import {
     as renderSubtreeIntoContainer,
 } from 'react-dom';
 import elementType from 'react-prop-types/lib/elementType';
+import mountable from 'react-prop-types/lib/mountable';
 import Overlay from 'react-overlays/lib/Overlay';
-import domContains from 'dom-helpers/query/contains';
+import Transition from 'react-overlays/lib/Transition';
+import { getPosition } from 'react-overlays/lib/utils/overlayPositionUtils';
+import ownerDocument from 'react-overlays/lib/utils/ownerDocument';
+import getContainer from 'react-overlays/lib/utils/getContainer';
+import contains from 'dom-helpers/query/contains';
+import css from 'dom-helpers/style';
 import debounce from 'lodash/debounce';
 
-import { OVERLAY_POSITIONS } from '../constants';
+import { OVERLAY_POSITIONS, OVERLAY_ALIGNMENTS } from '../constants';
 
 function mouseOverOut(event, callback) {
   const target = event.currentTarget;
   const related = event.relatedTarget || event.nativeEvent.toElement;
 
-  if (!related || related !== target && !domContains(target, related)) {
+  if (!related || related !== target && !contains(target, related)) {
     callback(event);
   }
 }
 
+function adjustPosition(elem, getOverlayTarget, getOverlayContainer, position, alignment) {
+  const target = getOverlayTarget();
+  const container = getOverlayContainer();
+  const targetPosition = getPosition(target, container);
+
+  if (position === 'top') {
+    css(elem, 'top', `${targetPosition.top - parseInt(css(elem, 'height'), 10)}px`);
+  } else if (position === 'bottom') {
+    css(elem, 'top', `${targetPosition.top + targetPosition.height}px`);
+  } else if (position === 'left') {
+    css(elem, 'left', `${targetPosition.left - parseInt(css(elem, 'width'), 10)}px`);
+  } else if (position === 'right') {
+    css(elem, 'left', `${targetPosition.left + targetPosition.width}px`);
+  }
+
+  if (position === 'top' || position === 'bottom') {
+    let leftOffset = 0;
+
+    if (alignment !== 'left') {
+      leftOffset = targetPosition.width - parseInt(css(elem, 'width'), 10);
+
+      if (alignment !== 'right') {
+        leftOffset = leftOffset / 2;
+      }
+    }
+
+    css(elem, 'left', `${targetPosition.left + leftOffset}px`);
+  } else if (position === 'left' || position === 'right') {
+    let topOffset = 0;
+
+    if (alignment !== 'top') {
+      topOffset = targetPosition.height - parseInt(css(elem, 'height'), 10);
+
+      if (alignment !== 'bottom') {
+        topOffset = topOffset / 2;
+      }
+    }
+
+    css(elem, 'top', `${targetPosition.top + topOffset}px`);
+  }
+}
+
+// This is a hack to align overlay to edges of target instead of always centering it.
+function hackTransition(CustomTransition, customHandleEntering) {
+  const CombinedTransition = ({ onEntering, ...props }) => {
+    function handleEntering(...args) {
+      if (customHandleEntering) {
+        customHandleEntering(...args);
+      }
+
+      if (onEntering) {
+        onEntering(...args);
+      }
+    }
+
+    if (CustomTransition) {
+      return <CustomTransition {...props} onEntering={handleEntering} />;
+    }
+
+    return <Transition {...props} onEntering={handleEntering} timeout={0} />;
+  };
+
+  CombinedTransition.propTypes = {
+    onEntering: PropTypes.func,
+  };
+
+  return CombinedTransition;
+}
+
 export default class OverlayTrigger extends Component {
   static propTypes = {
+    alignment: PropTypes.oneOf(OVERLAY_ALIGNMENTS),
     children: PropTypes.node,
     closeOnClickOutside: PropTypes.bool,
+    container: React.PropTypes.oneOfType([mountable, React.PropTypes.func]),
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
@@ -36,6 +113,11 @@ export default class OverlayTrigger extends Component {
     triggerClick: PropTypes.bool,
     triggerFocus: PropTypes.bool,
     triggerHover: PropTypes.bool,
+    updateWindowResize: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    updateWindowResize: true,
   };
 
   state = {
@@ -45,6 +127,12 @@ export default class OverlayTrigger extends Component {
   };
 
   componentDidMount() {
+    const { updateWindowResize } = this.props;
+
+    if (updateWindowResize) {
+      window.addEventListener('resize', this.handleResize);
+    }
+
     this._mountNode = document.createElement('div');
     this.renderOverlay();
   }
@@ -56,11 +144,14 @@ export default class OverlayTrigger extends Component {
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
     unmountComponentAtNode(this._mountNode);
     this._mountNode = null;
   }
 
   getOverlayTarget = () => findDOMNode(this);
+
+  getOverlayContainer = () => getContainer(this.props.container, ownerDocument(this).body);
 
   handleAnyClick = debounce((showClick) => {
     const { showClick: showClickPrev } = this.state;
@@ -68,7 +159,7 @@ export default class OverlayTrigger extends Component {
     if (showClick !== showClickPrev) {
       this.setState({ showClick });
     }
-  }, 50);
+  }, 100);
 
   handleClick = (...args) => {
     const { onClick, triggerClick } = this.props;
@@ -159,19 +250,44 @@ export default class OverlayTrigger extends Component {
     }
   };
 
+  handleResize = () => {
+    const { position, alignment } = this.props;
+    const { showClick, showFocus, showHover } = this.state;
+    const show = showClick || showFocus || showHover;
+
+    if (show && this._elem) {
+      adjustPosition(
+        this._elem,
+        this.getOverlayTarget,
+        this.getOverlayContainer,
+        position,
+        alignment
+      );
+    }
+  };
+
+  handleEntering = (elem) => {
+    this._elem = elem;
+
+    this.handleResize();
+  }
+
+  _transition = hackTransition(this.props.transition, this.handleEntering);
+
   createOverlay = () => {
-    const { closeOnClickOutside, overlay, position, transition } = this.props;
+    const { closeOnClickOutside, overlay, position } = this.props;
     const { showClick, showFocus, showHover } = this.state;
     const show = showClick || showFocus || showHover;
 
     return (
       <Overlay
+        constainer={this.getOverlayContainer}
         onHide={this.handleRootClose}
         placement={position}
         rootClose={closeOnClickOutside}
         show={show}
         target={this.getOverlayTarget}
-        transition={transition}
+        transition={this._transition}
       >
         {overlay}
       </Overlay>
