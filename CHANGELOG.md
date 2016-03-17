@@ -1,3 +1,15 @@
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/aruberto/react-foundation-components/compare/0.10.2...0.11.0) (2016-03-17)
+
+
+#### BREAKING CHANGES
+* Migrated to stateless functional components while using [recompose](https://github.com/acdlite/recompose) and [uncontrollable](https://github.com/jquense/uncontrollable) to manage state when needed.
+
+
+#### Miscellaneous
+* Added Breadcrumb component.
+
+
 <a name="0.10.2"></a>
 ## [0.10.2](https://github.com/aruberto/react-foundation-components/compare/0.10.1...0.10.2) (2016-03-14)
 
