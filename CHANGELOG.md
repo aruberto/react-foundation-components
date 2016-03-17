@@ -1,9 +1,18 @@
+<a name="0.11.1"></a>
+## [0.11.1](https://github.com/aruberto/react-foundation-components/compare/0.11.0...0.11.1) (2016-03-17)
+
+
+#### Miscellaneous
+* Added Pagination component.
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/aruberto/react-foundation-components/compare/0.10.2...0.11.0) (2016-03-17)
 
 
 #### BREAKING CHANGES
 * Migrated to stateless functional components while using [recompose](https://github.com/acdlite/recompose) and [uncontrollable](https://github.com/jquense/uncontrollable) to manage state when needed.
+* Overhauled overlay backing code (used by tooltip and dropdown).
 
 
 #### Miscellaneous
