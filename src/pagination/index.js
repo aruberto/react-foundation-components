@@ -51,9 +51,9 @@ function createPaginationLink(baseClassName) {
 
 const PaginationPrevious =
   mapPropsOnChange(
-    ['activePageNumber', 'maxPageNumber', 'minPageNumber', 'onSelect'],
-    ({ activePageNumber, maxPageNumber, minPageNumber, onSelect, ...restProps }) => {
-      const disabled = maxPageNumber < minPageNumber || activePageNumber <= minPageNumber;
+    ['activePage', 'startPage', 'lastPage', 'onSelect'],
+    ({ activePage, startPage, lastPage, onSelect, ...restProps }) => {
+      const disabled = lastPage < startPage || activePage <= startPage;
 
       return {
         ...restProps,
@@ -64,10 +64,9 @@ const PaginationPrevious =
           event.preventDefault();
 
           if (!disabled && onSelect) {
-            const newPageNumber =
-              Math.max(minPageNumber, Math.min(activePageNumber - 1, maxPageNumber));
+            const newPage = Math.max(startPage, Math.min(activePage - 1, lastPage));
 
-            onSelect(newPageNumber, ...args);
+            onSelect(newPage, ...args);
           }
         },
       };
@@ -77,20 +76,20 @@ const PaginationPrevious =
 
 PaginationPrevious.displayName = 'PaginationPrevious';
 PaginationPrevious.propTypes = {
-  activePageNumber: PropTypes.number,
+  activePage: PropTypes.number,
   className: PropTypes.string,
   children: PropTypes.node,
   label: PropTypes.string,
-  maxPageNumber: PropTypes.number,
-  minPageNumber: PropTypes.number,
+  lastPage: PropTypes.number,
   onSelect: PropTypes.func,
+  startPage: PropTypes.number,
 };
 
 const PaginationNext =
   mapPropsOnChange(
-    ['activePageNumber', 'maxPageNumber', 'minPageNumber', 'onSelect'],
-    ({ activePageNumber, maxPageNumber, minPageNumber, onSelect, ...restProps }) => {
-      const disabled = maxPageNumber < minPageNumber || activePageNumber >= maxPageNumber;
+    ['activePage', 'startPage', 'lastPage', 'onSelect'],
+    ({ activePage, startPage, lastPage, onSelect, ...restProps }) => {
+      const disabled = lastPage < startPage || activePage >= lastPage;
 
       return {
         ...restProps,
@@ -101,10 +100,9 @@ const PaginationNext =
           event.preventDefault();
 
           if (!disabled && onSelect) {
-            const newPageNumber =
-              Math.min(maxPageNumber, Math.max(activePageNumber + 1, minPageNumber));
+            const newPage = Math.min(lastPage, Math.max(activePage + 1, startPage));
 
-            onSelect(newPageNumber, ...args);
+            onSelect(newPage, ...args);
           }
         },
       };
@@ -114,20 +112,20 @@ const PaginationNext =
 
 PaginationNext.displayName = 'PaginationNext';
 PaginationNext.propTypes = {
-  activePageNumber: PropTypes.number,
+  activePage: PropTypes.number,
   className: PropTypes.string,
   children: PropTypes.node,
   label: PropTypes.string,
-  maxPage: PropTypes.number,
-  minPage: PropTypes.number,
+  lastPage: PropTypes.number,
   onSelect: PropTypes.func,
+  startPage: PropTypes.number,
 };
 
 const PaginationPage =
   mapPropsOnChange(
-    ['activePageNumber', 'pageNumber', 'onSelect'],
-    ({ activePageNumber, pageNumber, onSelect, ...restProps }) => {
-      const current = activePageNumber === pageNumber;
+    ['activePage', 'page', 'onSelect'],
+    ({ activePage, page, onSelect, ...restProps }) => {
+      const current = activePage === page;
 
       return {
         ...restProps,
@@ -138,7 +136,7 @@ const PaginationPage =
           event.preventDefault();
 
           if (!current && onSelect) {
-            onSelect(pageNumber, ...args);
+            onSelect(page, ...args);
           }
         },
       };
@@ -148,12 +146,12 @@ const PaginationPage =
 
 PaginationPage.displayName = 'PaginationPage';
 PaginationPage.propTypes = {
-  activePageNumber: PropTypes.number,
+  activePage: PropTypes.number,
   className: PropTypes.string,
   children: PropTypes.node,
   label: PropTypes.string,
   onSelect: PropTypes.func,
-  pageNumber: PropTypes.number,
+  page: PropTypes.number,
 };
 
 const PaginationEllipsis = ({
@@ -170,15 +168,15 @@ PaginationEllipsis.propTypes = {
 };
 
 export const Pagination = ({
-  activePageNumber,
+  activePage,
   className,
   label,
-  maxPageNumber,
-  minPageNumber,
+  maxPages,
   nextClassName,
   nextContent,
   nextLabel,
   nextStyle,
+  numPages: maybeNumPages,
   onSelect,
   pageClassName,
   pageContentFormatter,
@@ -188,26 +186,87 @@ export const Pagination = ({
   previousContent,
   previousLabel,
   previousStyle,
+  startPage,
   ...restProps,
 }) => {
   const classNames = cx(className, cxStyles('pagination'));
   const pages = [];
+  const numPages = maybeNumPages >= 1 ? maybeNumPages : 1;
+  const lastPage = startPage + numPages - 1;
+  const limitPages = maxPages > 0 && numPages > maxPages;
+  let innerStartPage = startPage + 1;
+  let innerLastPage = lastPage - 1;
 
-  for (let i = minPageNumber; i <= maxPageNumber; i++) {
+  if (limitPages) {
+    if (activePage >= startPage && activePage <= lastPage) {
+      const offset = Math.ceil((maxPages - 1) / 2);
+      const offsetStartPage = activePage - offset + 1;
+      const offsetLastPage = activePage + maxPages - offset - 2;
+
+      if (offsetStartPage < innerStartPage) {
+        innerLastPage = innerStartPage + maxPages - 3;
+      } else if (offsetLastPage > innerLastPage) {
+        innerStartPage = innerLastPage - maxPages + 3;
+      } else {
+        innerStartPage = offsetStartPage;
+        innerLastPage = offsetLastPage;
+      }
+    } else {
+      innerLastPage = startPage + maxPages - 2;
+    }
+  }
+
+  pages.push(
+    <PaginationPage
+      activePage={activePage}
+      className={pageClassName}
+      key={startPage}
+      label={pageLabelFormatter ? pageLabelFormatter(startPage, activePage) : null}
+      onSelect={onSelect}
+      page={startPage}
+      style={pageStyle}
+    >
+      {pageContentFormatter ? pageContentFormatter(startPage, activePage) : startPage}
+    </PaginationPage>
+  );
+
+  if (limitPages && innerStartPage > startPage + 1) {
+    pages.push(<PaginationEllipsis key="startEllipsis" />);
+  }
+
+  for (let i = innerStartPage; i <= innerLastPage; i++) {
     pages.push(
       <PaginationPage
-        activePageNumber={activePageNumber}
+        activePage={activePage}
         className={pageClassName}
         key={i}
-        label={pageLabelFormatter ? pageLabelFormatter(i, activePageNumber) : null}
+        label={pageLabelFormatter ? pageLabelFormatter(i, activePage) : null}
         onSelect={onSelect}
-        pageNumber={i}
+        page={i}
         style={pageStyle}
       >
-        {pageContentFormatter ? pageContentFormatter(i, activePageNumber) : i}
+        {pageContentFormatter ? pageContentFormatter(i, activePage) : i}
       </PaginationPage>
     );
   }
+
+  if (limitPages && innerLastPage < lastPage - 1) {
+    pages.push(<PaginationEllipsis key="lastEllipsis" />);
+  }
+
+  pages.push(
+    <PaginationPage
+      activePage={activePage}
+      className={pageClassName}
+      key={lastPage}
+      label={pageLabelFormatter ? pageLabelFormatter(lastPage, activePage) : null}
+      onSelect={onSelect}
+      page={lastPage}
+      style={pageStyle}
+    >
+      {pageContentFormatter ? pageContentFormatter(lastPage, activePage) : lastPage}
+    </PaginationPage>
+  );
 
   return (
     <TextAlignment
@@ -218,24 +277,24 @@ export const Pagination = ({
       role="navigation"
     >
       <PaginationPrevious
-        activePageNumber={activePageNumber}
+        activePage={activePage}
         className={previousClassName}
         label={previousLabel}
-        maxPageNumber={maxPageNumber}
-        minPageNumber={minPageNumber}
+        lastPage={lastPage}
         onSelect={onSelect}
+        startPage={startPage}
         style={previousStyle}
       >
         {previousContent}
       </PaginationPrevious>
       {pages}
       <PaginationNext
-        activePageNumber={activePageNumber}
+        activePage={activePage}
         className={nextClassName}
         label={nextLabel}
-        maxPageNumber={maxPageNumber}
-        minPageNumber={minPageNumber}
+        lastPage={lastPage}
         onSelect={onSelect}
+        startPage={startPage}
         style={nextStyle}
       >
         {nextContent}
@@ -245,15 +304,15 @@ export const Pagination = ({
 };
 
 Pagination.propTypes = {
-  activePageNumber: PropTypes.number,
+  activePage: PropTypes.number,
   className: PropTypes.string,
   label: PropTypes.string,
-  maxPageNumber: PropTypes.number,
-  minPageNumber: PropTypes.number,
+  maxPages: PropTypes.number,
   nextClassName: PropTypes.string,
   nextContent: PropTypes.node,
   nextLabel: PropTypes.string,
   nextStyle: PropTypes.object,
+  numPages: PropTypes.number,
   onSelect: PropTypes.func,
   pageClassName: PropTypes.string,
   pageContentFormatter: PropTypes.func,
@@ -263,10 +322,12 @@ Pagination.propTypes = {
   previousContent: PropTypes.node,
   previousLabel: PropTypes.string,
   previousStyle: PropTypes.object,
+  startPage: PropTypes.number,
 };
 Pagination.defaultProps = {
-  maxPageNumber: 1,
-  minPageNumber: 1,
+  maxPages: 0,
+  numPages: 1,
+  startPage: 1,
 };
 
 export default Pagination;

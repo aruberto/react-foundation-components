@@ -12,25 +12,26 @@ function pageContentFormatter(page, activePage) {
 
 export default class PaginationPage extends Component {
   state = {
-    activePageNumber: 1,
+    activePage: 1,
   };
 
-  handleSelect = (activePageNumber) => this.setState({ activePageNumber });
+  handleSelect = (activePage) => this.setState({ activePage });
 
   render() {
-    const { activePageNumber } = this.state;
+    const { activePage } = this.state;
 
     return (
       <div>
         <Pagination
-          activePageNumber={activePageNumber}
-          maxPageNumber={10}
+          activePage={activePage}
+          numPages={20}
           onSelect={this.handleSelect}
         />
         <Pagination
-          activePageNumber={activePageNumber}
+          activePage={activePage}
           alignment="center"
-          maxPageNumber={10}
+          maxPages={9}
+          numPages={20}
           nextContent="Next"
           onSelect={this.handleSelect}
           pageContentFormatter={pageContentFormatter}
