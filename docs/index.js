@@ -33,6 +33,7 @@ import CloseButtonPage from './controls/close-button';
 import SwitchPage from './controls/switch';
 import MenuPage from './navigation/menu';
 import TopBarPage from './navigation/top-bar';
+import PaginationPage from './navigation/pagination';
 import BreadcrumbPage from './navigation/breadcrumb';
 import AccordionPage from './containers/accordion';
 import CalloutPage from './containers/callout';
@@ -146,6 +147,9 @@ class HomePage extends Component {
                   <Link to="/navigation/top-bar">Top Bar</Link>
                 </MenuItem>
                 <MenuItem>
+                  <Link to="/navigation/pagination">Pagination</Link>
+                </MenuItem>
+                <MenuItem>
                   <Link to="/navigation/breadcrumb">Breadcrumb</Link>
                 </MenuItem>
               </Menu>
@@ -251,6 +255,7 @@ const Demo = () => (
       <Route component={SwitchPage} path="/controls/switch" />
       <Route component={MenuPage} path="/navigation/menu" />
       <Route component={TopBarPage} path="/navigation/top-bar" />
+      <Route component={PaginationPage} path="/navigation/pagination" />
       <Route component={BreadcrumbPage} path="/navigation/breadcrumb" />
       <Route component={AccordionPage} path="/containers/accordion" />
       <Route component={CalloutPage} path="/containers/callout" />
