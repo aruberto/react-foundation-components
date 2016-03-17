@@ -114,6 +114,7 @@ LinkWithDropdown.propTypes = {
 LinkWithDropdown.defaultProps = {
   dropdownPosition: 'bottom',
   triggerClick: true,
+  triggerOverlayHover: true,
 };
 
 Dropdown.LinkWith = LinkWithDropdown;

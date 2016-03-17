@@ -27,6 +27,12 @@ function mouseOverOut(event, callback) {
   }
 }
 
+function showOverlay(state) {
+  const { showClick, showFocus, showHover, overlayHoverCount } = state;
+
+  return showClick || showFocus || showHover || overlayHoverCount > 0;
+}
+
 function adjustPosition(elem, getOverlayTarget, getOverlayContainer, position, alignment) {
   const target = getOverlayTarget();
   const container = getOverlayContainer();
@@ -113,6 +119,7 @@ export default class OverlayTrigger extends Component {
     triggerClick: PropTypes.bool,
     triggerFocus: PropTypes.bool,
     triggerHover: PropTypes.bool,
+    triggerOverlayHover: PropTypes.bool,
     updateWindowResize: PropTypes.bool,
   };
 
@@ -124,6 +131,7 @@ export default class OverlayTrigger extends Component {
     showClick: false,
     showFocus: false,
     showHover: false,
+    overlayHoverCount: 0,
   };
 
   componentDidMount() {
@@ -250,10 +258,27 @@ export default class OverlayTrigger extends Component {
     }
   };
 
+  handleOverlayMouseOut = () => {
+    const { triggerHover, triggerOverlayHover } = this.props;
+    const { overlayHoverCount } = this.state;
+
+    if (triggerHover && triggerOverlayHover) {
+      this.setState({ overlayHoverCount: overlayHoverCount - 1 });
+    }
+  };
+
+  handleOverlayMouseOver = () => {
+    const { triggerHover, triggerOverlayHover } = this.props;
+    const { overlayHoverCount } = this.state;
+
+    if (triggerHover && triggerOverlayHover) {
+      this.setState({ overlayHoverCount: overlayHoverCount + 1 });
+    }
+  };
+
   handleResize = () => {
     const { position, alignment } = this.props;
-    const { showClick, showFocus, showHover } = this.state;
-    const show = showClick || showFocus || showHover;
+    const show = showOverlay(this.state);
 
     if (show && this._elem) {
       adjustPosition(
@@ -276,8 +301,18 @@ export default class OverlayTrigger extends Component {
 
   createOverlay = () => {
     const { closeOnClickOutside, overlay, position } = this.props;
-    const { showClick, showFocus, showHover } = this.state;
-    const show = showClick || showFocus || showHover;
+    const show = showOverlay(this.state);
+    let clonedOverlay = null;
+    const overalyProps = {
+      onMouseOver: this.handleOverlayMouseOver,
+      onMouseOut: this.handleOverlayMouseOut,
+    };
+
+    if (isValidElement(overlay)) {
+      clonedOverlay = cloneElement(overlay, overalyProps);
+    } else {
+      clonedOverlay = <span {...overalyProps}>{overlay}</span>;
+    }
 
     return (
       <Overlay
@@ -289,7 +324,7 @@ export default class OverlayTrigger extends Component {
         target={this.getOverlayTarget}
         transition={this._transition}
       >
-        {overlay}
+        {clonedOverlay}
       </Overlay>
     );
   };
@@ -307,16 +342,16 @@ export default class OverlayTrigger extends Component {
       onMouseOut: this.handleMouseOut,
       onMouseOver: this.handleMouseOver,
     };
-    let newChild = null;
+    let clonedChild = null;
 
     if (isValidElement(children)) {
-      newChild = cloneElement(children, childProps);
+      clonedChild = cloneElement(children, childProps);
     } else {
-      newChild = <span {...childProps}>{children}</span>;
+      clonedChild = <span {...childProps}>{children}</span>;
     }
 
     this._overlay = this.createOverlay();
 
-    return newChild;
+    return clonedChild;
   }
 }
