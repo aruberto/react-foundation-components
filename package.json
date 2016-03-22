@@ -45,7 +45,6 @@
   "dependencies": {
     "babel-runtime": "^6.6.1",
     "classnames": "^2.2.3",
-    "date-arithmetic": "^3.0.1",
     "dom-helpers": "^2.4.0",
     "foundation-sites": "~6.2.0",
     "lodash": "^4.6.1",
