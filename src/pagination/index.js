@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
-import { mapPropsOnChange } from 'recompose';
 
 import TextAlignment from '../text-alignment';
 import { HideForScreenReader } from '../visibility';
@@ -9,25 +8,40 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-function createPaginationLink(baseClassName) {
+function createPaginationLink(baseClassName, disabledCalculator, newPageCalculator) {
   const PaginationEndPoint = ({
+    activePage,
     children,
     className,
-    current,
-    disabled,
     label,
+    lastPage,
     onSelect,
+    page,
+    startPage,
     ...restProps,
   }) => {
+    const current = activePage === page;
+    const disabled =
+      lastPage < startPage || disabledCalculator({ activePage, startPage, lastPage });
     const classNames = cx(className, cxStyles(baseClassName, { current, disabled }));
     let content = children;
 
     if (!current && !disabled) {
+      const onClick = (...args) => {
+        const [event] = args;
+
+        event.preventDefault();
+
+        if (onSelect) {
+          onSelect(newPageCalculator({ activePage, startPage, lastPage, page }), ...args);
+        }
+      };
+
       content = (
         <a
           href="#"
           aria-label={label}
-          onClick={onSelect}
+          onClick={onClick}
         >
           {children}
         </a>
@@ -38,40 +52,25 @@ function createPaginationLink(baseClassName) {
   };
 
   PaginationEndPoint.propTypes = {
+    activePage: PropTypes.number,
     children: PropTypes.node,
     className: PropTypes.string,
     current: PropTypes.bool,
-    disabled: PropTypes.bool,
     label: PropTypes.string,
+    lastPage: PropTypes.number,
     onSelect: PropTypes.func,
+    page: PropTypes.number,
+    startPage: PropTypes.number,
   };
 
   return PaginationEndPoint;
 }
 
 const PaginationPrevious =
-  mapPropsOnChange(
-    ['activePage', 'startPage', 'lastPage', 'onSelect'],
-    ({ activePage, startPage, lastPage, onSelect, ...restProps }) => {
-      const disabled = lastPage < startPage || activePage <= startPage;
-
-      return {
-        ...restProps,
-        disabled,
-        onSelect(...args) {
-          const [event] = args;
-
-          event.preventDefault();
-
-          if (!disabled && onSelect) {
-            const newPage = Math.max(startPage, Math.min(activePage - 1, lastPage));
-
-            onSelect(newPage, ...args);
-          }
-        },
-      };
-    },
-    createPaginationLink('pagination-previous')
+  createPaginationLink(
+    'pagination-previous',
+    ({ activePage, startPage }) => activePage <= startPage,
+    ({ activePage, startPage, lastPage }) => Math.max(startPage, Math.min(activePage - 1, lastPage))
   );
 
 PaginationPrevious.displayName = 'PaginationPrevious';
@@ -86,28 +85,10 @@ PaginationPrevious.propTypes = {
 };
 
 const PaginationNext =
-  mapPropsOnChange(
-    ['activePage', 'startPage', 'lastPage', 'onSelect'],
-    ({ activePage, startPage, lastPage, onSelect, ...restProps }) => {
-      const disabled = lastPage < startPage || activePage >= lastPage;
-
-      return {
-        ...restProps,
-        disabled,
-        onSelect(...args) {
-          const [event] = args;
-
-          event.preventDefault();
-
-          if (!disabled && onSelect) {
-            const newPage = Math.min(lastPage, Math.max(activePage + 1, startPage));
-
-            onSelect(newPage, ...args);
-          }
-        },
-      };
-    },
-    createPaginationLink('pagination-next')
+  createPaginationLink(
+    'pagination-next',
+    ({ activePage, lastPage }) => activePage >= lastPage,
+    ({ activePage, startPage, lastPage }) => Math.min(lastPage, Math.max(activePage + 1, startPage))
   );
 
 PaginationNext.displayName = 'PaginationNext';
@@ -121,28 +102,7 @@ PaginationNext.propTypes = {
   startPage: PropTypes.number,
 };
 
-const PaginationPage =
-  mapPropsOnChange(
-    ['activePage', 'page', 'onSelect'],
-    ({ activePage, page, onSelect, ...restProps }) => {
-      const current = activePage === page;
-
-      return {
-        ...restProps,
-        current,
-        onSelect(...args) {
-          const [event] = args;
-
-          event.preventDefault();
-
-          if (!current && onSelect) {
-            onSelect(page, ...args);
-          }
-        },
-      };
-    },
-    createPaginationLink()
-  );
+const PaginationPage = createPaginationLink(null, () => false, ({ page }) => page);
 
 PaginationPage.displayName = 'PaginationPage';
 PaginationPage.propTypes = {

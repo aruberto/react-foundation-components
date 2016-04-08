@@ -1,7 +1,6 @@
 import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
-import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 
 import { COMPONENT_COLORS } from '../util/constants';
@@ -12,30 +11,26 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-export const ToggleSwitchItem =
- mapPropsOnChange(
-   ['eventKey', 'onClick', 'onSelect'],
-   ({ eventKey, onClick, onSelect, ...restProps }) => ({
-     ...restProps,
-     onClick(...args) {
-       if (onClick) {
-         onClick(...args);
-       }
+export const ToggleSwitchItem = ({
+  className,
+  eventKey,
+  onClick,
+  onSelect,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('switch-toggle-item'));
+  const onTitleClick = (...args) => {
+    if (onClick) {
+      onClick(...args);
+    }
 
-       if (onSelect) {
-         onSelect(eventKey);
-       }
-     },
-   }),
-   ({
-     className,
-     ...restProps,
-   }) => {
-     const classNames = cx(className, cxStyles('switch-toggle-item'));
+    if (onSelect) {
+      onSelect(eventKey);
+    }
+  };
 
-     return <div {...restProps} className={classNames} />;
-   }
- );
+  return <div {...restProps} className={classNames} onClick={onTitleClick} />;
+};
 
 ToggleSwitchItem.propTypes = {
   className: PropTypes.string,

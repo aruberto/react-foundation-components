@@ -1,7 +1,6 @@
 import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
-import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 import includes from 'lodash/includes';
 import noop from 'lodash/noop';
@@ -36,80 +35,69 @@ export const SwitchUncheckedLabel = createCheckedLabel('switch-inactive', 'Switc
 
 export const SwitchPadelLabel = (props) => <ShowForScreenReader {...props} />;
 
-const SwitchControlled =
-  mapPropsOnChange(
-    ['checked', 'eventKey', 'onChange', 'onSelect', 'onToggle'],
-    ({ checked, eventKey, onChange, onSelect, onToggle, ...restProps }) => {
-      function onInputChange(...args) {
-        if (onChange) {
-          onChange(...args);
-        }
-
-        if (onToggle) {
-          onToggle(!checked, ...args);
-        }
-
-        if (onSelect) {
-          onSelect(eventKey, ...args);
-        }
-      }
-
-      function onLabelClick(...args) {
-        const [event] = args;
-
-        event.preventDefault();
-
-        onInputChange(...args);
-      }
-
-      return {
-        ...restProps,
-        checked,
-        onInputChange,
-        onLabelClick,
-      };
-    },
-    ({
-      children,
-      className,
-      containerClassName,
-      containerStyle,
-      id,
-      onInputChange,
-      onLabelClick,
-      paddleClassName,
-      paddleStyle,
-      size,
-      ...restProps,
-    }) => {
-      const containerClassNames =
-        cx(containerClassName, cxStyles('switch', { [size]: includes(COMPONENT_SIZES, size) }));
-      const classNames = cx(className, cxStyles('switch-input'));
-      const paddleClassNames = cx(paddleClassName, cxStyles('switch-paddle'));
-
-      return (
-        <div className={containerClassNames} style={containerStyle}>
-          <input
-            {...restProps}
-            className={classNames}
-            id={id}
-            onChange={onInputChange}
-            type="checkbox"
-          />
-          <label
-            className={paddleClassNames}
-            htmlFor={id}
-            onClick={onLabelClick}
-            style={paddleStyle}
-          >
-            {children}
-          </label>
-        </div>
-      );
+const SwitchControlled = ({
+  checked,
+  children,
+  className,
+  containerClassName,
+  containerStyle,
+  eventKey,
+  id,
+  onChange,
+  onSelect,
+  onToggle,
+  paddleClassName,
+  paddleStyle,
+  size,
+  ...restProps,
+}) => {
+  const containerClassNames =
+    cx(containerClassName, cxStyles('switch', { [size]: includes(COMPONENT_SIZES, size) }));
+  const classNames = cx(className, cxStyles('switch-input'));
+  const paddleClassNames = cx(paddleClassName, cxStyles('switch-paddle'));
+  const onInputChange = (...args) => {
+    if (onChange) {
+      onChange(...args);
     }
-  );
 
-SwitchControlled.displayName = 'SwitchControlled';
+    if (onToggle) {
+      onToggle(!checked, ...args);
+    }
+
+    if (onSelect) {
+      onSelect(eventKey, ...args);
+    }
+  };
+  const onLabelClick = (...args) => {
+    const [event] = args;
+
+    event.preventDefault();
+
+    onInputChange(...args);
+  };
+
+  return (
+    <div className={containerClassNames} style={containerStyle}>
+      <input
+        {...restProps}
+        checked={checked}
+        className={classNames}
+        id={id}
+        onChange={onInputChange}
+        type="checkbox"
+      />
+      <label
+        className={paddleClassNames}
+        htmlFor={id}
+        onClick={onLabelClick}
+        style={paddleStyle}
+      >
+        {children}
+      </label>
+    </div>
+  );
+};
+
 SwitchControlled.propTypes = {
   checked: PropTypes.bool,
   children: PropTypes.node,

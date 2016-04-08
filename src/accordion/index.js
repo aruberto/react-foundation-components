@@ -1,7 +1,6 @@
 import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
-import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 import includes from 'lodash/includes';
 import noop from 'lodash/noop';
@@ -12,91 +11,83 @@ import styles from './_styles.scss';
 
 const cxStyles = cxBinder.bind(styles);
 
-const AccordionItemControlled =
-  mapPropsOnChange(
-    ['active', 'eventKey', 'onClick', 'onSelect', 'onToggle'],
-    ({ active, eventKey, onClick, onSelect, onToggle, ...restProps }) => {
-      function onTitleClick(...args) {
-        const [event] = args;
+const AccordionItemControlled = ({
+  active,
+  children,
+  className,
+  contentClassName,
+  contentStyle,
+  eventKey,
+  id,
+  onClick,
+  onSelect,
+  onToggle,
+  title,
+  titleClassName,
+  titleStyle,
+  ...restProps,
+}) => {
+  const classNames = cx(className, cxStyles('accordion-item', { 'is-active': active }));
+  const titleClassNames = cx(titleClassName, cxStyles('accordion-title'));
+  const contentClassNames = cx(contentClassName, cxStyles('accordion-content'));
+  let titleId = null;
+  let contentId = null;
 
-        event.preventDefault();
+  if (!isBlank(id)) {
+    titleId = `${id}Title`;
+    contentId = `${id}Content`;
+  }
 
-        if (onClick) {
-          onClick(...args);
-        }
+  const onTitleClick = (...args) => {
+    const [event] = args;
 
-        if (onToggle) {
-          onToggle(!active, ...args);
-        }
+    event.preventDefault();
 
-        if (onSelect) {
-          onSelect(eventKey, ...args);
-        }
-      }
-
-      return {
-        ...restProps,
-        active,
-        onTitleClick,
-      };
-    },
-    ({
-      active,
-      children,
-      className,
-      contentClassName,
-      contentStyle,
-      id,
-      onTitleClick,
-      title,
-      titleClassName,
-      titleStyle,
-      ...restProps,
-    }) => {
-      const classNames = cx(className, cxStyles('accordion-item', { 'is-active': active }));
-      const titleClassNames = cx(titleClassName, cxStyles('accordion-title'));
-      const contentClassNames = cx(contentClassName, cxStyles('accordion-content'));
-      let titleId = null;
-      let contentId = null;
-
-      if (!isBlank(id)) {
-        titleId = `${id}Title`;
-        contentId = `${id}Content`;
-      }
-
-      return (
-        <li {...restProps} className={classNames} id={id}>
-          <a
-            aria-controls={contentId}
-            aria-expanded={active}
-            aria-selected={active}
-            className={titleClassNames}
-            href="#"
-            id={titleId}
-            onClick={onTitleClick}
-            role="tab"
-            style={titleStyle}
-          >
-            {title}
-          </a>
-          <Collapse in={active}>
-            <div>
-              <div
-                aria-hidden={!active}
-                aria-labelledby={titleId}
-                className={contentClassNames}
-                id={contentId}
-                role="tabpanel"
-                style={{ ...contentStyle, display: 'block' }}
-              >
-                {children}
-              </div>
-            </div>
-          </Collapse>
-        </li>
-      );
+    if (onClick) {
+      onClick(...args);
     }
+
+    if (onToggle) {
+      onToggle(!active, ...args);
+    }
+
+    if (onSelect) {
+      onSelect(eventKey, ...args);
+    }
+  };
+
+  return (
+    <li {...restProps} className={classNames} id={id}>
+      <a
+        aria-controls={contentId}
+        aria-expanded={active}
+        aria-selected={active}
+        className={titleClassNames}
+        href="#"
+        id={titleId}
+        onClick={onTitleClick}
+        role="tab"
+        style={titleStyle}
+      >
+        {title}
+      </a>
+      <Collapse in={active}>
+        <div>
+          <div
+            aria-hidden={!active}
+            aria-labelledby={titleId}
+            className={contentClassNames}
+            id={contentId}
+            role="tabpanel"
+            style={{ ...contentStyle, display: 'block' }}
+          >
+            {children}
+          </div>
+        </div>
+      </Collapse>
+    </li>
   );
+};
 
 AccordionItemControlled.propTypes = {
   active: PropTypes.bool,
@@ -117,85 +108,68 @@ AccordionItemControlled.propTypes = {
 export const AccordionItem = uncontrollable(AccordionItemControlled, { active: 'onToggle' });
 AccordionItem.displayName = 'AccordionItem';
 
-const AccordionControlled =
-  mapPropsOnChange(
-    ['activeKey', 'allowAllClosed', 'multiExpand', 'onSelect'],
-    ({
-      allowAllClosed,
-      children,
-      multiExpand,
-      activeKey: maybeActiveKey = multiExpand ? [] : null,
-      onSelect,
-      ...restProps,
-    }) => {
-      let activeKey = maybeActiveKey;
+const AccordionControlled = ({
+  allowAllClosed,
+  children,
+  className,
+  multiExpand,
+  activeKey: maybeActiveKey = multiExpand ? [] : null,
+  onSelect,
+  ...restProps,
+}) => {
+  let activeKey = maybeActiveKey;
 
-      if (!allowAllClosed && (multiExpand && activeKey.length === 0 || isBlank(activeKey))) {
-        const childArray =
-          Children.toArray(children)
-            .filter((child) => isValidElement(child) && !isBlank(child.props.eventKey));
+  if (!allowAllClosed && (multiExpand && activeKey.length === 0 || isBlank(activeKey))) {
+    const childArray =
+      Children.toArray(children)
+        .filter((child) => isValidElement(child) && !isBlank(child.props.eventKey));
 
-        if (childArray.length >= 1) {
-          const firstKey = childArray[0].props.eventKey;
-          activeKey = multiExpand ? [firstKey] : firstKey;
-        }
-      }
-
-      return {
-        ...restProps,
-        activeKey,
-        children,
-        multiExpand,
-        onSelect(eventKey, ...args) {
-          if (multiExpand) {
-            if (includes(activeKey, eventKey)) {
-              const filtered = activeKey.filter((item) => item !== eventKey);
-
-              if (!allowAllClosed && filtered.length === 0) {
-                onSelect([eventKey], ...args);
-              } else {
-                onSelect(filtered, ...args);
-              }
-            } else {
-              onSelect([...activeKey, eventKey], ...args);
-            }
-          } else {
-            if (allowAllClosed && activeKey === eventKey) {
-              onSelect(null, ...args);
-            } else {
-              onSelect(eventKey, ...args);
-            }
-          }
-        },
-      };
-    },
-    ({
-      activeKey,
-      children,
-      className,
-      multiExpand,
-      onSelect,
-      ...restProps,
-    }) => {
-      const classNames = cx(className, cxStyles('accordion'));
-      const clonedChildren = Children.map(children, (child) => {
-        if (isValidElement(child)) {
-          return cloneElement(child, {
-            active:
-              multiExpand
-              ? includes(activeKey, child.props.eventKey)
-              : activeKey === child.props.eventKey,
-            onSelect,
-            onToggle: noop,
-          });
-        }
-
-        return child;
-      });
-
-      return <ul {...restProps} className={classNames} role="tablist">{clonedChildren}</ul>;
+    if (childArray.length >= 1) {
+      const firstKey = childArray[0].props.eventKey;
+      activeKey = multiExpand ? [firstKey] : firstKey;
     }
-  );
+  }
+
+  const onChildSelect = (eventKey, ...args) => {
+    if (multiExpand) {
+      if (includes(activeKey, eventKey)) {
+        const filtered = activeKey.filter((item) => item !== eventKey);
+
+        if (!allowAllClosed && filtered.length === 0) {
+          onSelect([eventKey], ...args);
+        } else {
+          onSelect(filtered, ...args);
+        }
+      } else {
+        onSelect([...activeKey, eventKey], ...args);
+      }
+    } else {
+      if (allowAllClosed && activeKey === eventKey) {
+        onSelect(null, ...args);
+      } else {
+        onSelect(eventKey, ...args);
+      }
+    }
+  };
+
+  const classNames = cx(className, cxStyles('accordion'));
+  const clonedChildren = Children.map(children, (child) => {
+    if (isValidElement(child)) {
+      return cloneElement(child, {
+        active:
+          multiExpand
+          ? includes(activeKey, child.props.eventKey)
+          : activeKey === child.props.eventKey,
+        onSelect: onChildSelect,
+        onToggle: noop,
+      });
+    }
+
+    return child;
+  });
+
+  return <ul {...restProps} className={classNames} role="tablist">{clonedChildren}</ul>;
+};
 
 AccordionControlled.propTypes = {
   activeKey: PropTypes.oneOfType([

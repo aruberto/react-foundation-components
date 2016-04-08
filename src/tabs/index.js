@@ -1,7 +1,6 @@
 import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
-import { mapPropsOnChange } from 'recompose';
 import uncontrollable from 'uncontrollable/batching';
 import isBlank from 'underscore.string/isBlank';
 
@@ -35,49 +34,43 @@ Tab.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-const TabTitle =
-  mapPropsOnChange(
-    ['eventKey', 'onSelect'],
-    ({ eventKey, onSelect, ...restProps }) => ({
-      ...restProps,
-      onClick(...args) {
-        const [event] = args;
+const TabTitle = ({
+  active,
+  containerClassName,
+  containerStyle,
+  eventKey,
+  onSelect,
+  tabId,
+  ...restProps,
+}) => {
+  const classNames = cx(containerClassName, cxStyles('tabs-title', { 'is-active': active }));
+  const onClick = (...args) => {
+    const [event] = args;
 
-        event.preventDefault();
+    event.preventDefault();
 
-        if (onSelect && !isBlank(eventKey)) {
-          onSelect(eventKey, ...args);
-        }
-      },
-    }),
-    ({
-      active,
-      containerClassName,
-      containerStyle,
-      onClick,
-      tabId,
-      ...restProps,
-    }) => {
-      const classNames = cx(containerClassName, cxStyles('tabs-title', { 'is-active': active }));
-
-      return (
-        <li
-          className={classNames}
-          role="presentation"
-          style={containerStyle}
-        >
-          <a
-            {...restProps}
-            aria-controls={tabId}
-            aria-selected={active}
-            href={`#${isBlank(tabId) ? '' : tabId}`}
-            onClick={onClick}
-            role="tab"
-          />
-        </li>
-      );
+    if (onSelect && !isBlank(eventKey)) {
+      onSelect(eventKey, ...args);
     }
+  };
+
+  return (
+    <li
+      className={classNames}
+      role="presentation"
+      style={containerStyle}
+    >
+      <a
+        {...restProps}
+        aria-controls={tabId}
+        aria-selected={active}
+        href={`#${isBlank(tabId) ? '' : tabId}`}
+        onClick={onClick}
+        role="tab"
+      />
+    </li>
   );
+};
 
 TabTitle.propTypes = {
   active: PropTypes.bool,
