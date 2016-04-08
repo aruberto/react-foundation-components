@@ -1,0 +1,26 @@
+.switch-toggle {
+  position: relative;
+  padding: 0;
+
+  .switch-toggle-item {
+    display: block;
+    position: relative;
+    float: left;
+    z-index: 2;
+    margin: 0;
+    padding: 0 .5rem;
+    text-align: center;
+  }
+
+  .switch-toggle-paddle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: left .2s ease-out;
+    z-index: 1;
+    margin: .05rem 0;
+    padding: 0;
+    width: 0;
+  }
+}

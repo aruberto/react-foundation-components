@@ -1,0 +1,15 @@
+// Do not include in _foundation.scss since _typography.scss already includes it.
+
+.show-for-print {
+  display: none !important;
+
+  @media print {
+    display: block !important;
+  }
+}
+
+.hide-for-print {
+  @media print {
+    display: none !important;
+  }
+}

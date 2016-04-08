@@ -1,0 +1,17 @@
+.tooltip {
+  margin-top: $tooltip-pip-width;
+
+  &.top {
+    margin-top: -$tooltip-pip-width;
+  }
+
+  &.left {
+    margin-top: 0;
+    margin-left: -$tooltip-pip-width;
+  }
+
+  &.right {
+    margin-top: 0;
+    margin-left: $tooltip-pip-width;
+  }
+}

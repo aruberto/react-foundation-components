@@ -1,0 +1,10 @@
+$global-flexbox: true;
+$foundation-palette: (
+  primary: #2199e8,
+  secondary: #800080,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #ec5840,
+);
+
+@import '../../lib/foundation';

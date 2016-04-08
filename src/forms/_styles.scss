@@ -1,0 +1,15 @@
+@import '../common';
+@import '~foundation-sites/scss/components/button';
+@import '~foundation-sites/scss/forms/forms';
+
+.form-field {
+  @include foundation-form-text;
+  @include foundation-form-checkbox;
+  @include foundation-form-label;
+  @include foundation-form-helptext;
+  @include foundation-form-prepostfix;
+  @include foundation-form-select;
+  @include foundation-form-error;
+
+  @import './custom';
+}

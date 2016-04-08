@@ -1,0 +1,12 @@
+.accordion-item {
+  border-bottom: $accordion-content-border;
+}
+
+.accordion-title {
+  border-bottom: 0;
+}
+
+.accordion-content {
+  border-top: $accordion-content-border;
+  border-bottom: 0;
+}

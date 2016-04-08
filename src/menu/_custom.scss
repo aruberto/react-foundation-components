@@ -1,0 +1,6 @@
+// width 100% conflicting with off canvas
+@if $global-flexbox {
+  .menu {
+    width: initial;
+  }
+}

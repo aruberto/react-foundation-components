@@ -1,10 +1,10 @@
 # react-foundation-components
 
-Foundation Sites components built with the power of React and CSS Modules!
+Foundation Sites 6 components implemented in React and compatible with CSS Modules!
 
 ## Why?
 
-I like [React](https://facebook.github.io/react). I like [CSS Modules](https://github.com/css-modules/css-modules). I like [Foundation Sites](http://foundation.zurb.com/sites.html). This is an experiment to see if it's possible to combine all these libraries in a modular way!
+I like [React](https://facebook.github.io/react). I like [CSS Modules](https://github.com/css-modules/css-modules). I like [Foundation Sites](http://foundation.zurb.com/sites.html). This is an experiment to see if it's possible to combine all these tools in a modular way!
 
 ## Installation
 
@@ -12,7 +12,13 @@ I like [React](https://facebook.github.io/react). I like [CSS Modules](https://g
 npm install --save react-foundation-components
 ```
 
-Please see demo folder for an example webpack setup and example use of each component. Proper documentation to come later ...
+Each component uses local scoped CSS by requiring the subset of the Foundation stylesheets it needs.
+
+Documentation (in progress) or demos of the components are available at http://aruberto.github.io/react-foundation-components. Please look at https://github.com/aruberto/react-foundation-components/tree/master/docs for an example webpack setup and example use of each component.
+
+You can also look at https://github.com/aruberto/react-foundation-components/tree/master/examples/css-modules as an example project that uses CSS Modules with this library.
+
+If you want to use CSS modules and customize Foundation at the same time, look at https://github.com/aruberto/react-foundation-components/tree/master/examples/css-modules-custom which uses https://www.npmjs.com/package/jsontosass-loader to inject sass variables that override Foundation's default settings.
 
 Recommend importing on a per component basis instead of importing the main entry point of package. Importing main entry point will cause final bundle to include all CSS and JS whereas importing on a per component basis will cause your final bundle to only include the CSS and JS you actually need (this may change when tree shaking is introduced in webpack 2)!
 
@@ -20,18 +26,32 @@ Favor
 
 ```
 import Button from 'react-foundation-components/lib/button';
-import {ShowForScreenSize, HideForScreenSize} from 'react-foundation-components/lib/visibility';
+import { ShowForScreenSize, HideForScreenSize } from 'react-foundation-components/lib/visibility';
 ```
 
 over
 
 ```
-import {Button, ShowForScreenSize, HideForScreenSize} from 'react-foundation-components';
+import { Button, ShowForScreenSize, HideForScreenSize } from 'react-foundation-components';
 ```
 
-## Do I have to use CSS Modules?
+If you can't use CSS Modules, a set of components that use Foundation's global scoped class names are also provided. These are located under react-foundation-components/lib/global. To import Button that uses global scoped class names:
 
-No, you can use disable modules flag on css-loader and use Global CSS classes. When modules flag is disabled, the Foundation class names will be used in generated CSS style sheet files and used by components! However there is one caveat to using global CSS classes. The grid and flex-grid systems use same class names (row and column). Therefore you must make sure to NEVER IMPORT BOTH GRID SYSTEMS (which means you must import per component and never import main package entry since importing react-foundation-components will cause both Grid systems to appear in final CSS bundle)!
+```
+import Button from 'react-foundation-components/lib/global/button';
+import { ShowForScreenSize, HideForScreenSize } from 'react-foundation-components/lib/global/visibility';
+```
+
+If you use the components under react-foundation-components/lib/global, you are responsible for loading Foundation CSS stylesheet. You can do this in a few ways:
+ * include stylesheet such as https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css in head of your html with CDN link
+ * Import/Require react-foundation-components/lib/\_foundation.scss
+ * Use https://www.npmjs.com/package/foundation-sites-loader
+
+Here are some example applications that use global scoped class name components:
+ * Uses Foundation from CDN - https://github.com/aruberto/react-foundation-components/tree/master/examples/cdn
+ * Uses Foundation (Flexbox Version) from CDN - https://github.com/aruberto/react-foundation-components/tree/master/examples/cdn-flex
+ * Requires react-foundation-components/lib/\_foundation.scss with global-flexbox set to false - https://github.com/aruberto/react-foundation-components/tree/master/examples/global
+ * Requires react-foundation-components/lib/\_foundation.scss with global-flexbox set to true - https://github.com/aruberto/react-foundation-components/tree/master/examples/global-flex
 
 ## Thanks
 
