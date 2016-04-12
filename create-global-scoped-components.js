@@ -50,12 +50,11 @@ fs.walk(libPath)
         )
         .reverse()
         .value();
-    const content =
-      s(fs.readFileSync(item.path, 'utf8'))
-        .replace('require(\'./_styles.scss\')', '{}')
-        .replace('require(\'classnames/bind\')', 'require(\'classnames\')')
-        .replace('require(\'../util/', 'require(\'../../util/')
-        .value();
+
+    const content = fs.readFileSync(item.path, 'utf8')
+        .replace(/require\('\.\/\_styles\.scss'\)/g, '{}')
+        .replace(/require\('classnames\/bind'\)/, 'require(\'classnames\')')
+        .replace(/require\('\.\.\/util\//g, 'require(\'../../util/')
 
     fs.ensureDirSync(path.dirname(globalComponentPath));
     fs.writeFileSync(globalComponentPath, content, 'utf8');
