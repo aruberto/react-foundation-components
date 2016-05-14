@@ -56,7 +56,7 @@ import { Float, ClearFix } from 'react-foundation-components/lib/global/float';`
       </Float>
     </ClearFix>
     <Float position="center" noWrap>
-      <img src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg" />
+      <img role="presentation" src="http://foundation.zurb.com/sites/docs/assets/img/voyager.jpg" />
     </Float>
   </div>
 );

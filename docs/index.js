@@ -13,8 +13,8 @@ import {
   TitleBarItem,
   TitleBarTitle,
   TitleBarMenuIcon,
-} from '../lib/title-bar-flex';
-import { Menu, MenuItem } from '../lib/menu-flex';
+} from '../lib/title-bar-flex'; // eslint-disable-line import/no-unresolved
+import { Menu, MenuItem } from '../lib/menu-flex'; // eslint-disable-line import/no-unresolved
 import { HideForScreenSize } from '../src/visibility';
 
 import GridPage from './general/grid';

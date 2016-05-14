@@ -25,14 +25,20 @@ export default class TabPage extends Component {
             venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.
           </Tab>
           <Tab eventKey="3" title="Tab 3">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg" />
+            <img
+              role="presentation"
+              src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg"
+            />
           </Tab>
           <Tab eventKey="4" title="Tab 4">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.
           </Tab>
           <Tab eventKey="5" title="Tab 5">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg" />
+            <img
+              role="presentation"
+              src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg"
+            />
           </Tab>
           <Tab eventKey="6" title="Tab 6">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -51,14 +57,20 @@ export default class TabPage extends Component {
             venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.
           </Tab>
           <Tab eventKey="3" id="tab3" title="Tab 3">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg" />
+            <img
+              role="presentation"
+              src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg"
+            />
           </Tab>
           <Tab eventKey="4" id="tab4" title="Tab 4">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.
           </Tab>
           <Tab eventKey="5" id="tab5" title="Tab 5">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg" />
+            <img
+              role="presentation"
+              src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg"
+            />
           </Tab>
           <Tab eventKey="6" id="tab6" title="Tab 6">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -77,14 +89,20 @@ export default class TabPage extends Component {
             venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.
           </Tab>
           <Tab eventKey="3" title="Tab 3">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg" />
+            <img
+              role="presentation"
+              src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg"
+            />
           </Tab>
           <Tab eventKey="4" title="Tab 4">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.
           </Tab>
           <Tab eventKey="5" title="Tab 5">
-            <img src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg" />
+            <img
+              role="presentation"
+              src="http://foundation.zurb.com/sites/docs/assets/img/rectangle-3.jpg"
+            />
           </Tab>
           <Tab eventKey="6" title="Tab 6">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor

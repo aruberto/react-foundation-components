@@ -17,7 +17,7 @@ import {
   FormFieldHelp as FlexFormFieldHelp,
   FormFieldInline as FlexFormFieldInline,
   FormFieldButton as FlexFormFieldButton,
-} from '../../../lib/forms-flex';
+} from '../../../lib/forms-flex'; // eslint-disable-line import/no-unresolved
 import { Row, Column } from '../../../src/grid';
 import { Button } from '../../../src/button';
 

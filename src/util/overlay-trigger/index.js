@@ -141,20 +141,20 @@ export default class OverlayTrigger extends Component {
       window.addEventListener('resize', this.handleResize);
     }
 
-    this._mountNode = document.createElement('div');
+    this.mountNode = document.createElement('div');
     this.renderOverlay();
   }
 
   componentDidUpdate() {
-    if (this._mountNode) {
+    if (this.mountNode) {
       this.renderOverlay();
     }
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
-    unmountComponentAtNode(this._mountNode);
-    this._mountNode = null;
+    unmountComponentAtNode(this.mountNode);
+    this.mountNode = null;
   }
 
   getOverlayTarget = () => findDOMNode(this);
@@ -280,9 +280,9 @@ export default class OverlayTrigger extends Component {
     const { position, alignment } = this.props;
     const show = showOverlay(this.state);
 
-    if (show && this._elem) {
+    if (show && this.elem) {
       adjustPosition(
-        this._elem,
+        this.elem,
         this.getOverlayTarget,
         this.getOverlayContainer,
         position,
@@ -292,7 +292,7 @@ export default class OverlayTrigger extends Component {
   };
 
   handleEntering = (elem) => {
-    this._elem = elem;
+    this.elem = elem;
 
     this.handleResize();
   }
@@ -322,14 +322,14 @@ export default class OverlayTrigger extends Component {
         rootClose={closeOnClickOutside}
         show={show}
         target={this.getOverlayTarget}
-        transition={this._transition}
+        transition={this.transition}
       >
         {clonedOverlay}
       </Overlay>
     );
   };
 
-  renderOverlay = () => renderSubtreeIntoContainer(this, this._overlay, this._mountNode);
+  renderOverlay = () => renderSubtreeIntoContainer(this, this.overlay, this.mountNode);
 
   render() {
     const { children } = this.props;
@@ -350,7 +350,7 @@ export default class OverlayTrigger extends Component {
       clonedChild = <span {...childProps}>{children}</span>;
     }
 
-    this._overlay = this.createOverlay();
+    this.overlay = this.createOverlay();
 
     return clonedChild;
   }

@@ -6,9 +6,12 @@ import {
   TopBarContent as FlexTopBarContent,
   TopBarItem as FlexTopBarItem,
   TopBarTitle as FlexTopBarTitle,
-} from '../../../lib/top-bar-flex';
+} from '../../../lib/top-bar-flex'; // eslint-disable-line import/no-unresolved
 import { Menu, MenuItem } from '../../../src/menu';
-import { Menu as FlexMenu, MenuItem as FlexMenuItem } from '../../../lib/menu-flex';
+import {
+  Menu as FlexMenu,
+  MenuItem as FlexMenuItem,
+} from '../../../lib/menu-flex'; // eslint-disable-line import/no-unresolved
 import { Button } from '../../../src/button';
 import { MenuIcon } from '../../../src/menu-icon';
 import { ShowForScreenSize, HideForScreenSize } from '../../../src/visibility';

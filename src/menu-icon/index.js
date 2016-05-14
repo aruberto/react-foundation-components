@@ -16,7 +16,8 @@ export const MenuIcon = ({
   const classNames = cx(className, cxStyles('menu-icon', { dark }));
 
   return (
-    <button {...restProps}
+    <button
+      {...restProps}
       aria-controls={controls}
       aria-expanded={open}
       className={classNames}
