@@ -1,8 +1,0 @@
-// Remove when https://github.com/zurb/foundation-sites/issues/8265 is fixed
-@include -zf-each-breakpoint {
-  @for $i from 1 through 6 {
-    .#{$-zf-size}-order-#{$i} {
-      @include flex-order($i);
-    }
-  }
-}
