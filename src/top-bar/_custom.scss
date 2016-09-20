@@ -1,8 +1,10 @@
+// Remove when https://github.com/zurb/foundation-sites/pull/9177/files is fixed
 @if $global-flexbox {
-  .top-bar-content {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .top-bar-left {
+    flex: 1 1 auto !important;
+  }
+
+  .top-bar-right {
+    flex: 0 1 auto !important;
   }
 }

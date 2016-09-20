@@ -1,17 +1,19 @@
 import { TEXT_ALIGNMENT_CLASS_NAMES } from '../util/constants';
 import createWrapperComponent from '../util/create-wrapper-component';
 import {
+  createScreenSizeProps,
   createScreenSizePropTypes,
-  createScreenSizeClassNamesFromProps,
+  createScreenSizeClassNames,
 } from '../util/screen-size';
 import styles from './_styles.scss';
+
+const textAlignmentProps = createScreenSizeProps(TEXT_ALIGNMENT_CLASS_NAMES);
 
 export const TextAlignment = createWrapperComponent({
   displayName: 'TextAlignment',
   styles,
-  propTypes: createScreenSizePropTypes(TEXT_ALIGNMENT_CLASS_NAMES),
-  mapPropsToClassNames:
-    (props) => createScreenSizeClassNamesFromProps(TEXT_ALIGNMENT_CLASS_NAMES, props),
+  propTypes: createScreenSizePropTypes(textAlignmentProps),
+  mapProps: props => createScreenSizeClassNames(textAlignmentProps, props),
   defaultComponentClass: 'div',
 });
 

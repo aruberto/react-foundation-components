@@ -11,8 +11,11 @@ export const ShowForScreenSize = createWrapperComponent({
   propTypes: {
     screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
   },
-  mapPropsToClassNames: ({ screenSize }) => ({
-    [`show-for-${screenSize}`]: includes(LARGER_SCREEN_SIZES, screenSize),
+  mapProps: ({ screenSize, ...props }) => ({
+    props,
+    classNames: {
+      [`show-for-${screenSize}`]: includes(LARGER_SCREEN_SIZES, screenSize),
+    },
   }),
 });
 
@@ -22,8 +25,11 @@ export const ShowOnlyForScreenSize = createWrapperComponent({
   propTypes: {
     screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
   },
-  mapPropsToClassNames: ({ screenSize }) => ({
-    [`show-for-${screenSize}-only`]: includes(SCREEN_SIZES, screenSize),
+  mapProps: ({ screenSize, ...props }) => ({
+    props,
+    classNames: {
+      [`show-for-${screenSize}-only`]: includes(SCREEN_SIZES, screenSize),
+    },
   }),
 });
 
@@ -33,9 +39,12 @@ export const HideForScreenSize = createWrapperComponent({
   propTypes: {
     screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
   },
-  mapPropsToClassNames: ({ screenSize }) => ({
-    hide: !includes(LARGER_SCREEN_SIZES, screenSize) && includes(SCREEN_SIZES, screenSize),
-    [`hide-for-${screenSize}`]: includes(LARGER_SCREEN_SIZES, screenSize),
+  mapProps: ({ screenSize, ...props }) => ({
+    props,
+    classNames: {
+      hide: !includes(LARGER_SCREEN_SIZES, screenSize) && includes(SCREEN_SIZES, screenSize),
+      [`hide-for-${screenSize}`]: includes(LARGER_SCREEN_SIZES, screenSize),
+    },
   }),
 });
 
@@ -45,21 +54,30 @@ export const HideOnlyForScreenSize = createWrapperComponent({
   propTypes: {
     screenSize: PropTypes.oneOf(SCREEN_SIZES).isRequired,
   },
-  mapPropsToClassNames: ({ screenSize }) => ({
-    [`hide-for-${screenSize}-only`]: includes(SCREEN_SIZES, screenSize),
+  mapProps: ({ screenSize, ...props }) => ({
+    props,
+    classNames: {
+      [`hide-for-${screenSize}-only`]: includes(SCREEN_SIZES, screenSize),
+    },
   }),
 });
 
 export const Hide = createWrapperComponent({
   displayName: 'Hide',
   styles,
-  mapPropsToClassNames: () => 'hide',
+  mapProps: props => ({
+    props,
+    classNames: 'hide',
+  }),
 });
 
 export const Invisible = createWrapperComponent({
   displayName: 'Invisible',
   styles,
-  mapPropsToClassNames: () => 'invisible',
+  mapProps: props => ({
+    props,
+    classNames: 'invisible',
+  }),
 });
 
 export const ShowForScreenOrientation = createWrapperComponent({
@@ -68,8 +86,11 @@ export const ShowForScreenOrientation = createWrapperComponent({
   propTypes: {
     screenOrientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
   },
-  mapPropsToClassNames: ({ screenOrientation }) => ({
-    [`show-for-${screenOrientation}`]: includes(SCREEN_ORIENTATIONS, screenOrientation),
+  mapProps: ({ screenOrientation, ...props }) => ({
+    props,
+    classNames: {
+      [`show-for-${screenOrientation}`]: includes(SCREEN_ORIENTATIONS, screenOrientation),
+    },
   }),
 });
 
@@ -79,27 +100,38 @@ export const HideForScreenOrientation = createWrapperComponent({
   propTypes: {
     screenOrientation: PropTypes.oneOf(SCREEN_ORIENTATIONS).isRequired,
   },
-  mapPropsToClassNames: ({ screenOrientation }) => ({
-    [`hide-for-${screenOrientation}`]: includes(SCREEN_ORIENTATIONS, screenOrientation),
+  mapProps: ({ screenOrientation, ...props }) => ({
+    props,
+    classNames: {
+      [`hide-for-${screenOrientation}`]: includes(SCREEN_ORIENTATIONS, screenOrientation),
+    },
   }),
 });
 
 export const ShowForScreenReader = createWrapperComponent({
   displayName: 'ShowForScreenReader',
   styles,
-  mapPropsToClassNames: () => 'show-for-sr',
+  mapProps: props => ({
+    props,
+    classNames: 'show-for-sr',
+  }),
 });
 
 export const HideForScreenReader = createWrapperComponent({
   displayName: 'HideForScreenReader',
   styles,
-  mapPropsToProps: () => ({ 'aria-hidden': true }),
+  mapProps: props => ({
+    props: { ...props, 'aria-hidden': true },
+  }),
 });
 
 export const ShowOnFocus = createWrapperComponent({
   displayName: 'ShowOnFocus',
   styles,
-  mapPropsToClassNames: () => 'show-on-focus',
+  mapProps: props => ({
+    props,
+    classNames: 'show-on-focus',
+  }),
 });
 
 export const Visibility = {

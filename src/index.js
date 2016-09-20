@@ -46,7 +46,7 @@ export {
 } from './switch';
 
 export { Menu, MenuItem } from './menu';
-export { TopBar, TopBarContent, TopBarItem, TopBarTitle } from './top-bar';
+export { TopBar, TopBarItem, TopBarTitle } from './top-bar';
 
 export { Accordion, AccordionItem } from './accordion';
 export { Callout } from './callout';

@@ -6,10 +6,11 @@ import {
     as renderSubtreeIntoContainer,
 } from 'react-dom';
 import elementType from 'react-prop-types/lib/elementType';
-import mountable from 'react-prop-types/lib/mountable';
+import componentOrElement from 'react-prop-types/lib/componentOrElement';
 import Overlay from 'react-overlays/lib/Overlay';
 import Transition from 'react-overlays/lib/Transition';
-import { getPosition } from 'react-overlays/lib/utils/overlayPositionUtils';
+import getOffset from 'dom-helpers/query/offset';
+import getPosition from 'dom-helpers/query/position';
 import ownerDocument from 'react-overlays/lib/utils/ownerDocument';
 import getContainer from 'react-overlays/lib/utils/getContainer';
 import contains from 'dom-helpers/query/contains';
@@ -36,7 +37,8 @@ function showOverlay(state) {
 function adjustPosition(elem, getOverlayTarget, getOverlayContainer, position, alignment) {
   const target = getOverlayTarget();
   const container = getOverlayContainer();
-  const targetPosition = getPosition(target, container);
+  const targetPosition =
+    container.tagName === 'BODY' ? getOffset(target) : getPosition(target, container);
 
   if (position === 'top') {
     css(elem, 'top', `${targetPosition.top - parseInt(css(elem, 'height'), 10)}px`);
@@ -107,7 +109,7 @@ export default class OverlayTrigger extends Component {
     alignment: PropTypes.oneOf(OVERLAY_ALIGNMENTS),
     children: PropTypes.node,
     closeOnClickOutside: PropTypes.bool,
-    container: React.PropTypes.oneOfType([mountable, React.PropTypes.func]),
+    container: React.PropTypes.oneOfType([componentOrElement, React.PropTypes.func]),
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,

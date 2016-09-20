@@ -51,6 +51,15 @@ Dropdown.defaultProps = {
   position: 'bottom',
 };
 
+const DropdownOverlay = ({
+  placement, // eslint-disable-line no-unused-vars, react/prop-types
+  arrowOffsetLeft, // eslint-disable-line no-unused-vars, react/prop-types
+  arrowOffsetTop, // eslint-disable-line no-unused-vars, react/prop-types
+  positionLeft, // eslint-disable-line no-unused-vars, react/prop-types
+  positionTop, // eslint-disable-line no-unused-vars, react/prop-types
+  ...restProps,
+}) => <Dropdown {...restProps} />;
+
 export const LinkWithDropdown = ({
   children,
   dropdownClassName,
@@ -77,7 +86,7 @@ export const LinkWithDropdown = ({
   }
 
   const dropdown = (
-    <Dropdown
+    <DropdownOverlay
       aria-labelledby={labelledBy}
       className={dropdownClassName}
       id={dropdownId}
@@ -86,7 +95,7 @@ export const LinkWithDropdown = ({
       style={dropdownStyle}
     >
       {dropdownContent}
-    </Dropdown>
+    </DropdownOverlay>
   );
 
   return (
@@ -109,7 +118,7 @@ LinkWithDropdown.propTypes = {
   dropdownId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   dropdownPosition: PropTypes.oneOf(OVERLAY_POSITIONS),
   dropdownSize: PropTypes.oneOf(COMPONENT_SIZES),
-  dropdownStyle: PropTypes.object,
+  dropdownStyle: PropTypes.shape({}),
 };
 LinkWithDropdown.defaultProps = {
   dropdownPosition: 'bottom',

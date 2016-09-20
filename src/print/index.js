@@ -4,13 +4,13 @@ import styles from './_styles.scss';
 export const ShowForPrint = createWrapperComponent({
   displayName: 'ShowOnlyForPrint',
   styles,
-  mapPropsToClassNames: () => 'show-for-print',
+  mapProps: props => ({ props, classNames: 'show-for-print' }),
 });
 
 export const HideForPrint = createWrapperComponent({
   displayName: 'HideOnlyForPrint',
   styles,
-  mapPropsToClassNames: () => 'hide-for-print',
+  mapProps: props => ({ props, classNames: 'hide-for-print' }),
 });
 
 export const Print = { ShowFor: ShowForPrint, HideFor: HideForPrint };

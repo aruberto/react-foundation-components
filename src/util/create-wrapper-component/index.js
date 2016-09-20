@@ -7,9 +7,7 @@ export default function createWrapperComponent({
   displayName = 'Wrapper',
   styles = {},
   propTypes = {},
-  mapPropsToClassNames = () => ({}),
-  mapPropsToStyle = () => ({}),
-  mapPropsToProps = (props) => props,
+  mapProps = props => ({ props, classNames: {}, style: {} }),
   defaultComponentClass = 'span',
 } = {}) {
   const cxStyles = cxBinder.bind(styles);
@@ -22,28 +20,28 @@ export default function createWrapperComponent({
     ...restProps,
   }) => {
     const ComponentClass = componentClass || defaultComponentClass;
-    const mappedProps = mapPropsToProps(restProps);
-    const mappedClassNames = cxStyles(mapPropsToClassNames(restProps));
-    const mappedStyle = mapPropsToStyle(restProps);
+    const {
+      props: mappedProps,
+      classNames: mappedClassNames,
+      style: mappedStyle,
+    } = mapProps(restProps);
 
     if (noWrap) {
       const child = Children.only(children);
       const childProps = child.props ? child.props : {};
 
       return cloneElement(child, {
-        ...restProps,
         ...childProps,
         ...mappedProps,
-        className: cx(className, child.props.className, mappedClassNames),
+        className: cx(className, child.props.className, cxStyles(mappedClassNames)),
         style: { ...style, ...child.props.style, ...mappedStyle },
       });
     }
 
     return (
       <ComponentClass
-        {...restProps}
         {...mappedProps}
-        className={cx(className, mappedClassNames)}
+        className={cx(className, cxStyles(mappedClassNames))}
         style={{ ...style, ...mappedStyle }}
       >
         {children}
@@ -56,7 +54,7 @@ export default function createWrapperComponent({
     children: PropTypes.node,
     className: PropTypes.string,
     componentClass: elementType,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
     noWrap: PropTypes.bool,
     ...propTypes,
   };

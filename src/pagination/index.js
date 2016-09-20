@@ -55,7 +55,6 @@ function createPaginationLink(baseClassName, disabledCalculator, newPageCalculat
     activePage: PropTypes.number,
     children: PropTypes.node,
     className: PropTypes.string,
-    current: PropTypes.bool,
     label: PropTypes.string,
     lastPage: PropTypes.number,
     onSelect: PropTypes.func,

@@ -11,8 +11,10 @@ export const Label = createWrapperComponent({
   propTypes: {
     color: PropTypes.oneOf(COMPONENT_COLORS),
   },
-  mapPropsToClassNames:
-    ({ color }) => ['label', { [color]: includes(COMPONENT_ALTERNATIVE_COLORS, color) }],
+  mapProps: ({ color, ...props }) => ({
+    props,
+    classNames: ['label', { [color]: includes(COMPONENT_ALTERNATIVE_COLORS, color) }],
+  }),
 });
 
 export default Label;

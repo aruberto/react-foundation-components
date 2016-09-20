@@ -3,27 +3,31 @@ import { PropTypes } from 'react';
 import { GRID_ROW_CLASS_NAMES, GRID_COLUMN_CLASS_NAMES } from '../util/constants';
 import createWrapperComponent from '../util/create-wrapper-component';
 import {
+  createScreenSizeProps,
   createScreenSizePropTypes,
-  createScreenSizeClassNamesFromProps,
+  createScreenSizeClassNames,
 } from '../util/screen-size';
 import styles from './_styles.scss';
+
+const rowProps = createScreenSizeProps(GRID_ROW_CLASS_NAMES);
+const columnProps = createScreenSizeProps(GRID_COLUMN_CLASS_NAMES);
 
 export const Row = createWrapperComponent({
   displayName: 'Row',
   styles,
   propTypes: {
-    ...createScreenSizePropTypes(GRID_ROW_CLASS_NAMES),
+    ...createScreenSizePropTypes(rowProps),
     collapse: PropTypes.bool,
     expanded: PropTypes.bool,
   },
-  mapPropsToClassNames: ({ collapse, expanded, ...props }) => [
-    'row',
-    {
-      ...createScreenSizeClassNamesFromProps(GRID_ROW_CLASS_NAMES, props),
-      collapse,
-      expanded,
-    },
-  ],
+  mapProps: ({ collapse, expanded, ...restProps }) => {
+    const { classNames, props } = createScreenSizeClassNames(rowProps, restProps);
+
+    return {
+      props,
+      classNames: ['row', { ...classNames, collapse, expanded }],
+    };
+  },
   defaultComponentClass: 'div',
 });
 
@@ -31,16 +35,17 @@ export const Column = createWrapperComponent({
   displayName: 'Column',
   styles,
   propTypes: {
-    ...createScreenSizePropTypes(GRID_COLUMN_CLASS_NAMES),
+    ...createScreenSizePropTypes(columnProps),
     end: PropTypes.bool,
   },
-  mapPropsToClassNames: ({ end, ...props }) => [
-    'column',
-    {
-      ...createScreenSizeClassNamesFromProps(GRID_COLUMN_CLASS_NAMES, props),
-      end,
-    },
-  ],
+  mapProps: ({ end, ...restProps }) => {
+    const { classNames, props } = createScreenSizeClassNames(columnProps, restProps);
+
+    return {
+      props,
+      classNames: ['column', { ...classNames, end }],
+    };
+  },
   defaultComponentClass: 'div',
 });
 

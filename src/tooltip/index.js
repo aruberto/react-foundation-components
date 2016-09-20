@@ -41,6 +41,15 @@ Tooltip.defaultProps = {
   position: 'bottom',
 };
 
+const TooltipOverlay = ({
+  placement, // eslint-disable-line no-unused-vars, react/prop-types
+  arrowOffsetLeft, // eslint-disable-line no-unused-vars, react/prop-types
+  arrowOffsetTop, // eslint-disable-line no-unused-vars, react/prop-types
+  positionLeft, // eslint-disable-line no-unused-vars, react/prop-types
+  positionTop, // eslint-disable-line no-unused-vars, react/prop-types
+  ...restProps,
+}) => <Tooltip {...restProps} />;
+
 export const LinkWithTooltip = ({
   children,
   tooltipAlignment,
@@ -69,14 +78,14 @@ export const LinkWithTooltip = ({
   }
 
   const tooltip = (
-    <Tooltip
+    <TooltipOverlay
       className={tooltipClassName}
       id={tooltipId}
       position={tooltipPosition}
       style={tooltipStyle}
     >
       {tooltipContent}
-    </Tooltip>
+    </TooltipOverlay>
   );
 
   return (

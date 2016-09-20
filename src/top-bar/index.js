@@ -25,19 +25,6 @@ TopBarItem.propTypes = {
   position: PropTypes.oneOf(TOP_BAR_POSITIONS).isRequired,
 };
 
-export const TopBarContent = ({
-  className,
-  ...restProps,
-}) => {
-  const classNames = cx(className, cxStyles({ 'top-bar-content': IS_FLEX_MODE }));
-
-  return <div {...restProps} className={classNames} />;
-};
-
-TopBarContent.propTypes = {
-  className: PropTypes.string,
-};
-
 export const TopBarTitle = ({
   className,
   ...restProps,
@@ -78,7 +65,6 @@ TopBar.defaultProps = {
   stack: SCREEN_SIZE_SMALL,
 };
 
-TopBar.Content = TopBarContent;
 TopBar.Item = TopBarItem;
 TopBar.Title = TopBarTitle;
 

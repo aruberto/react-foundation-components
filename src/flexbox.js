@@ -49,7 +49,6 @@ export {
 export { Menu, MenuItem } from './menu-flex'; // eslint-disable-line import/no-unresolved
 export {
   TopBar,
-  TopBarContent,
   TopBarItem,
   TopBarTitle,
 } from './top-bar-flex'; // eslint-disable-line import/no-unresolved

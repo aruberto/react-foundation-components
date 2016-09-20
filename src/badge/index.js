@@ -11,8 +11,10 @@ export const Badge = createWrapperComponent({
   propTypes: {
     color: PropTypes.oneOf(COMPONENT_COLORS),
   },
-  mapPropsToClassNames:
-    ({ color }) => ['badge', { [color]: includes(COMPONENT_ALTERNATIVE_COLORS, color) }],
+  mapProps: ({ color, ...props }) => ({
+    props,
+    classNames: ['badge', { [color]: includes(COMPONENT_ALTERNATIVE_COLORS, color) }],
+  }),
 });
 
 export default Badge;

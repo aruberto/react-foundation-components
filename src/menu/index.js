@@ -49,12 +49,18 @@ export const Menu = ({
         }
       )
     );
+  const flexProps = {};
+
+  if (IS_FLEX_MODE) {
+    flexProps.horizontalAlignment = horizontalAlignment;
+  }
+
   const content = (
     <FlexParent
       {...restProps}
       className={classNames}
       componentClass="ul"
-      horizontalAlignment={IS_FLEX_MODE ? horizontalAlignment : null}
+      {...flexProps}
     />
   );
 
@@ -69,7 +75,7 @@ export const Menu = ({
 
 Menu.propTypes = {
   centerContainerClassName: PropTypes.string,
-  centerContainerStyle: PropTypes.object,
+  centerContainerStyle: PropTypes.shape({}),
   className: PropTypes.string,
   expanded: PropTypes.bool,
   horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(SCREEN_SIZES)]),
