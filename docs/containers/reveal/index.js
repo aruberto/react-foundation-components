@@ -49,6 +49,10 @@ export default class RevealPage extends Component {
 
   handleHideNoOverlay = () => this.handleShowHide('NoOverlay', false);
 
+  handleShowNoCloseOnClick = () => this.handleShowHide('NoCloseOnClick', true);
+
+  handleHideNoCloseOnClick = () => this.handleShowHide('NoCloseOnClick', false);
+
   render() {
     const {
       showBasic,
@@ -59,6 +63,7 @@ export default class RevealPage extends Component {
       showNested1,
       showNested2,
       showNoOverlay,
+      showNoCloseOnClick,
     } = this.state;
 
     return (
@@ -112,6 +117,12 @@ export default class RevealPage extends Component {
         <Reveal onHide={this.handleHideNoOverlay} overlay={false} show={showNoOverlay}>
           <CloseButton onClick={this.handleHideNoOverlay} />
           <p>I feel so free!</p>
+        </Reveal>
+        <br />
+        <Button onClick={this.handleShowNoCloseOnClick}>Click me for a static overlay Modal</Button>
+        <Reveal onHide={this.handleHideNoCloseOnClick} overlay="static" show={showNoCloseOnClick}>
+          <CloseButton onClick={this.handleHideNoCloseOnClick} />
+          <p>Click outside : Nothing happens!!!</p>
         </Reveal>
       </div>
     );

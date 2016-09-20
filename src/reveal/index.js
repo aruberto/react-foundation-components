@@ -56,7 +56,10 @@ Reveal.propTypes = {
   children: PropTypes.node,
   containerClassName: PropTypes.string,
   containerStyle: PropTypes.object,
-  overlay: PropTypes.bool,
+  overlay: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['static']),
+  ]),
   overlayClassName: PropTypes.string,
   overlayStyle: PropTypes.object,
   revealClassName: PropTypes.string,
