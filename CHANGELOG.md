@@ -1,3 +1,16 @@
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/aruberto/react-foundation-components/compare/0.11.1...0.12.0) (2016-09-21)
+
+
+#### BREAKING CHANGES
+* Fix Unknown Prop warnings in React 15.2 (#19). Rewrote many of the components that do dynamic prop calculations (like grid and flex components).
+
+
+#### Miscellaneous
+* Allow static as value to overlay prop on Reveal (#20).
+* Allow error prop to be a string on form components (#17).
+
+
 <a name="0.11.1"></a>
 ## [0.11.1](https://github.com/aruberto/react-foundation-components/compare/0.11.0...0.11.1) (2016-03-17)
 
