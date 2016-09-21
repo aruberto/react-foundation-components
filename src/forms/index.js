@@ -106,7 +106,7 @@ export const FormFieldInput = ({
 
 FormFieldInput.propTypes = {
   className: PropTypes.string,
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   inline: PropTypes.bool,
@@ -156,7 +156,7 @@ export const FormFieldLabel = ({
 FormFieldLabel.propTypes = {
   className: PropTypes.string,
   middle: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(SCREEN_SIZES)]),
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   htmlFor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -185,7 +185,7 @@ export const FormFieldError = ({
 
 FormFieldError.propTypes = {
   className: PropTypes.string,
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
@@ -212,7 +212,7 @@ export const FormFieldHelp = ({
 
 FormFieldHelp.propTypes = {
   className: PropTypes.string,
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
@@ -254,7 +254,7 @@ export const FormFieldInline = ({
 FormFieldInline.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
@@ -286,7 +286,7 @@ export const FormFieldButton = ({
 FormFieldButton.propTypes = {
   containerClassName: PropTypes.string,
   containerStyle: PropTypes.shape({}),
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   formFieldId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   inline: PropTypes.bool,
@@ -325,7 +325,7 @@ export const FormField = ({
 FormField.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   grid: PropTypes.bool,
 };
