@@ -49,7 +49,7 @@
     "dom-helpers": "^2.4.0",
     "foundation-sites": "^6.2.3",
     "lodash": "^4.16.1",
-    "react-overlays": "^0.6.6",
+    "react-overlays": "^0.7.0",
     "react-prop-types": "^0.4.0",
     "uncontrollable": "^4.0.3",
     "underscore.string": "^3.3.4"
