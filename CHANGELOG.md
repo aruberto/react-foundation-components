@@ -1,3 +1,19 @@
+<a name="0.12.3"></a>                                                                                    
+## [0.12.3](https://github.com/aruberto/react-foundation-components/compare/0.12.1...0.12.3) (2017-07-27)
+
+
+#### Miscellaneous
+* Fix typo (#28)
+
+
+<a name="0.12.1"></a>                                                                                    
+## [0.12.1](https://github.com/aruberto/react-foundation-components/compare/0.12.0...0.12.1) (2017-06-20)
+
+
+#### Miscellaneous
+* Upgrade react-overlays (#27)
+
+
 <a name="0.12.0"></a>
 # [0.12.0](https://github.com/aruberto/react-foundation-components/compare/0.11.1...0.12.0) (2016-09-21)
 
