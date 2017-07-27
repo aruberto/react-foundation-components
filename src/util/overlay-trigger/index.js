@@ -318,7 +318,7 @@ export default class OverlayTrigger extends Component {
 
     return (
       <Overlay
-        constainer={this.getOverlayContainer}
+        container={this.getOverlayContainer}
         onHide={this.handleRootClose}
         placement={position}
         rootClose={closeOnClickOutside}
