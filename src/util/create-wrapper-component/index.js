@@ -1,4 +1,5 @@
-import React, { PropTypes, Children, cloneElement } from 'react';
+import PropTypes from 'prop-types';
+import React, { Children, cloneElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import elementType from 'react-prop-types/lib/elementType';

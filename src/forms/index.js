@@ -1,4 +1,5 @@
-import React, { PropTypes, Children, isValidElement, cloneElement } from 'react';
+import PropTypes from 'prop-types';
+import React, { Children, isValidElement, cloneElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
