@@ -1,3 +1,11 @@
+<a name="0.13.0"></a>
+# [0.13.0](https://github.com/aruberto/react-foundation-components/compare/0.12.3...0.13.0) (2017-11-05)
+
+
+#### BREAKING CHANGES
+* Migrate usage of React.PropTypes to prop-types package (#29).
+
+
 <a name="0.12.3"></a>                                                                                    
 ## [0.12.3](https://github.com/aruberto/react-foundation-components/compare/0.12.1...0.12.3) (2017-07-27)
 
