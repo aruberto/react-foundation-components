@@ -1,4 +1,5 @@
-import React, { PropTypes, Children, cloneElement, isValidElement } from 'react';
+import PropTypes from 'prop-types';
+import React, { Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import uncontrollable from 'uncontrollable/batching';

@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import includes from 'lodash/includes';
 
 import { FLOAT_POSITIONS } from '../util/constants';

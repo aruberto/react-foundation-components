@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, cloneElement, isValidElement } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component, cloneElement, isValidElement } from 'react';
 import {
   findDOMNode,
   unmountComponentAtNode,
@@ -109,7 +110,7 @@ export default class OverlayTrigger extends Component {
     alignment: PropTypes.oneOf(OVERLAY_ALIGNMENTS),
     children: PropTypes.node,
     closeOnClickOutside: PropTypes.bool,
-    container: React.PropTypes.oneOfType([componentOrElement, React.PropTypes.func]),
+    container: PropTypes.oneOfType([componentOrElement, PropTypes.func]),
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
