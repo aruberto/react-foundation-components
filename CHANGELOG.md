@@ -1,3 +1,9 @@
+<a name="0.14.0"></a>
+# [0.13.0](https://github.com/aruberto/react-foundation-components/compare/0.12.3...0.13.0) (2017-11-05)
+
+#### BREAKING CHANGES
+* Package now works with react >= 16.3. This is the oldest supported version from now.
+
 <a name="0.13.0"></a>
 # [0.13.0](https://github.com/aruberto/react-foundation-components/compare/0.12.3...0.13.0) (2017-11-05)
 
