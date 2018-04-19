@@ -1,6 +1,6 @@
 {
-  "name": "react-foundation-components",
-  "version": "0.13.0",
+  "name": "react-foundation-components-fork",
+  "version": "0.14.0",
   "description": "Foundation Sites components built with the power of React and CSS Modules",
   "main": "lib/index.js",
   "files": [
