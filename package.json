@@ -1,6 +1,6 @@
 {
-  "name": "react-foundation-components",
-  "version": "0.13.0",
+  "name": "react-foundation-components-fork",
+  "version": "0.14.1",
   "description": "Foundation Sites components built with the power of React and CSS Modules",
   "main": "lib/index.js",
   "files": [
@@ -40,8 +40,8 @@
   },
   "homepage": "https://github.com/aruberto/react-foundation-components#readme",
   "peerDependencies": {
-    "react": ">=0.14.0",
-    "react-dom": ">=0.14.0"
+    "react": ">=16",
+    "react-dom": ">=16"
   },
   "dependencies": {
     "babel-runtime": "^6.25.0",
@@ -52,7 +52,7 @@
     "prop-types": "^15.6.0",
     "react-overlays": "^0.7.0",
     "react-prop-types": "^0.4.0",
-    "uncontrollable": "^4.1.0",
+    "uncontrollable": "^5.1.0",
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {
@@ -84,8 +84,8 @@
     "minimist": "^1.2.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^0.13.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-router": "^2.8.1",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",

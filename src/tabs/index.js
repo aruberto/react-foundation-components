@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Children, cloneElement, isValidElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
-import uncontrollable from 'uncontrollable/batching';
+import uncontrollable from 'uncontrollable';
 import isBlank from 'underscore.string/isBlank';
 
 import styles from './_styles.scss';

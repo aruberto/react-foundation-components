@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { Component, cloneElement, isValidElement } from 'react';
-import {
-  findDOMNode,
-  unmountComponentAtNode,
-  unstable_renderSubtreeIntoContainer // eslint-disable-line camelcase
-    as renderSubtreeIntoContainer,
-} from 'react-dom';
+import React, {
+  Component,
+  cloneElement,
+  isValidElement,
+  Fragment,
+} from 'react';
+import { findDOMNode, unmountComponentAtNode, createPortal } from 'react-dom';
 import elementType from 'react-prop-types/lib/elementType';
 import componentOrElement from 'react-prop-types/lib/componentOrElement';
 import Overlay from 'react-overlays/lib/Overlay';
@@ -24,7 +24,7 @@ function mouseOverOut(event, callback) {
   const target = event.currentTarget;
   const related = event.relatedTarget || event.nativeEvent.toElement;
 
-  if (!related || related !== target && !contains(target, related)) {
+  if (!related || (related !== target && !contains(target, related))) {
     callback(event);
   }
 }
@@ -35,18 +35,34 @@ function showOverlay(state) {
   return showClick || showFocus || showHover || overlayHoverCount > 0;
 }
 
-function adjustPosition(elem, getOverlayTarget, getOverlayContainer, position, alignment) {
+function adjustPosition(
+  elem,
+  getOverlayTarget,
+  getOverlayContainer,
+  position,
+  alignment
+) {
   const target = getOverlayTarget();
   const container = getOverlayContainer();
   const targetPosition =
-    container.tagName === 'BODY' ? getOffset(target) : getPosition(target, container);
+    container.tagName === 'BODY'
+      ? getOffset(target)
+      : getPosition(target, container);
 
   if (position === 'top') {
-    css(elem, 'top', `${targetPosition.top - parseInt(css(elem, 'height'), 10)}px`);
+    css(
+      elem,
+      'top',
+      `${targetPosition.top - parseInt(css(elem, 'height'), 10)}px`
+    );
   } else if (position === 'bottom') {
     css(elem, 'top', `${targetPosition.top + targetPosition.height}px`);
   } else if (position === 'left') {
-    css(elem, 'left', `${targetPosition.left - parseInt(css(elem, 'width'), 10)}px`);
+    css(
+      elem,
+      'left',
+      `${targetPosition.left - parseInt(css(elem, 'width'), 10)}px`
+    );
   } else if (position === 'right') {
     css(elem, 'left', `${targetPosition.left + targetPosition.width}px`);
   }
@@ -58,7 +74,7 @@ function adjustPosition(elem, getOverlayTarget, getOverlayContainer, position, a
       leftOffset = targetPosition.width - parseInt(css(elem, 'width'), 10);
 
       if (alignment !== 'right') {
-        leftOffset = leftOffset / 2;
+        leftOffset /= 2;
       }
     }
 
@@ -70,7 +86,7 @@ function adjustPosition(elem, getOverlayTarget, getOverlayContainer, position, a
       topOffset = targetPosition.height - parseInt(css(elem, 'height'), 10);
 
       if (alignment !== 'bottom') {
-        topOffset = topOffset / 2;
+        topOffset /= 2;
       }
     }
 
@@ -130,6 +146,12 @@ export default class OverlayTrigger extends Component {
     updateWindowResize: true,
   };
 
+  constructor(props) {
+    super(props);
+    this.mountNode = document.createElement('div');
+    document.body.appendChild(this.mountNode);
+  }
+
   state = {
     showClick: false,
     showFocus: false,
@@ -143,26 +165,19 @@ export default class OverlayTrigger extends Component {
     if (updateWindowResize) {
       window.addEventListener('resize', this.handleResize);
     }
-
-    this.mountNode = document.createElement('div');
-    this.renderOverlay();
-  }
-
-  componentDidUpdate() {
-    if (this.mountNode) {
-      this.renderOverlay();
-    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
     unmountComponentAtNode(this.mountNode);
+    document.body.removeChild(this.mountNode);
     this.mountNode = null;
   }
 
   getOverlayTarget = () => findDOMNode(this);
 
-  getOverlayContainer = () => getContainer(this.props.container, ownerDocument(this).body);
+  getOverlayContainer = () =>
+    getContainer(this.props.container, ownerDocument(this).body);
 
   handleAnyClick = debounce((showClick) => {
     const { showClick: showClickPrev } = this.state;
@@ -298,7 +313,7 @@ export default class OverlayTrigger extends Component {
     this.elem = elem;
 
     this.handleResize();
-  }
+  };
 
   _transition = hackTransition(this.props.transition, this.handleEntering);
 
@@ -332,8 +347,6 @@ export default class OverlayTrigger extends Component {
     );
   };
 
-  renderOverlay = () => renderSubtreeIntoContainer(this, this.overlay, this.mountNode);
-
   render() {
     const { children } = this.props;
     const { show } = this.state;
@@ -355,6 +368,11 @@ export default class OverlayTrigger extends Component {
 
     this.overlay = this.createOverlay();
 
-    return clonedChild;
+    return (
+      <Fragment>
+        {clonedChild}
+        {createPortal(this.overlay, this.mountNode)}
+      </Fragment>
+    );
   }
 }
