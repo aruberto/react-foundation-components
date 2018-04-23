@@ -4,7 +4,7 @@ import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
 import isBlank from 'underscore.string/isBlank';
-import elementType from 'react-prop-types/lib/elementType';
+import elementType from 'prop-types-extra/lib/elementType';
 
 import { SCREEN_SIZES, LARGER_SCREEN_SIZES } from '../util/constants';
 import { TextAlignment } from '../text-alignment';

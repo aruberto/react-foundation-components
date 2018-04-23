@@ -1,5 +1,5 @@
 import React from 'react';
-import elementType from 'react-prop-types/lib/elementType';
+import elementType from 'prop-types-extra/lib/elementType';
 
 export const DefaultComponent = ({
   componentClass: ComponentClass,
