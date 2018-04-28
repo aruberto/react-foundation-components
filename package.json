@@ -51,7 +51,7 @@
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react-overlays": "^0.7.0",
-    "react-prop-types": "^0.4.0",
+    "prop-types-extra": "1.0.1",
     "uncontrollable": "^5.1.0",
     "underscore.string": "^3.3.4"
   },
@@ -86,7 +86,7 @@
     "postcss-loader": "^0.13.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
-    "react-router": "^2.8.1",
+    "react-router": "3.2.1",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.4.3",

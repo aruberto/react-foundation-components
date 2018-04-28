@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Children, cloneElement } from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
-import elementType from 'react-prop-types/lib/elementType';
+import elementType from 'prop-types-extra/lib/elementType';
 
 export default function createWrapperComponent({
   displayName = 'Wrapper',

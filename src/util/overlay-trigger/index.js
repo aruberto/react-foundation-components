@@ -6,8 +6,8 @@ import React, {
   Fragment,
 } from 'react';
 import { findDOMNode, unmountComponentAtNode, createPortal } from 'react-dom';
-import elementType from 'react-prop-types/lib/elementType';
-import componentOrElement from 'react-prop-types/lib/componentOrElement';
+import elementType from 'prop-types-extra/lib/elementType';
+import componentOrElement from 'prop-types-extra/lib/componentOrElement';
 import Overlay from 'react-overlays/lib/Overlay';
 import Transition from 'react-overlays/lib/Transition';
 import getOffset from 'dom-helpers/query/offset';

@@ -3,7 +3,7 @@ import React from 'react';
 import cx from 'classnames';
 import cxBinder from 'classnames/bind';
 import includes from 'lodash/includes';
-import elementType from 'react-prop-types/lib/elementType';
+import elementType from 'prop-types-extra/lib/elementType';
 import Modal from 'react-overlays/lib/Modal';
 
 import { MODAL_SIZES } from '../util/constants';

@@ -55,4 +55,4 @@ Here are some example applications that use global scoped class name components:
 
 ## Thanks
 
-A lot of the components are inspired by [React Bootstrap](https://github.com/react-bootstrap/react-bootstrap) and this project even makes heavy use their utility libraries like [react-overlays](https://github.com/react-bootstrap/react-overlays), [dom-helpers](https://github.com/react-bootstrap/dom-helpers), [react-prop-types](https://github.com/react-bootstrap/react-prop-types) and [uncontrollable](https://github.com/jquense/uncontrollable). So big thanks to all these project's contributers for all their amazing work!
+A lot of the components are inspired by [React Bootstrap](https://github.com/react-bootstrap/react-bootstrap) and this project even makes heavy use their utility libraries like [react-overlays](https://github.com/react-bootstrap/react-overlays), [dom-helpers](https://github.com/react-bootstrap/dom-helpers), [prop-types-extra](https://github.com/react-bootstrap/prop-types-extra) and [uncontrollable](https://github.com/jquense/uncontrollable). So big thanks to all these project's contributers for all their amazing work!
